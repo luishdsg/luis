@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/btn.css">
+    <link rel="stylesheet" href="css/dinamic.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-128.png" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/2b7710cc6f.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓟𝓻𝓸𝓰𝓻𝓪𝓶𝓶𝓮𝓻 𝓳𝓾𝓷𝓲𝓸𝓻</title>
+</head>
+<!-- ROOT -->
+<style>
+    .pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+    
+    .pace-inactive {
+        display: none;
+    }
+    
+    .pace .pace-progress {
+        background: var(--color);
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px;
+    }
+    
+     :root {
+        /* ROOT_COLORS */
+        --color: #ffbb00;
+        --white: white;
+        --pink: rgb(255, 36, 72);
+        --pinkhover: rgba(255, 0, 43, 0.144);
+        --orange: rgb(255, 173, 22);
+        --purple: rgb(100, 0, 100);
+        --purplehover: rgba(121, 0, 121, 0.37);
+        --yellow: rgba(255, 255, 56, 0.774);
+        --blue: rgb(4, 172, 250);
+        --bluef: blue;
+        --bluel: rgb(0, 0, 63);
+        --green: rgb(0, 160, 35);
+        --not: #0000;
+        --nut: #ffffff41;
+        --blackq: rgba(0, 0, 0, 0.11);
+        --whiteq: rgba(255, 255, 255, 0.212);
+        --pinkhover: rgba(255, 0, 43, 0.397);
+        --greenhover: rgba(0, 255, 0, 0.205);
+        --bluehover: rgba(0, 47, 255, 0.034);
+        --what: rgb(220, 221, 221);
+        --maby: rgb(151, 150, 150);
+        --black: black;
+        --gray: rgb(48, 48, 48);
+        --grayhover: rgba(65, 65, 65, 0.445);
+        --txt: rgb(99, 99, 99);
+        --red: red;
+        --hate: rgba(134, 0, 0, 0.445);
+        /* others */
+        --size: 3.5em;
+        --frames: 62;
+        --border: 1rem;
+        --bord: 0.5rem;
+        --easing: cubic-bezier(0.7, 0, 0.3, 1);
+        --duration: 0.5s;
+        --px: 1px;
+        --radiu: 100rem;
+        /* DARK_THEME */
+        --dark: black;
+    }
+    
+    *,
+    *:before,
+    *:after {
+        position: relative;
+        box-sizing: border-box;
+    }
+    
+    html {
+        background-image: url(https://undesigns.net/wp-content/uploads/2018/02/blue-violet-motion-background-free-download-undesigns.jpg);
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    
+    html,
+    body {
+        height: 100%;
+        width: 100vw;
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1rem;
+        color: var(--what);
+        padding: 0;
+    }
+    
+    a:link {
+        color: var(--color);
+        text-decoration: none;
+    }
+    
+    a:visited {
+        color: var(--grayhover);
+    }
+    
+     ::-webkit-scrollbar {
+        width: 1px;
+        height: 1px;
+    }
+    /* Track */
+    
+     ::-webkit-scrollbar-track {
+        background: var(--not);
+        width: 1px;
+        height: 1px;
+    }
+    /* Handle */
+    
+     ::-webkit-scrollbar-thumb {
+        border-radius: var(--radiu);
+        background: var(--not);
+        width: 0;
+        height: 1px;
+    }
+    /* Handle on hover */
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: rgb(0, 184, 216);
+    }
+    /* MOZ_SCROLL */
+    /* width */
+    
+     ::-moz-scrollbar {
+        width: 0px;
+    }
+    /* Track */
+    
+     ::-moz-scrollbar-track {
+        background: #fbff07;
+    }
+    /* Handle */
+    
+     ::-moz-scrollbar-thumb {
+        background: rgb(190, 0, 0);
+    }
+    /* Handle on hover */
+    
+     ::-moz-scrollbar-thumb:hover {
+        background: rgb(0, 184, 216);
+    }
+    /* ///////////////////////////// */
+    /* ////////////////////// */
+    
+    h1 {
+        color: var(--maby);
+        font: 400 22px 'Poppins', sans-serif;
+    }
+    
+    .h1 {
+        color: var(--txt);
+        font: 600 70px 'Poppins', sans-serif;
+    }
+    /* ////////////////////// */
+    
+    h2 {
+        color: var(--maby);
+        font: 400 20px 'Poppins', sans-serif;
+    }
+    
+    .h2 {
+        color: var(--txt);
+        font: 400 20px 'Poppins', sans-serif;
+    }
+    
+    .wh {
+        color: var(--white) !important;
+    }
+    /* ////////////////////// */
+    
+    h3 {
+        color: var(--grayhover);
+        font: 400 17px 'Poppins', sans-serif;
+    }
+    
+    .h3 {
+        color: var(--txt);
+        font: 400 17px 'Poppins', sans-serif;
+    }
+    /* ////////////////////// */
+    
+    h4 {
+        width: 100%;
+        height: auto;
+        color: var(--maby);
+        font: 400 15px 'Poppins', sans-serif;
+    }
+    
+    .h4 {
+        color: var(--gray);
+        font: 600 15px 'Poppins', sans-serif;
+    }
+    /* ////////////////////// */
+    
+    h5 {
+        color: var(--maby);
+        font: 500 12px 'Poppins', sans-serif;
+    }
+    
+    .h5 {
+        color: var(--gray);
+        font: 500 12px 'Poppins', sans-serif;
+    }
+    /* ////////////////////// */
+    
+    h6 {
+        color: var(--maby);
+        font: 400 10px 'Poppins', sans-serif;
+    }
+    
+    .h6 {
+        color: var(--gray);
+        font: 400 10px 'Poppins', sans-serif;
+    }
+    /* ////////////////////// */
+    
+    .p4 {
+        word-wrap: break-word;
+        height: auto;
+    }
+</style>
+
+
+<!-- FRAMES -->
+<!-- FRAMES -->
+<!-- FRAMES -->
+<!-- FRAMES -->
+<!-- FRAMES -->
+<style>
+    .header {
+        position: sticky;
+    }
+    
+    .cali {
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .calil {
+        text-align: left;
+    }
+    
+    .calir {
+        align-items: right;
+        align-content: right;
+        justify-content: right;
+        text-align: right;
+        right: 0;
+    }
+    
+    .perfil {
+        width: 5rem;
+        height: 5rem;
+    }
+    
+    .radiu {
+        border-radius: var(--radiu);
+    }
+    
+    .border {
+        border-radius: var(--border);
+    }
+    
+    .topnn {
+        top: -30%;
+    }
+    
+    .backb {
+        background: var(--bluehover);
+    }
+    
+    .prel {
+        position: relative;
+    }
+    
+    .absolut {
+        top: 0;
+        position: absolute;
+    }
+    
+    .hfit {
+        height: fit-content;
+    }
+    
+    .hall {
+        height: 100%;
+    }
+    
+    .wall {
+        width: 100%;
+    }
+    
+    .w20 {
+        width: 2%;
+    }
+    
+    .w33 {
+        width: 33.3333333%
+    }
+    
+    .w66 {
+        width: 66.6666%;
+    }
+    
+    .wauto {
+        width: auto;
+    }
+    
+    .dflex {
+        display: flex;
+    }
+    
+    .mleft {
+        position: relative;
+        left: 20%;
+    }
+    
+    .mright {
+        margin-right: 5%;
+    }
+    
+    .wfit {
+        width: fit-content;
+    }
+    
+    .pad {
+        padding: 0 var(--border) 0 var(--border);
+    }
+    
+    .pa {
+        padding: var(--border);
+    }
+    
+    .topm {
+        top: -13%;
+    }
+    
+    .bord {
+        border-radius: var(--bord);
+    }
+    
+    .pm {
+        padding: var(--bord);
+    }
+    
+    .padtop {
+        padding-top: 20%;
+    }
+    
+    .top {
+        top: 5%;
+    }
+    
+    .padright {
+        padding-right: 20%;
+    }
+    
+    .bordtop {
+        border-top: 2px solid var(--not);
+        transition: .3s;
+    }
+    
+    .bordtop:hover {
+        cursor: pointer;
+        transition: .3s;
+        border-top: 2px solid var(--color);
+    }
+    
+    .z {
+        z-index: 10;
+    }
+    
+    .zplus {
+        z-index: 100;
+    }
+    
+    .all {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .padhard {
+        padding: 7rem 1rem 0 7rem;
+    }
+    
+    .whes {
+        width: 100%;
+        height: 5rem;
+    }
+    
+    .mtop {
+        margin-top: 30%;
+    }
+    
+    .bleft {
+        border-left: 2px solid var(--blue);
+    }
+    
+    .topn {
+        top: -10%;
+    }
+    
+    .left {
+        left: 5%;
+    }
+    
+    .topy {
+        top: 12%;
+    }
+    
+    .topes {
+        top: 20%;
+    }
+    
+    .ha01 {
+        height: 230px;
+    }
+    
+    .marg {
+        border: 2px solid var(--maby);
+    }
+    /*============= BACKGROUNDS=========== */
+    
+    .backp {
+        background: var(--purple);
+    }
+    
+    .backo {
+        background: var(--color);
+    }
+    
+    .backw {
+        background: var(--white);
+    }
+    
+    .blackg {
+        background: var(--blackq);
+    }
+    
+    .backg {
+        background: var(--nut);
+    }
+    
+    .backrh {
+        background: var(--pinkhover);
+    }
+    
+    .backph {
+        background: var(--purplehover);
+    }
+    
+    .backy {
+        background: var(--yellow);
+    }
+    
+    .backgg {
+        background: var(--grayhover);
+    }
+    
+    .backg {
+        background: var(--green);
+    }
+    
+    .backb {
+        background: var(--blue);
+    }
+    
+    .backr {
+        background: var(--pink);
+    }
+</style>
+
+
+
+<!-- PAGES -->
+<!-- PAGES -->
+<!-- PAGES -->
+<!-- PAGES -->
+
+<style>
+    /* ========SKILLS======== */
+    /* ========SKILLS======== */
+    
+    .box {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .box .devtool {
+        transition: .3s;
+        transform: .3s;
+    }
+    
+    .box .devtool:hover i {
+        display: none;
+        transform: .3s;
+        transition: .3s;
+    }
+    
+    .box .devtool i {
+        z-index: 3;
+        transition: .3s;
+    }
+    
+    .devtoolinfo {
+        position: absolute;
+        top: 220px;
+        transition: .3s;
+        z-index: 1;
+    }
+    
+    .box .devtool:hover .devtoolinfo {
+        top: 0px;
+        background: var(--what) !important;
+        cursor: pointer;
+        transition: .3s;
+    }
+    /* =========EDUCATION ==========*/
+    /* =========EDUCATION ==========*/
+    /* =========EDUCATION ==========*/
+    
+    .whfix {
+        width: 40rem;
+        height: 30rem;
+        overflow: auto;
+        outline: none;
+    }
+    
+    .fix {
+        position: fixed;
+    }
+    
+    .ha02 {
+        height: 200px;
+    }
+    
+    .colorp {
+        color: var(--pink);
+    }
+    
+    .imgcard1 {
+        width: 35%;
+        background-image: url(svg/mont.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .imgcard2 {
+        width: 35%;
+        background-image: url(svg/ex.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .imgcard3 {
+        width: 35%;
+        background-image: url(svg/ado.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .imgcard4 {
+        width: 35%;
+        background-image: url(svg/ja.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .imgcard5 {
+        width: 35%;
+        background-image: url(svg/hcj.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .imgcard6 {
+        width: 35%;
+        background-image: url(svg/git.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 6px 0px 0px 6px;
+        background-size: cover;
+    }
+    
+    .w65 {
+        width: 65%;
+    }
+    
+    .info {
+        align-items: center !important;
+    }
+    
+    @media (max-width:740px) {
+        .fix {
+            position: relative;
+        }
+        .whfix {
+            width: 100%;
+            height: 30rem;
+            overflow: auto;
+            outline: none;
+        }
+    }
+    
+    @media (max-width: 601px) {
+        .header {
+            transform: .5s;
+            transition: .5s;
+            display: block !important;
+        }
+    }
+    
+    @media only screen and (max-width: 1000px) {
+        .w3-col {
+            width: 100% !important;
+        }
+        .form {
+            width: 50% !important;
+        }
+    }
+    
+    @media (max-width:400px) {
+        .coca {
+            top: 3rem;
+        }
+    }
+    
+    @media (max-width: 900px) {
+        .net {
+            width: 60% !important;
+            left: 20% !important;
+        }
+    }
+    
+    @media (max-width :800px) {
+        .svgs {
+            width: 100%;
+            height: 40%;
+        }
+        .svimg {
+            width: auto;
+            left: 30%;
+            height: 100%;
+        }
+    }
+    
+    @media (max-width: 800px) {
+        article {
+            display: block !important;
+        }
+    }
+</style>
+
+<!-- CONTACT -->
+<!-- CONTACT -->
+<!-- CONTACT -->
+<style>
+    #contato {
+        display: none;
+    }
+    
+    .contato {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.534);
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 2000;
+        top: 0;
+        left: 0;
+        text-align: center;
+    }
+    
+    .net {
+        width: 30%;
+        height: 60%;
+        top: 20%;
+        left: 35%;
+    }
+    
+    #x {
+        position: absolute;
+        z-index: 1;
+        top: 2%;
+        right: 2%;
+        padding: var(--border);
+        border-radius: var(--radius);
+        background: var(--blackq);
+        width: auto;
+        height: auto;
+        color: var(--white);
+        font-size: 3rem;
+    }
+    
+    .upbord {
+        border-radius: var(--bord);
+    }
+    
+    .downbord {
+        background: var(--blackq);
+        border-radius: var(--border);
+    }
+    
+    #profile {
+        width: 4rem;
+        height: 4rem;
+        border-radius: var(--radiu);
+    }
+</style>
+<script>
+    function contato() {
+        document.getElementById("contato").style.display = "block";
+    }
+
+    function x() {
+        document.getElementById("contato").style.display = "none";
+    }
+</script>
+
+<body>
+    <div id="contato" class="contato">
+        <button onclick="x()" id="x"><i class="far fa-times-circle "></i></button>
+        <div class="border w3-container w3-white net pa">
+            <div class="wall hauto cali">
+                <img id="profile" src="svg/l.jpg">
+            </div>
+            <div class="wall cali hauto">
+                <h4 class="h4">Luis Henrique Gomes</h4>
+
+                <h6 class="topy">Solteiro(a)</h6>
+                <h6>19 anos</h6>
+                <h6>Homem</h6>
+
+                <h5 class="h5"><i class="fas fa-map-marker-alt"></i>⠀Q 01 St.leste - Gama-DF</h5>
+                <hr class="horizon" />
+                <div class="wall hauto dflex">
+                    <div class="w3-half hauto">
+                        <h6 class="tleft pmbtm h5 ">G-mail:</h6>
+                        <h6 class="tleft pmbtm h5 ">Celular:</h6>
+                        <h6 class="tleft pmbtm h5 ">Skype:</h6>
+                    </div>
+                    <div class="w3-half hauto right">
+                        <h6 class="tleft pmbtm h5 ">luis.hdsg@gmail.com</h6>
+                        <h6 class="tleft pmbtm h5 ">(61) 992111571</h6>
+                        <h6 class="tleft pmbtm h5 ">@kerollynbarros</h6>
+                    </div>
+                </div>
+            </div>
+            <h6 class="h6">©Copyright Luis Henrique Gomes 2021</h6>
+        </div>
+    </div>
+
+    <header class="header z w3-row">
+        <div class="w3-contaner  zplus w33">
+            <div class="w3-cell pad">
+                <h3 class="wh h3">Luis Henrique Gomes</h3>
+            </div>
+        </div>
+
+        <div class="w3-container hall absolut calir w66">
+            <div class="wfit hall coca absolut calir dflex  ">
+                <div onclick="home()" class="wauto hall pad  bordtop cali">
+                    <h4 class="wh  ">Inicio</h4>
+                </div>
+                <div onclick="skills()" class="wauto hall pad bordtop cali">
+                    <h4 class="wh h">Skills</h4>
+                </div>
+                <div onclick="form()" class="wauto hall pad bordtop cali">
+                    <h4 class="wh h">Formação</h4>
+                </div>
+                <div onclick="project()" class="wauto hall pad bordtop cali">
+                    <h4 class="wh  ">Project</h4>
+                </div>
+                <div onclick="contato()" id="perfil" class="wauto hall pad bordtop mright cali">
+                    <h4 class="wh  "><i class="fas fa-user-alt "></i></h4>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="wall dflex">
+        <article class="wall  dflex ">
+            <div class="w3-cell-row padhard   w3-container">
+                <div class=" wall hall cali ">
+                    <!-- HOME -->
+                    <div id="home" class="wall w3-animate-bottom hall ">
+                        <div class="wall hauto dflex">
+                            <div class="wall calil  ">
+                                <h1 class="wh left h1">Sobre</h1>
+                                <div class=" bleft p4">
+                                    <h5 class="wh pa  left h5">
+                                        Olá ,sou programador front-end em busca de compreender e antecipar meus conhecimentos para atender a demanda de mercado, com pouco mais de 1 ano de experiência utilizando aquele feijão com arroz (Html, Css & JS) no auxilio e manutenção de sites e aplicações
+                                        web, com pontapé inicial em bibliotecas e frameworks como ReactJS e Bootstrap ...PS: em relação a Hobbes gosto de (Animes, Documentários, Filmes e Series Tech e YoutubeTech).
+                                    </h5>
+                                </div>
+
+                                <div class="wall hauto top w3-container">
+                                    <div id="container" class="left ">
+                                        <button class="learn-more">
+                                              <span class="circle" aria-hidden="true">
+                                                <span class="icon arrow"></span>
+                                              </span>
+                                              <span onclick="contato()" class="button-text">Contato</span>
+                                            </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- HOME -->
+
+                    <!-- SKILLS -->
+                    <div id="skills" class="wall w3-animate-bottom hauto">
+                        <h1 class="wh absolut topm h1">Skills </h1>
+                        <div class="w3-row">
+
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="fab fa-react fa-2x "></i>
+                                        <div class="wall backb devtoolinfo ha01 border cali ">
+                                            <h2 class="h2 ">ReactJS</h2>
+                                            <p class="p4 pm h5 ">React, uma biblioteca JavaScript de com foco em criar interfaces de usuário em páginas web que mantido pelo Facebook, Instagram,WhatsApp e outras empresas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="fab fa-css3 fa-2x "></i>
+                                        <div class="wall backr devtoolinfo ha01 border cali ">
+                                            <h2 class="h2 ">CSS, Sass e LESS</h2>
+                                            <p class="p4 pm h5 ">Sass e LESS são linguagens de implementação que facilita na escrita do código CSS e abrange melhores abordagems de variáveis como "@name ou !name " e maximizam o pré-processamento de estilos.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br/>
+                        <div class="w3-row ">
+
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="fab fa-bootstrap fa-2x "></i>
+
+                                        <div class="wall backp devtoolinfo ha01 border cali ">
+
+                                            <h2 class="h2 ">Bootstrap</h2>
+                                            <p class="p4 pm h5 ">dispensando apresentações Bootstrap é um framework web com código-fonte aberto para desenvolvimento de componentes de interface e front-end para sites e aplicações web usando HTML, CSS e JavaScript.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="fas fa-code fa-2x "></i>
+                                        <div class="wall backo devtoolinfo ha01 border cali ">
+
+                                            <h2 class="h2 ">DevTools</h2>
+                                            <p class="p4 pm h5 ">O DevTools é uma ferramenta do Chrome que auxilia no Desenvolvimento, trafego de rede, segurança de dados e controle de aplicações Web e Mobile </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <br/>
+                        <div class="w3-row">
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="far fa-file-code fa-2x "></i>
+
+                                        <div class="wall backg devtoolinfo ha01 border cali ">
+
+                                            <h2 class="h2 ">JavaScript</h2>
+                                            <p class="p4 pm h5 ">JavaScript simplesmente é a linguagem mais utilizada no mundo.tem com função base dar dinamismo e lógica ao site aperfeiçoando as engrenagens por debaixo dos panos.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w3-col cali w3-container m4 l6 ">
+                                <div class="box ha01 cali marg border ">
+                                    <div class="devtool dflex wall hall cali ">
+                                        <i class="fab fa-github fa-2x "></i>
+
+                                        <div class="wall backy devtoolinfo ha01 border cali ">
+
+                                            <h2 class="h2 ">GitHub/Git</h2>
+                                            <p class="p4 pm h5 ">GitHub é uma plataforma de hospedagem de código-fonte e arquivos que permite programadores hospedem seus códigos em qualquer linguagem, tendo dominio personalizado ".github ".</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SKILLS -->
+
+                    <!-- FORM -->
+                    <div id="form" class="wall w3-animate-bottom hall">
+                        <div class="whfix fix z">
+                            <h1 class="h1 wh">Certificações</h1>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class=" imgcard1 ha02 backr"></div>
+                                    <div class="w65">
+                                        <div class="wall pa info calil w3-white hall">
+
+                                            <h6 class="h5">
+                                                Montagem Manutenção de Computadores e Notebooks (PREPARACURSO) - 2016</h6>
+                                            <h6 class="colorp h5">Nota: 8,6</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br/>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class="imgcard2 ha02 backr"></div>
+                                    <div class="w65">
+                                        <div class="wall pa info calil w3-white hall">
+
+                                            <h6 class="h5">
+                                                Excel - Avançado (BOWTIE) - 2017</h6>
+                                            <h6 class="colorp h5">Nota: 10,0</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br/>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class=" imgcard3 ha02 backr"></div>
+                                    <div class="w65">
+                                        <div class="wall pa info calil w3-white hall">
+
+                                            <h6 class="h5">
+                                                Adobe Prático (GRACOM) - 2016</h6>
+                                            <h6 class="colorp h5">Nota: 8,1</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br/>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class=" imgcard4 ha02 backr"></div>
+                                    <div class="w65">
+                                        <div class="wall pa info calil w3-white hall">
+                                            <h6 class="h5">
+                                                Linguagem de Programação - Java (UDEMY) - 2020</h6>
+                                            <h6 class="colorp h5">Nota: 7,8</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br/>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class=" imgcard5 ha02 backr"></div>
+                                    <div class="w65">
+                                        <div class="wall pa info calil w3-white hall">
+
+                                            <h6 class="h5">
+                                                Html5, Css3 & JS (UDEMY - DIGITALINNOVATIONONE) - 2020</h6>
+                                            <h6 class="colorp h5">Nota: 10,0</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </br/>
+                            <div class="w3-row bord ">
+                                <div class="wall hauto form dflex">
+                                    <div class=" imgcard6 ha02 backr"></div>
+                                    <div class="w65 ">
+                                        <div class="wall pa info calil w3-white hall">
+
+                                            <h6 class="h5">
+                                                Git/Github (DIGITALINNOVATIONONE) - 2020</h6>
+                                            <h6 class="colorp h5">Nota: 8,8</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FORM -->
+
+                    <!-- PROJECT -->
+                    <div id="project" class="wall w3-animate-bottom hall">
+                        <div class="wall hall">
+                            <div class="w3-row">
+                                <div class="w3-col downbord  m4 border w3-container l6">
+                                    <div class="hall w3-blue upbord cali">
+                                        <h4 class="wh">Rede social - (Apres)</h4>
+                                    </div>
+                                    <p class="w3-row  p4 wh">
+                                        (em andamento) aplicativo web para dispositivos Mobile com função padrão EX: post, Page-profile, Like, Timeline(nonew)...etc, verifique meu <a href="#">Código fonte</a>
+                                    </p>
+                                </div>
+                                <div class="w3-col  downbord  border m4 w3-container l6">
+                                    <div class="hall  upbord w3-blue cali">
+                                        <h4 class="wh">Game Web</h4>
+                                    </div>
+                                    <p class="w3-row p4 wh ">
+                                        Depois que aprendi JavaScript coloquei em pratica na criação de um jogo 2d de movimentação é fisica aquatica... confira no <a href="#">Código fonte</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="w3-row">
+                                <div class="w3-colm4 border  downbord w3-container l6">
+                                    <div class="hall w3-blue  upbord cali">
+                                        <h4 class="wh">Trabalho voluntario (Sistema - solar</h4>
+                                    </div>
+                                    <p class="w3-row p4 wh">
+                                        app para web com responsividade mobile utilzando com modelagem quase 3d e dinâmismo de escolhas e interação veja no <a href="#">Código fonte</a>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- PROJECT -->
+
+
+
+                </div>
+
+            </div>
+            <div class="w3-twothird svgs topy cali w3-container ">
+                <img id="homesvg" class="prel w3-animate-right svimg top wall hauto" src="svg/s.png" />
+                <img id="skillssvg" class="prel topn wall  w3-animate-right hall" src="svg/s (4).svg" />
+                <img id="formsvg" class="prel  mright top wall w3-animate-right  hall" src="svg/s (1).svg" />
+                <img id="projectsvg" class="prel topn wall  w3-animate-right hall" src="svg/s (2).svg" />
+            </div>
+
+        </article>
+        <nav class="w3-cell topy w3-container  ">
+            <div class="wall topes hfit ">
+                <div class="wall hauto w3-padding-top-24">
+                    <a href="https://github.com/luishdsg/">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                </div>
+                <div class="wall hauto w3-padding-top-24">
+                    <a href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos/">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+
+
+                </div>
+                <div class="wall hauto w3-padding-top-24">
+
+                    <a href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </main>
+
+</body>
+
+<script type="text/javascript" src="js/js.js"></script>
+
+</html>
