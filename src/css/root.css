@@ -38,6 +38,39 @@
     font-size: 20px;
     font-weight: 400;
 }
+
+.txtl{
+    text-align: -webkit-left;
+}
+.backnav{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://i.imgur.com/i0VxNme.png);
+}
+.img{
+    width: 55%;
+    height: auto;
+}
+.fundo{
+    width: 100%;
+    max-height: 200px;
+}
+.span{
+    font-size: 11px !important;
+    font-weight: 200 !important;
+}
+.central{
+    text-align: -webkit-center;
+    justify-content: space-evenly;
+
+}
+
+.total{
+    width: 100%;
+    height: auto;
+    background: red;
+}
 .nav-item{
     border-left: 1px solid transparent;
 }
@@ -78,6 +111,7 @@
     margin: 0;
 }
 body{
+  
     font-family: 'Poppins', sans-serif !important;
     color: white;
     background-image: url(https://i.imgur.com/PCsdlei.png);
@@ -85,16 +119,32 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+a{
+    text-decoration: none !important ;
+}
+a:hover{
+    text-decoration: none !important;
+}
 
 #theboxkid{
     top: 10px;
 }
 
 
+i.fa-linkedin-in:hover{
+	color: rgb(0, 0, 56);
+}
+i.fa-facebook:hover{
+	color: blue;
+}
+i.fa-github:hover{
+	color: rgb(65, 5, 121);
+}
+
 
 /*========MEDIA========*/
 
-@media (max-width: 600px){
+@media (max-width: 667px){
     #span-nav{
         font-size: 13px;
         padding: 0  0 0 30px !important;

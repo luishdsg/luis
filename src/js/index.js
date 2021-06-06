@@ -8,10 +8,10 @@ function sobre(){
     document.getElementById("form").style.borderTop = "2px solid transparent";
     document.getElementById("contact").style.borderTop = "2px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "block !important"
-    document.getElementById("Pskill").style.display = "none !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "block";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function skills(){
@@ -20,10 +20,10 @@ function skills(){
     document.getElementById("form").style.borderTop = "2px solid transparent";
     document.getElementById("contact").style.borderTop = "2px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskill").style.display = " block !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = " block";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function form(){
@@ -32,10 +32,10 @@ function form(){
     document.getElementById("form").style.borderTop = "2px solid var(--pisina)";
     document.getElementById("contact").style.borderTop = "2px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskill").style.display = "none !important"
-    document.getElementById("Pform").style.display = "block !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "block";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function contact(){
@@ -44,10 +44,10 @@ function contact(){
     document.getElementById("form").style.borderTop = "2px solid transparent";
     document.getElementById("contact").style.borderTop = "2px solid var(--pisina)";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskill").style.display = "none !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "block !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "block";
 }
 
 
@@ -69,10 +69,10 @@ function sobreF(){
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
     document.getElementById("contacts").style.borderLeft = "1px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "block !important"
-    document.getElementById("Pskills").style.display = "none !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "block";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function skillsF(){
@@ -81,10 +81,10 @@ function skillsF(){
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
     document.getElementById("contacts").style.borderLeft = "1px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskills").style.display = " block !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = " block";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function formF(){
@@ -93,10 +93,10 @@ function formF(){
     document.getElementById("forms").style.borderLeft = "1px solid var(--pisina)";
     document.getElementById("contacts").style.borderLeft = "1px solid transparent";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskills").style.display = "none !important"
-    document.getElementById("Pform").style.display = "block !important"
-    document.getElementById("Pcontact").style.display = "none !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "block";
+    document.getElementById("Pcontact").style.display = "none";
 }
 
 function contactF(){
@@ -105,8 +105,8 @@ function contactF(){
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
     document.getElementById("contacts").style.borderLeft = "1px solid var(--pisina)";
     //PAGES
-    document.getElementById("Psobre").style.display = "none !important"
-    document.getElementById("Pskills").style.display = "none !important"
-    document.getElementById("Pform").style.display = "none !important"
-    document.getElementById("Pcontact").style.display = "block !important"
+    document.getElementById("Psobre").style.display = "none";
+    document.getElementById("Pskill").style.display = "none";
+    document.getElementById("Pform").style.display = "none";
+    document.getElementById("Pcontact").style.display = "block";
 }

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html class="bg-dark"lang="pt-br">
 <head> 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/css/root.css"/>
+    <link rel="stylesheet" href="src/css/load.css"/>
     <link rel="stylesheet" href="src/bootstrap-icons/font/bootstrap-icons.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -15,9 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis Henrique da Silva Gomes</title>
 </head>
-<body>
-  
-    <nav id="nave" class="navbar navbar-dark bg-dark">
+<body id="page-top" class=" bg-dark" onload="myFunction()">
+    <div id="loader"></div>
+    <main style="display:none;" id="myDiv" >
+    <nav id="nave" class="navbar navbar-dark backnav">
         <span id="span-nav" class="navbar-brand p-5 pph mb-0 h1"><i class="fas text-info fa-terminal"></i>⠀Luis Henrique Gomes</span>
         <div class=" text-white menu-king align-self-end w3-helf">
             
@@ -66,7 +68,146 @@
             </ul>
         </div>
         <!-- MOBILE-ZONE -->
-      </nav>
+    </nav>
 
+    <main class="main  bg-dark conatiner">
+      
+     
+      <!-- SOBRE -->
+      <article id="Psobre" class="w3-row d-none bg-dark">
+        <div class="w3-half txtl text-white p-5">
+          <div class=" offset-md-1">
+          <span class="text-info h4 font-weight-bold">DESENVOVEDOR FRONT-END</span>
+          <h1 class="h2">Luis Henrique da Silva Gomes</h1>
+          <span class=" ">Sou programador front-end em busca de compreender e antecipar meus conhecimentos para atender a demanda de mercado, com pouco mais de 1 ano de experiência utilizando (Html5, Css3, Jquery, REST, REACTJS, NODEJS, & JavaScript) no auxilio e manutenção de sites e aplicações web, com diferencial em bibliotecas e frameworks como ReactJS e Bootstrap.</span>
+          <br/>
+          <br/>
+          <a href="#" class="btn btn-outline-primary">Baixar currículo</a>
+          </div>
+         </div>
+        <div class="w3-half d-block">
+           <div><img src="src/img/Fundo transparente 1900x1900.png" class="img"/>
+         </div>
+          <a href="http://br.zone-h.org/archive/special=1" target="_blank" class="text-white font-weight-bold"> - h a c k t i v i s t -</a>
+        </div>
+      </article>
+
+      <!-- SKILLS -->
+      <article id="Pskill" class="w3-row d-none text-white bg-dark">
+        <br/>
+        <br/>
+        
+        <br/>
+        <span class=" navbar-brand h4"><i class="bi text-info bi-tags-fill">⠀</i>Skills</span>
+        
+        <div class="w3-row container ">
+          
+          <div class="w3-half d-flex central ppv ">
+
+              <div class="col-2">
+                <span class="span" >JavaScript</span> 
+            
+            <div class="row conatiner ">
+              <img src="src/img/js.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 79%" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+              </div>
+            
+              <div class="col-2">
+            <span class="span" >ReactJS</span> 
+             
+            <div class="row conatiner ">
+              <img src="src/img/reagir.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+              </div>
+            
+              <div class="col-2">
+            
+            <span class="span" >Java 11 LTS</span> 
+            <div class="row conatiner ">
+              <img src="src/img/java.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+              </div>
+          </div>
+        
+          
+          <div class="w3-half d-flex ppv central align-center">
+              <div class="col-2">
+            <span class="span" >NodeJS</span> 
+             
+            <div class="row conatiner ">
+              <img src="src/img/node.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+              </div>
+            
+              <div class="col-2">
+             
+            <div class="row conatiner ">
+            <span class="span" >Html5 & Css3</span> 
+             
+                   <img src="src/img/html.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar w3-orange" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+             
+            </div>
+              </div>
+            
+              <div class="col-2">
+            <span class="span" >Git&GitHub</span> 
+             
+            <div class="row conatiner ">
+              <img src="src/img/git.svg" class="img"/>
+            </div>
+            <div class="progress "  style="height: 3px;">
+              <div class="progress-bar w3-orange" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+              </div>
+          </div>
+            
+       
+            
+        </div>
+      </article>
+       
+      <!-- FORMAÇÃO -->
+      
+      <article id="Pform" class="w3-row text-white bg-dark">
+        
+      </article>
+      <!-- CONTATO -->
+
+
+    </main>
+
+
+
+      
+    	<script>
+        var myVar;
+        
+        function myFunction() {
+          myVar = setTimeout(showPage, 800);
+        }
+        
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+        
+          document.getElementById("myDiv").style.display = "block";
+        }
+      </script>
+    </main>
 </body>
 </html>
