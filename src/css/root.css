@@ -1,0 +1,120 @@
+:root{
+    --pisina: #0dcaf0;
+}
+
+.ph{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.pph{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.phl{
+    padding-left: 1.5rem;
+}
+.-phl{
+    padding-left: -1.5rem;
+}
+.pv{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.ppv{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.pvl{
+    padding-top: 0.5rem;
+}
+.ppvl{
+    padding-top: 1rem;
+}
+.top{
+    margin-top: 1rem;
+}
+
+.txt{
+    font-size: 20px;
+    font-weight: 400;
+}
+.nav-item{
+    border-left: 1px solid transparent;
+}
+.menus{
+    height: 100%;
+    border-top: 2px solid transparent;
+
+
+}
+.menus:hover{
+    transition: 0.5s;
+    transform: 0.5s;
+    border-top: 2px solid var(--pisina);
+}
+.menu-pleb{
+    display: none;
+}
+.menu-king{
+    display: flex;
+}
+.arrond-effect{
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.arrond-effect:hover{
+    border: 1px solid rgb(49, 125, 240) !important;
+    color: rgb(110, 197, 255) !important;
+    transition: 0.2s;
+    transform: 0.2s;
+}
+.cursor{
+    cursor: pointer;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Poppins', sans-serif !important;
+    color: white;
+    background-image: url(https://i.imgur.com/PCsdlei.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#theboxkid{
+    top: 10px;
+}
+
+
+
+/*========MEDIA========*/
+
+@media (max-width: 600px){
+    #span-nav{
+        font-size: 13px;
+        padding: 0  0 0 30px !important;
+    }
+    #nave{
+        padding: 3rem 0 3rem 0 !important;
+    }
+    #theboxkid{
+        display: flex;
+        width: 100%;
+        
+    }
+    .menu-king{
+        display: none !important;
+    }
+    .menu-pleb{
+        right: 10px;
+        position: absolute;
+        z-index: 10;
+        top: 25%;
+        display: block;
+    }
+}
