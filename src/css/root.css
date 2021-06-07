@@ -33,6 +33,10 @@
 .top{
     margin-top: 1rem;
 }
+.bord{
+    border-left: 2px solid var(--pisina);
+    padding-left: 1rem;
+}
 
 .txt{
     font-size: 20px;

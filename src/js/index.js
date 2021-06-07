@@ -5,6 +5,9 @@
 //CLOSECONTACT
 function closecontact(){
     document.getElementById("Pcontact").style.display = "none";
+    document.getElementById("Psobre").style.display = "block";
+    document.getElementById("contact").style.borderTop = "2px solid transparent";
+    document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
 }
 
 
