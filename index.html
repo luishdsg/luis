@@ -35,7 +35,7 @@
                 <span class="txt">Acadêmico</span>
             </div>
                
-            <div id="contact" onclick="contact()" class="pph p-5 cursor accordion-collapse menus text-center">
+            <div id="contact" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="contact()" class="pph p-5 cursor accordion-collapse menus text-center">
                 <span class="txt">Contato</span>
             </div>
         </div> 
@@ -59,7 +59,7 @@
                   <i class="bi bi-bank ph"></i>
                 </a>
               </li>
-              <li  id="contacts" title="contato" onclick="contactF()" class=" pvl cursor nav-item">
+              <li data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="contacts" title="contato" onclick="contactF()" class=" pvl cursor nav-item">
                 <a class="nav-link" >
                   <i class="bi bi-person ph"></i>
                 </a>
@@ -74,7 +74,7 @@
       
      
       <!-- SOBRE -->
-      <article id="Psobre" class="w3-row  bg-dark">
+      <article id="Psobre" class="w3-row  d-none bg-dark">
         <div class="w3-half txtl text-white p-5">
           <div class=" offset-md-1">
           <span class="text-info h4 font-weight-bold">DESENVOVEDOR FRONT-END</span>
@@ -95,7 +95,7 @@
       </article>
 
       <!-- SKILLS -->
-      <article id="Pskill" class="w3-row  text-white bg-dark">
+      <article id="Pskill" class="w3-row d-none text-white bg-dark">
         <br/>
         <br/>
         
@@ -186,8 +186,29 @@
        
       <!-- FORMAÇÃO -->
       
-      <article id="Pform" class="w3-row text-white bg-dark">
-
+      <article id="Pform" class="w3-row bg-dark">
+        <div id="contato-card">
+          <div class="contatos p-3 bg-light col-5">
+            <div class="container">
+              <span class="right p-2 w3-blue center">
+                <i class="bi btn-light bi-x-circle fa-2x"></i>
+              </span>
+              
+              <div class="row">
+                
+                <div class="w3-quarter container">
+                  <img src="src/img/pik.jpeg" class="pik"/>
+                </div>
+                
+                <div class="w3-twothird text-white p-1">
+                  
+                  <span class="h5">Luis Hnerique da Silva Gomes</span>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
       </article>
       <!-- CONTATO -->
 
