@@ -73,7 +73,7 @@
         </div>
         <!-- MOBILE-ZONE -->
     </nav>
-
+ 
     <main class="main  bg-dark conatiner">
       
      
@@ -267,8 +267,21 @@
 
     </main>
 
-
-
+    
+    <script>
+ var myVar;
+        
+        function myFunction() {
+          myVar = setTimeout(showPage, 800);
+        }
+        
+        function showPage() {
+          document.getElementById("loader").style.display = "none";
+        
+          document.getElementById("myDiv").style.display = "block";
+        }
+    
+    </script>
       
     
     </main>
