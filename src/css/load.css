@@ -1,7 +1,7 @@
 
 	#loader {
         position: absolute;
-        left: 55%;
+        left: 50%;
         top: 40%;
         z-index: 1;
         width: 120px;
@@ -9,7 +9,7 @@
         margin: -76px 0 0 -76px;
         border: 1px solid #000000;
         border-radius: 50%;
-        border-top: 5px solid var(--pisina);
+        border-top: 2px solid var(--pisina);
         -webkit-animation: spin 1.2s linear infinite;
         animation: spin 1.2s linear infinite;
       }

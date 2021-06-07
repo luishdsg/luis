@@ -2,6 +2,12 @@
 
 //CONTROLLERS-WEB
 
+//CLOSECONTACT
+function closecontact(){
+    document.getElementById("Pcontact").style.display = "none";
+}
+
+
 function sobre(){
     document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
     document.getElementById("skill").style.borderTop = "2px solid transparent";
