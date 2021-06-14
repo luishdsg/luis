@@ -9,26 +9,8 @@
   --aspect-ratio: calc(9 / 16);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-kerning: auto;
-          font-kerning: auto;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  background-color: black;
-  font-family: Roboto, sans-serif;
-  overflow-x: hidden;
-}
-body::-webkit-scrollbar {
-  width: 0px;          
+ -webkit-scrollbar {
+   width: 0px;          
 }
 
 
@@ -38,10 +20,6 @@ body::-webkit-scrollbar {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-h1, h2 {
-  margin: 0;
 }
 
 .content-grid {
@@ -225,7 +203,6 @@ h1, h2 {
 
 <body >
   <div class="main">
-
   <div class="content-grid" style="--gridOpacity:0; --gridScale:2; --gridTranslate:5vh;">
     <div class="content-grid-title" style="--gridOpactiy:0;">
       <h1>Certificados</h1>
@@ -247,13 +224,12 @@ h1, h2 {
           <div class="grid__item"><img src="./adobe.png" alt="" class="grid__item_image"></div> 
           
          
+  
         </div>
       </div>
     </div>
   </div>
-
-    <script src="./stopExecutionOnTimeout-8216c69d01441f36c0ea791ae2d4469f0f8ff5326f00ae2d00e4bb7d20e24edb.js.download"></script>
-
+  
   <script src="./SmoothScroll.js.download"></script>
       <script id="rendered-js">
 SmoothScroll({

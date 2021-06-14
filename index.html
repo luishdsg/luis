@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="w3-black"lang="pt-br">
+<html  lang="pt-br">
 <head> 
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/css/root.css"/>
@@ -20,12 +20,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis Henrique da Silva Gomes</title>
 </head>
-<body id="page-top"  onload="myFunction()">
 
-    <div id="loader"></div>
-    <main style="display:none;" class="w3-black " id="myDiv" >
-     
-    <nav id="nave" class="navbar navbar-dark ">
+<script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+<body id="page-top" class="w3-black" onload="myFunction()">
+
+    <div id="loader" ></div>
+    <main style="display:none;" id="myDiv" >
+      <div style="display: none;" class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
+    <nav id="nave" class="navbar w100 position-absolute top-0 navbar-dark ">
         <span id="span-nav" class="navbar-brand p-5 pph mb-0 h1"><i class="fas text-info fa-terminal"></i>⠀Luis Henrique Gomes</span>
         <div class=" text-white menu-king align-self-end w3-helf">
             
@@ -76,7 +140,7 @@
         <!-- MOBILE-ZONE -->
     </nav>
  
-    <main class=" w3-black conatiner">
+    <main class=" top20 w100 position-absolute conatiner">
       
      
       <!-- SOBRE -->
@@ -103,7 +167,7 @@
       </article> 
 
       <!-- SKILLS -->
-      <article id="Pskill" style="display:none;" class="w3-row w3-animate-bottom text-white w3-black">
+      <article id="Pskill" style="display:none;" class="w3-row w3-animate-bottom text-white">
         <br/>
         <br/>
         
@@ -192,9 +256,30 @@
         </div>
       </article> 
        
-      <!-- FORMAÇÃO -->
+      <!-- FORMAÇÃO --> 
       <article id="Pform" style="display:none;" class="w3-row text-white w3-black">
-        <iframe class="frame" src="src/text/LYEELwB.html"></iframe>
+        <div class="main non">
+          <div class="content-grid non" style="--gridOpacity:0; --gridScale:2; --gridTranslate:5vh;">
+            <div class="content-grid-title" style="--gridOpactiy:0;">
+              <h1 class="cert-title">Certificados</h1>
+            </div>
+            <div class="content-grid__scroll non"> 
+              <div class="content-grid__sticky non">
+                <div class="content-grid__items non">
+                  <div class="grid__item"><img src="./src/img/html.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/java.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/logo.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/react.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/web.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/logica.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/gestao.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/excel.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/montagem.png" alt="" class="grid__item_image"></div>
+                  <div class="grid__item"><img src="./src/img/adobe.png" alt="" class="grid__item_image"></div> 
+                </div>
+              </div>
+            </div>
+          </div>
       </article>
 
 
@@ -272,7 +357,61 @@
 
     </main>
 
-    
+    <script src="./src/img/SmoothScroll.js.download"></script>
+    <script id="rendered-js">
+SmoothScroll({
+// Scrolling Core
+animationTime: 400, // [ms]
+stepSize: 100, // [px]
+
+// Acceleration
+accelerationDelta: 50, // 50
+accelerationMax: 3, // 3
+
+// Keyboard Settings
+keyboardSupport: true, // option
+arrowScroll: 50, // [px]
+
+// Pulse (less tweakable)
+// ratio of "tail" to "acceleration"
+pulseAlgorithm: true,
+pulseScale: 4,
+pulseNormalize: 1,
+
+// Other
+touchpadSupport: false, // ignore touchpad by default
+fixedBackground: true,
+excluded: "" });
+
+
+const gridContent = document.querySelector(".content-grid");
+const gridTitle = gridContent.querySelector(".content-grid-title");
+const gridScroll = gridContent.querySelector(".content-grid__scroll");
+const items = gridContent.querySelectorAll(".grid__item");
+
+const initialValue = {
+scale: 2,
+translate: 5 };
+
+
+const getScroll = e => {
+const yNormalized = Math.min(window.scrollY / innerHeight, 1);
+
+gridContent.style.setProperty("--gridOpacity", yNormalized);
+gridContent.style.setProperty(
+"--gridScale",
+initialValue.scale - yNormalized);
+
+gridContent.style.setProperty(
+"--gridTranslate",
+5 - initialValue.translate * yNormalized + "vh");
+
+gridTitle.style.setProperty("--gridOpactiy", yNormalized);
+};
+
+window.addEventListener("scroll", e => getScroll(e));
+//# sourceURL=pen.js
+  </script>
     <script>
  var myVar;
         
