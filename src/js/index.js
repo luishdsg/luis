@@ -6,8 +6,20 @@ function closecontact() {
     document.getElementById("Psobre").style.display = "block";
     document.getElementById("contact").style.borderTop = "2px solid transparent";
     document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "block";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }
-style = "display: none;"
+
+
 
 function sobre() {
     document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
@@ -69,7 +81,7 @@ function form() {
     document.getElementById("Pcontact").style.display = "none";
     //BACKGROUNDS
     var backhome = document.getElementsByClassName("bubbles");
-    backhome[0].style.display = "block";
+    backhome[0].style.display = "none";
 
     var backskill = document.getElementsByClassName("skillet");
     backskill[0].style.display = "none";
@@ -90,6 +102,17 @@ function contact() {
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "block";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "none";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }
 
 
@@ -116,6 +139,17 @@ function sobreF() {
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "block";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }
 
 function skillsF() {
@@ -128,6 +162,17 @@ function skillsF() {
     document.getElementById("Pskill").style.display = " block";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "none";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "block";
+    backskill[1].style.display = "block";
+    backskill[2].style.display = "block";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }
 
 function formF() {
@@ -140,6 +185,17 @@ function formF() {
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "block";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "block";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "block";
 }
 
 function contactF() {
@@ -152,4 +208,15 @@ function contactF() {
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "block";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "none";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }

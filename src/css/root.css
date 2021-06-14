@@ -1157,12 +1157,17 @@ h2 {
 }
 
 .bg-c-lite-green {
+    border: 1px solid white;
     background: -webkit-gradient(linear, left top, right top, from(#010044), to(#07001f));
     background: linear-gradient(to right, #00013b, #03002b)
 }
 
 .user-profile {
     padding: 20px 0
+}
+
+.align-s {
+    align-self: center;
 }
 
 .card-block {
@@ -1187,21 +1192,6 @@ h6 {
 
 .card .card-block p {
     line-height: 25px
-}
-
-@media (max-width: 981px) {
-    .contatos {
-        width: 600px;
-        left: 20%;
-    }
-}
-
-@media (max-width: 719px) {
-    .contatos {
-        width: 70%;
-        top: 15%;
-        left: 17%;
-    }
 }
 
 @media (max-width: 575px) {
@@ -1241,16 +1231,16 @@ g .m-b-20 {
     border-bottom: 1px solid #e0e0e0
 }
 
-.f-w-600 {
-    font-weight: 600
-}
-
 .m-b-20 {
     margin-bottom: 20px
 }
 
 .m-t-40 {
     margin-top: 20px
+}
+
+.modal-body {
+    padding: 0 !important;
 }
 
 .p-b-5 {

@@ -128,7 +128,7 @@
                     <span class="txt">Acadêmico</span>
                 </div>
 
-                <div id="contact" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="contact()" class="pph p-5 cursor accordion-collapse menus text-center">
+                <div id="contact" data-toggle="modal" data-target="#ModalLongoExemplo" onclick="contact()" class="pph p-5 cursor accordion-collapse menus text-center">
                     <span class="txt">Contato</span>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                             <i class="bi bi-bank ph"></i>
                         </a>
                     </li>
-                    <li data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="contacts" title="contato" onclick="contactF()" class=" pvl cursor nav-item">
+                    <li data-toggle="modal" data-target="#ModalLongoExemplo" id="contacts" title="contato" onclick="contactF()" class=" pvl cursor nav-item">
                         <a class="nav-link">
                             <i class="bi bi-person ph"></i>
                         </a>
@@ -308,73 +308,120 @@
 
             <!-- CONTATO -->
             <article style="display:none;" id="Pcontact" class="w3-row w3-black">
-                <div id="contato-card">
-                    <div class="page-content contatos page-container" id="page-content">
 
-
-                        <div class="cursor container">
-
-                            <h6 onclick="closecontact()" class="right p-1">
-                                <i class="bi right text-white bi-x-circle fa-2x"></i>
-                            </h6>
-
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <div class="card user-card-full">
-                                <div class="row ">
-                                    <div class="col-sm-4 bg-c-lite-green user-profile">
-                                        <div class="card-block text-center text-white">
-                                            <div class="m-b-25">
-                                                <img src="src/img/pik.jpeg" class="img-radius" alt="User-Profile-Image"> </div>
-                                            <h6 class="f-w-600">Luis Henrique Gomes</h6>
-                                            <p>Programador Front-end</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                                        </div>
+                <!-- Modal -->
+                <div class="modal  fade" id="ModalLongoExemplo" tabindex="-1" role="dialog" aria-labelledby="TituloModalLongoExemplo" aria-hidden="true">
+                    <div class="modal-dialog " role="document">
+                        <div class="bg-dark modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="TituloModalLongoExemplo">Informações</h5>
+                                <button type="button" onclick="closecontact()" class="btn btn-secondary" data-dismiss="modal">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="d-flex user-profile">
+                                    <div class="col-5 text-center text-white">
+                                        <div class="m-b-25">
+                                            <img src="src/img/pik.jpeg" class="img-radius" alt="User-Profile-Image"> </div>
+                                        <h6>Luis Henrique Gomes</h6>
+                                        <p>Programador Front-end</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                                     </div>
-                                    <div class="col-sm-8">
-                                        <div class="card-block">
-                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h6>
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Gmail</p>
-                                                    <h6 class="text-muted f-w-400">luis.hdsg@gmail.com</h6>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p class="m-b-10 f-w-600">Celular</p>
-                                                    <h6 class="text-muted f-w-400">(61) 99211-1571</h6>
-                                                </div>
-                                            </div>
-                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Rede-Sociais</h6>
-                                            <div class="row">
-                                                <a href="https://github.com/luishdsg" class="w3-third">
-                                                    <p class="m-b-10 f-w-600">
-                                                        <i class="fab fa-github fa-2x"></i>
-                                                    </p>
-                                                    <h6 class="text-muted f-w-400">@luis.hdsg</h6>
-                                                </a>
-                                                <a href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="w3-third">
-                                                    <p class="m-b-10 f-w-600">
-                                                        <i class="fab fa-facebook  fa-2x"></i>
-                                                    </p>
-                                                    <h6 class="text-muted f-w-400">@LuisHenriquedaSilvaGomes</h6>
-                                                </a>
-                                                <a href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="w3-third">
-                                                    <p class="m-b-10 f-w-600">
-                                                        <i class="fab fa-linkedin  fa-2x"></i>
-                                                    </p>
-                                                    <h6 class="text-muted f-w-400">@LuisHenriqueGomes</h6>
-                                                    <a>
-                                            </div>
+                                    <div class="col-7 align-s text-center text-white">
 
+                                        <div class="row mt-5">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10">Gmail</p>
+                                                <h6 class="text-muted f-w-400">luis.hdsg@gmail.com</h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 ">Celular</p>
+                                                <h6 class="text-muted f-w-400">(61) 99211-1571</h6>
+                                            </div>
+                                            <div class="col-12">
+                                                <p class="m-b-10 ">Endereço</p>
+                                                <h6 class="text-muted f-w-400">Brasilía - DF</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="modal-body">
+                                <div class="row">
+                                    <a href="https://github.com/luishdsg" class="w3-third">
+                                        <p class="m-b-10 f-w-600">
+                                            <i class="fab fa-github fa-2x"></i>
+                                        </p>
+                                        <h6 class="text-muted f-w-400">@luis.hdsg</h6>
+                                    </a>
+                                    <a href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="w3-third">
+                                        <p class="m-b-10 f-w-600">
+                                            <i class="fab fa-facebook  fa-2x"></i>
+                                        </p>
+                                        <h6 class="text-muted f-w-400">@LuisHenrique...</h6>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="w3-third">
+                                        <p class="m-b-10 f-w-600">
+                                            <i class="fab fa-linkedin  fa-2x"></i>
+                                        </p>
+                                        <h6 class="text-muted f-w-400">@LuisHenrique...</h6>
+                                        <a>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
+
+                <!--  <div class="d-flex justify-content-center">
+                  <div class="card user-card-full">
+                      <div class="row ">
+                          <div class="col-sm-4 bg-c-lite-green user-profile">
+                              <div class="card-block text-center text-white">
+                                  <div class="m-b-25">
+                                      <img src="src/img/pik.jpeg" class="img-radius" alt="User-Profile-Image"> </div>
+                                  <h6 class="f-w-600">Luis Henrique Gomes</h6>
+                                  <p>Programador Front-end</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                              </div>
+                          </div>
+                          <div class="col-sm-8">
+                              <div class="card-block">
+                                  <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informações</h6>
+                                  <div class="row">
+                                      <div class="col-sm-6">
+                                          <p class="m-b-10 f-w-600">Gmail</p>
+                                          <h6 class="text-muted f-w-400">luis.hdsg@gmail.com</h6>
+                                      </div>
+                                      <div class="col-sm-6">
+                                          <p class="m-b-10 f-w-600">Celular</p>
+                                          <h6 class="text-muted f-w-400">(61) 99211-1571</h6>
+                                      </div>
+                                  </div>
+                                  <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Rede-Sociais</h6>
+                                  <div class="row">
+                                      <a href="https://github.com/luishdsg" class="w3-third">
+                                          <p class="m-b-10 f-w-600">
+                                              <i class="fab fa-github fa-2x"></i>
+                                          </p>
+                                          <h6 class="text-muted f-w-400">@luis.hdsg</h6>
+                                      </a>
+                                      <a href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="w3-third">
+                                          <p class="m-b-10 f-w-600">
+                                              <i class="fab fa-facebook  fa-2x"></i>
+                                          </p>
+                                          <h6 class="text-muted f-w-400">@LuisHenriquedaSilvaGomes</h6>
+                                      </a>
+                                      <a href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="w3-third">
+                                          <p class="m-b-10 f-w-600">
+                                              <i class="fab fa-linkedin  fa-2x"></i>
+                                          </p>
+                                          <h6 class="text-muted f-w-400">@LuisHenriqueGomes</h6>
+                                          <a>
+                                  </div>
+
+                              </div>
+                          </div>
+                          
+                        </div> -->
             </article>
 
 
