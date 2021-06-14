@@ -1,194 +1,214 @@
-:root{
+:root {
     --pisina: #0dcaf0;
 }
- 
-.ph{
+
+.ph {
     padding-left: 1rem;
     padding-right: 1rem;
 }
-.pph{
+
+.pph {
     padding-left: 2rem;
     padding-right: 2rem;
 }
-.phl{
+
+.phl {
     padding-left: 1.5rem;
 }
-.-phl{
+
+.-phl {
     padding-left: -1.5rem;
 }
-.pv{
+
+.pv {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-.ppv{
+
+.ppv {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-.pvl{
+
+.pvl {
     padding-top: 0.5rem;
 }
-.ppvl{
+
+.ppvl {
     padding-top: 1rem;
 }
-.top{
+
+.top {
     margin-top: 1rem;
 }
-.bord{
+
+.bord {
     border-left: 2px solid var(--pisina);
     padding-left: 1rem;
 }
 
-.txt{
+.txt {
     font-size: 20px;
     font-weight: 400;
 }
 
-.txtl{
+.txtl {
     text-align: -webkit-left;
 }
 
-.img{
+.img {
     width: 55%;
     height: auto;
 }
-.fundo{
+
+.fundo {
     width: 100%;
     max-height: 200px;
 }
-.frame{
+
+.frame {
     width: 100%;
     height: 80%;
     position: absolute;
-    top:20%;
-    left:0;
-
+    top: 20%;
+    left: 0;
 }
-.pik{
+
+.pik {
     width: 10rem;
     height: 10rem;
     border-radius: 100rem;
     padding: 2px;
     border: 3px solid var(--pisina);
 }
-.span{
+
+.span {
     font-size: 11px !important;
     font-weight: 200 !important;
 }
-.central{
+
+.central {
     text-align: -webkit-center;
     justify-content: space-evenly;
-
 }
 
-.total{
+.total {
     width: 100%;
     height: auto;
     background: red;
 }
-.nav-item{
+
+.nav-item {
     border-left: 1px solid transparent;
 }
-.menus{
+
+.menus {
     height: 100%;
     border-top: 2px solid transparent;
-
-
 }
-.menus:hover{
+
+.menus:hover {
     transition: 0.5s;
     transform: 0.5s;
     border-top: 2px solid var(--pisina);
 }
-.menu-pleb{
+
+.menu-pleb {
     display: none;
 }
-.contatos{
-    position:absolute;
-    top:20%;
-    left:25%;
+
+.contatos {
+    position: absolute;
+    top: 20%;
+    left: 25%;
 }
 
-.right{
+.right {
     text-align-last: right;
 }
-.menu-king{
+
+.menu-king {
     display: flex;
 }
-.arrond-effect{
+
+.arrond-effect {
     border: 1px solid white;
     border-radius: 10px;
 }
-.arrond-effect:hover{
+
+.arrond-effect:hover {
     border: 1px solid rgb(49, 125, 240) !important;
     color: rgb(110, 197, 255) !important;
     transition: 0.2s;
     transform: 0.2s;
 }
-.cursor{
+
+.cursor {
     cursor: pointer;
 }
 
-
-*{
+* {
     padding: 0;
     margin: 0;
 }
-body{
-  
+
+body {
     font-family: 'Poppins', sans-serif !important;
     color: white;
 }
-a{
-    text-decoration: none !important ;
-}
-a:hover{
+
+a {
     text-decoration: none !important;
 }
 
-#theboxkid{
+a:hover {
+    text-decoration: none !important;
+}
+
+#theboxkid {
     top: 10px;
 }
 
-#contato-card{
+#contato-card {
     position: absolute;
-    top:0;
+    top: 0;
     width: 100%;
     height: 100%;
     z-index: 100;
     background: rgba(0, 0, 0, 0.507);
 }
 
+i.fa-linkedin:hover {
+    color: rgb(0, 0, 107);
+}
 
-i.fa-linkedin:hover{
-	color: rgb(0, 0, 107);
+i.fa-facebook:hover {
+    color: rgb(1, 80, 250);
 }
-i.fa-facebook:hover{
-	color: rgb(1, 80, 250);
-}
-i.fa-github:hover{
-	color: rgb(111, 18, 197);
+
+i.fa-github:hover {
+    color: rgb(111, 18, 197);
 }
 
 
 /*========MEDIA========*/
 
-@media (max-width: 667px){
-    #span-nav{
+@media (max-width: 667px) {
+    #span-nav {
         font-size: 13px;
-        padding: 0  0 0 30px !important;
+        padding: 0 0 0 30px !important;
     }
-    #nave{
+    #nave {
         padding: 3rem 0 3rem 0 !important;
     }
-    #theboxkid{
+    #theboxkid {
         display: flex;
         width: 100%;
-        
     }
-    .menu-king{
+    .menu-king {
         display: none !important;
     }
-    .menu-pleb{
+    .menu-pleb {
         right: 10px;
         position: absolute;
         z-index: 10;
@@ -196,16 +216,18 @@ i.fa-github:hover{
         display: block;
     }
 }
+
+
 /* ============ BACGROUND-HOME ============= */
 
-  .bubbles {
+.bubbles {
     position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
-  
-  .bubble {
+}
+
+.bubble {
     position: absolute;
     left: var(--bubble-left-offset);
     bottom: -75%;
@@ -214,8 +236,9 @@ i.fa-github:hover{
     height: var(--bubble-radius);
     border-radius: 50%;
     animation: float-up var(--bubble-float-duration) var(--bubble-float-delay) ease-in infinite;
-  }
-  .bubble::before {
+}
+
+.bubble::before {
     position: absolute;
     content: "";
     top: 0;
@@ -225,8 +248,9 @@ i.fa-github:hover{
     background: #0dcaf08a!important;
     border-radius: inherit;
     animation: var(--bubble-sway-type) var(--bubble-sway-duration) var(--bubble-sway-delay) ease-in-out alternate infinite;
-  }
-  .bubble:nth-child(0) {
+}
+
+.bubble:nth-child(0) {
     --bubble-left-offset: 8vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 7s;
@@ -234,8 +258,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(1) {
+}
+
+.bubble:nth-child(1) {
     --bubble-left-offset: 81vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 7s;
@@ -243,8 +268,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(2) {
+}
+
+.bubble:nth-child(2) {
     --bubble-left-offset: 59vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 9s;
@@ -252,8 +278,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(3) {
+}
+
+.bubble:nth-child(3) {
     --bubble-left-offset: 7vw;
     --bubble-radius: 6vw;
     --bubble-float-duration: 8s;
@@ -261,8 +288,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(4) {
+}
+
+.bubble:nth-child(4) {
     --bubble-left-offset: 32vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 10s;
@@ -270,8 +298,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(5) {
+}
+
+.bubble:nth-child(5) {
     --bubble-left-offset: 41vw;
     --bubble-radius: 3vw;
     --bubble-float-duration: 12s;
@@ -279,8 +308,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(6) {
+}
+
+.bubble:nth-child(6) {
     --bubble-left-offset: 61vw;
     --bubble-radius: 4vw;
     --bubble-float-duration: 11s;
@@ -288,8 +318,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(7) {
+}
+
+.bubble:nth-child(7) {
     --bubble-left-offset: 26vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 11s;
@@ -297,8 +328,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(8) {
+}
+
+.bubble:nth-child(8) {
     --bubble-left-offset: 55vw;
     --bubble-radius: 5vw;
     --bubble-float-duration: 11s;
@@ -306,8 +338,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(9) {
+}
+
+.bubble:nth-child(9) {
     --bubble-left-offset: 87vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 7s;
@@ -315,8 +348,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(10) {
+}
+
+.bubble:nth-child(10) {
     --bubble-left-offset: 45vw;
     --bubble-radius: 3vw;
     --bubble-float-duration: 7s;
@@ -324,8 +358,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(11) {
+}
+
+.bubble:nth-child(11) {
     --bubble-left-offset: 71vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 9s;
@@ -333,8 +368,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(12) {
+}
+
+.bubble:nth-child(12) {
     --bubble-left-offset: 67vw;
     --bubble-radius: 10vw;
     --bubble-float-duration: 12s;
@@ -342,8 +378,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(13) {
+}
+
+.bubble:nth-child(13) {
     --bubble-left-offset: 70vw;
     --bubble-radius: 8vw;
     --bubble-float-duration: 12s;
@@ -351,8 +388,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(14) {
+}
+
+.bubble:nth-child(14) {
     --bubble-left-offset: 4vw;
     --bubble-radius: 7vw;
     --bubble-float-duration: 9s;
@@ -360,8 +398,9 @@ i.fa-github:hover{
     --bubble-float-delay: 4s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(15) {
+}
+
+.bubble:nth-child(15) {
     --bubble-left-offset: 61vw;
     --bubble-radius: 4vw;
     --bubble-float-duration: 10s;
@@ -369,8 +408,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(16) {
+}
+
+.bubble:nth-child(16) {
     --bubble-left-offset: 64vw;
     --bubble-radius: 6vw;
     --bubble-float-duration: 11s;
@@ -378,8 +418,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(17) {
+}
+
+.bubble:nth-child(17) {
     --bubble-left-offset: 30vw;
     --bubble-radius: 10vw;
     --bubble-float-duration: 8s;
@@ -387,8 +428,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(18) {
+}
+
+.bubble:nth-child(18) {
     --bubble-left-offset: 97vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 10s;
@@ -396,8 +438,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(19) {
+}
+
+.bubble:nth-child(19) {
     --bubble-left-offset: 45vw;
     --bubble-radius: 9vw;
     --bubble-float-duration: 7s;
@@ -405,8 +448,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(20) {
+}
+
+.bubble:nth-child(20) {
     --bubble-left-offset: 47vw;
     --bubble-radius: 7vw;
     --bubble-float-duration: 9s;
@@ -414,8 +458,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(21) {
+}
+
+.bubble:nth-child(21) {
     --bubble-left-offset: 34vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 12s;
@@ -423,8 +468,9 @@ i.fa-github:hover{
     --bubble-float-delay: 4s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(22) {
+}
+
+.bubble:nth-child(22) {
     --bubble-left-offset: 67vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 8s;
@@ -432,8 +478,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(23) {
+}
+
+.bubble:nth-child(23) {
     --bubble-left-offset: 7vw;
     --bubble-radius: 9vw;
     --bubble-float-duration: 10s;
@@ -441,8 +488,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(24) {
+}
+
+.bubble:nth-child(24) {
     --bubble-left-offset: 62vw;
     --bubble-radius: 4vw;
     --bubble-float-duration: 6s;
@@ -450,8 +498,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(25) {
+}
+
+.bubble:nth-child(25) {
     --bubble-left-offset: 9vw;
     --bubble-radius: 3vw;
     --bubble-float-duration: 9s;
@@ -459,8 +508,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(26) {
+}
+
+.bubble:nth-child(26) {
     --bubble-left-offset: 38vw;
     --bubble-radius: 5vw;
     --bubble-float-duration: 12s;
@@ -468,8 +518,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(27) {
+}
+
+.bubble:nth-child(27) {
     --bubble-left-offset: 44vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 6s;
@@ -477,8 +528,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(28) {
+}
+
+.bubble:nth-child(28) {
     --bubble-left-offset: 24vw;
     --bubble-radius: 7vw;
     --bubble-float-duration: 10s;
@@ -486,8 +538,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(29) {
+}
+
+.bubble:nth-child(29) {
     --bubble-left-offset: 13vw;
     --bubble-radius: 7vw;
     --bubble-float-duration: 6s;
@@ -495,8 +548,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(30) {
+}
+
+.bubble:nth-child(30) {
     --bubble-left-offset: 28vw;
     --bubble-radius: 8vw;
     --bubble-float-duration: 8s;
@@ -504,8 +558,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(31) {
+}
+
+.bubble:nth-child(31) {
     --bubble-left-offset: 73vw;
     --bubble-radius: 8vw;
     --bubble-float-duration: 9s;
@@ -513,8 +568,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(32) {
+}
+
+.bubble:nth-child(32) {
     --bubble-left-offset: 29vw;
     --bubble-radius: 9vw;
     --bubble-float-duration: 10s;
@@ -522,8 +578,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(33) {
+}
+
+.bubble:nth-child(33) {
     --bubble-left-offset: 12vw;
     --bubble-radius: 8vw;
     --bubble-float-duration: 6s;
@@ -531,8 +588,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(34) {
+}
+
+.bubble:nth-child(34) {
     --bubble-left-offset: 50vw;
     --bubble-radius: 9vw;
     --bubble-float-duration: 8s;
@@ -540,8 +598,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(35) {
+}
+
+.bubble:nth-child(35) {
     --bubble-left-offset: 71vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 11s;
@@ -549,8 +608,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(36) {
+}
+
+.bubble:nth-child(36) {
     --bubble-left-offset: 62vw;
     --bubble-radius: 9vw;
     --bubble-float-duration: 10s;
@@ -558,8 +618,9 @@ i.fa-github:hover{
     --bubble-float-delay: 4s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(37) {
+}
+
+.bubble:nth-child(37) {
     --bubble-left-offset: 24vw;
     --bubble-radius: 10vw;
     --bubble-float-duration: 11s;
@@ -567,8 +628,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(38) {
+}
+
+.bubble:nth-child(38) {
     --bubble-left-offset: 52vw;
     --bubble-radius: 4vw;
     --bubble-float-duration: 8s;
@@ -576,8 +638,9 @@ i.fa-github:hover{
     --bubble-float-delay: 4s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(39) {
+}
+
+.bubble:nth-child(39) {
     --bubble-left-offset: 78vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 6s;
@@ -585,8 +648,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(40) {
+}
+
+.bubble:nth-child(40) {
     --bubble-left-offset: 97vw;
     --bubble-radius: 5vw;
     --bubble-float-duration: 8s;
@@ -594,8 +658,9 @@ i.fa-github:hover{
     --bubble-float-delay: 4s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(41) {
+}
+
+.bubble:nth-child(41) {
     --bubble-left-offset: 18vw;
     --bubble-radius: 6vw;
     --bubble-float-duration: 6s;
@@ -603,8 +668,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(42) {
+}
+
+.bubble:nth-child(42) {
     --bubble-left-offset: 44vw;
     --bubble-radius: 3vw;
     --bubble-float-duration: 11s;
@@ -612,8 +678,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 4s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(43) {
+}
+
+.bubble:nth-child(43) {
     --bubble-left-offset: 65vw;
     --bubble-radius: 10vw;
     --bubble-float-duration: 6s;
@@ -621,8 +688,9 @@ i.fa-github:hover{
     --bubble-float-delay: 1s;
     --bubble-sway-delay: 2s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(44) {
+}
+
+.bubble:nth-child(44) {
     --bubble-left-offset: 9vw;
     --bubble-radius: 5vw;
     --bubble-float-duration: 12s;
@@ -630,8 +698,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(45) {
+}
+
+.bubble:nth-child(45) {
     --bubble-left-offset: 7vw;
     --bubble-radius: 7vw;
     --bubble-float-duration: 6s;
@@ -639,8 +708,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(46) {
+}
+
+.bubble:nth-child(46) {
     --bubble-left-offset: 82vw;
     --bubble-radius: 6vw;
     --bubble-float-duration: 11s;
@@ -648,8 +718,9 @@ i.fa-github:hover{
     --bubble-float-delay: 0s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-left-to-right;
-  }
-  .bubble:nth-child(47) {
+}
+
+.bubble:nth-child(47) {
     --bubble-left-offset: 15vw;
     --bubble-radius: 2vw;
     --bubble-float-duration: 11s;
@@ -657,8 +728,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(48) {
+}
+
+.bubble:nth-child(48) {
     --bubble-left-offset: 34vw;
     --bubble-radius: 4vw;
     --bubble-float-duration: 10s;
@@ -666,8 +738,9 @@ i.fa-github:hover{
     --bubble-float-delay: 2s;
     --bubble-sway-delay: 1s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(49) {
+}
+
+.bubble:nth-child(49) {
     --bubble-left-offset: 49vw;
     --bubble-radius: 1vw;
     --bubble-float-duration: 8s;
@@ -675,8 +748,9 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 0s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  .bubble:nth-child(50) {
+}
+
+.bubble:nth-child(50) {
     --bubble-left-offset: 99vw;
     --bubble-radius: 3vw;
     --bubble-float-duration: 9s;
@@ -684,146 +758,142 @@ i.fa-github:hover{
     --bubble-float-delay: 3s;
     --bubble-sway-delay: 3s;
     --bubble-sway-type: sway-right-to-left;
-  }
-  
-  @keyframes float-up {
+}
+
+@keyframes float-up {
     to {
-      transform: translateY(-175vh);
+        transform: translateY(-175vh);
     }
-  }
-  @keyframes sway-left-to-right {
+}
+
+@keyframes sway-left-to-right {
     from {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
     to {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
-  }
-  @keyframes sway-right-to-left {
+}
+
+@keyframes sway-right-to-left {
     from {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
     to {
-      transform: translateX(-100%);
+        transform: translateX(-100%);
     }
-  }
-  .top20{
+}
+
+.top20 {
     top: 20%;
-  }
-  .w100{
+}
+
+.w100 {
     width: 100% !important;
-  }
-  @media (max-width: 1004px){
-    .top20{
-      top: 35%;
+}
+
+@media (max-width: 1004px) {
+    .top20 {
+        top: 35%;
     }
-  }
-  @media (max-width: 667px){
-    .top20{
-      top:17%;
+}
+
+@media (max-width: 667px) {
+    .top20 {
+        top: 17%;
     }
-  }
+}
 
 
 /* ============ FORM-CSS ============= */
+
 :root {
     --aspect-ratio: calc(9 / 16);
-  }
-  
-  body::-webkit-scrollbar {
-    width: 0px;          
-  }
-  
-  .cert-title{
+}
 
-  }
-  
-   .grid__item_image{
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+.grid__item_image {
     width: 100%;
     height: 100%;
     display: block;
     -o-object-fit: cover;
-       object-fit: cover;
-  }
-  
-  h1, h2 {
+    object-fit: cover;
+}
+
+h1,
+h2 {
     margin: 0;
-  }
-  .non{
-    background: transparent;
-  }
-  
-  .content-grid {
+}
+
+.content-grid {
     --gridOpacity: 0;
     --gridScale: 2;
     --gridTranslate: 5vh;
     width: 100%;
-  }
-  
-  .content-grid__scroll {
+}
+
+.content-grid__scroll {
     min-height: 215vh;
     position: relative;
-  }
-  
-  .content-grid__sticky {
+}
+
+.content-grid__sticky {
     position: sticky;
     height: calc(100vh + 75px);
     top: 75px;
-  }
-  
-  .content-grid__items {
+}
+
+.content-grid__items {
     max-width: 1200px;
     width: 100vw;
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2 , 50vh);
+    grid-template-rows: repeat(2, 50vh);
     grid-gap: 0.5vw;
     position: absolute;
     top: 9%;
     left: 50%;
     transform: translatex(-50%) scale(var(--gridScale));
     transform-origin: center top;
-  }
-  @media (max-width: 425px){
-  
-  
+}
+
+@media (max-width: 425px) {
     .content-grid__items {
-    max-width: 1200px;
-    width: 100vw;
-    height: 310vh;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6 , 50vh);
-    grid-gap: 0.5vw;
-    position: absolute;
-    top: 9%;
-    left: 50%;
-    transform: translatex(-50%) scale(var(--gridScale));
-    transform-origin: center top;
-  }
-  
-  
-  .grid__item:not(:nth-child(2)) {
-    opacity: var(--gridOpacity);
-  }
-  
-  
-  .grid__item:nth-child(3),
-  .grid__item:nth-child(8),
-  .grid__item:nth-child(11),
-  .grid__item:nth-child(17),
-  .grid__item:nth-child(20),
-  .grid__item:nth-child(26) {
-    transform: translatey(calc(var(--gridTranslate) * 6));
-  }
-  }
-   
-  .content-grid-title{
+        max-width: 1200px;
+        width: 100vw;
+        height: 310vh;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 50vh);
+        grid-gap: 0.5vw;
+        position: absolute;
+        top: 9%;
+        left: 50%;
+        transform: translatex(-50%) scale(var(--gridScale));
+        transform-origin: center top;
+    }
+    .grid__item:not(:nth-child(2)) {
+        opacity: var(--gridOpacity);
+    }
+    .grid__item:nth-child(3),
+    .grid__item:nth-child(8),
+    .grid__item:nth-child(11),
+    .grid__item:nth-child(17),
+    .grid__item:nth-child(20),
+    .grid__item:nth-child(26) {
+        transform: translatey(calc(var(--gridTranslate) * 6));
+    }
+}
+
+.content-grid-title {
     position: absolute;
     -webkit-text-stroke: thin;
     top: 8%;
-    line-height: calc(100vh - 6vw *  var(--aspect-ratio));
+    line-height: calc(100vh - 6vw * var(--aspect-ratio));
     text-align: center;
     z-index: 100;
     width: 100%;
@@ -831,49 +901,49 @@ i.fa-github:hover{
     font-size: calc(6vw * var(--aspect-ratio));
     opacity: calc(1 - var(--gridOpacity));
     letter-spacing: 0.15rem;
-  }
-  
-  .grid__item:nth-child(1),
-  .grid__item:nth-child(9),
-  .grid__item:nth-child(10),
-  .grid__item:nth-child(18),
-  .grid__item:nth-child(19),
-  .grid__item:nth-child(27) {
+}
+
+.grid__item:nth-child(1),
+.grid__item:nth-child(9),
+.grid__item:nth-child(10),
+.grid__item:nth-child(18),
+.grid__item:nth-child(19),
+.grid__item:nth-child(27) {
     transform: translatey(calc(var(--gridTranslate) * 8));
-  }
-  
-  .grid__item:nth-child(2),
-  .grid__item:nth-child(8),
-  .grid__item:nth-child(11),
-  .grid__item:nth-child(17),
-  .grid__item:nth-child(20),
-  .grid__item:nth-child(26) {
+}
+
+.grid__item:nth-child(2),
+.grid__item:nth-child(8),
+.grid__item:nth-child(11),
+.grid__item:nth-child(17),
+.grid__item:nth-child(20),
+.grid__item:nth-child(26) {
     transform: translatey(calc(var(--gridTranslate) * 6));
-  }
-  
-  .grid__item:nth-child(5),
-  .grid__item:nth-child(7),
-  .grid__item:nth-child(12),
-  .grid__item:nth-child(16),
-  .grid__item:nth-child(21),
-  .grid__item:nth-child(25) {
+}
+
+.grid__item:nth-child(5),
+.grid__item:nth-child(7),
+.grid__item:nth-child(12),
+.grid__item:nth-child(16),
+.grid__item:nth-child(21),
+.grid__item:nth-child(25) {
     transform: translatey(calc(var(--gridTranslate) * 4));
-  }
-  
-  .grid__item:nth-child(4),
-  .grid__item:nth-child(6),
-  .grid__item:nth-child(13),
-  .grid__item:nth-child(15),
-  .grid__item:nth-child(22),
-  .grid__item:nth-child(24) {
+}
+
+.grid__item:nth-child(4),
+.grid__item:nth-child(6),
+.grid__item:nth-child(13),
+.grid__item:nth-child(15),
+.grid__item:nth-child(22),
+.grid__item:nth-child(24) {
     transform: translatey(calc(var(--gridTranslate) * 2));
-  }
-  
-  .grid__item:not(:nth-child(3)) {
+}
+
+.grid__item:not(:nth-child(3)) {
     opacity: var(--gridOpacity);
-  }
-  
-  .band-center-text {
+}
+
+.band-center-text {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -881,9 +951,9 @@ i.fa-github:hover{
     color: white;
     font-size: 1.3rem;
     background-color: black;
-  }
-  
-  .content-cards-page {
+}
+
+.content-cards-page {
     display: flex;
     height: 100vh;
     padding-top: 10vh;
@@ -892,37 +962,185 @@ i.fa-github:hover{
     align-items: center;
     justify-content: space-between;
     padding-left: 10%;
-  }
-  
-  .content-cards__item {
+}
+
+.content-cards__item {
     width: calc(100% / 4 - 3%);
     height: 50%;
     background-size: cover;
     background-position: center;
-  }
-  
-  .content-cards__item:nth-child(1) {
+}
+
+.content-cards__item:nth-child(1) {
     background-image: url(https://i.ibb.co/2n7MG0R/photo-1552959988-b94b76838365.jpg);
-  }
-  
-  .content-cards__item:nth-child(2) {
+}
+
+.content-cards__item:nth-child(2) {
     background-image: url(https://i.ibb.co/2n7MG0R/photo-1552959988-b94b76838365.jpg);
-  }
-  
-  .content-cards__item:nth-child(3) {
+}
+
+.content-cards__item:nth-child(3) {
     background-image: url(https://i.ibb.co/2n7MG0R/photo-1552959988-b94b76838365.jpg);
-  }
-  
-  .content-cards__item:nth-child(4) {
+}
+
+.content-cards__item:nth-child(4) {
     background-image: url(https://i.ibb.co/2n7MG0R/photo-1552959988-b94b76838365.jpg);
-  }
+}
+
 
 /* ============ BACKGROUND-CERTICADOS ============= */
 
+.area {
+    background: #00011b;
+    position: fixed;
+    background: -webkit-linear-gradient(to left, #000231, #00011f);
+    width: 100%;
+    height: 100vh;
+}
+
+.circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(to left, #00023a, #00033f);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+
+/*============== BACKGROUND-SKILLS ==================*/
+
+.bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, rgb(8, 0, 46) 50%, rgba(0, 26, 97, 0.192) 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.bg3 {
+    animation-duration: 5s;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(25%);
+    }
+}
+
 
 /* ============ CONTACT ============= */
-
-
 
 .user-card-full {
     overflow: hidden
@@ -933,8 +1151,6 @@ i.fa-github:hover{
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
     border: none;
 }
-
-
 
 .user-card-full .user-profile {
     border-radius: 5px 0 0 5px
@@ -958,11 +1174,11 @@ i.fa-github:hover{
 }
 
 .img-radius {
-  width: 6rem;
-  height: 6rem;
-  padding: 2px;
-  border: 3px solid var(--pisina);
-  border-radius: 100rem;
+    width: 6rem;
+    height: 6rem;
+    padding: 2px;
+    border: 3px solid var(--pisina);
+    border-radius: 100rem;
 }
 
 h6 {
@@ -973,34 +1189,35 @@ h6 {
     line-height: 25px
 }
 
-@media (max-width: 981px){
-.contatos{
-  width: 600px;
-  left:20%;
-}
+@media (max-width: 981px) {
+    .contatos {
+        width: 600px;
+        left: 20%;
+    }
 }
 
-@media (max-width: 719px){
-.contatos{
-  width: 70%;
-  top:15%;
-  left:17%;
+@media (max-width: 719px) {
+    .contatos {
+        width: 70%;
+        top: 15%;
+        left: 17%;
+    }
 }
-}@media (max-width: 575px){
-.contatos{
-  top:0;
 
-}
-#loader{
-    left: 55% !important;
-}
+@media (max-width: 575px) {
+    .contatos {
+        top: 0;
+    }
+    #loader {
+        left: 55% !important;
+    }
 }
 
 .b-b-default {
     border-bottom: 1px solid #e0e0e0
 }
-g
-.m-b-20 {
+
+g .m-b-20 {
     margin-bottom: 20px
 }
 

@@ -1,17 +1,15 @@
-
-
 //CONTROLLERS-WEB
 
 //CLOSECONTACT
-function closecontact(){
+function closecontact() {
     document.getElementById("Pcontact").style.display = "none";
     document.getElementById("Psobre").style.display = "block";
     document.getElementById("contact").style.borderTop = "2px solid transparent";
     document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
 }
+style = "display: none;"
 
-
-function sobre(){
+function sobre() {
     document.getElementById("sobre").style.borderTop = "2px solid var(--pisina)";
     document.getElementById("skill").style.borderTop = "2px solid transparent";
     document.getElementById("form").style.borderTop = "2px solid transparent";
@@ -21,9 +19,20 @@ function sobre(){
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "block";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
 }
 
-function skills(){
+function skills() {
     document.getElementById("sobre").style.borderTop = "2px solid  transparent";
     document.getElementById("skill").style.borderTop = "2px solid var(--pisina)";
     document.getElementById("form").style.borderTop = "2px solid transparent";
@@ -33,9 +42,22 @@ function skills(){
     document.getElementById("Pskill").style.display = " block";
     document.getElementById("Pform").style.display = "none";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "none";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "block";
+    backskill[1].style.display = "block";
+    backskill[2].style.display = "block";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "none";
+
+
 }
 
-function form(){
+function form() {
     document.getElementById("sobre").style.borderTop = "2px solid transparent";
     document.getElementById("skill").style.borderTop = "2px solid transparent";
     document.getElementById("form").style.borderTop = "2px solid var(--pisina)";
@@ -45,9 +67,20 @@ function form(){
     document.getElementById("Pskill").style.display = "none";
     document.getElementById("Pform").style.display = "block";
     document.getElementById("Pcontact").style.display = "none";
+    //BACKGROUNDS
+    var backhome = document.getElementsByClassName("bubbles");
+    backhome[0].style.display = "block";
+
+    var backskill = document.getElementsByClassName("skillet");
+    backskill[0].style.display = "none";
+    backskill[1].style.display = "none";
+    backskill[2].style.display = "none";
+
+    var backform = document.getElementsByClassName("area");
+    backform[0].style.display = "block";
 }
 
-function contact(){
+function contact() {
     document.getElementById("sobre").style.borderTop = "2px solid transparent";
     document.getElementById("skill").style.borderTop = "2px solid transparent";
     document.getElementById("form").style.borderTop = "2px solid transparent";
@@ -61,18 +94,19 @@ function contact(){
 
 
 //CONTROLLERS-MOBILE
-function theboxon(){
+function theboxon() {
     document.getElementById("theboxkid").style.display = "flex";
     document.getElementById("theboxon").style.display = "none";
     document.getElementById("theboxoff").style.display = "block";
 }
-function theboxoff(){
+
+function theboxoff() {
     document.getElementById("theboxkid").style.display = "none";
     document.getElementById("theboxon").style.display = "block";
     document.getElementById("theboxoff").style.display = "none";
 }
 
-function sobreF(){
+function sobreF() {
     document.getElementById("sobres").style.borderLeft = "1px solid var(--pisina)";
     document.getElementById("skills").style.borderLeft = "1px solid transparent";
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
@@ -84,7 +118,7 @@ function sobreF(){
     document.getElementById("Pcontact").style.display = "none";
 }
 
-function skillsF(){
+function skillsF() {
     document.getElementById("sobres").style.borderLeft = "1px solid  transparent";
     document.getElementById("skills").style.borderLeft = "1px solid var(--pisina)";
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
@@ -96,7 +130,7 @@ function skillsF(){
     document.getElementById("Pcontact").style.display = "none";
 }
 
-function formF(){
+function formF() {
     document.getElementById("sobres").style.borderLeft = "1px solid transparent";
     document.getElementById("skills").style.borderLeft = "1px solid transparent";
     document.getElementById("forms").style.borderLeft = "1px solid var(--pisina)";
@@ -108,7 +142,7 @@ function formF(){
     document.getElementById("Pcontact").style.display = "none";
 }
 
-function contactF(){
+function contactF() {
     document.getElementById("sobres").style.borderLeft = "1px solid transparent";
     document.getElementById("skills").style.borderLeft = "1px solid transparent";
     document.getElementById("forms").style.borderLeft = "1px solid transparent";
