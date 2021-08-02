@@ -988,6 +988,66 @@ h2 {
 }
 
 
+/* ============ SKILS-AREA ============= */
+
+.skills1 .col-2,
+.skills2 .col-2 {
+    cursor: pointer;
+}
+
+.skills1 .col-2:nth-child(1):hover .ex-js {
+    display: block;
+}
+
+.skills1 .col-2:nth-child(2):hover .ex-rc {
+    display: block;
+}
+
+.skills1 .col-2:nth-child(3):hover .ex-jv {
+    display: block;
+}
+
+.skills2 .col-2:nth-child(1):hover .ex-nd {
+    display: block;
+}
+
+.skills2 .col-2:nth-child(2):hover .ex-hc {
+    display: block;
+}
+
+.skills2 .col-2:nth-child(3):hover .ex-gg {
+    display: block;
+}
+
+.ex-gg,
+.ex-nd,
+.ex-rc,
+.ex-js,
+.ex-jv,
+.ex-hc {
+    display: none;
+    word-break: break-all;
+    margin: 10px 0px;
+    border: 1px solid #ffffff54;
+    border-radius: 7px;
+    font-size: 9px;
+    padding: 6px 2px;
+    animation-timing-function: ease;
+    animation-name: movment;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes movment {
+    from {
+        margin-top: -20px;
+    }
+    to {
+        margin-left: 0px;
+    }
+}
+
+
 /* ============ BACKGROUND-CERTICADOS ============= */
 
 .area {
