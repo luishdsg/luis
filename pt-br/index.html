@@ -25,9 +25,6 @@
 <script>
     window.console = window.console || function(t) {};
 </script>
-
-
-
 <script>
     if (document.location.search.match(/type=embed/gi)) {
         window.parent.postMessage("resize", "*");
@@ -42,178 +39,270 @@
         position: absolute;
         background: rgb(0, 0, 0);
     }
-    #loadinger {
-        position: relative;
-        display: inline-block;
-        padding: 10px 20px;
-        color: #03e9f4 !important;
-        font-size: 16px;
-        text-decoration: none;
-        text-transform: uppercase;
+    #heart-neon {
+        color: rgba(255, 192, 203, 0.836);
+        background-color: #000;    
+        margin: 0;
         overflow: hidden;
-        transition: .5s;
-        margin-top: 5%;
-        margin-left: 5%;
-        letter-spacing: 4px
+        background-repeat: no-repeat;
       }
-      
-
-      
-      #loadinger span {
-        position: absolute;
-        display: block;
-      }
-      
-      #loadinger span:nth-child(1) {
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #03e9f4);
-        animation: btn-anim1 1s linear infinite;
-      }
-      
-      @keyframes btn-anim1 {
-        0% {
-          left: -100%;
-        }
-        50%,100% {
-          left: 100%;
-        }
-      }
-      
-      #loadinger span:nth-child(2) {
-        top: -100%;
-        right: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(180deg, transparent, #03e9f4);
-        animation: btn-anim2 1s linear infinite;
-        animation-delay: .25s
-      }
-      
-      @keyframes btn-anim2 {
-        0% {
-          top: -100%;
-        }
-        50%,100% {
-          top: 100%;
-        }
-      }
-      
-      #loadinger span:nth-child(3) {
-        bottom: 0;
-        right: -100%;
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(270deg, transparent, #03e9f4);
-        animation: btn-anim3 1s linear infinite;
-        animation-delay: .5s
-      }
-      
-      @keyframes btn-anim3 {
-        0% {
-          right: -100%;
-        }
-        50%,100% {
-          right: 100%;
-        }
-      }
-      
-      #loadinger span:nth-child(4) {
-        bottom: -100%;
-        left: 0;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(360deg, transparent, #03e9f4);
-        animation: btn-anim4 1s linear infinite;
-        animation-delay: .75s
-      }
-      
-      @keyframes btn-anim4 {
-        0% {
-          bottom: -100%;
-        }
-        50%,100% {
-          bottom: 100%;
-        }
-      }
-      
-
-
-      .heart-rate {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-      }
-      
-      .fade-in {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #000000;
-        top: 0;
-        right: 0;
-        animation: heartRateIn 2.5s linear infinite;
-      }
-      
-      .fade-out {
-        position: absolute;
-        width: 120%;
-        height: 100%;
-        top: 0;
-        left: -120%;
-        animation: heartRateOut 2.5s linear infinite;
-        background: rgb(0, 0, 0);
-        background: -moz-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
-        background: -webkit-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
-        background: -o-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
-        background: -ms-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
-        background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 80%, rgba(255, 255, 255, 0) 100%);
-      }
-      
-      @keyframes heartRateIn {
-        0% {
-          width: 100%;
-        }
-        50% {
-          width: 0;
-        }
-        100% {
-          width: 0;
-        }
-      }
-      
-      @keyframes heartRateOut {
-        0% {
-          left: -120%;
-        }
-        30% {
-          left: -120%;
-        }
-        100% {
-          left: 0;
-        }
-      }
-</style>
+    </style>
+  
     <div id="loader">
-        <div class="heart-rate">
-            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
-              <polyline fill="none" stroke="#009B9E" stroke-width="1" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
-              />
-            </svg>
-            <div class="fade-in"></div>
-            <div class="fade-out"></div>
-        </div>
-        <div id="loadinger" class=" w3-black h-auto outline justify-content-center">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            <h5 class="h5">só um segundo...</h5>
+        <div id="heart-neon">
+            
+            <div style="margin-top: 60px;"class="w-100 text-cent position-absolute">
+                <h5 class="h5 text-light ">Made With</h5>
+            </div>
+          
+            <canvas id="canvas" width="1400" height="auto">  </canvas>
+            <div style="margin-top: -60px;"class="w-100 text-cent position-absolute ">
+                <h5 class="h5 text-light ">by LUIS</h5>
+            </div>
         </div>
     </div>
- 
+   <script>
+        var canvas = document.getElementById("canvas");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var gl = canvas.getContext('webgl');
+if(!gl){
+  console.error("Unable to initialize WebGL.");
+}
+
+var time = 0.0;
+
+
+var vertexSource = `
+attribute vec2 position;
+void main() {
+	gl_Position = vec4(position, 0.0, 1.0);
+}
+`;
+
+var fragmentSource = `
+precision highp float;
+
+uniform float width;
+uniform float height;
+vec2 resolution = vec2(width, height);
+
+uniform float time;
+
+#define POINT_COUNT 8
+
+vec2 points[POINT_COUNT];
+const float speed = -0.5;
+const float len = 0.25;
+float intensity = 0.9;
+float radius = 0.015;
+
+float sdBezier(vec2 pos, vec2 A, vec2 B, vec2 C){    
+	vec2 a = B - A;
+	vec2 b = A - 2.0*B + C;
+	vec2 c = a * 2.0;
+	vec2 d = A - pos;
+
+	float kk = 1.0 / dot(b,b);
+	float kx = kk * dot(a,b);
+	float ky = kk * (2.0*dot(a,a)+dot(d,b)) / 3.0;
+	float kz = kk * dot(d,a);      
+
+	float res = 0.0;
+
+	float p = ky - kx*kx;
+	float p3 = p*p*p;
+	float q = kx*(2.0*kx*kx - 3.0*ky) + kz;
+	float h = q*q + 4.0*p3;
+
+	if(h >= 0.0){ 
+		h = sqrt(h);
+		vec2 x = (vec2(h, -h) - q) / 2.0;
+		vec2 uv = sign(x)*pow(abs(x), vec2(1.0/3.0));
+		float t = uv.x + uv.y - kx;
+		t = clamp( t, 0.0, 1.0 );
+
+		vec2 qos = d + (c + b*t)*t;
+		res = length(qos);
+	}else{
+		float z = sqrt(-p);
+		float v = acos( q/(p*z*2.0) ) / 3.0;
+		float m = cos(v);
+		float n = sin(v)*1.732050808;
+		vec3 t = vec3(m + m, -n - m, n - m) * z - kx;
+		t = clamp( t, 0.0, 1.0 );
+
+		vec2 qos = d + (c + b*t.x)*t.x;
+		float dis = dot(qos,qos);
+        
+		res = dis;
+
+		qos = d + (c + b*t.y)*t.y;
+		dis = dot(qos,qos);
+		res = min(res,dis);
+		
+		qos = d + (c + b*t.z)*t.z;
+		dis = dot(qos,qos);
+		res = min(res,dis);
+
+		res = sqrt( res );
+	}
+    
+	return res;
+}
+
+
+vec2 getHeartPosition(float t){
+	return vec2(16.0 * sin(t) * sin(t) * sin(t),
+							-(13.0 * cos(t) - 5.0 * cos(2.0*t)
+							- 2.0 * cos(3.0*t) - cos(4.0*t)));
+}
+
+float getGlow(float dist, float radius, float intensity){
+	return pow(radius/dist, intensity);
+}
+
+float getSegment(float t, vec2 pos, float offset, float scale){
+	for(int i = 0; i < POINT_COUNT; i++){
+		points[i] = getHeartPosition(offset + float(i)*len + fract(speed * t) * 6.28);
+	}
+    
+	vec2 c = (points[0] + points[1]) / 2.0;
+	vec2 c_prev;
+	float dist = 10000.0;
+    
+	for(int i = 0; i < POINT_COUNT-1; i++){
+		c_prev = c;
+		c = (points[i] + points[i+1]) / 2.0;
+		dist = min(dist, sdBezier(pos, scale * c_prev, scale * points[i], scale * c));
+	}
+	return max(0.0, dist);
+}
+
+void main(){
+	vec2 uv = gl_FragCoord.xy/resolution.xy;
+	float widthHeightRatio = resolution.x/resolution.y;
+	vec2 centre = vec2(0.5, 0.5);
+	vec2 pos = centre - uv;
+	pos.y /= widthHeightRatio;
+	pos.y += 0.02;
+	float scale = 0.000015 * height;
+	
+	float t = time;
+    
+	float dist = getSegment(t, pos, 0.0, scale);
+	float glow = getGlow(dist, radius, intensity);
+    
+	vec3 col = vec3(0.0);
+    
+	col += 10.0*vec3(smoothstep(0.003, 0.001, dist));
+	col += glow * vec3(0.2,0.4,1.4);
+    
+	dist = getSegment(t, pos, 3.4, scale);
+	glow = getGlow(dist, radius, intensity);
+    
+	col += 10.0*vec3(smoothstep(0.003, 0.001, dist));
+	col += glow * vec3(0.12,0.6,1.0);
+        
+	col = 1.0 - exp(-col);
+
+ 	gl_FragColor = vec4(col,1.0);
+}
+`;
+
+window.addEventListener('resize', onWindowResize, false);
+
+function onWindowResize(){
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+	gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.uniform1f(widthHandle, window.innerWidth);
+  gl.uniform1f(heightHandle, window.innerHeight);
+}
+
+function compileShader(shaderSource, shaderType){
+  var shader = gl.createShader(shaderType);
+  gl.shaderSource(shader, shaderSource);
+  gl.compileShader(shader);
+  if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS)){
+  	throw "Shader compile failed with: " + gl.getShaderInfoLog(shader);
+  }
+  return shader;
+}
+
+function getAttribLocation(program, name) {
+  var attributeLocation = gl.getAttribLocation(program, name);
+  if (attributeLocation === -1) {
+  	throw 'Cannot find attribute ' + name + '.';
+  }
+  return attributeLocation;
+}
+
+function getUniformLocation(program, name) {
+  var attributeLocation = gl.getUniformLocation(program, name);
+  if (attributeLocation === -1) {
+  	throw 'Cannot find uniform ' + name + '.';
+  }
+  return attributeLocation;
+}
+
+var vertexShader = compileShader(vertexSource, gl.VERTEX_SHADER);
+var fragmentShader = compileShader(fragmentSource, gl.FRAGMENT_SHADER);
+
+var program = gl.createProgram();
+gl.attachShader(program, vertexShader);
+gl.attachShader(program, fragmentShader);
+gl.linkProgram(program);
+
+gl.useProgram(program);
+
+var vertexData = new Float32Array([
+  -1.0,  1.0, 	
+  -1.0, -1.0, 	
+   1.0,  1.0, 	
+   1.0, -1.0, 
+]);
+
+var vertexDataBuffer = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, vertexDataBuffer);
+gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+
+var positionHandle = getAttribLocation(program, 'position');
+
+gl.enableVertexAttribArray(positionHandle);
+gl.vertexAttribPointer(positionHandle,
+  2, 				
+  gl.FLOAT,
+  false, 		
+  2 * 4, 	
+  0 			
+  );
+
+var timeHandle = getUniformLocation(program, 'time');
+var widthHandle = getUniformLocation(program, 'width');
+var heightHandle = getUniformLocation(program, 'height');
+
+gl.uniform1f(widthHandle, window.innerWidth);
+gl.uniform1f(heightHandle, window.innerHeight);
+
+var lastFrame = Date.now();
+var thisFrame;
+
+function draw(){
+	
+	thisFrame = Date.now();
+  time += (thisFrame - lastFrame)/1000;	
+	lastFrame = thisFrame;
+  gl.uniform1f(timeHandle, time);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+  requestAnimationFrame(draw);
+}
+
+draw(); 
+    </script>
     <main style="display:none;" id="myDiv">
         <!-- BACKGROUND HOME-->
         <div class="bubbles">
@@ -642,6 +731,7 @@
             window.addEventListener("scroll", e => getScroll(e));
             //# sourceURL=pen.js
         </script>
+        
         <script>
             var myVar;
 
@@ -651,6 +741,8 @@
 
             function showPage() {
                 document.getElementById("loader").style.display = "none";
+                document.getElementById("canvas").style.display = "none";
+                document.getElementById("heart-neon").style.display = "none";
 
                 document.getElementById("myDiv").style.display = "block";
             }

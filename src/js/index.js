@@ -220,3 +220,5 @@ function contactF() {
     var backform = document.getElementsByClassName("area");
     backform[0].style.display = "none";
 }
+
+
