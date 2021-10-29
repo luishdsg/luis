@@ -65,6 +65,9 @@
     width: 100%;
     max-height: 200px;
 }
+.pt-30{
+    padding-top: 30%;
+}
 
 .frame {
     width: 100%;
@@ -97,7 +100,18 @@
     height: auto;
     background: red;
 }
-
+.outline{
+    outline: none;
+}
+.w-fit{
+    width: fit-content;
+}
+.text-cent{
+    text-align: -webkit-center;
+}
+.text-align-center{
+    text-align-last: center;
+}
 .nav-item {
     border-left: 1px solid transparent;
 }
@@ -1257,9 +1271,6 @@ h6 {
 @media (max-width: 575px) {
     .contatos {
         top: 0;
-    }
-    #loader {
-        left: 55% !important;
     }
 }
 

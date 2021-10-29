@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../src/css/root.css" />
-    <link rel="stylesheet" href="../src/css/load.css" />
     <link rel="shortcut icon" href="../src/img/code.png" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css'>
@@ -36,8 +35,191 @@
 </script>
 
 <body id="page-top" class="w3-black" onload="myFunction()">
+<style>
+    #loader{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgb(0, 0, 0);
+    }
+    #loadinger {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: .5s;
+        margin-top: 10%;
+        letter-spacing: 4px
+      }
+      
+      #loadinger:hover {
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 18px #03e8f471,
+                    0 0 18px #03e8f471,
+                    0 0 18px #03e8f471,
+                    0 0 18px #03e8f471;
+      }
+      
+      #loadinger span {
+        position: absolute;
+        display: block;
+      }
+      
+      #loadinger span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #03e9f4);
+        animation: btn-anim1 1s linear infinite;
+      }
+      
+      @keyframes btn-anim1 {
+        0% {
+          left: -100%;
+        }
+        50%,100% {
+          left: 100%;
+        }
+      }
+      
+      #loadinger span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #03e9f4);
+        animation: btn-anim2 1s linear infinite;
+        animation-delay: .25s
+      }
+      
+      @keyframes btn-anim2 {
+        0% {
+          top: -100%;
+        }
+        50%,100% {
+          top: 100%;
+        }
+      }
+      
+      #loadinger span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #03e9f4);
+        animation: btn-anim3 1s linear infinite;
+        animation-delay: .5s
+      }
+      
+      @keyframes btn-anim3 {
+        0% {
+          right: -100%;
+        }
+        50%,100% {
+          right: 100%;
+        }
+      }
+      
+      #loadinger span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #03e9f4);
+        animation: btn-anim4 1s linear infinite;
+        animation-delay: .75s
+      }
+      
+      @keyframes btn-anim4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,100% {
+          bottom: 100%;
+        }
+      }
+      
 
-    <div id="loader"></div>
+
+      .heart-rate {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      
+      .fade-in {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        top: 0;
+        right: 0;
+        animation: heartRateIn 2.5s linear infinite;
+      }
+      
+      .fade-out {
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        top: 0;
+        left: -120%;
+        animation: heartRateOut 2.5s linear infinite;
+        background: rgb(0, 0, 0);
+        background: -moz-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        background: -webkit-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        background: -o-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        background: -ms-linear-gradient(left, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 50%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 80%, rgba(255, 255, 255, 0) 100%);
+      }
+      
+      @keyframes heartRateIn {
+        0% {
+          width: 100%;
+        }
+        50% {
+          width: 0;
+        }
+        100% {
+          width: 0;
+        }
+      }
+      
+      @keyframes heartRateOut {
+        0% {
+          left: -120%;
+        }
+        30% {
+          left: -120%;
+        }
+        100% {
+          left: 0;
+        }
+      }
+</style>
+    <div id="loader" class="text-cent ">
+        <div class="heart-rate">
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 150 73" enable-background="new 0 0 150 73" xml:space="preserve">
+              <polyline fill="none" stroke="#009B9E" stroke-width="1" stroke-miterlimit="10" points="0,45.486 38.514,45.486 44.595,33.324 50.676,45.486 57.771,45.486 62.838,55.622 71.959,9 80.067,63.729 84.122,45.486 97.297,45.486 103.379,40.419 110.473,45.486 150,45.486"
+              />
+            </svg>
+            <div class="fade-in"></div>
+            <div class="fade-out"></div>
+        </div>
+        <div id="loadinger" class="w-50 bg-dark pt-30 h-auto text-align-center outline justify-content-center">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            <h5 class="h5">só um segundo...</h5>
+        </div>
+    </div>
+ 
     <main style="display:none;" id="myDiv">
         <!-- BACKGROUND HOME-->
         <div class="bubbles">
@@ -111,7 +293,7 @@
                 <li></li>
             </ul>
         </div>
-
+        <!-- MENU NAVEGATION -->
         <nav id="nave" class="navbar w100 position-absolute top-0 navbar-dark ">
             <span id="span-nav" class="navbar-brand p-5 pph mb-0 h1"><i class="fas text-info fa-terminal"></i>⠀Luis Henrique Gomes</span>
             <div class=" text-white menu-king align-self-end w3-helf">
@@ -162,7 +344,7 @@
             </div>
             <!-- MOBILE-ZONE -->
         </nav>
-
+        <!-- CONTACT -->
         <main class=" top20 w100 position-absolute conatiner">
 
 
@@ -465,7 +647,7 @@
             var myVar;
 
             function myFunction() {
-                myVar = setTimeout(showPage, 800);
+                myVar = setTimeout(showPage, 3000);
             }
 
             function showPage() {
@@ -474,8 +656,6 @@
                 document.getElementById("myDiv").style.display = "block";
             }
         </script>
-
-
     </main>
 </body>
 
