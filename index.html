@@ -16,9 +16,8 @@
 </head>
 
 
-
 <body>
-    <header style="height: 25px; " id="news-header" class="w3-black w-100  d-flex align-items-center">
+    <header style="height: 25px; z-index: 1;" id="news-header" class="w3-black w-100 position-fixed d-flex align-items-center">
         <div id="bt-l"></div>
         <marquee class="w3-black" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
             <span class="text-danger">ATENÇÃO:</span> gostaria de deixar meus mais profundos agradecimentos pela visitar ao site, se gostou ou pelomenos achou deveras interessante <span class="text-warning">POR FAVOR</span> não deixe de dar uma olhada
@@ -26,8 +25,8 @@
         </marquee>
         <div id="bt-r"></div>
     </header>
-    <main class="title m-0 position-absolute h-100 w-100 d-flex">
-        <div class="w-15 position-fixed left-0 h-100 c-l">
+    <main style="margin-top: 25px;" class="title position-absolute h-100 w-100 d-flex">
+        <div id="t-left" class="w-15 position-fixed left-0 h-100 c-l">
             <header class="w-100 p-3 d-flex h-auto justify-content-center align-items-center">
                 <i class="fas text-info fa-terminal fa-2x" aria-hidden="true"></i>
                 <div style="    margin-top: 0.6rem;
@@ -37,30 +36,30 @@
                 </div>
             </header>
             <article class="h-auto position-reative align-items center">
-                <div class="row pt-5 d-block text-center">
+                <div id="social-web" class="row pt-5 d-block text-center">
 
                     <div class="col pv-3">
-                        <a id="face" style="  color: #ffffff36;" href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="face">
+                        <a id="face" title="raramente utilizo" style="  color: #ffffff36;" href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="face">
                             <i class="bi bi-facebook"></i>
                         </a>
             </div>
             <div class="col pv-3">
-                <a id="git" style="  color: #ffffff36;" href="https://github.com/luishdsg" class="face">
+                <a id="git" title="estou sempre realizando pulls" style="  color: #ffffff36;" href="https://github.com/luishdsg" class="face">
                     <i class="bi bi-github"></i>
                 </a>
             </div>
             <div class="col pv-3">
-                <a id="link" style="  color: #ffffff36;" href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="face">
+                <a id="link" title="só há postagens de conquistas, nada muito pessoal" style="  color: #ffffff36;" href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="face">
                     <i class="bi bi-linkedin"></i>
                 </a>
             </div>
             <div class="col pv-3">
-                <a id="web" style="  color: #ffffff36;" href="https://goofy-hoover-0b75fe.netlify.app/" class="face">
+                <a id="web" title="projetos do aprendizado inicial " style="  color: #ffffff36;" href="https://goofy-hoover-0b75fe.netlify.app/" class="face">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
             <div class="col pv-3">
-                <a id="curriculo" style="  color: #ffffff36;" href="./src/Luis_Henrique_Da_Silva_Gomes.pdf" class="face">
+                <a id="curriculo" title="curriculo download" style="  color: #ffffff36;" href="./src/Luis_Henrique_Da_Silva_Gomes.pdf" class="face">
                     <i class="fas fa-file-alt"></i>
                 </a>
             </div>
@@ -70,21 +69,24 @@
             <footer style="bottom: 5%;" class="text-light font-weight-normal position-absolute w-100 text-align-center"><span>Made with <i class="bi bi-heart-fill text-danger"> </i>  </span> @<span id="year"> </span></footer>
             </div>
             <div style="margin-left: 15%;" class="w-70 h-100 position-absolute c-c">
-                <article id="centro" class="row top-0 mt-0 mr-0 ml-0 w-100">
-                    <div id="infos" class="col h-50 w-50">
-                        <div class="w-100 pt-4 h-auto">
-                            <div style="    text-align: -webkit-center;" class="w-100">
-                                <div id="img-prof"></div>
+                <article id="centro" class="row top-0 d-block mt-0 mr-0 ml-0 w-100">
+                    <div id="infos" class="col h-50 w-100 ph">
+                        <div class="w-100 pt-4 d-flex align-items-center h-auto">
+                            <div class="w-auto">
+                                <div style="text-align: -webkit-center;" class="w-100">
+                                    <div id="img-prof"></div>
+                                </div>
+                                <div class="w-100 align-content-center">
+                                    <h6 class="text-info text-align-center font-weight-bold pt-2">DESENVOLVEDOR JR</h6>
+                                    <div style="font-size: 10px;" class="d-flex text-light align-items-center justify-content-center"><span class="pr-1">20 anos</span> • <span class="pl-1"> solteiro</span></div>
+                                </div>
                             </div>
-                            <div class="w-100 align-content-center">
-                                <h6 class="text-info text-align-center font-weight-bold pt-2">DESENVOLVEDOR JR</h6>
-                                <div style="font-size: 10px;" class="d-flex text-light align-items-center justify-content-center"><span class="pr-1">20 anos</span> • <span class="pl-1"> solteiro( ͡° ͜ʖ ͡°)</span></div>
-                            </div>
+
                             <p class="titulo-principal">Programador front-end eficiente para atender a sua demanda, com pouco mais de 1 ano de experiência utilizando (Html5, Css3, Jquery, REST, REACT, NODEJS e JavaScript) auxiliando e manuseando sites e aplicações web, com bibliotecas
                                 e frameworks ReactJS e Bootstrap.</p>
                         </div>
                     </div>
-                    <div id="skill" class="col  pt-4  w-50 h-50 ">
+                    <div id="skill" class="col ph pt-4  w-100 h-50 ">
                         <div class="text-light align-items-center justify-content-center">
                             <h1 class="">skills</h1>
                             <span>minhas habilidades & competências</span>
@@ -218,11 +220,11 @@
                     <div class="w-100 h-auto p-1 d-flex justify-content-center">
                         <h2 class="text-light">Certificações</h2>
                     </div>
-                    <div style="  padding: 1rem 0;  background: #007eff12;" class="col align-items-center d-flex w-50">
+                    <div style="  padding: 1rem 0;  background: #001427a8;" class="col align-items-center d-flex w-50">
                         <a data-slide="prev" href="#Carousel" class="left carousel-control">&#x2039;</a>
                         <div class="w-100 h-auto">
                             <div class="container">
-                                <div class="row">
+                                <div class="row ph">
                                     <div class="col-lg-12">
                                         <div id="Carousel" class="carousel slide">
                                             <div class="carousel-inner">
@@ -338,7 +340,7 @@
                             </div>
                             <div class="w-100 h-auto align-items-center text-left d-flex">
 
-                                <span class=""> ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+                                <span class="analise"> ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
                             </div>
                             <div class="w-100 h-auto align-items-center text-left d-flex">
                                 <h5 class="">10.06.20 - 20.12.23 - 4°SEM</h5>
@@ -375,7 +377,7 @@
                 </article>
                 </div>
                 <div style="right:0;" class="w-15 position-fixed h-100 c-r">
-                    <div class="w-100 h-auto p-4 align-items-center d-block text-align-center">
+                    <div class="w-100 h-auto p-4 ctr align-items-center d-block text-align-center">
                         <button onclick="Open();" class="the-box ">
                     <i class="bi text-info bi-archive fa-2x bi-2x"></i>
                    
@@ -422,6 +424,19 @@
                                 </div><code><span class="variable">this</span><span>.</span><span class="method">addEventListener</span><span>(</span><span class="string">'mouseover'</span><span>, </span><span class="function">() => </span><span>{ </span>
                             <div class="indent"><span class="variable">this</span><span>.</span><span class="property">flipCard </span><span>= </span><span class="boolean">true</span><span>;</span></div><span>});</span></code>
                             </div>
+                        </div>
+                    </div>
+                    <div class="w-100 h-auto p-3 align-items-center">
+                        <h5 class="text-light">Outras certificações</h5>
+                        <div class="" style="display: grid;">
+                            <a href="https://hermes.digitalinnovation.one/certificates/165BE287.pdf" class="">Git & GitHub</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/36E3BAFE.pdf" class="">HTML5 & CSS3</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/EA419927.pdf" class="">Bootcamp Santander</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/BF344B2D.pdf" class="">Lógica de programação essencial</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/75A653D7.pdf" class="">Bootcamp everis New Talent .NET</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/73E224F3.pdf" class="">Bootcamp Spread Java Developer</a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/17074ADA.pdf" class="">Lógica de Programação </a>
+                            <a href="https://hermes.digitalinnovation.one/certificates/670C78E7.pdf" class="">Estrutura de Dados e Algoritmos</a>
                         </div>
                     </div>
                 </div>
