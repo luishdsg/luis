@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="../src/img/code.png" />
-    <link rel="stylesheet" href="./src/index.css" />
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/feedback.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./src/bootstrap-icons/font/bootstrap-icons.css" />
@@ -17,6 +20,7 @@
 
 
 <body>
+    <!-- HEADER DE NOTICIA -->
     <header style="height: 25px; z-index: 1;" id="news-header" class="w3-black w-100 position-fixed d-flex align-items-center">
         <div id="bt-l"></div>
         <marquee class="w3-black" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
@@ -25,8 +29,11 @@
         </marquee>
         <div id="bt-r"></div>
     </header>
+    <!-- CORPO DO SITE -->
     <main style="margin-top: 25px;" class="title position-absolute h-100 w-100 d-flex">
+        <!-- PARTE LEFT -->
         <div id="t-left" class="w-15 position-fixed left-0 h-100 c-l">
+            <!-- MODAL DEV -->
             <header class="w-100 p-3 d-flex h-auto justify-content-center align-items-center">
                 <i class="fas text-info fa-terminal fa-2x" aria-hidden="true"></i>
                 <div style="    margin-top: 0.6rem;
@@ -35,6 +42,7 @@
                     <h6 class="text-light">.Jr</h6>
                 </div>
             </header>
+            <!-- ICONS LINKS -->
             <article class="h-auto position-reative align-items center">
                 <div id="social-web" class="row pt-5 d-block text-center">
 
@@ -66,12 +74,13 @@
 
             </div>
             </article>
-            <footer style="bottom: 5%;" class="text-light font-weight-normal position-absolute w-100 text-align-center"><span>Made with <i class="bi bi-heart-fill text-danger"> </i>  </span> @<span id="year"> </span></footer>
+            <footer style="bottom: 5%;" class="text-light font-weight-normal position-absolute w-100 text-align-center"><span>Made with <i class="bi bi-heart-fill text-danger"> </i>  </span> @<span id="year"> </span>
+            </footer>
             </div>
+            <!-- PARTE CENTRAL -->
             <div style="margin-left: 15%;" class="w-70 h-100 position-absolute c-c">
                 <div class="w-100 text-web-center">
                     <div class="max-w-1300">
-
                         <!-- SKILS -->
                         <article id="centro" class="row top-0 d-block mt-0 mr-0 ml-0 w-100">
                             <div id="infos" class="col h-50 w-100 ph">
@@ -422,21 +431,32 @@
 
 
                         </article>
+
+
                     </div>
                 </div>
-
-
             </div>
-
+            <!-- PARTE RIGHT -->
             <div style="right:0; top:0;" class="w-15 position-fixed h-100 c-r">
-                <div class="w-100 h-auto p-4 ctr align-items-center d-block text-align-center">
-                    <button onclick="Open();" class="the-box ">
+                <div class="d-flex align-items-center pt-5 pb-2 ph-1 ctr text-align-center">
+                    <div class="col">
+                        <button onclick="Open();" class="p-2 bg-none">
                     <i class="bi text-info bi-archive fa-2x bi-2x"></i>
-                   
                     </button>
-                    <h6 class="text-light">Contato</h6>
+                        <h6 class="text-light">Contato</h6>
+
+                    </div>
+                    <div class="col">
+                        <button onclick="OpenFeed();" class="p-2 bg-none">
+                            <i class="bi text-info bi-2x fa-2x bi-chat-left"></i>
+                        </button>
+                        <h6 class="text-light">Feedback</h6>
+                    </div>
+
                 </div>
+
                 <div id="blur" style="display: none;" class="w-100 h-100 position-fixed"></div>
+                <!-- CARD CONTACT -->
                 <div id="contact" style="display: none;" class="w-50 position-fixed top-0 h-100 align-items-center ">
                     <div id="close" class="text-danger position-absolute h-auto w-fit" onclick="Close();"><i class="bi bi-x-lg"></i>
                     </div>
@@ -478,6 +498,22 @@
                         </div>
                     </div>
                 </div>
+                <!-- FEEDBACK -->
+                <div id="painel" style="display: none;" class="w-50 position-fixed top-0 h-100 align-items-center ">
+                    <div id="close" class="text-danger position-absolute h-auto w-fit" onclick="Close();"><i class="bi bi-x-lg"></i>
+                    </div>
+                    <iframe style="padding: 0 4%;" class="w-100 h-100 border-none" src="./src/pages/feedback.html" title="feedback"></iframe>
+                    <a onclick="circleOk();" class="neon-button">
+                        <span id="send-feed">Enviar</span>
+                        <div style="display: none;" class="circle-ok">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-check"></i><span>Enviado</span>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                <!-- LINKS CERTIFICAÇÕES -->
                 <div class="w-100 h-auto p-3 align-items-center">
                     <h5 class="text-light">Outras certificações</h5>
                     <div class="" style="display: grid;">
@@ -494,10 +530,12 @@
             </div>
             </main>
 
-            <script src="./src/index.js"></script>
+            <script src="./src/js/index.js"></script>
             <script src="./jquery.min.js.download"></script>
 
             <script id="rendered-js">
+                // FEEDBACK
+
                 let max_particles = 1200;
                 let particles = [];
                 let frequency = 20;

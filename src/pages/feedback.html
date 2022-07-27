@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- saved from url=(0012)about:srcdoc -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+    <title>CodePen - augmented-ui social media picture-of-code thing</title>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/augmented-ui@2.0.0/augmented-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/scroll/simplescrollbars.min.css">
+    <link rel="stylesheet" href="../css/feedback.css">
+
+    </script>
+
+
+</head>
+
+<body translate="no">
+    <code class="code-container" content="//sem ofensividades pf 💜">
+  <div class="glow-container">
+    <div class="augs" data-augmented-ui=""></div>
+  </div>
+  <section class="augs bg" data-augmented-ui="">
+    <button class="dots" onclick="changeMode()" title="change mode"></button>
+    <div class="d-flex align-items-center">
+
+ <img class="emoji-img" src="https://img.icons8.com/ios/50/40C057/wink--v1.png"/> <input value="Deixe teu feedback">
+    </div>
+   
+    <div class="code highcontrast-dark">
+      <textarea id="code" style="display: none;">
+package feedback;
+
+    public class SendComment {
+        public static void main(String[] args) {
+            System.out.println("//Seu feedback aqui!"); 
+        }  
+    }</textarea>
+    </div>
+  </section>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/javascript/javascript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/css/css.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/scroll/simplescrollbars.min.js"></script>
+      <script id="rendered-js">
+let mode = "css";
+const editor = CodeMirror.fromTextArea(code, {
+  lineNumbers: true,
+  styleActiveLine: true,
+  matchBrackets: true,
+  scrollbarStyle: "overlay",
+  Tab: "indentMore",
+  defaultTab: function (cm) {
+    if (cm.somethingSelected()) cm.indentSelection("add");else
+    cm.replaceSelection("  ", "end");
+  },
+  mode });
+
+editor.setOption("theme", "highcontrast-dark");
+const x = document.querySelector(".code");
+const ro = new ResizeObserver(entries => {
+  editor.setSize(x.offsetWidth, x.offsetHeight);
+});
+ro.observe(document.querySelector(".code-container"));
+
+const changeMode = () => {
+  mode = mode === "css" ? "javascript" : "css";
+  editor.setOption("mode", mode);
+};
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+
+ 
+</code>
+
+</body>
+<!-- <div class="CodeMirror CodeMirror-overlayscroll cm-s-highcontrast-dark" style="width: 1069px; height: 288px;"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 98.4px; left: 101px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-overlayscroll-horizontal" cm-not-content="true" style="display: none;"><div></div></div><div class="CodeMirror-overlayscroll-vertical" cm-not-content="true" style="display: block; bottom: 0px;"><div style="height: 168px; top: 55.814px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 45px; margin-bottom: -17px; border-right-width: 33px; min-height: 483px; min-width: 558.2px; padding-right: 6px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 56px; top: 194.4px; height: 21.6px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">@keyframes</span> <span class="cm-variable">cast-bit-to-space-toggle</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-tag">to</span> { <span class="cm-variable-2">--cbtst-space-toggle</span>: ; }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">@property</span> <span class="cm-variable-2">--cbtst-space-toggle</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property cm-error">syntax</span>: <span class="cm-string">"*"</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property cm-error">initial-value</span>: <span class="cm-atom">initial</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property cm-error">inherits</span>: <span class="cm-variable">false</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag">sdasd</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">:<span class="cm-variable cm-callee">where</span>(<span class="cm-qualifier">.cbtst</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-variable-2">--cbtst-animation</span>: <span class="cm-variable">castsdasd-bit-to-space-toggle</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-number">1ms</span> <span class="cm-atom">linear</span> <span class="cm-atom">both</span> <span class="cm-variable cm-callee">var</span>(<span class="cm-variable-2">--cbtst-bit</span>, <span class="cm-number">0</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">animation</span>: <span class="cm-variable cm-callee">var</span>(<span class="cm-variable-2">--cbtst-animation</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">/* usage */</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-qualifier">.my-el.cbtst</span> {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-variable-2">--cbtst-bit</span>: <span class="cm-number">1</span>; <span class="cm-comment">/* provide input value of 0 or 1 */</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-comment">/* var(--cbtst-space-toggle) is the output */</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -45px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">      </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 33px; width: 1px; border-bottom: 0px solid transparent; top: 483px;"></div><div class="CodeMirror-gutters" style="height: 516px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 45px;"></div></div></div></div> -->
+
+</html>
