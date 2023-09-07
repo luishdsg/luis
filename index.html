@@ -1,996 +1,440 @@
-<!doctype html>
-<html lang="pt-br">  
- 
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <title>Luis Henrique Da Silva Gomes</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="shortcut icon" href="../src/img/code.png" />
-    <link rel="stylesheet" href="./src/css/index.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/2b7710cc6f.js" crossorigin="anonymous"></script>
-    <script src="./src/js/index.js"></script>
-    <script src="./jquery.min.js.download"></script>
+      <meta charset="UTF-8">
+      <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;1,800&display=swap" rel="stylesheet">
+      <link href="./css/style.css" rel="stylesheet">
+      <link href="./css/about.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>𝕃𝕦𝕚𝕤 ℍ𝕖𝕟𝕣𝕚𝕢𝕦𝕖 𝕕𝕒 𝕊𝕚𝕝𝕧𝕒 𝔾𝕠𝕞𝕖𝕤</title>
 </head>
+
+
+<div id="progress-container">
+      <div id="progress-bar"></div>
+</div>
+
+<body id="body">
+      <div class="w-100 w3-black d-flex justify-content-center align-items-center position-fixed z-100 mt-0 pt-0 h-100" id="load">
+            <div class="w-100 bg-transparent mt-0 pt-0 h-auto">
+                  <div class="demo-content bg-transparent align-center d-flex justify-content-center line-drawing-demo">
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="name-loading" xmlns:xlink="http://www.w3.org/1999/xlink">
+                              <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="20" class="lines" transform="translate(0.000000,505.000000) scale(0.100000,-0.100000)">
+                                    <path d="M3935 4940 c3 -5 33 -10 66 -10 l59 0 -2 -882 -3 -883 -57 -3 c-32 -2 -58 -7 -58 -12 0 -16 1683 -13 1698 2 9 9 12 74 12 230 0 187 -2 218 -15 218 -10 0 -15 -10 -15 -27 -1 -125 -108 -291 -228 -352 -110 -56 -108 -56 -522 -56 l-385 0 0 880 0 880 63 3 c34 2 62 7 62 12 0 6 -132 10 -341 10 -224 0 -338 -3 -334 -10z m513 -22 c19 -19 17 -1731 -2 -1747 -9 -8 -66 -11 -182 -9 l-169 3 -3 870 c-1 479 0 876 3 883 6 17 336 17 353 0z m1170 -1634 l-3 -119 -119 0 c-87 0 -120 3 -123 13 -3 6 1 12 7 12 30 0 140 93 179 151 23 34 41 66 41 72 0 8 3 8 10 1 7 -7 10 -57 8 -130z" />
+                                    <path d="M5500 4940 c0 -5 28 -10 63 -12 l62 -3 6 -560 c7 -551 9 -590 44 -690 155 -448 677 -658 1106 -445 220 109 369 302 421 545 6 29 13 276 17 600 l6 550 63 3 c34 2 62 7 62 12 0 6 -60 10 -145 10 -85 0 -145 -4 -145 -10 0 -5 28 -10 63 -12 l62 -3 3 -550 c2 -521 1 -554 -18 -630 -83 -333 -381 -573 -717 -578 -96 -1 -135 17 -210 95 -62 67 -115 173 -147 300 -45 178 -48 220 -44 808 l3 555 63 3 c34 2 62 7 62 12 0 6 -131 10 -340 10 -209 0 -340 -4 -340 -10z m518 -22 c9 -9 12 -149 12 -569 0 -550 5 -651 35 -764 47 -172 88 -255 173 -348 24 -27 42 -50 40 -53 -10 -9 -128 29 -203 66 -176 87 -314 248 -386 450 -23 65 -24 68 -27 634 -1 313 -1 575 2 583 7 18 336 19 354 1z" />
+                                    <path d="M7420 4940 c0 -5 28 -10 63 -12 l62 -3 0 -880 0 -880 -63 -3 c-36 -2 -60 -7 -57 -12 8 -13 665 -13 665 0 0 5 -26 10 -57 12 l-58 3 -3 883 -2 882 60 0 c33 0 60 4 60 10 0 6 -118 10 -335 10 -205 0 -335 -4 -335 -10z m515 -895 l0 -880 -169 -3 c-116 -2 -173 1 -182 9 -12 10 -14 153 -14 879 0 476 3 870 7 874 4 3 86 5 182 4 l176 -3 0 -880z" />
+                                    <path d="M8465 4940 c-200 -57 -323 -184 -372 -384 -41 -167 48 -376 204 -479 40 -26 148 -76 263 -122 107 -42 209 -83 225 -91 17 -7 138 -56 269 -109 132 -53 256 -108 277 -122 43 -29 82 -81 99 -137 15 -48 8 -141 -14 -184 -24 -47 -82 -101 -135 -125 -44 -21 -57 -22 -320 -19 -290 3 -327 8 -395 54 -103 71 -195 193 -246 332 -12 31 -26 56 -32 56 -14 0 -198 -181 -198 -195 0 -26 145 -129 252 -179 172 -81 312 -100 671 -93 172 3 256 9 292 19 184 55 322 206 356 390 25 137 -27 293 -136 404 -72 74 -94 85 -400 209 -132 53 -253 102 -270 110 -16 7 -60 25 -98 39 -37 14 -82 32 -100 40 -17 8 -74 31 -125 52 -117 47 -173 94 -201 170 -39 104 -19 197 60 276 75 74 106 80 427 76 l267 -3 60 -29 c122 -60 204 -163 289 -358 14 -32 28 -58 32 -58 12 0 194 183 194 196 0 36 -188 165 -305 210 -150 57 -147 56 -515 60 -190 1 -358 -1 -375 -6z m881 -74 c106 -43 284 -159 284 -185 0 -12 -138 -145 -154 -149 -7 -2 -20 16 -30 41 -31 82 -115 204 -183 267 l-68 63 45 -6 c25 -3 73 -17 106 -31z m-986 -5 c0 -5 -6 -14 -14 -20 -27 -22 -57 -111 -58 -170 -2 -123 79 -229 211 -276 23 -8 56 -21 74 -29 29 -13 277 -114 642 -261 186 -75 233 -101 295 -164 195 -200 170 -520 -54 -683 -59 -43 -70 -36 -34 22 25 41 32 64 36 124 5 86 -6 129 -51 185 -49 61 -87 83 -293 166 -104 41 -198 79 -209 84 -85 36 -145 60 -325 132 -113 46 -227 97 -255 114 -224 142 -285 421 -140 640 52 78 175 174 175 136z m-52 -1336 c33 -86 108 -198 175 -262 38 -35 66 -67 63 -70 -9 -9 -94 17 -172 52 -81 37 -162 88 -219 137 l-40 35 80 76 c44 42 84 75 89 74 5 -2 15 -21 24 -42z" />
+                                    <path d="M95 2750 c3 -5 30 -10 59 -10 28 0 57 -5 64 -12 17 -17 17 -1749 0 -1766 -7 -7 -36 -12 -66 -12 -33 0 -51 -4 -47 -10 8 -14 665 -14 665 0 0 6 -24 10 -54 10 -33 0 -58 5 -65 14 -8 9 -10 133 -9 437 l3 424 378 3 377 2 -2 -437 -3 -438 -63 -3 c-36 -2 -60 -7 -57 -12 8 -14 665 -13 665 0 0 6 -24 10 -53 10 -29 0 -58 5 -65 12 -17 17 -17 1749 0 1766 7 7 38 12 70 12 32 0 58 4 58 10 0 6 -120 10 -340 10 -209 0 -340 -4 -340 -10 0 -5 28 -10 63 -12 l62 -3 0 -435 0 -435 -375 0 -375 0 0 435 0 435 63 3 c34 2 62 7 62 12 0 6 -132 10 -341 10 -224 0 -338 -3 -334 -10z m523 -894 c1 -641 -1 -882 -9 -892 -9 -11 -48 -14 -169 -14 -87 0 -165 3 -174 6 -14 6 -16 93 -16 888 0 486 3 886 7 890 4 3 86 5 182 4 l176 -3 3 -879z m1170 -5 c2 -701 0 -886 -10 -893 -22 -13 -332 -10 -346 4 -18 18 -17 1749 0 1766 9 9 59 12 183 10 l170 -3 3 -884z" />
+                                    <path d="M2000 2751 c0 -6 28 -11 63 -13 l62 -3 0 -890 0 -890 -63 -3 c-36 -2 -60 -7 -57 -12 7 -11 1672 -14 1699 -4 14 5 16 36 16 236 0 179 -3 229 -12 226 -7 -3 -14 -20 -16 -39 -10 -140 -104 -284 -222 -344 -119 -60 -112 -60 -530 -60 l-385 0 -3 438 -2 437 182 -2 183 -3 3 -63 c2 -36 7 -60 12 -57 13 8 13 285 0 285 -5 0 -10 -28 -12 -62 l-3 -63 -180 0 -180 0 0 435 0 435 335 3 c387 3 463 -3 555 -46 127 -60 230 -199 244 -330 3 -31 12 -57 19 -60 10 -3 12 44 10 225 l-3 228 -857 3 c-542 1 -858 -1 -858 -7z m515 -906 l0 -890 -169 -3 c-116 -2 -173 1 -182 9 -19 16 -21 1748 -2 1767 9 9 59 12 183 10 l170 -3 0 -890z m1179 879 c9 -24 7 -207 -3 -223 -7 -10 -18 0 -43 40 -40 63 -105 125 -165 159 -23 13 -40 27 -37 32 3 4 58 8 124 8 98 0 119 -3 124 -16z m5 -1650 c1 -75 -3 -105 -13 -113 -17 -14 -228 -11 -233 4 -1 6 22 26 53 45 64 39 126 106 157 165 18 35 21 38 28 20 4 -11 8 -66 8 -121z" />
+                                    <path d="M3780 2750 c0 -5 28 -10 63 -12 l62 -3 0 -890 0 -890 -63 -3 c-36 -2 -60 -7 -57 -12 8 -13 275 -13 275 0 0 6 -24 10 -53 10 -29 0 -58 5 -65 12 -18 18 -17 1721 1 1716 11 -4 83 -116 286 -449 51 -85 119 -194 149 -244 31 -49 83 -135 117 -190 34 -55 87 -140 117 -190 115 -189 303 -493 355 -577 29 -47 61 -89 69 -92 31 -12 279 -7 292 6 9 9 12 223 12 900 l0 887 62 3 c38 2 63 8 66 16 3 9 -29 12 -137 12 -77 0 -142 -4 -145 -9 -9 -13 19 -21 75 -21 l49 0 0 -726 c0 -486 -3 -723 -10 -719 -12 7 -50 66 -137 210 -62 103 -117 192 -288 470 -54 88 -184 300 -288 470 -105 171 -196 313 -201 317 -17 12 -606 10 -606 -2z m602 -27 c8 -10 61 -94 118 -188 56 -93 126 -208 155 -255 29 -47 131 -213 227 -370 240 -392 234 -382 306 -500 135 -219 122 -185 122 -325 l0 -125 -138 0 -138 0 -41 68 c-22 37 -132 216 -243 397 -112 182 -222 360 -244 397 -84 138 -260 425 -306 498 -120 191 -240 393 -240 406 0 12 36 14 203 14 182 0 206 -2 219 -17z" />
+                                    <path d="M5540 2751 c0 -6 28 -11 63 -13 l62 -3 0 -890 0 -890 -63 -3 c-36 -2 -60 -7 -57 -12 8 -13 665 -13 665 0 0 5 -26 10 -57 12 l-58 3 -3 299 c-2 233 1 301 10 308 22 13 272 10 290 -4 9 -7 76 -110 149 -228 235 -382 240 -390 262 -395 41 -10 577 -1 577 10 0 6 -30 12 -66 15 l-66 5 -80 130 c-43 72 -101 166 -127 210 -27 44 -76 125 -110 180 -33 54 -61 104 -61 111 0 6 15 17 33 25 106 43 226 154 285 264 70 132 88 316 44 450 -66 196 -200 327 -412 403 -39 14 -127 16 -662 19 -409 3 -618 1 -618 -6z m515 -906 l0 -890 -169 -3 c-116 -2 -173 1 -182 9 -20 16 -21 1764 -1 1772 6 3 89 5 182 4 l170 -2 0 -890z m623 884 c32 -11 92 -88 92 -119 0 -9 4 -20 9 -25 12 -13 38 -123 51 -215 12 -82 14 -322 4 -391 -25 -177 -67 -302 -121 -355 l-34 -34 -294 0 -295 0 0 568 c0 313 3 572 7 575 11 12 547 8 581 -4z m190 -34 c220 -89 363 -298 363 -528 0 -97 -19 -177 -63 -267 -43 -90 -159 -204 -251 -248 -69 -33 -162 -60 -173 -50 -3 3 9 31 26 61 94 167 124 573 61 833 -20 83 -63 188 -81 199 -6 3 -10 13 -10 22 0 20 44 12 128 -22z m107 -1327 c76 -123 162 -261 191 -308 29 -46 50 -88 48 -92 -3 -4 -98 -8 -212 -8 l-208 0 -34 57 c-19 32 -80 130 -134 218 -179 289 -188 306 -182 320 4 12 34 15 158 16 84 1 167 5 183 9 17 4 35 8 41 9 6 0 73 -99 149 -221z" />
+                                    <path d="M7445 2750 c3 -5 32 -10 65 -10 43 0 59 -4 64 -16 3 -9 6 -406 6 -883 0 -661 -3 -870 -12 -879 -7 -7 -36 -12 -65 -12 -29 0 -53 -4 -53 -10 0 -14 657 -14 665 0 4 6 -14 10 -47 10 -30 0 -59 5 -66 12 -9 9 -12 218 -12 879 0 477 3 874 6 883 5 12 21 16 65 16 33 0 59 4 59 10 0 6 -120 10 -341 10 -224 0 -338 -3 -334 -10z m523 -894 c1 -641 -1 -882 -9 -892 -9 -11 -48 -14 -169 -14 -87 0 -165 3 -174 6 -14 6 -16 93 -16 888 0 486 3 886 7 890 4 3 86 5 182 4 l176 -3 3 -879z" />
+                                    <path d="M8920 2754 c-342 -43 -644 -283 -758 -601 -94 -259 -61 -548 89 -792 l52 -84 -31 -56 c-57 -105 -77 -183 -76 -306 1 -87 5 -124 23 -175 97 -280 348 -454 631 -437 191 12 288 65 496 269 169 165 212 192 304 192 158 -2 263 -149 219 -309 -15 -54 -93 -127 -167 -156 -112 -44 -307 -24 -466 46 -31 14 -62 23 -67 20 -15 -10 -11 -261 4 -274 10 -8 38 -8 103 0 220 26 421 123 560 271 86 91 124 185 124 308 0 117 -34 206 -110 293 -54 61 -109 99 -188 127 l-63 23 72 71 c152 149 233 294 274 489 19 88 19 266 0 355 -63 301 -287 561 -579 672 -114 43 -328 69 -446 54z m258 -55 c149 -74 267 -255 325 -499 42 -175 52 -299 37 -476 -31 -381 -191 -674 -410 -751 -117 -42 -263 7 -369 123 -71 78 -163 251 -165 312 l-1 37 60 3 c33 2 80 -2 105 -8 58 -15 143 -56 166 -81 16 -18 44 -26 44 -13 0 10 -50 47 -100 74 -60 34 -143 52 -225 49 -48 -2 -69 2 -75 11 -39 63 -58 452 -31 610 52 297 189 533 355 611 52 25 74 29 142 29 70 0 89 -4 142 -31z m-338 4 c-1 -5 -18 -21 -38 -38 -115 -90 -217 -278 -266 -485 -54 -232 -45 -546 23 -757 51 -159 135 -299 227 -382 32 -28 54 -54 50 -58 -9 -10 -155 41 -221 77 -130 70 -244 167 -320 275 -291 408 -186 972 231 1247 123 81 316 155 314 121z m494 -18 c274 -92 482 -309 573 -598 23 -72 26 -100 27 -232 1 -129 -2 -161 -22 -230 -27 -92 -66 -179 -118 -262 -45 -71 -203 -230 -236 -237 -44 -8 -202 -26 -205 -22 -2 2 17 34 42 72 167 253 219 672 129 1031 -13 54 -28 107 -33 118 -83 185 -144 279 -222 340 -66 52 -48 58 65 20z m-946 -1491 c69 -68 196 -149 292 -188 102 -41 200 -62 333 -71 53 -4 97 -10 97 -14 0 -12 -165 -169 -210 -198 -82 -54 -190 -78 -284 -63 -234 38 -391 267 -332 485 16 61 33 95 47 95 6 0 32 -21 57 -46z m1316 -148 c141 -72 226 -199 234 -351 4 -80 -5 -143 -22 -148 -5 -1 -14 20 -21 46 -17 68 -61 125 -124 160 -46 26 -64 30 -126 30 -99 0 -142 -26 -307 -189 -174 -171 -238 -214 -376 -250 -74 -20 -221 -20 -295 0 -213 56 -378 218 -431 423 -20 78 -22 256 -2 272 11 9 14 1 19 -46 22 -211 245 -381 472 -357 105 11 191 59 307 171 279 268 307 284 489 280 102 -2 110 -4 183 -41z m-362 -763 c70 -22 102 -27 200 -27 65 -1 118 -2 118 -2 0 -1 -22 -16 -49 -34 -91 -58 -269 -110 -377 -110 l-44 0 0 108 c0 60 3 111 6 115 4 3 19 0 35 -8 15 -8 65 -27 111 -42z" />       <path d="M9940 2750 c0 -5 28 -10 63 -12 l62 -3 6 -575 c6 -594 6 -597 51 -717 50 -135 165 -283 281 -362 198 -135 451 -178 677 -116 250 69 468 277 538 515 11 36 23 76 28 90 4 14 10 281 13 595 l6 570 63 3 c34 2 62 7 62 12 0 6 -60 10 -145 10 -85 0 -145 -4 -145 -10 0 -5 28 -10 63 -12 l62 -3 3 -550 c2 -371 -1 -569 -8 -610 -64 -348 -375 -611 -730 -617 -93 -1 -137 19 -207 95 -61 67 -114 173 -146 292 -46 168 -49 214 -45 820 l3 570 63 3 c34 2 62 7 62 12 0 6 -131 10 -340 10 -209 0 -340 -4 -340 -10z m521 -610 c5 -484 9 -610 22 -675 38 -194 112 -360 196 -439 17 -17 31 -33 31 -38 0 -16 -52 -7 -128 22 -256 99 -448 343 -482 612 -15 126 -14 1105 3 1111 6 3 89 5 182 4 l170 -2 6 -595z" />
+                                    <path d="M11860 2750 c0 -5 28 -10 63 -12 l62 -3 0 -890 0 -890 -58 -3 c-33 -2 -55 -7 -52 -13 7 -10 1662 -13 1689 -3 14 5 16 36 16 235 0 139 -4 229 -10 229 -8 0 -12 -13 -26 -106 -13 -87 -103 -212 -194 -269 -103 -65 -119 -67 -533 -72 -287 -4 -381 -2 -392 7 -13 11 -15 77 -15 441 l0 429 185 0 185 0 0 -66 c0 -41 4 -63 10 -59 13 8 13 285 0 285 -5 0 -10 -28 -12 -62 l-3 -63 -180 0 -180 0 0 435 0 435 345 3 c190 1 376 -2 413 -7 80 -11 175 -54 233 -105 77 -66 144 -193 144 -271 0 -17 7 -40 15 -51 13 -17 14 7 15 219 l0 237 -860 0 c-538 0 -860 -4 -860 -10z m518 -22 c17 -17 17 -1749 0 -1766 -13 -13 -311 -18 -342 -6 -14 6 -16 93 -16 888 0 486 3 886 7 889 12 13 338 8 351 -5z m1180 -107 c1 -63 -1 -118 -6 -123 -6 -6 -20 8 -35 34 -33 57 -100 124 -159 160 -26 16 -48 34 -48 39 0 6 50 8 123 7 l122 -3 3 -114z m2 -1535 c0 -85 -4 -116 -14 -125 -17 -14 -228 -11 -233 4 -1 6 16 21 39 34 62 35 127 100 160 158 17 29 34 50 39 47 5 -3 9 -56 9 -118z" />
+                              </g>
+                        </svg>
+                  </div>
+                  <main>
+                        <svg class="pl2" viewBox="0 0 128 128" width="128px" height="128px">
+                              <g fill="hsl(34,90%,50%)" mask="url(#pl-mask)">
+                                    <g class="pl2__rect-g">
+                                          <rect class="pl2__rect" rx="8" ry="8" x="0" y="128" width="40" height="24"
+                                                transform="rotate(180)" />
+                                    </g>
+                                    <g class="pl2__rect-g">
+                                          <rect class="pl2__rect" rx="8" ry="8" x="44" y="128" width="40" height="24"
+                                                transform="rotate(180)" />
+                                    </g>
+                                    <g class="pl2__rect-g">
+                                          <rect class="pl2__rect" rx="8" ry="8" x="88" y="128" width="40" height="24"
+                                                transform="rotate(180)" />
+                                    </g>
+                              </g>
+                        </svg>
+                  </main>
+            </div>
+      </div>
+
+      <div class="con">
+            <div class="div1">
+                  <div id="zoom-container" class="zoom-container d-flex justify-content-center align-items-center w-100 h-100">
+                        <div class="header w-100 h-100">
+                              <div class="w-100 h-100 w3-black position-absolute d-flex align-items-center justify-content-center">
+                                    <div id="about" class="container z-10 about">
+                                          <div class="whaleContainer">
+                                                <div class="whalePos size1">
+                                                      <div class="whaleRotate size1">
+                                                            <div class="whale"></div>
+                                                            <div class="fin"></div>
+                                                      </div>
+                                                </div>
+                                                <div class="whalePos size2">
+                                                      <div class="whaleRotate size2">
+                                                            <div class="whale"></div>
+                                                            <div class="fin"></div>
+                                                      </div>
+                                                </div>
+                                                <div class="whalePos size3">
+                                                      <div class="whaleRotate size3">
+                                                            <div class="whale"></div>
+                                                            <div class="fin"></div>
+                                                      </div>
+                                                </div>
+                                                <div class="whalePos size4">
+                                                      <div class="whaleRotate size4">
+                                                            <div class="whale"></div>
+                                                            <div class="fin"></div>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <div class="cPos">
+                                                <div class="cc">
+                                                      <div class="circle one"></div>
+                                                      <div class="circle two"></div>
+                                                      <div class="circle three"></div>
+                                                      <div class="circle four"></div>
+                                                </div>
+                                          </div>
+                                          <div class="triangleContainer">
+                                                <div class="triangleBar"></div>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                                <span class="triangle"></span>
+                                          </div>
+                                          <div class="gradientContainer">
+                                                <div class="overlay one"></div>
+                                                <div class="gradient">
+                                                      <span class="ray1"></span>
+                                                      <span class="ray2"></span>
+                                                      <span class="ray3"></span>
+                                                      <span class="ray4"></span>
+                                                      <span class="ray5"></span>
+                                                      <span class="ray6"></span>
+                                                      <span class="ray7"></span>
+                                                      <span class="ray8"></span>
+                                                      <span class="ray9"></span>
+                                                      <span class="ray10"></span>
+                                                      <span class="ray11"></span>
+                                                      <span class="ray12"></span>
+                                                      <span class="ray13"></span>
+                                                      <span class="ray14"></span>
+                                                      <span class="ray15"></span>
+                                                      <span class="ray16"></span>
+                                                      <span class="ray17"></span>
+                                                      <span class="ray18"></span>
+                                                      <span class="ray19"></span>
+                                                      <span class="ray20"></span>
+                                                      <span class="ray21"></span>
+                                                      <span class="ray22"></span>
+                                                      <span class="ray23"></span>
+                                                      <span class="ray24"></span>
+                                                      <span class="ray25"></span>
+                                                      <span class="ray26"></span>
+                                                      <span class="ray27"></span>
+                                                      <span class="ray28"></span>
+                                                      <span class="ray29"></span>
+                                                      <span class="ray30"></span>
+                                                      <span class="ray31"></span>
+                                                      <span class="ray32"></span>
+                                                      <span class="ray33"></span>
+                                                      <span class="ray34"></span>
+                                                      <span class="ray35"></span>
+                                                      <span class="ray36"></span>
+                                                      <span class="ray37"></span>
+                                                      <span class="ray38"></span>
+                                                      <span class="ray1"></span>
+                                                      <span class="ray2"></span>
+                                                      <span class="ray3"></span>
+                                                      <span class="ray4"></span>
+                                                      <span class="ray5"></span>
+                                                      <span class="ray6"></span>
+                                                      <span class="ray7"></span>
+                                                      <span class="ray8"></span>
+                                                      <span class="ray9"></span>
+                                                      <span class="ray10"></span>
+                                                      <span class="ray11"></span>
+                                                      <span class="ray12"></span>
+                                                      <span class="ray13"></span>
+                                                      <span class="ray14"></span>
+                                                      <span class="ray15"></span>
+                                                      <span class="ray16"></span>
+                                                      <span class="ray17"></span>
+                                                      <span class="ray18"></span>
+                                                      <span class="ray19"></span>
+                                                      <span class="ray20"></span>
+                                                      <span class="ray21"></span>
+                                                      <span class="ray22"></span>
+                                                      <span class="ray23"></span>
+                                                      <span class="ray24"></span>
+                                                      <span class="ray25"></span>
+                                                      <span class="ray26"></span>
+                                                      <span class="ray27"></span>
+                                                      <span class="ray28"></span>
+                                                      <span class="ray29"></span>
+                                                      <span class="ray30"></span>
+                                                      <span class="ray31"></span>
+                                                      <span class="ray32"></span>
+                                                      <span class="ray33"></span>
+                                                      <span class="ray34"></span>
+                                                      <span class="ray35"></span>
+                                                      <span class="ray36"></span>
+                                                      <span class="ray37"></span>
+                                                      <span class="ray38"></span>
+                                                </div>
+                                          </div>
+                                          <div class="rocks">
+                                                <div class="rock one"></div>
+                                                <div class="rock two"></div>
+                                                <div class="rock three"></div>
+                                                <div class="rock four"></div>
+                                          </div>
+                                          <div class="bubbleContainer">
+                                                <span class="bubbleY1">
+                                                <span class="bubbleX1"></span></span>
+                                                <span class="bubbleY2"><span class="bubbleX2"></span>
+                                          </span>
+                                                <span class="bubbleY3"><span class="bubbleX3"></span>
+                                          </span>
+                                                <span class="bubbleY4"><span class="bubbleX4"></span>
+                                          </span>
+                                                <span class="bubbleY5"><span class="bubbleX5"></span>
+                                          </span>
+                                                <span class="bubbleY6"><span class="bubbleX6"></span>
+                                          </span>
+                                                <span class="bubbleY7"><span class="bubbleX7"></span>
+                                          </span>
+                                                <span class="bubbleY8"><span class="bubbleX8"></span>
+                                          </span>
+                                                <span class="bubbleY9"><span class="bubbleX9"></span>
+                                          </span>
+                                                <span class="bubbleY10"><span class="bubbleX10"></span>
+                                          </span>
+                                                <span
+                                                      class="bubbleY11"><span class="bubbleX11"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY12"><span class="bubbleX12"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY13"><span class="bubbleX13"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY14"><span class="bubbleX14"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY15"><span class="bubbleX15"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY16"><span class="bubbleX16"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY17"><span class="bubbleX17"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY18"><span class="bubbleX18"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY19"><span class="bubbleX19"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY20"><span class="bubbleX20"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY21"><span class="bubbleX21"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY22"><span class="bubbleX22"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY23"><span class="bubbleX23"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY24"><span class="bubbleX24"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY25"><span class="bubbleX25"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY26"><span class="bubbleX26"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY27"><span class="bubbleX27"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY28"><span class="bubbleX28"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY29"><span class="bubbleX29"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY30"><span class="bubbleX30"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY31"><span class="bubbleX31"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY32"><span class="bubbleX32"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY33"><span class="bubbleX33"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY34"><span class="bubbleX34"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY35"><span class="bubbleX35"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY36"><span class="bubbleX36"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY37"><span class="bubbleX37"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY38"><span class="bubbleX38"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY39"><span class="bubbleX39"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY40"><span class="bubbleX40"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY41"><span class="bubbleX41"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY42"><span class="bubbleX42"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY43"><span class="bubbleX43"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY44"><span class="bubbleX44"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY45"><span class="bubbleX45"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY46"><span class="bubbleX46"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY47"><span class="bubbleX47"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY48"><span class="bubbleX48"></span>
+                                                </span>
+                                                      <span
+                                                      class="bubbleY49"><span class="bubbleX49"></span>
+                                                </span>
+
+                                          </div>
+                                    </div>
+                              </div>
+
+                              <div class="d-flex justify-content-center align-content-center" style="height: 85vh;">
+                                    <div class="loader w-100 h-auto">
+                                          <h1>Sobre</h1>
+                                    </div>
+                              </div>
+                              <div>
+                                    <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                                          <defs>
+                                                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                                          </defs>
+                                          <g class="parallax">
+                                                <use xlink:href="#gentle-wave" x="48" y="0" fill=" #b4a100" />
+                                                <use xlink:href="#gentle-wave" x="48" y="3" fill="#ffffdb" />
+                                                <use xlink:href="#gentle-wave" x="48" y="5" fill="#ede8b2" />
+                                                <use xlink:href="#gentle-wave" x="48" y="7" fill="#b4a100" />
+                                          </g>
+                                    </svg>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="div2">
+                  <iframe src="./pages/welcome.html" class="w-100 mt-0 pt-0 h-100"></iframe>
+            </div>
+      </div>
+      <div style="height: 1000px;" class="w-100 w3-black"></div>
+</body>
+<script src="./js/anime-master/lib/anime.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-      })
-       Save
+      anime({
+            targets: '.line-drawing-demo .lines path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1500,
+            delay: function (el, i) { return i * 100 },
+            direction: 'alternate',
+            loop: false
+      });
+      setTimeout(() => {
+            function hideProgressBar() {
+                  const progressBar = document.getElementById('progress-container');
+                  progressBar.style.display = 'none';
+                  const load = document.getElementById('load');
+                  load.classList.add('d-none');
+            }
+            hideProgressBar();
+      }, 1500)
+      const about = document.getElementById('about');
+      const zoomContainer = document.getElementById('zoom-container');
+      let scaleValue = 1;
+      zoomContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY || e.detail || e.wheelDelta;
+            scaleValue += delta * 0.005;
+            scaleValue = Math.max(1, Math.min(9, scaleValue));
+            about.style.transform = `scale(${scaleValue})`;
+
+            if (scaleValue > 8) {
+                  about.classList.add('scale-greater-than-6');
+                  about.classList.remove('scale-less-than-6');
+            } else {
+                  about.classList.remove('scale-greater-than-6');
+                  about.classList.add('scale-less-than-6');
+            }
+            if (scaleValue === 1) {
+                  window.scrollTo(0, 0);
+            }
+      });
+      $(document).ready(function () {
+            $(window).scroll(function () {
+                  if ($(this).scrollTop() > 0) {
+                        $('.loader').addClass('show-anime');
+                        $('.about').removeClass('scale-less-than-6');
+                        $('.about').addClass('show-anime');
+                        $('.div2').addClass('on-top');
+                  } else {
+                        $('.about').addClass('scale-less-than-6');
+                        $('.about').removeClass('show-anime');
+                        $('.loader').removeClass('show-anime');
+                        $('.div2').removeClass('on-top');
+                  }
+            });
+      });
 </script>
-<body onload="start()">
-    <!-- HEADER DE NOTICIA -->
-    <header style="height: 25px; z-index: 1;" id="news-header" class="w3-black w-100 position-fixed d-flex align-items-center">
-        <div id="bt-l"></div>
-        <marquee class="w3-black" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-            <span class="text-danger">ATENÇÃO:</span> gostaria de deixar meus mais profundos agradecimentos pela visitar ao site, se gostou ou pelomenos achou deveras interessante <span class="text-warning">POR FAVOR</span> não deixe de dar uma olhada
-            nos repositórios disponíveis no GIT, e levar em conta as ferramentas feitas pra vc! dê uma olhada <a href="https://silly-entremet-afbd24.netlify.app/" class="text-info">"Clique aqui"<a>
-        </marquee>
-        <div id="bt-r"></div>
-    </header>
-    <!-- CORPO DO SITE -->
-    <main style="margin-top: 25px;" class="title position-absolute h-100 w-100 d-flex">
-        <!-- PARTE LEFT -->
-        <div id="t-left" class="w-15 position-fixed left-0 h-100 c-l">
-            <!-- MODAL DEV -->
-            <header class="w-100 p-3 d-flex h-auto justify-content-center align-items-center">
-                <i class="fas text-info fa-terminal fa-2x" aria-hidden="true"></i>
-                <div style="margin-top: 0.6rem; padding: 0 1rem;" class="d-flex align-items-center">
-                    <h6 class=" text-info font-weight-bold">DEV</h6>
-                    <h6 class="text-light">.Jr</h6>
-                </div>
-            </header>
-            <!-- ICONS LINKS -->
-            <article class="h-auto position-reative align-items center">
-                <section class="section-icons"> 
-                    <ul class="icon-list">
-                      <li class="icon-item text-web-center" 
-                            data-toggle="tooltip" data-placement="right" title="My inactive">
-                        <a href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" 
-                        class="icon-link"><i class="fab fa-facebook-f"></i></a>
-                      </li>
-                      <li class="icon-item text-web-center" data-toggle="tooltip" data-placement="right" title="My repositories">
-                        <a href="https://github.com/luishdsg"
-                        class="icon-link"><i class="fab fa-github"></i></a>
-                      </li>
-                      <li class="icon-item text-web-center" data-toggle="tooltip" data-placement="right" title="My linkedin and all">
-                        <a href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes/" 
-                        class="icon-link"><i class="fab fa-linkedin-in"></i></a>
-                      </li>    
-                      <li class="icon-item text-web-center" data-toggle="tooltip" data-placement="right" title="My online portfolio">
-                        <a href="./src/Luis-Henrique-Da-Silva-Gomes.pdf" 
-                        class="icon-link"><i class="fa fa-file"></i></a>
-                      </li>
-                      
-                      
-                    </ul>
-                  </section>
-                <!-- <div id="social-web" class="row pt-5 d-block text-center">
-                    <div class="col pv-3">
-                        <a id="face" title="raramente utilizo" style="  color: #ffffff36;" href="https://www.facebook.com/LuisHenriqueDaSilvaGomesSantos" class="face">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                    </div>
-                    <div class="col pv-3">
-                        <a id="git" title="estou sempre realizando pulls" style="  color: #ffffff36;" href="https://github.com/luishdsg" class="face">
-                            <i class="bi bi-github"></i>
-                        </a>
-                    </div>
-                    <div class="col pv-3">
-                        <a id="link" title="só há postagens de conquistas, nada muito pessoal" style="  color: #ffffff36;" href="https://www.linkedin.com/in/luis-henrique-da-silva-gomes-035317194/" class="face">
-                            <i class="bi bi-linkedin"></i>
-                        </a>
-                    </div>
-                    <div class="col pv-3">
-                        <a id="web" title="projetos do aprendizado inicial " style="  color: #ffffff36;" href="https://goofy-hoover-0b75fe.netlify.app/" class="face">
-                            <i class="fas fa-globe"></i>
-                        </a>
-                    </div>
-                    <div class="col pv-3">
-                        <a id="curriculo" title="curriculo download" style="  color: #ffffff36;" href="./src/Luis_Henrique_Da_Silva_Gomes.pdf" class="face">
-                            <i class="fas fa-file-alt"></i>
-                        </a>
-                    </div>
-                </div> -->
-            </article>
-            <footer style="bottom: 5%;" class="text-light font-weight-normal position-absolute w-100 text-align-center">
-                <span>Made with 
-                    <i class="bi bi-heart-fill text-danger"></i>
-                </span>@
-                <span id="year"></span>
-            </footer>
-        </div>
-        <!-- PARTE CENTRAL -->
-        <div style="margin-left: 15%;" class="w-70 h-100 position-absolute c-c">
-            <div class="w-100 text-web-center">
-                <div class="max-w-1300">
-                    <!-- SKILS -->
-                    <article id="centro" class="row top-0 d-block mt-0 mr-0 ml-0 w-100">
-                        <div id="infos" class="col h-50 w-100 ph">
-                            <div class="w-100 pt-4 d-flex align-items-center h-auto">
-                                <div class="w-auto">
-                                    <div style="text-align: -webkit-center;" class="w-100">
-                                        <div id="img-prof"></div>
-                                    </div>
-                                    <div class="w-100 align-content-center">
-                                        <h6 class="text-info text-align-center font-weight-bold pt-2">DESENVOLVEDOR JR</h6>
-                                        <div style="font-size: 10px;" class="d-flex text-light align-items-center justify-content-center">
-                                            <span class="pr-1">21 anos</span> • 
-                                            <span class="pl-1"> solteiro</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="titulo-principal">Sou um desenvolvedor front-end com
-mais de um ano de experiência. Minhas
-habilidades incluem (HTML5, CSS3,
-jQuery, REST API, iONIC, Angular, Node.js
-TypeScript,JavaScript. . .etc) Tenho
-expertise em manutenção de sites e
-aplicações web, além de trabalhar com
-bibliotecas como React e Bootstrap 5.
-Estou focado em entregar soluções de
-alta performance para atender às
-demandas do mercado.
-</p>
-                            </div>
-                        </div>
-                        <div id="skill" class="col ph pt-4 w-100 h-50 ">
-                            <div class="text-light align-items-center justify-content-center">
-                                <h1 class="">skills</h1>
-                                <span>habilidades & competências</span>
-                            </div>
-                            <div class="row">
-                                <div class="col skills">
-                                    <div style="display:none;text-align: left;" id="info-html" class="container infos">
-                                        <p class="text-light fz-1">Tenho grande conhecimento nessa ferramenta</p>
-                                    </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart orange">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="100, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="html-5" class="percentage">Html5</text>
-                                        </svg>
-                                    </div>
-                                    <div class="col skills">
-                                        <div style="display:none;text-align: left;" id="info-css" class="container infos">
-                                            <p class="text-light fz-1">Sou muito bom nisso!</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart blue">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="90, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="css-3" class="percentage">Css3</text>
-                          </svg>
-                                    </div>
-                                    <div class="col skills">
-                                        <div style="display:none;text-align: left;" id="info-js" class="container infos">
-                                            <p class="text-light fz-1">Veja uma das minhas <a href="https://goofy-hoover-0b75fe.netlify.app/">Coisas</a> e tire suas conclusões</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart yellow">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="70, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="js" class="percentage">Java Script</text>
-                          </svg>
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col skills" id="c-react">
-                                        <div style="display:none;text-align: left;" id="info-react" class="container infos">
-                                            <p class="text-light fz-1">Paginação e manipulação de rotas, conecção com DB...</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart blur">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="60, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="react" class="percentage">React</text>
-                          </svg>
-                                    </div>
-                                    <div class="col skills" id="c-node">
-                                        <div style="display:none;text-align: left;" id="info-node" class="container infos">
-                                            <p class="text-light fz-1">Servidor com back-end em JS</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart green">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="70, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="node" class="percentage">Node Js</text>
-                          </svg>
-                                    </div>
-                                    <div class="col skills" id="c-git">
-                                        <div style="display:none;text-align: left;" id="info-git" class="container infos">
-                                            <p class="text-light fz-1">Pull requests, commits com niveis de permições...</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart purple">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="90, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="gits"class="percentage">Git</text>
-                          </svg>
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col skills" id="c-angular">
-                                        <div style="display:none;text-align: left;" id="info-angular" class="container infos">
-                                            <p class="text-light fz-1">Controle de Componentes, adição de funcionalidades aos modulos, ordenação de dadps da API...etc</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart red">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="60, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="angular" class="percentage">Angular</text>
-                          </svg>
-                                    </div>
-                                    <div class="col skills" id="c-ts">
-                                        <div style="display:none;text-align: left;" id="info-ts" class="container infos">
-                                            <p class="text-light fz-1">Construção com framework angular para deploy e build como apps para android e IOS...</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart azul">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="80, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="react" class="percentage">Ionic</text>
-                          </svg>
-                                    </div>
-                                    <div class="col skills" id="c-ts">
-                                        <div style="display:none;text-align: left;" id="info-ts" class="container infos">
-                                            <p class="text-light fz-1">Superset que potencializa a linguagem JS e melhora na detecção de erros já q é um compilado e ajuda em ser tipada como muitas outras...</p>
-                                        </div>
-                                        <svg viewBox="0 0 36 36" class="circular-chart azul">
-                            <path class="circle-bg"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <path class="circle"
-                              stroke-dasharray="50, 100"
-                              d="M18 2.0845
-                                a 15.9155 15.9155 0 0 1 0 31.831
-                                a 15.9155 15.9155 0 0 1 0 -31.831"
-                            />
-                            <text x="18" y="20.35" id="react" class="percentage">TypeScript</text>
-                          </svg>
-                                    </div>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- CERTIFICAÇÕES -->
-                    <article style="padding: 5rem 0;" class="row top-0 mt-0 mr-0 ml-0 w-100">
-                        <div class="text-light w-100 py-4 text-center">
-                            <h1 class="">Certificações</h1>
-                        </div>
-                        <div class="slider mt-4">
-                            <div class="slide-track">
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://community.udemy.com/t5/image/serverpage/image-id/5267i07ADA4BE049629C1?v=v2" class="slide-logo">
-                                    <h6 class="text-light slide-txt">ReactJS &<br/> NODE JS</h6>
-                                    <span>2020</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://community.udemy.com/t5/image/serverpage/image-id/5267i07ADA4BE049629C1?v=v2" class="slide-logo">
-                                    <h6 class="text-light slide-txt">Java: Fundamentals of Programming</h6>
-                                    <span>2019</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://community.udemy.com/t5/image/serverpage/image-id/5267i07ADA4BE049629C1?v=v2" class="slide-logo">
-                                    <h6 class="text-light slide-txt">Full Stack Web Development Project 2021</h6>
-                                    <span>2021</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <div class="slide-logo">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="92" height="37" fill="none" viewBox="0 0 92 37" class="indexstyled__Logo-sc-1xzoakb-1 hJoHnk"><title>DIO Logo</title><path fill="url(#paint0_linear)" d="M63.102 36.11c8.685 0 15.726-7.04 15.726-15.725 0-8.685-7.04-15.725-15.726-15.725S47.375 11.7 47.375 20.385c0 8.685 7.041 15.725 15.727 15.725z"></path><path fill="url(#paint1_linear)" d="M39.413 12.425c3.325 0 6.02-2.781 6.02-6.213 0-3.43-2.696-6.212-6.02-6.212-3.324 0-6.018 2.781-6.018 6.212 0 3.432 2.694 6.213 6.018 6.213z"></path><path fill="#F34C5D" d="M85.432 36.102c3.431 0 6.213-2.695 6.213-6.019 0-3.324-2.782-6.018-6.213-6.018-3.432 0-6.213 2.694-6.213 6.018s2.781 6.019 6.213 6.019z"></path><path fill="url(#paint2_linear)" d="M31.453.387c-4.02 0-7.48 2.326-9.133 5.713a15.58 15.58 0 00-6.61-1.453C7.034 4.647 0 11.691 0 20.378c0 8.687 7.034 15.731 15.71 15.731 8.676 0 15.71-7.044 15.71-15.731l.033-19.99z"></path><path fill="url(#paint3_linear)" d="M39.369 12.425a5.976 5.976 0 00-5.974 5.974v18.1c6.651 0 12.037-5.386 12.037-12.037v-5.974a6.07 6.07 0 00-6.063-6.063z"></path><defs><linearGradient id="paint0_linear" x1="47.367" x2="78.829" y1="20.386" y2="20.386" gradientUnits="userSpaceOnUse"><stop stop-color="#6948D0"></stop><stop offset="1" stop-color="#DF4D68"></stop></linearGradient><linearGradient id="paint1_linear" x1="33.395" x2="45.428" y1="6.216" y2="6.216" gradientUnits="userSpaceOnUse"><stop stop-color="#4E67DE"></stop><stop offset="1" stop-color="#6948D0"></stop></linearGradient><linearGradient id="paint2_linear" x1="-0.008" x2="31.454" y1="18.25" y2="18.25" gradientUnits="userSpaceOnUse"><stop stop-color="#18B0F4"></stop><stop offset="1" stop-color="#4E67DE"></stop></linearGradient><linearGradient id="paint3_linear" x1="33.39" x2="45.427" y1="24.465" y2="24.465" gradientUnits="userSpaceOnUse"><stop stop-color="#4E67DE"></stop><stop offset="1" stop-color="#6948D0"></stop></linearGradient></defs></svg>
-                                    </div>
-                                    <h6 class="text-light pt-3 slide-txt">Introduction to <br/>HTML5 and CSS3</h6>
-                                    <span>2016</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://media.glassdoor.com/sqll/2060356/gracom-school-of-visual-effects-squarelogo-1576736986978.png" class="slide-logo">
-                                    <h6 class="text-light slide-txt">Adobe <br/> Tools</h6>
-                                    <span>2016</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/RECODE_logo_2015.svg/1280px-RECODE_logo_2015.svg.png" class="slide-logo">
-                                    <h6 class="text-light pt-4 slide-txt">Application project management</h6>
-                                    <span>2021</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/RECODE_logo_2015.svg/1280px-RECODE_logo_2015.svg.png" class="slide-logo">
-                                    <h6 class="text-light pt-4 slide-txt">Programming <br/> Logic</h6>
-                                    <span>2021</span>
-                                </div>
-                                <div class="slide d-block text-web-center">
-                                    <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQFC6YLsMnlmcg/company-logo_200_200/0/1543366921185?e=1669852800&v=beta&t=ckVvCUOUU0K2m8wWY2nRC4UnNxiQAgYZMbLYQ-EYiHQ" class="slide-logo">
-                                    <h6 class="text-light slide-txt">Excel <br/> Advanced</h6>
-                                    <span>2017</span>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </article>
-                    <!-- ESCOLARIDADE -->
-                    <div class="text-light w-100 py-4 text-center">
-                        <h1 class="">Escolaridade</h1>
-                    </div>
-                    <!-- CARD DA ESCOLARIDADE -->
-                    <article style="padding: 0 10%;" class="w-100">
-                        <div class="card w-100 cart">
-                            <div style="border-radius: 2rem;" class="w3-black position-absolute w-100 h-100 top-0 left-0">
-                                <div id="school" class=" h-100 d-flex col w-100 neon-btn">
-                                    <div class=" h-auto col w-100 ">
-                                        <div class="w-100 h-auto align-items-center text-left d-flex">
-                                            <i class="fas fa-university"></i>
-                                            <h6 class="mb-0 pl-2"> CENTRO DE ENSINO EURO-AMERICANO</h6>
-                                        </div>
-                                        <div class="w-100 h-auto align-items-center text-left d-flex">
-                                            <span class="analise">ENGENHARIA DE SOFTWARE</span>
-                                        </div>
-                                        <div class="w-100 h-auto align-items-center text-left d-flex">
-                                            <h5 class="">10.02.20 - 20.12.24 - 6°SEM</h5>
-                                        </div>
-                                    </div>
-                                    <hr class="hr" />
-                                    <div class=" h-auto col w-100 ">
-                                        <p class="">Habilidades</p>
-                                        <div class="row">
-                                            <div style="display: inline-grid;" class="col align-items-center text-align-center">
-                                                <i class="fab fa-bootstrap"></i><span style="font-size: 11px;">Bootstrap</span>
-                                            </div>
-                                            <div style="display: inline-grid;" class="col align-items-center text-align-center">
-                                                <i class="fab fa-js-square"></i><span style="font-size: 11px;">Jquery</span>
-                                            </div>
-                                            <div style="display: inline-grid;" class="col align-items-center text-align-center">
-                                                <i class="fab fa-slack"></i><span style="font-size: 11px;">Slack</span>
-                                            </div>
-                                            <div style="display: inline-grid;" class="col align-items-center text-align-center">
-                                                <i class="fab fa-atlassian"></i><span style="font-size: 11px;">Atlassian</span>
-                                            </div>
-                                            <div style="display: inline-grid;" class="col align-items-center text-align-center">
-                                                <i class="fas fa-database"></i><span style="font-size: 11px;">MySql</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <!-- COOCKIE-CAT -->
-             
-                    <article id="article-coockie">   
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-3">
-                                 <iframe src="./src/pages/catcookies.html" class="cookie-cat border-none"></iframe>
-                            </div>
-                            <div class="col-md-6 align-self-center">
-                                <h5 class="text-light txt-coockie text-left fz-">
-                                    Olá  <span id="info" class="bo text-white"></span> , este site utiliza seus dados para fins meramente acadêmicos, pf aperte no botão ao lado e nos ajude 🖖.
-                                </h6>
-                            </div>
-                            <div class="col-md-3 align-self-center">
-                                <button onclick="dropcoockie()" class='five'>Aceitar o <b>Coockie</b></button>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-        <!-- PARTE RIGHT -->
-        <div style="top:0;" class="w-15 right-0 position-fixed c-r">
-                <div class="d-flex row align-items-center pt-5 ph-1 ctr text-align-center">
-                    <div class="col">
-                        <button onclick="Open();" class="p-2 border-none bg-none">
-                            <i style="opacity: .3;" class="fas fa-2x text-light fa-solid fa-address-book"></i>
-                    </button>
-                        <h6 class="text-light">Contato</h6>
-                    </div>
-                    <div class="col">
-                        <button onclick="OpenFeed();" class="p-2 border-none bg-none">
-                            <i style="opacity: .3;" class="fas text-light fa-2x fa-solid fa-comment"></i>
-                        </button>
-                        <h6 class="text-light">Feedback</h6>
-                    </div>
-                </div>
-                <div id="blur" style="display: none;" class="w-100 h-100 position-fixed"></div>
-                <!-- CARD CONTACT -->
-                <div id="contact" style="display: none;" class="w-50 position-fixed top-0 h-100 align-items-center ">
-                    <div id="close" class="text-danger position-absolute h-auto w-fit" onclick="Close();"><i class="bi bi-x-lg"></i>
-                    </div>
-                    <h3 class="text-light">Contato</h3>
-                    <div style="text-align: left;" class="w3-black card">
-                        <div class="card-back">
-                            <div class="line-numbers">
-                                <div>1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>4</div>
-                                <div>5</div>
-                                <div>6</div>
-                                <div>7</div>
-                                <div>8</div>
-                                <div>9</div>
-                            </div><code><span class="variable">const </span><span class="function">aboutMe </span><span class="operator">= </span><span>{</span>
-                            <div class="indent"> <span class="property">name</span><span class="operator">: </span><span class="string">'Luis Henrique da Silva Gomes'</span><span>,</span></div>
-                            <div class="indent"> <span class="property">title</span><span class="operator">: </span><span class="string">'Mr. Dev/Dev Jr'</span><span>,</span></div>
-                            <div class="indent"> <span class="property">contact</span><span class="operator">: </span><span>{</span>
-                              <div class="indent"> <span class="property">email</span><span class="operator">: </span><span class="string">'luis.hdsg@gmail.com'</span><span>,</span></div>
-                              <div class="indent"> <span class="property">Tel</span><span class="operator">: </span><span class="string">'(61) 99192-5914'</span><span>,</span></div>
-                              <div class="indent"><span class="property">E.D</span><span class="operator">:</span><span class="string">'Brasília-DF'</span></div><span>}</span>
-                            </div><span>}</span></code>
-                        </div>
-                        <div class="card-front">
-                            <div class="line-numbers">
-                                <div>1</div>
-                                <div>2</div>
-                                <div>3</div>
-                                <div>4</div>
-                                <div>5</div>
-                                <div>6</div>
-                                <div>7</div>
-                                <div>8</div>
-                                <div>9</div>
-                            </div><code><span class="variable">this</span><span>.</span><span class="method">addEventListener</span><span>(</span><span class="string">'mouseover'</span><span>, </span><span class="function">() => </span><span>{ </span>
-                            <div class="indent"><span class="variable">this</span><span>.</span><span class="property">flipCard </span><span>= </span><span class="boolean">true</span><span>;</span></div><span>});</span></code>
-                        </div>
-                    </div>
-                </div>
-                <!-- FEEDBACK -->
-                <div id="painel" style="display: none;" class="w-50 position-fixed top-0 h-100 align-items-center ">
-                    <div id="close" class="text-danger position-absolute h-auto w-fit" onclick="Close();"><i class="bi bi-x-lg"></i>
-                    </div>
-                    <iframe style="padding: 0 4%;" class="w-100 h-100 border-none" src="./src/pages/feedback.html" title="feedback"></iframe>
-                    <a onclick="circleOk();" class="neon-button">
-                        <span id="send-feed">Enviar</span>
-                        <div style="display: none;" class="circle-ok">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-check"></i><span>Enviado</span>
-                            </div>
-
-                        </div>
-                    </a>
-                </div>
-                <!-- LINKS CERTIFICAÇÕES -->
-                <div class="w-100 h-auto p-3 align-items-center">
-                    <h5 class="text-light">Outras certificações</h5>
-                    <div class="" style="display: grid;">
-                        <a href="https://hermes.digitalinnovation.one/certificates/165BE287.pdf" class="">Git & GitHub</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/36E3BAFE.pdf" class="">HTML5 & CSS3</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/EA419927.pdf" class="">Bootcamp Santander</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/BF344B2D.pdf" class="">Lógica de programação essencial</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/75A653D7.pdf" class="">Bootcamp everis New Talent .NET</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/73E224F3.pdf" class="">Bootcamp Spread Java Developer</a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/17074ADA.pdf" class="">Lógica de Programação </a>
-                        <a href="https://hermes.digitalinnovation.one/certificates/670C78E7.pdf" class="">Estrutura de Dados e Algoritmos</a>
-                    </div>
-                </div>
-            </div>
-            </main>
-
-
-            <script id="rendered-js">
-                let max_particles = 1200;
-                let particles = [];
-                let frequency = 20;
-                let init_num = max_particles;
-                let max_time = frequency * max_particles;
-                let time_to_recreate = false;
-                const data = createCanvas();
-                let tela = data[0];
-                let canvas = data[1];
-
-                // Enable repopolate
-                setTimeout(function() {
-                    time_to_recreate = true;
-                }.bind(this), max_time);
-
-                // Popolate particles
-                popolate(max_particles);
-
-                class FishEgg {
-                    constructor(canvas) {
-                        const random = Math.random();
-                        this.progress = 0;
-                        this.canvas = canvas;
-                        // Set position
-                        this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-                        this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
-                        // Get viewport size
-                        this.w = $(window).width();
-                        this.h = $(window).height();
-
-                        // Dimension
-                        this.radius = 12 + Math.random() * 6;
-                        // Color
-                        this.color = "green";
-                        // Setting
-                        this.fish_egg = {
-                            offset1: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-                            offset2: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-                            offset3: Math.random() > 0.5 ? 0.5 + Math.random() * 3 : 0.5 + Math.random() * -3,
-                            radius1: 0.5 + Math.random() * 5,
-                            radius2: 0.5 + Math.random() * 5,
-                            radius3: 0.5 + Math.random() * 5
-                        };
-
-                        this.variantx1 = Math.random() * 100;
-                        this.variantx2 = Math.random() * 100;
-                        this.varianty1 = Math.random() * 100;
-                        this.varianty2 = Math.random() * 100;
-                    }
-
-                    createCircle(x, y, r, c) {
-                        this.canvas.beginPath();
-                        this.canvas.fillStyle = c;
-                        this.canvas.arc(x, y, r, 0, false);
-                        this.canvas.fill();
-                        this.canvas.closePath();
-                    }
-
-                    createEyes() {
-                        this.createCircle(this.x + this.fish_egg.offset2, this.y + this.fish_egg.offset2, this.fish_egg.radius2 + 4, "rgba(241, 242, 244, 0.06)");
-                        this.createCircle(this.x + this.fish_egg.offset3, this.y + this.fish_egg.offset3, this.fish_egg.radius3 + 2, "rgba(255, 204, 67, 0.08)");
-                        this.createCircle(this.x + Math.random(this.progress / 350) * this.fish_egg.offset1, this.y + Math.random(this.progress / 350) * this.fish_egg.offset1, this.fish_egg.radius1, "rgba(152, 19, 4, 0.19)");
-                    }
-
-                    render() {
-                        // Create inside parts
-                        this.createEyes();
-
-                        this.canvas.beginPath();
-                        let c = '130, 151, 180';
-                        let rad = this.canvas.createRadialGradient(this.x, this.y, this.radius, this.x, this.y, 1);
-                        rad.addColorStop(0, 'rgba(' + c + ',0.09)');
-                        rad.addColorStop(0.9, 'rgba(' + c + ',0)');
-                        this.canvas.lineWidth = Math.random() * 2.2;
-                        this.canvas.fillStyle = rad;
-                        this.canvas.arc(this.x, this.y, this.radius, 0, false);
-                        this.canvas.fill();
-                        this.canvas.strokeStyle = "rgba(255, 255, 217, 0.05)";
-                        this.canvas.stroke();
-                        this.canvas.closePath();
-                    }
-
-                    move() {
-                        this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 8;
-                        this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 8;
-
-
-
-                        if (this.x < 0 || this.x > this.w - this.radius) {
-                            return false;
-                        }
-
-                        if (this.y < 0 || this.y > this.h - this.radius) {
-                            return false;
-                        }
-                        this.render();
-                        this.progress++;
-                        return true;
-                    }
-                }
-
-
-                class FishLarva {
-                    constructor(canvas, progress) {
-                        const random = Math.random();
-                        this.progress = 0;
-                        this.canvas = canvas;
-                        this.speed = 0.5 + random * 1.3;
-
-                        this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-                        this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
-
-                        this.s = 0.8 + Math.random() * 0.6;
-                        this.a = 0;
-
-                        this.w = $(window).width();
-                        this.h = $(window).height();
-                        this.radius = random * 1.3;
-                        this.color = "#f69a34";
-
-                        this.variantx1 = Math.random() * 1000;
-                        this.variantx2 = Math.random() * 1000;
-                        this.varianty1 = Math.random() * 1000;
-                        this.varianty2 = Math.random() * 1000;
-                    }
-
-                    render() {
-                        this.canvas.beginPath();
-                        this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-                        this.canvas.lineWidth = 2;
-                        this.canvas.fillStyle = this.color;
-                        this.canvas.fill();
-                        this.canvas.closePath();
-                    }
-
-                    move() {
-                        // this.x += (Math.sin(this.progress/this.variantx1)*Math.cos(this.progress/this.variantx2))/this.speed;
-                        // this.y += (Math.sin(this.progress/this.varianty1)*Math.cos(this.progress/this.varianty2))/this.speed;
-                        this.x += Math.cos(this.a) * this.s;
-                        this.y += Math.sin(this.a) * this.s;
-                        this.a += Math.random() * 0.8 - 0.4;
-                        if (this.x < 0 || this.x > this.w - this.radius) {
-                            return false;
-                        }
-
-                        if (this.y < 0 || this.y > this.h - this.radius) {
-                            return false;
-                        }
-                        this.render();
-                        this.progress++;
-                        return true;
-                    }
-                }
-
-
-
-                class FishLarvaEgg {
-                    constructor(canvas, progress) {
-                        const random = Math.random();
-                        this.progress = 0;
-                        this.canvas = canvas;
-                        this.speed = 0.5 + random * 0.2;
-
-                        this.x = $(window).width() / 2 + (Math.random() * 200 - Math.random() * 200);
-                        this.y = $(window).height() / 2 + (Math.random() * 200 - Math.random() * 200);
-
-                        this.s = Math.random() * 1;
-                        this.a = 0;
-
-                        this.w = $(window).width();
-                        this.h = $(window).height();
-                        this.radius = random * 0.8;
-                        this.color = random > 0.8 ? "#82a0c4" : "#2E4765";
-
-                        this.variantx1 = Math.random() * 100;
-                        this.variantx2 = Math.random() * 100;
-                        this.varianty1 = Math.random() * 100;
-                        this.varianty2 = Math.random() * 100;
-                    }
-
-                    render() {
-                        this.canvas.beginPath();
-                        this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-                        this.canvas.lineWidth = 2;
-                        this.canvas.fillStyle = this.color;
-                        this.canvas.fill();
-                        this.canvas.closePath();
-                    }
-
-                    move() {
-                        this.x += Math.cos(this.a) * this.s;
-                        this.y += Math.sin(this.a) * this.s;
-                        this.a += Math.random() * 0.8 - 0.4;
-
-                        if (this.x < 0 || this.x > this.w - this.radius) {
-                            return false;
-                        }
-
-                        if (this.y < 0 || this.y > this.h - this.radius) {
-                            return false;
-                        }
-                        this.render();
-                        this.progress++;
-                        return true;
-                    }
-                }
-
-
-                class Paramecium {
-                    constructor(canvas) {
-                        const random = Math.random();
-                        this.progress = 0;
-                        this.canvas = canvas;
-                        // Set position
-                        this.x = $(window).width() / 2 + (Math.random() * 300 - Math.random() * 300);
-                        this.y = $(window).height() / 2 + (Math.random() * $(window).height() / 4 - Math.random() * $(window).height() / 4);
-                        // Get viewport size
-                        this.w = $(window).width();
-                        this.h = $(window).height();
-                        this.rotation = random * 180 * Math.PI / 180;
-                        // Dimension
-                        this.radius = 12 + Math.random() * 6;
-                        // Color
-                        this.color = "rgba(255,255,255,1)";
-                        // Setting
-                        this.variantx1 = Math.random() * 100;
-                        this.variantx2 = Math.random() * 100;
-                        this.varianty1 = Math.random() * 100;
-                        this.varianty2 = Math.random() * 100;
-                    }
-
-                    createOval(x, y, w, h) {
-                        var kappa = .5522848,
-                            ox = w / 2 * kappa, // control point offset horizontal
-                            oy = h / 2 * kappa, // control point offset vertical
-                            xe = x + w, // x-end
-                            ye = y + h, // y-end
-                            xm = x + w / 2, // x-middle
-                            ym = y + h / 2; // y-middle
-
-                        this.canvas.save();
-
-                        this.canvas.translate(this.w / 2, this.h / 2);
-
-                        // Rotate 1 degree
-                        this.canvas.rotate(this.rotation);
-
-                        // Move registration point back to the top left corner of canvas
-                        this.canvas.translate(-this.w / 2, -this.h / 2);
-
-                        this.canvas.beginPath();
-                        this.canvas.moveTo(x, ym);
-                        this.canvas.quadraticCurveTo(x, y, xm, y);
-                        this.canvas.quadraticCurveTo(xe, y, xe, ym);
-                        this.canvas.quadraticCurveTo(xe, ye, xm, ye);
-                        this.canvas.quadraticCurveTo(x, ye, x, ym);
-
-                        this.canvas.strokeStyle = 1;
-                        this.canvas.fillStyle = "rgba(255,255,255,0.01)";
-                        this.canvas.fill();
-                        this.canvas.stroke();
-                        this.canvas.restore();
-                    }
-
-                    render() {
-                        // Create inside parts
-                        this.createOval(this.x, this.y, 12, 4);
-                    }
-
-                    move() {
-                        this.x += Math.sin(this.progress / this.variantx1) * Math.cos(this.progress / this.variantx2) / 4;
-                        this.y += Math.sin(this.progress / this.varianty1) * Math.cos(this.progress / this.varianty2) / 4;
-
-                        if (this.x < 0 || this.x > this.w - this.radius) {
-                            return false;
-                        }
-
-                        if (this.y < 0 || this.y > this.h - this.radius) {
-                            return false;
-                        }
-                        this.render();
-                        this.progress++;
-                        return true;
-                    }
-                }
-
-
-                /*
-                 * Function to create canvas
-                 */
-                function createCanvas() {
-                    let tela = document.createElement('canvas');
-                    tela.width = $(window).width();
-                    tela.height = $(window).height();
-                    $("body").append(tela);
-                    let canvas = tela.getContext('2d');
-                    return [tela, canvas];
-                }
-
-                /*
-                 * Function to clear layer canvas
-                 * @num:number number of particles
-                 */
-                function popolate(num) {
-                    for (var i = 0; i < num; i++) {
-                        setTimeout(
-                            function(x) {
-                                return function() {
-                                    let random = Math.random();
-                                    // ------------------------------------
-                                    // Set type of planktom
-                                    let type = new FishLarva(canvas);
-                                    if (!time_to_recreate) {
-                                        if (random > .97) type = new FishEgg(canvas);
-                                        if (random < .1 && random > 0) type = new Paramecium(canvas);
-                                    }
-                                    if (random > .1 && random < .8) type = new FishLarvaEgg(canvas);
-
-                                    // if(random < .1) this.type  = "bryozoan"
-                                    // ------------------------------------
-                                    // Add particle
-                                    particles.push(type);
-                                };
-                            }(i),
-                            frequency * i);
-                    }
-                    return particles.length;
-                }
-
-                /*
-                 * Function to clear layer canvas
-                 */
-                function clear() {
-                    let grd = canvas.createRadialGradient(tela.width / 2, tela.height / 2, 0, tela.width / 2, tela.height / 2, tela.width);
-                    grd.addColorStop(0, "rgba(25,25,54,0.12)");
-                    grd.addColorStop(1, "rgba(0,0,20,0.01)");
-                    // Fill with gradient
-                    canvas.fillStyle = grd;
-                    canvas.fillRect(0, 0, tela.width, tela.height);
-                }
-
-                /*
-                 * Function to update particles in canvas
-                 */
-                function update() {
-                    clear();
-                    particles = particles.filter(function(p) {
-                        return p.move();
-                    });
-                    // Recreate particles
-                    if (time_to_recreate) {
-                        if (particles.length < init_num) {
-                            popolate(1);
-                        }
-                    }
-                    requestAnimationFrame(update.bind(this));
-                }
-                // Update canvas
-                update();
-                //# sourceURL=pen.js
-            </script>
-</body>
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
- <script> 
-var _a, _b;
-// Bongo Cat originally created by @StrayRogue and @DitzyFlama
-const ID = "bongo-cat";
-const s = (selector) => `#${ID} ${selector}`;
-const notes = document.querySelectorAll(".note");
-for (let note of notes) {
-    (_a = note === null || note === void 0 ? void 0 : note.parentElement) === null || _a === void 0 ? void 0 : _a.appendChild(note.cloneNode(true));
-    (_b = note === null || note === void 0 ? void 0 : note.parentElement) === null || _b === void 0 ? void 0 : _b.appendChild(note.cloneNode(true));
-}
-const music = { note: s(".music .note") };
-const cat = {
-    pawRight: {
-        up: s(".paw-right .up"),
-        down: s(".paw-right .down"),
-    },
-    pawLeft: {
-        up: s(".paw-left .up"),
-        down: s(".paw-left .down"),
-    },
-};
-const style = getComputedStyle(document.documentElement);
-const green = style.getPropertyValue("--green");
-const pink = style.getPropertyValue("--pink");
-const blue = style.getPropertyValue("--blue");
-const orange = style.getPropertyValue("--orange");
-const cyan = style.getPropertyValue("--cyan");
-gsap.set(music.note, { scale: 0, autoAlpha: 1 });
-const animatePawState = (selector) => gsap.fromTo(selector, { autoAlpha: 0 }, {
-    autoAlpha: 1,
-    duration: 0.01,
-    repeatDelay: 0.19,
-    yoyo: true,
-    repeat: -1,
-});
-const tl = gsap.timeline();
-tl.add(animatePawState(cat.pawLeft.up), "start")
-    .add(animatePawState(cat.pawRight.down), "start")
-    .add(animatePawState(cat.pawLeft.down), "start+=0.19")
-    .add(animatePawState(cat.pawRight.up), "start+=0.19")
-    .timeScale(1.6);
-gsap.from(".terminal-code line", {
-    drawSVG: "0%",
-    duration: 0.1,
-    stagger: 0.1,
-    ease: "none",
-    repeat: -1,
-});
-// typing for pipe function doesn't seem to be working for usage when partially applied?
-const noteElFn = gsap.utils.pipe(gsap.utils.toArray, gsap.utils.shuffle);
-const noteEls = noteElFn(music.note);
-const numNotes = noteEls.length / 3;
-const notesG1 = noteEls.splice(0, numNotes);
-const notesG2 = noteEls.splice(0, numNotes);
-const notesG3 = noteEls;
-const colorizer = gsap.utils.random([green, pink, blue, orange, cyan, "#a3a4ec", "#67b5c0", "#fd7c6e"], true);
-const rotator = gsap.utils.random(-50, 50, 1, true);
-const dir = (amt) => `${gsap.utils.random(["-", "+"])}=${amt}`;
-const animateNotes = (els) => {
-    els.forEach((el) => {
-        gsap.set(el, {
-            stroke: colorizer(),
-            rotation: rotator(),
-            x: gsap.utils.random(-25, 25, 1),
-        });
-    });
-    return gsap.fromTo(els, {
-        autoAlpha: 1,
-        y: 0,
-        scale: 0,
-    }, {
-        duration: 2,
-        autoAlpha: 0,
-        scale: 1,
-        ease: "none",
-        stagger: {
-            from: "random",
-            each: 0.5,
-        },
-        rotation: dir(gsap.utils.random(20, 30, 1)),
-        x: dir(gsap.utils.random(40, 60, 1)),
-        y: gsap.utils.random(-200, -220, 1),
-        onComplete: () => animateNotes(els),
-    });
-};
-tl.add(animateNotes(notesG1)).add(animateNotes(notesG2), ">0.05").add(animateNotes(notesG3), ">0.25");
-
-  </script>
 </html>
