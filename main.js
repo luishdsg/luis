@@ -1,19 +1,4 @@
-//  
-// ██╗░░░██╗██╗███╗░░██╗░█████╗░██████╗░
-// ██║░░░██║██║████╗░██║██╔══██╗██╔══██╗
-// ╚██╗░██╔╝██║██╔██╗██║██║░░██║██║░░██║
-// ░╚████╔╝░██║██║╚████║██║░░██║██║░░██║
-// ░░╚██╔╝░░██║██║░╚███║╚█████╔╝██████╔╝
-// ░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚════╝░╚═════╝░
-// ░░░░░██╗░█████╗░███╗░░██╗░██████╗░██╗██████╗░
-// ░░░░░██║██╔══██╗████╗░██║██╔════╝░██║██╔══██╗
-// ░░░░░██║███████║██╔██╗██║██║░░██╗░██║██║░░██║
-// ██╗░░██║██╔══██║██║╚████║██║░░╚██╗██║██║░░██║
-// ╚█████╔╝██║░░██║██║░╚███║╚██████╔╝██║██████╔╝
-// ░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝╚═════╝░
 
-// preloader script............
-var audio = document.getElementById("audioPlayer");
 var loader = document.getElementById("preloader");
 window.addEventListener("load", function () {
   loader.style.display = "none";
@@ -28,15 +13,6 @@ function settingtoggle(){
   document.getElementById("visualmodetogglebuttoncontainer").classList.toggle('visualmodeshow');
   document.getElementById("soundtogglebuttoncontainer").classList.toggle('soundmodeshow');
 }
-function playpause() {
-  if (document.getElementById('switchforsound').checked == false) {
-    audio.pause();
-   }
-
- else{
-     audio.play();
- }
-  }
 
   function visualmode(){
     document.body.classList.toggle('light-mode');
