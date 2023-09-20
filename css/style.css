@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
 :root{
   --pattern: #e0c900;
+  --pink: #ED0DD9;
 }
 html,
 body {
@@ -109,4 +110,8 @@ body {
 }
 .h-vw {
   height: 100vw;
+}
+
+.cursor{
+  cursor: pointer;
 }
