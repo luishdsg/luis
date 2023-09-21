@@ -165,13 +165,12 @@
   overflow: hidden;
   width: 100%;
   text-align: left;
-  animation: typing .2s steps(200);
   top: 0%;
   position: relative;
   font-weight: 800;
   transition: .5S;
   margin: 0;
-  font-size: 1.8em;
+  font-size: 1.5em;
   text-align: left;
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
@@ -209,12 +208,13 @@
 
 
 .cta {
-    display: flex;
+    display: none;
     padding: 10px 45px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
     color: white;
+    font-weight: 800;
   border-radius: 100px;
     background: var(--pattern);
     transition: 1s;
@@ -290,4 +290,20 @@ path.two {
     100% {
         fill: white;
     }
+}
+
+.show-left{
+  animation: show_left 1s normal;
+  display: flex !important;
+}
+
+@keyframes show_left{
+  0%{
+    opacity: 0;
+    margin-left: -100px;
+  }
+  100%{
+    opacity: 1;
+    margin-left: 0px;
+  }
 }

@@ -1,0 +1,56 @@
+.div3 {
+  display: none;
+  z-index: 10;
+}
+
+.trans-1,
+.trans-2,
+.trans-3,
+.trans-4,
+.trans-5 {
+  transform: rotate(317deg);
+  position: absolute;
+  height: 5000px;
+  width: 5000px;
+  top: -2049px;
+  right: 0%;
+}
+.show-trans1 {
+  animation: trans;
+  animation-duration: 4s;
+}
+.show-trans2 {
+  animation: trans;
+  animation-duration: 4.3s;
+}
+
+.show-trans3 {
+  animation: trans;
+  animation-duration: 4.6s;
+}
+
+.show-trans4 {
+  animation: trans;
+  animation-duration: 4.9s;
+}
+.show-trans5 {
+  animation: trans;
+  animation-duration: 5.3s;
+}
+
+@keyframes trans {
+  0% {
+    top: 0px;
+    right: -325%;
+  }
+  85% {
+    top: -1500px;
+    height: 0%;
+    right: -120%;
+  }
+  100% {
+    top: -2049px;
+    right: 0%;
+    height: 0px;
+  }
+}

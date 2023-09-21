@@ -16,6 +16,7 @@
             rel="stylesheet">
       <link href="./css/style.css" rel="stylesheet">
       <link href="./css/about.css" rel="stylesheet">
+      <link href="./css/ex.css" rel="stylesheet">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>𝕃𝕦𝕚𝕤 ℍ𝕖𝕟𝕣𝕚𝕢𝕦𝕖 𝕕𝕒 𝕊𝕚𝕝𝕧𝕒 𝔾𝕠𝕞𝕖𝕤</title>
 </head>
@@ -71,8 +72,10 @@
                                                 <p class="p line11">
                                                 </p>
                                           </div>
-                                          <div class="d-flex nextEx cursor z-10 position-absolute top-0 right-0 justify-content-center">
+                                          <div
+                                                class="d-flex nextEx z-10 position-absolute top-0 right-0 justify-content-center">
                                                 <h5 class="cta">
+                                                      <span>Pular!</span>
                                                       <span>
                                                             <svg width="66px" height="43px" viewBox="0 0 66 43"
                                                                   version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +122,15 @@
             <div class="div2">
                   <iframe src="./pages/welcome.html" class="w-100 mt-0 pt-0 h-100"></iframe>
             </div>
-            <div style="height: 1000px; display: none;" class="w-100 w3-orange"></div>
+            <div class="w-100 div3 h-100">
+                  <div class="trans-1 bg-danger"></div>
+                  <div class="trans-2 bg-warning"></div>
+                  <div class="trans-3 bg-info"></div>
+                  <div class="trans-4 bg-light"></div>
+                  <div class="trans-5 w3-black"></div> 
+                  <iframe id="skills" src="./pages/skills.html" style="display: none;" class="w-100 mt-0 pt-0 h-100"></iframe>
+
+            </div>
       </div>
 </body>
 <script src="./js/anime-master/lib/anime.min.js"></script>
@@ -148,8 +159,16 @@
 
       const about = document.getElementById('about');
       const div1 = document.querySelector('.div1');
+      const div3 = document.querySelector('.div3');
+      const skills = document.getElementById('skills');
+      const trans1 = document.querySelector('.trans-1');
+      const trans2 = document.querySelector('.trans-2');
+      const trans3 = document.querySelector('.trans-3');
+      const trans4 = document.querySelector('.trans-4');
+      const trans5 = document.querySelector('.trans-5');
       const aboutInfo = document.querySelector('.about-info')
-      const nextEx = document.querySelector('.nextEx')
+      const customCursor = document.createElement('img');
+      const cta = document.querySelector('.cta')
       const zoomContainer = document.getElementById('zoom-container');
       const text1 = "Software Developer com mais de";
       const text2 = "2 anos de experiência,";
@@ -194,9 +213,6 @@
       }
 
       // ZOOM-FUNCTION-EFFECT-ABOUT
-
-
-
       function zooomAbout(e) {
             let scaleValue = 1;
             let executed = false;
@@ -248,24 +264,26 @@
                         });
                   });
                   console.log('ok')
+                  cta.classList.add('show-left')
                   executed = true;
             }
 
       }
       zoomContainer.addEventListener('wheel', zooomAbout);
       // CURSOR-ABOUT
-            const customCursor = document.createElement('img');
+
+
+      function updateCursorPosition(event) {
             customCursor.src = './assets/cursor.png';
-            customCursor.style.width = '32px'; // Defina a largura da imagem do cursor
-            customCursor.style.height = '32px'; // Defina a altura da imagem do cursor
-            customCursor.style.position = 'fixed'; // Mantém o cursor fixo na tela
-            customCursor.style.pointerEvents = 'none'; // Garante que o cursor não interfira com os elementos da página
+            customCursor.style.width = '32px';
+            customCursor.style.height = '32px';
+            customCursor.style.position = 'fixed';
+            customCursor.style.pointerEvents = 'none';
             document.body.style.cursor = 'none';
             document.body.appendChild(customCursor);
-            function updateCursorPosition(event) {
-                  customCursor.style.left = `${event.clientX}px`;
-                  customCursor.style.top = `${event.clientY}px`;
-            }
+            customCursor.style.left = `${event.clientX}px`;
+            customCursor.style.top = `${event.clientY}px`;
+      }
       // EFFECT -HOME-ABOUT
       $(document).ready(function () {
             $(window).scroll(function () {
@@ -275,17 +293,39 @@
                         $('.about').addClass('show-anime');
                         $('.div2').addClass('on-top');
                         document.addEventListener('mousemove', updateCursorPosition);
+
                   } else {
                         $('.about').addClass('scale-less-than-6');
                         $('.about').removeClass('show-anime');
                         $('.loader').removeClass('show-anime');
                         $('.div2').removeClass('on-top');
+                        document.removeEventListener('mousemove', updateCursorPosition);
+                        customCursor.src = './assets/b.png';
+
                   }
             });
       });
-      nextEx.addEventListener('click', experience);
-      function experience(){
+      cta.addEventListener('click', experience);
+      function experience() {
             console.log('next')
+            div3.style.display = 'block';
+            trans1.classList.add('show-trans1');
+            trans2.classList.add('show-trans2');
+            trans3.classList.add('show-trans3');
+            trans4.classList.add('show-trans4');
+            trans5.classList.add('show-trans5');
+            setTimeout(() => {
+                  $('.div2').addClass('d-none');
+                  $('.div1').addClass('d-none');
+                  skills.style.display = 'block';
+            }, 1000)
+            setTimeout(() => {
+                  trans1.classList.add('d-none');
+            trans2.classList.add('d-none');
+            trans3.classList.add('d-none');
+            trans4.classList.add('d-none');
+            trans5.classList.add('d-none');
+            },3000)
       }
 </script>
 
