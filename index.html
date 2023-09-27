@@ -1,803 +1,335 @@
+@@ -1,238 +0,0 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/skills.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Scroll Personalizado</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin-ext">
+      <meta charset="UTF-8">
+      <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,600;1,800&display=swap"
+            rel="stylesheet">
+      <link href="./css/style.css" rel="stylesheet">
+      <link href="./css/about.css" rel="stylesheet">
+      <link href="./css/ex.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>𝕃𝕦𝕚𝕤 ℍ𝕖𝕟𝕣𝕚𝕢𝕦𝕖 𝕕𝕒 𝕊𝕚𝕝𝕧𝕒 𝔾𝕠𝕞𝕖𝕤</title>
 </head>
 
-<body class="w3-black container">
-    <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
-        <defs>
-            <style>
-                @keyframes rotate {
-                    0% {
-                        transform: rotate(0deg);
-                    }
 
-                    100% {
-                        transform: rotate(360deg);
-                    }
-                }
+<div id="progress-container">
+      <div id="progress-bar"></div>
+</div>
 
-                .out-top {
-                    animation: rotate 20s linear infinite;
-                    transform-origin: 13px 25px;
-                }
+<body id="body">
+      <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed z-100 mt-0 pt-0 h-100"
+            id="load">
+            <div class="w-100 bg-transparent mt-0 pt-0 h-auto">
 
-                .in-top {
-                    animation: rotate 10s linear infinite;
-                    transform-origin: 13px 25px;
-                }
-
-                .out-bottom {
-                    animation: rotate 25s linear infinite;
-                    transform-origin: 84px 93px;
-                }
-
-                .in-bottom {
-                    animation: rotate 15s linear infinite;
-                    transform-origin: 84px 93px;
-                }
-            </style>
-        </defs>
-        <path fill="#232113" class="out-top"
-            d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z" />
-        <path fill="#e0c900" class="in-top"
-            d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z" />
-        <path fill="#ED0DD9" class="out-bottom"
-            d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z" />
-        <path fill="#11020f" class="in-bottom"
-            d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z" />
-    </svg>
-
-    <div class="row h-100">
-        <div class="col-md-7 ps-4 d-flex justify-content-center align-content-center"
-            style="text-align: -webkit-center; max-height: 100vh; overflow: auto;">
-            <div class="center">
-                <h1>
-                    <span>Experiência</span>
-                    <span>Experiência</span>
-                    <span>Experiência</span>
-                </h1>
+                  <iframe style="height: 100vh;" class="w-100" src="pages/loading.html"></iframe>
             </div>
-            <div class="z-10" id="carousel-wrapper">
-                <div id="menu">
-                    <div id="current-option">
-                        <span id="current-option-text1" data-previous-text="" data-next-text=""></span>
-                        <span id="current-option-text2" data-previous-text="" data-next-text=""></span>
-                    </div>
-                    <button id="previous-option"></button>
-                    <button id="next-option"></button>
-                </div>
-                <div id="image"></div>
-            </div>
-        </div>
-        <div class="col-md-5 h-100" style="text-align: -webkit-center; max-height: 100vh; overflow: auto;">
+      </div>
 
+      <div class="con">
+            <div class="div1">
+                  <div id="zoom-container"
+                        class="zoom-container d-flex justify-content-center align-items-center w-100 h-100">
+                        <div class="header w-100 h-100">
+                              <div id="about" class="d-flex justify-content-center align-content-center">
+                                    <div class="loader w-100 h-auto">
+                                          <h1>Sobre</h1>
 
-            <div class="skill container--1">
-                <div class="text-container" data-text="SKILLS" data-text-count="4" data-icon-indexes="1,5">
-                </div>
-                <div class="text-container shadow-container" data-text="SKILLS" data-text-count="4"
-                    data-icon-indexes="1,5">
-                </div>
-            </div>
-
-            <svg class="icons" style="display: none;">
-                <symbol id="star" viewbox="0 0 296.789 296.789">
-                    <path
-                        d="m 128.07699,246.6702 16.62278,44.87778 c 0.62488,1.68958 2.24042,2.81007 4.04647,2.81007 1.80605,0 3.42159,-1.12049 4.04646,-2.81007 l 16.62278,-44.87778 c 13.45522,-36.3312 42.2174,-64.97071 78.70166,-78.36601 l 45.06998,-16.55188 c 1.69428,-0.62221 2.81958,-2.23087 2.81958,-4.02922 0,-1.79835 -1.1253,-3.40699 -2.81958,-4.0292 l -45.07253,-16.5519 C 211.63034,113.74417 182.86815,85.107178 169.41548,48.778514 L 152.7927,3.900743 c -0.62487,-1.6870583 -2.24041,-2.8075483 -4.04646,-2.8075483 -1.80605,0 -3.42159,1.12049 -4.04647,2.8075483 L 128.07699,48.778514 C 114.62179,85.107178 85.862143,113.74417 49.375346,127.14199 l -45.0725171,16.5519 c -1.694284,0.62221 -2.819573,2.23085 -2.819573,4.0292 0,1.79835 1.125289,3.40701 2.819573,4.02922 l 45.0699771,16.55188 c 36.486798,13.3953 65.248984,42.03228 78.704184,78.36601 z">
-                    </path>
-                </symbol>
-            </svg>
-
-            <div class="scroll">
-                <img style="width: 52px" src="./assets/scroll.png"/>
-            </div>
-            <div class="iphone-l">
-                <div class="screen-ll">
-                    <div id="shot">
-                        <div class="menu-l">
-                            <canvas
-                                data-colors="#998A00:#00095B:#803562:#863D3D:#2A2A5D:#255325:#8D6969:#2C1414:#F6B26B:#F4D7D3"
-                                data-sectionHeight="200" data-contentId="js-content" id="myCanvas1"
-                                class="canvas-e"></canvas>
-                            <div id="js-content" class="content-ll">
-                                <div class="section-b"></div>
-                                <div class="section-b is-js"></div>
-                                <div class="section-b is-ts"></div>
-                                <div class="section-b is-sass"></div>
-                                <div class="section-b is-angular"></div>
-                                <div class="section-b is-react"></div>
-                                <div class="section-b is-sql"></div>
-                                <div class="section-b is-git"></div>
-                                <div class="section-b is-html"></div>
-                                <div class="section-b is-next"></div>
-                            </div>
+                                    </div>
+                              </div>
+                              <div class="about-info">
+                                    <div class="row body-info h-100">
+                                          <div class="col-md-3"></div>
+                                          <div class="col-md-9" style="min-height: 446px;">
+                                                <p class="p line">
+                                                </p>
+                                                <p class="p line2">
+                                                </p>
+                                                <p class="p line3">
+                                                </p>
+                                                <p class="p line4">
+                                                </p>
+                                                <p class="p line5">
+                                                </p>
+                                                <p class="p line6">
+                                                </p>
+                                                <p class="p line7">
+                                                </p>
+                                                <p class="p line8">
+                                                </p>
+                                                <p class="p line9">
+                                                </p>
+                                                <p class="p line10">
+                                                </p>
+                                                <p class="p line11">
+                                                </p>
+                                          </div>
+                                          <div
+                                                class="d-flex nextEx z-10 position-absolute top-0 right-0 justify-content-center">
+                                                <h5 class="cta">
+                                                      <span>Pular!</span>
+                                                      <span>
+                                                            <svg width="66px" height="43px" viewBox="0 0 66 43"
+                                                                  version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                                                  xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                                  <g id="arrow" stroke="none" stroke-width="1"
+                                                                        fill="none" fill-rule="evenodd">
+                                                                        <path class="one"
+                                                                              d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z"
+                                                                              fill="#FFFFFF"></path>
+                                                                        <path class="two"
+                                                                              d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z"
+                                                                              fill="#FFFFFF"></path>
+                                                                        <path class="three"
+                                                                              d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z"
+                                                                              fill="#FFFFFF"></path>
+                                                                  </g>
+                                                            </svg>
+                                                      </span>
+                                                </h5>
+                                          </div>
+                                          <iframe src="./pages/cat.html" style="height: 230px;" class="cat"></iframe>
+                                    </div>
+                              </div>
+                              <div>
+                                    <svg class="waves" xmlns="http://www.w3.org/2000/svg"
+                                          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+                                          preserveAspectRatio="none" shape-rendering="auto">
+                                          <defs>
+                                                <path id="gentle-wave"
+                                                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                                          </defs>
+                                          <g class="parallax">
+                                                <use xlink:href="#gentle-wave" x="48" y="0" fill=" #b4a100" />
+                                                <use xlink:href="#gentle-wave" x="48" y="3" fill="#ffffdb" />
+                                                <use xlink:href="#gentle-wave" x="48" y="5" fill="#ede8b2" />
+                                                <use xlink:href="#gentle-wave" x="48" y="7" fill="#b4a100" />
+                                          </g>
+                                    </svg>
+                              </div>
                         </div>
-                    </div>
-                </div>
+                  </div>
             </div>
 
-        </div>
-    </div>
-
-    <div id="cursor"><img alt="Cursor Hand" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/42578/rotating-cursor.svg"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.1.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://s.cdpn.io/6859/tween.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.3/jquery.mousewheel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
-    <script src="https://s.cdpn.io/6859/paper.js"></script>
-    <!-- skills iphone -->
-    <script>
-        paper.install(window);
-        paper.setup('myCanvas1');
-
-        var SSection, Sections, gui, h, mwheel, onFrame, windowHeight, _base, _ref;
-
-        Path.prototype.setWidth = function (width) {
-            this.segments[3].point.x = this.segments[0].point.x + width;
-            return this.segments[2].point.x = this.segments[1].point.x + width;
-        };
-
-        Path.prototype.setHeight = function (height) {
-            this.segments[1].point.y = this.segments[0].point.y + height;
-            return this.segments[2].point.y = this.segments[3].point.y + height;
-        };
-
-        Path.prototype.reset = function () {
-            this.setWidth(0);
-            this.setHeight();
-            return this.smooth();
-        };
-
-        h = {
-            getRand: function (min, max) {
-                return Math.floor((Math.random() * ((max + 1) - min)) + min);
-            }
-        };
-
-        window.PaperSections = {
-            $container: $('#shot'),
-            i: 0,
-            next: 0,
-            prev: 0,
-            scrollSpeed: 0,
-            timeOut: null,
-            invertScroll: true,
-            currSection: -1
-        };
-
-        window.PaperSections.ff = typeof InstallTrigger !== 'undefined';
-
-        window.PaperSections.win = navigator.appVersion.indexOf("Win") !== -1;
-
-        windowHeight = $(window).outerHeight();
-
-        window.PaperSections.$canvas = $(view.canvas);
-
-        window.PaperSections.data = window.PaperSections.$canvas.data();
-
-        window.PaperSections.data.colors = window.PaperSections.data.colors.split(':');
-
-        if ((_ref = (_base = window.PaperSections.data).sectionscount) == null) {
-            _base.sectionscount = window.PaperSections.data.colors.length;
-        }
-
-        view.setViewSize(window.PaperSections.$container.outerWidth(), window.PaperSections.data.sectionheight * window.PaperSections.data.sectionscount);
-
-        window.PaperSections.data.sectionheight = parseInt(window.PaperSections.data.sectionheight);
-
-        window.PaperSections.$content = $("#" + window.PaperSections.data.contentid);
-
-        window.PaperSections.$sections = window.PaperSections.$content.children();
-
-        window.PaperSections.slice = function (val, max) {
-            if (val > 0 && val > max) {
-                return Math.min(val, max);
-            }
-            if (val < 0 && val < max) {
-                return Math.max(val, -max);
-            }
-            return val;
-        };
-
-        SSection = (function () {
-            function SSection(o) {
-                this.o = o;
-                this.w = view.size.width;
-                this.h = view.size.height;
-                this.ph = 60;
-                this.sh = this.procent(this.h, this.ph);
-                this.wh = 1 * this.w;
-                this.scrollSpeed = 0;
-                this.gapSize = this.procent(this.h, (100 - this.ph) / 2);
-                this.colors = ['#69d2e7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
-                this.twns = [];
-                this.getPrefix();
-                this.makeBase();
-                this.listenToStop();
-            }
-
-            SSection.prototype.getPrefix = function () {
-                var pre, styles;
-
-                styles = window.getComputedStyle(document.documentElement, "");
-                pre = (Array.prototype.slice.call(styles).join("").match(/-(moz|webkit|ms)-/) || (styles.OLink === "" && ["", "o"]))[1];
-                this.prefix = "-" + pre + "-";
-                return this.transformPrefix = "" + this.prefix + "transform";
-            };
-
-            SSection.prototype.listenToStop = function () {
-                var _this = this;
-
-                window.PaperSections.$container.on('scroll', function () {
-                    window.PaperSections.stop = false;
-                    _this.poped = false;
-                    return TWEEN.removeAll();
-                });
-                return window.PaperSections.$container.on('stopScroll', function () {
-                    var duration;
-
-                    window.PaperSections.stop = true;
-                    duration = window.PaperSections.slice(Math.abs(window.PaperSections.scrollSpeed * 25), 1400) || 3000;
-                    _this.translatePointY({
-                        point: _this.base.segments[1].handleOut,
-                        to: 0,
-                        duration: duration
-                    }).then(function () {
-                        return window.PaperSections.scrollSpeed = 0;
-                    });
-                    return _this.translatePointY({
-                        point: _this.base.segments[3].handleOut,
-                        to: 0,
-                        duration: duration
-                    });
-                });
-            };
-
-            SSection.prototype.translateLine = function (o) {
-                var dfr, it, mTW,
-                    _this = this;
-
-                dfr = new $.Deferred;
-                mTW = new TWEEN.Tween(new Point(o.point)).to(new Point(o.to), o.duration);
-                mTW.easing(o.easing || TWEEN.Easing.Elastic.Out);
-                it = this;
-                mTW.onUpdate(o.onUpdate || function (a) {
-                    var _ref1;
-
-                    o.point.y = this.y;
-                    return (_ref1 = o.point2) != null ? _ref1.y = this.y : void 0;
-                });
-                mTW.onComplete(function () {
-                    return dfr.resolve();
-                });
-                mTW.start();
-                return dfr.promise();
-            };
-
-            SSection.prototype.notListenToStop = function () {
-                window.PaperSections.$container.off('stopScroll');
-                return window.PaperSections.$container.off('scroll');
-            };
-
-            SSection.prototype.translatePointY = function (o) {
-                var dfr, it, mTW,
-                    _this = this;
-
-                dfr = new $.Deferred;
-                mTW = new TWEEN.Tween(new Point(o.point)).to(new Point(o.to), o.duration);
-                mTW.easing(o.easing || TWEEN.Easing.Elastic.Out);
-                it = this;
-                mTW.onUpdate(o.onUpdate || function (a) {
-                    o.point.y = this.y;
-                    !it.poped && window.PaperSections.$content.attr('style', "" + it.transformPrefix + ": translate3d(0," + (this.y / 2) + "px,0);transform: translate3d(0," + (this.y / 2) + "px,0);");
-                    return (it.poped && !it.popedCenter) && window.PaperSections.$sections.eq(it.index).attr('style', "" + it.transformPrefix + ": translate3d(0," + (this.y / 2) + "px,0);transform: translate3d(0," + (this.y / 2) + "px,0);");
-                });
-                mTW.onComplete(function () {
-                    return dfr.resolve();
-                });
-                mTW.start();
-                return dfr.promise();
-            };
-
-            SSection.prototype.makeBase = function () {
-                this.base = new Path.Rectangle(new Point(0, this.o.offset), [this.wh, this.o.height]);
-                return this.base.fillColor = this.o.color;
-            };
-
-            SSection.prototype.toppie = function (amount) {
-                this.base.segments[1].handleOut.y = amount;
-                return this.base.segments[1].handleOut.x = this.wh / 2;
-            };
-
-            SSection.prototype.bottie = function (amount) {
-                this.base.segments[3].handleOut.y = amount;
-                return this.base.segments[3].handleOut.x = -this.wh / 2;
-            };
-
-            SSection.prototype.createPath = function (o) {
-                var path;
-
-                path = new Path(o.points);
-                o.flatten && path.flatten(o.flatten);
-                path.fillColor = o.fillColor || 'transparent';
-                return path;
-            };
-
-            SSection.prototype.update = function () {
-                if (!window.PaperSections.stop && !this.poped) {
-                    this.toppie(window.PaperSections.scrollSpeed);
-                    this.bottie(window.PaperSections.scrollSpeed);
-                    window.PaperSections.$content.attr('style', "" + this.transformPrefix + ": translate3d(0," + (window.PaperSections.scrollSpeed / 2) + "px,0);transform: translate3d(0," + (window.PaperSections.scrollSpeed / 2) + "px,0);");
-                }
-                return TWEEN.update();
-            };
-
-            SSection.prototype.procent = function (base, percents) {
-                return (base / 100) * percents;
-            };
-
-            SSection.prototype.pop = function () {
-                var _this = this;
-
-                this.poped = true;
-                this.popedCenter = true;
-                this.translatePointY({
-                    point: this.base.segments[1].handleOut,
-                    to: -window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                }).then(function () {
-                    _this.translatePointY({
-                        point: _this.base.segments[1].handleOut,
-                        to: 0
-                    }).then(function () { });
-                    return _this.translatePointY({
-                        point: _this.base.segments[3].handleOut,
-                        to: 0
-                    });
-                });
-                return this.translatePointY({
-                    point: this.base.segments[3].handleOut,
-                    to: window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                });
-            };
-
-            SSection.prototype.popUP = function () {
-                var _this = this;
-
-                this.poped = true;
-                this.popedCenter = false;
-                this.translatePointY({
-                    point: this.base.segments[1].handleOut,
-                    to: -window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                }).then(function () {
-                    _this.translatePointY({
-                        point: _this.base.segments[1].handleOut,
-                        to: 0
-                    }).then(function () { });
-                    return _this.translatePointY({
-                        point: _this.base.segments[3].handleOut,
-                        to: 0
-                    });
-                });
-                return this.translatePointY({
-                    point: this.base.segments[3].handleOut,
-                    to: -window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                });
-            };
-
-            SSection.prototype.popDOWN = function () {
-                var _this = this;
-
-                this.poped = true;
-                this.popedCenter = false;
-                this.translatePointY({
-                    point: this.base.segments[1].handleOut,
-                    to: window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                }).then(function () {
-                    _this.translatePointY({
-                        point: _this.base.segments[1].handleOut,
-                        to: 0
-                    }).then(function () { });
-                    return _this.translatePointY({
-                        point: _this.base.segments[3].handleOut,
-                        to: 0
-                    });
-                });
-                return this.translatePointY({
-                    point: this.base.segments[3].handleOut,
-                    to: window.PaperSections.data.sectionheight / 1.75,
-                    duration: 100,
-                    easing: TWEEN.Easing.Linear.None
-                });
-            };
-
-            return SSection;
-
-        })();
-
-        Sections = (function () {
-            function Sections() {
-                var i, section, _i, _ref1, _ref2;
-
-                if ((_ref1 = this.contents) == null) {
-                    this.contents = [];
-                }
-                for (i = _i = _ref2 = window.PaperSections.data.sectionscount; _ref2 <= 0 ? _i <= 0 : _i >= 0; i = _ref2 <= 0 ? ++_i : --_i) {
-                    section = new SSection({
-                        offset: (i * window.PaperSections.data.sectionheight) - 5,
-                        height: window.PaperSections.data.sectionheight + 5,
-                        color: window.PaperSections.data.colors[i]
-                    });
-                    section.index = i;
-                    this.contents.push(section);
-                }
-                $(window).trigger('menu:ready');
-            }
-
-            Sections.prototype.update = function () {
-                var i, it, _i, _len, _ref1, _results;
-
-                _ref1 = this.contents;
-                _results = [];
-                for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
-                    it = _ref1[i];
-                    _results.push(it.update());
-                }
-                return _results;
-            };
-
-            Sections.prototype.popSection = function (n) {
-                var i, _i, _ref1, _results;
-
-                TWEEN.removeAll();
-                _results = [];
-                for (i = _i = _ref1 = this.contents.length - 1; _ref1 <= 0 ? _i <= 0 : _i >= 0; i = _ref1 <= 0 ? ++_i : --_i) {
-                    if (i > this.contents.length - n - 1) {
-                        this.contents[i].popUP();
-                    }
-                    if (this.contents.length - n - 1 === i) {
-                        this.contents[i].pop();
-                    }
-                    if (i < this.contents.length - n - 1) {
-                        _results.push(this.contents[i].popDOWN());
-                    } else {
-                        _results.push(void 0);
-                    }
-                }
-                return _results;
-            };
-
-            Sections.prototype.teardown = function () {
-                var i, _i, _ref1, _results;
-
-                _results = [];
-                for (i = _i = _ref1 = this.contents.length - 1; _ref1 <= 0 ? _i <= 0 : _i >= 0; i = _ref1 <= 0 ? ++_i : --_i) {
-                    this.contents[i].base.remove();
-                    this.contents[i].notListenToStop();
-                    _results.push(delete this.contents[i]);
-                }
-                return _results;
-            };
-
-            return Sections;
-
-        })();
-
-        $(window).on('menu:ready', function () {
-            window.PaperSections.$container.find('.menu-l').addClass('is-loaded')
-        });
-
-        window.PaperSections.sections = new Sections;
-
-        view.onFrame = function (e) {
-            return window.PaperSections.sections.update();
-        };
-
-        mwheel = function (e, d) {
-            var $$, $content;
-
-            $content = $('#js-content');
-            $$ = $(this);
-            if ($$.scrollTop() === 0 && d > 0) {
-                e.stopPropagation();
-                e.preventDefault();
-            }
-            if (d < 0 && ($$.scrollTop() === ($content[0].scrollHeight - window.PaperSections.$container.height()))) {
-                e.stopPropagation();
-                return e.preventDefault();
-            }
-        };
-
-        window.PaperSections.$container.on('mousewheel', mwheel);
-
-        window.PaperSections.scrollControl = function (e, d) {
-            var direction;
-
-            clearTimeout(window.PaperSections.timeOut);
-            window.PaperSections.timeOut = setTimeout(function () {
-                window.PaperSections.i = 0;
-                window.PaperSections.$container.trigger('stopScroll');
-                return window.PaperSections.prev = window.PaperSections.$container.scrollTop();
-            }, 50);
-            if (window.PaperSections.i % 4 === 0) {
-                direction = window.PaperSections.invertScroll ? -1 : 1;
-                window.PaperSections.next = window.PaperSections.$container.scrollTop();
-                window.PaperSections.scrollSpeed = direction * window.PaperSections.slice(1.2 * (window.PaperSections.next - window.PaperSections.prev), window.PaperSections.data.sectionheight / 2);
-                window.PaperSections.prev = window.PaperSections.next;
-            }
-            window.PaperSections.i++;
-            return false;
-        };
-
-        window.PaperSections.$container.scroll(window.PaperSections.scrollControl);
-
-        gui = new dat.GUI;
-
-        gui.add(window.PaperSections, 'invertScroll');
-
-        window.PaperSections.$container.on('mouseenter', '.section-b', function () {
-            return window.PaperSections.currSection = $(this).index();
-        });
-
-        window.PaperSections.$container.on('click', '.section-b', function () {
-            var $$;
-
-            $$ = $(this);
-            return window.PaperSections.sections.popSection($$.index());
-        });
-
-        if (window.PaperSections.win || window.PaperSections.ff) {
-            window.PaperSections.$container.addClass('is-with-scroll');
-        }
-
-
-
-    </script>
-    <!-- skills title -->
-    <script>
-        console.clear();
-
-        const textContainers = document.querySelectorAll(".text-container");
-        const colorArr = ["#fdfdfa", "#7900CD", "#E6007B", "#F0FE09"];
-
-        textContainers.forEach((textContainer) => {
-            const delay = 200; // in millisecond
-            const totalTextCount = textContainer.getAttribute("data-text-count");
-            const elText = textContainer.getAttribute("data-text");
-            const iconIndexes = textContainer
-                .getAttribute("data-icon-indexes")
-                .split(",")
-                .map((n) => n - 1);
-
-            for (let i = 0; i < totalTextCount; i++) {
-                let textEl = document.createElement("span");
-                textEl.className = "text";
-                for (let j = 0; j < elText.length; j++) {
-                    let charContainerEl = document.createElement("span");
-                    charContainerEl.className = "char-container";
-                    let charEl = document.createElement("span");
-                    charEl.className = "char";
-                    charEl.setAttribute("style", `--delay: ${delay - i * 100}ms`);
-                    charEl.innerHTML = elText[j];
-                    charContainerEl.append(charEl);
-                    textEl.append(charContainerEl);
-
-                    iconIndexes.forEach((iconIndex) => {
-                        if (i == 0 && j == iconIndex) {
-                            let iconContainierEl = document.createElement("span");
-                            iconContainierEl.classList.add("icon-container");
-                            let SVGEl = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                            SVGEl.classList.add("icon", "star");
-                            let SVGUseEl = document.createElementNS("http://www.w3.org/2000/svg", "use");
-                            SVGUseEl.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#star");
-                            SVGEl.setAttribute(
-                                "style",
-                                `--icon-animation-delay: ${Math.random() * i * 200}ms`
-                            );
-
-                            SVGEl.appendChild(SVGUseEl);
-                            iconContainierEl.appendChild(SVGEl);
-                            charContainerEl.appendChild(iconContainierEl);
-                        }
-                    });
-                }
-                textContainer.append(textEl);
-            }
-
-            const textArr = textContainer.querySelectorAll(".text");
-            if (!textContainer.classList.contains("shadow-container")) {
-                textArr.forEach((text, index) => {
-                    text.style.color = colorArr[index];
-                });
-            }
-        });
-
-    </script>
-    <!-- experience - carroussel -->
-    <script>
-        const text1_options = [
-        "FRONT-END REACT DEVELOPER",
-        "FRONT-END VTEX DEVELOPER",
-            "FRONT-END ANGULAR DEVELOPER",
-            "SOFTWARE DEVELOPER",
-        ];
-        const text2_options = [
-            "06/2021 | 11/2021",
-            "11/2021 | 02/2022",
-            "06/2022 | 06/2023",
-            "06/2023 | atual",
-        ];
-        const color_options = ["#EBB9D2", "#FE9968", "#7FE0EB", "#6CE5B1"];
-        const image_options = [
-            "https://media.licdn.com/dms/image/C4E03AQH0b8RegO4KkA/profile-displayphoto-shrink_800_800/0/1540481205370?e=2147483647&v=beta&t=pB833bA-k0Ic8-CtV_HkOKFNGeUvIHQ14PZhLauEU6I",
-            "https://partnernetwork.vtexassets.com/arquivos/ids/155515/logo_eshop.png?v=1774890569",
-            "https://media.licdn.com/dms/image/C4D0BAQGopIvZL_EHXg/company-logo_200_200/0/1631810690026?e=2147483647&v=beta&t=qvrdr5rDp35ThnswTxdGdJ9_Q_oUyFb3I0lULGBtDp4",
-            "https://www.infocenterhost2.com.br/crm/img/ogimages/1393.jpg"
-        ];
-        var i = 0;
-        const currentOptionText1 = document.getElementById("current-option-text1");
-        const currentOptionText2 = document.getElementById("current-option-text2");
-        const currentOptionImage = document.getElementById("image");
-        const carousel = document.getElementById("carousel-wrapper");
-        const mainMenu = document.getElementById("menu");
-        const optionPrevious = document.getElementById("previous-option");
-        const optionNext = document.getElementById("next-option");
-
-        currentOptionText1.innerText = text1_options[i];
-        currentOptionText2.innerText = text2_options[i];
-        currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-        mainMenu.style.border = `4px solid ${color_options[i]}`;
-
-        optionNext.onclick = function () {
-            i = i + 1;
-            i = i % text1_options.length;
-            currentOptionText1.dataset.nextText = text1_options[i];
-
-            currentOptionText2.dataset.nextText = text2_options[i];
-
-            mainMenu.style.border = `4px solid ${color_options[i]}`;
-
-            carousel.classList.add("anim-next");
-
-            setTimeout(() => {
-                currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-            }, 455);
-
-            setTimeout(() => {
-                currentOptionText1.innerText = text1_options[i];
-                currentOptionText2.innerText = text2_options[i];
-                carousel.classList.remove("anim-next");
-            }, 650);
-        };
-
-        optionPrevious.onclick = function () {
-            if (i === 0) {
-                i = text1_options.length;
-            }
-            i = i - 1;
-            currentOptionText1.dataset.previousText = text1_options[i];
-
-            currentOptionText2.dataset.previousText = text2_options[i];
-
-            mainMenu.style.border = `4px solid ${color_options[i]}`;
-
-            carousel.classList.add("anim-previous");
-
-            setTimeout(() => {
-                currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
-            }, 455);
-
-            setTimeout(() => {
-                currentOptionText1.innerText = text1_options[i];
-                currentOptionText2.innerText = text2_options[i];
-                carousel.classList.remove("anim-previous");
-            }, 650);
-        };
-
-    </script>
-    <!-- CURSOR -->
-    <script>
-        // Because of a WebKit-Issue which renders (even SVG) cursors blurry on Retina-Displays I decided to go for a solution which renders the cursor within a custom <div>.
-
-        var rotatingCursor = function () {
-
-            /* Local Variables */
-            const INTERVAL_POSITION = 5;
-            const INTERVAL_ROTATION = 100;
-            let lastCursorPos = { x: -999, y: -999 };
-            let currentCursorPos = { x: -999, y: -999 };
-            let lastCursorAngle = 0, cursorAngle = 0;
-            let cursorEl, cursorImageEl;
-
-
-            /* Local Functions */
-
-            // NOTE: I am transform two different elements here because so I can only animate the rotation with 'transition-property: transform'.
-            function setCurrentCursorProps() {
-                // Apply translation (set to actual cursor position)
-                cursorEl.style.transform = `translate(${currentCursorPos.x}px, ${currentCursorPos.y}px)`;
-
-                // Ensure correct rotation transition direction
-                while (Math.abs(lastCursorAngle - cursorAngle) > 180) {
-                    if (cursorAngle > lastCursorAngle) {
-                        cursorAngle -= 360;
-                    } else if (cursorAngle < lastCursorAngle) {
-                        cursorAngle += 360;
-                    }
-                }
-                // Apply rotation
-                cursorImageEl.style.transform = `rotate(${cursorAngle - 90}deg)`;
-            }
-
-            function updateCursor() {
-                window.addEventListener('mousemove', event => {
-                    currentCursorPos = { x: event.clientX, y: event.clientY };
-                });
-
-                // Interval for updating cursor-position
-                setInterval(setCurrentCursorProps, INTERVAL_POSITION);
-
-                // Interval for updating cursor-rotation
-                setInterval(() => {
-                    const delt = {
-                        x: lastCursorPos.x - currentCursorPos.x,
-                        y: lastCursorPos.y - currentCursorPos.y
-                    };
-
-                    if (Math.abs(delt.x) < 3 && Math.abs(delt.y) < 3) return;
-                    cursorAngle = Math.atan2(delt.y, delt.x) * 180 / Math.PI;
-
-                    setCurrentCursorProps();
-
-                    lastCursorPos = currentCursorPos;
-                    lastCursorAngle = cursorAngle;
-                }, INTERVAL_ROTATION);
-            }
-
-
-            /* Public Functions */
-
-            return {
-
-                'initialize': () => {
-                    cursorEl = document.querySelector('#cursor');
-                    cursorImageEl = document.querySelector('#cursor > img');
-                    updateCursor();
-                }
-            };
-
-
-
-        }();
-
-
-        document.addEventListener('DOMContentLoaded', rotatingCursor.initialize);
-    </script>
+            <div class="div2">
+                  <iframe src="./pages/welcome.html" class="w-100 mt-0 pt-0 h-100"></iframe>
+
+            </div>
+            <div class="w-100 div3 zn-10 h-100">
+                  <div class="trans-1 bg-danger"></div>
+                  <div class="trans-2 bg-warning"></div>
+                  <div class="trans-3 bg-info"></div>
+                  <div class="trans-4 bg-light"></div>
+                  <div class="trans-5 w3-black"></div>
+                  <iframe id="skills" src="./pages/skills.html" class="w-100 mt-0 zn-10 pt-0 h-100"></iframe>
+
+            </div>
+      </div>
 </body>
+<script src="./js/anime-master/lib/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+      function hideProgressBar() {
+            setTimeout(() => {
+                  const progressBar = document.getElementById('progress-container');
+                  progressBar.style.display = 'none';
+                  const load = document.getElementById('load');
+                  load.classList.add('d-none');
+            }, 5000)
+
+
+
+            var tl = gsap.timeline({ repeat: -1 });
+            tl.to("p", 20, { backgroundPosition: "-960px 0" });
+
+
+
+      }
+      window.addEventListener('load', hideProgressBar);
+
+      const about = document.getElementById('about');
+      const div1 = document.querySelector('.div1');
+      const div3 = document.querySelector('.div3');
+      const skills = document.getElementById('skills');
+      const trans1 = document.querySelector('.trans-1');
+      const trans2 = document.querySelector('.trans-2');
+      const trans3 = document.querySelector('.trans-3');
+      const trans4 = document.querySelector('.trans-4');
+      const trans5 = document.querySelector('.trans-5');
+      const aboutInfo = document.querySelector('.about-info')
+      const customCursor = document.createElement('img');
+      const cta = document.querySelector('.cta')
+      const zoomContainer = document.getElementById('zoom-container');
+      const text1 = "Software Developer com mais de";
+      const text2 = "2 anos de experiência,";
+      const text3 = "Minhas habilidades incluem";
+      const text4 = "(HTML5, CSS3, jQuery, REST API,";
+      const text5 = "iONIC, Angular, Node.js TypeScript,JavaScript. . .etc)";
+      const text6 = "Tenho expertise em desenvolvimento";
+      const text7 = "de sites e aplicações web,";
+      const text8 = "Utilizando React e Bootstrap 5";
+      const text9 = "Estou focado em entregar soluções";
+      const text10 = "de alta performance para";
+      const text11 = "atender às demandas do mercado.";
+
+      const lineElement = document.querySelector('.line');
+      const lineElement2 = document.querySelector('.line2');
+      const lineElement3 = document.querySelector('.line3');
+      const lineElement4 = document.querySelector('.line4');
+      const lineElement5 = document.querySelector('.line5');
+      const lineElement6 = document.querySelector('.line6');
+      const lineElement7 = document.querySelector('.line7');
+      const lineElement8 = document.querySelector('.line8');
+      const lineElement9 = document.querySelector('.line9');
+      const lineElement10 = document.querySelector('.line10');
+      const lineElement11 = document.querySelector('.line11');
+      // ANIMATION-SHOW-ABOUT-INFO
+      function typeText(text, element, callback) {
+            let i = 0;
+            console.time("typeText");
+            const interval = setInterval(function () {
+                  if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                  } else {
+                        clearInterval(interval);
+                        if (typeof callback === 'function') {
+                              callback();
+                        }
+                        console.timeEnd("typeText");
+                  }
+            }, 20);
+
+      }
+
+      // ZOOM-FUNCTION-EFFECT-ABOUT
+      function zooomAbout(e) {
+            let scaleValue = 1;
+            let executed = false;
+            e.preventDefault();
+            const delta = e.deltaY || e.detail || e.wheelDelta;
+            console.log(e.deltaY, e.detail, e.wheelDelta)
+
+            if (e.deltaY >= 125) {
+                  zoomContainer.removeEventListener('wheel', zooomAbout);
+            }
+
+            scaleValue += delta * 0.5;
+            scaleValue = Math.max(1, Math.min(15, scaleValue));
+            about.style.transform = `scale(${scaleValue})`;
+
+            if (scaleValue > 19) {
+                  about.classList.add('scale-greater-than-6');
+                  about.classList.remove('scale-less-than-6');
+            } else {
+                  about.classList.remove('scale-greater-than-6');
+                  about.classList.add('scale-less-than-6');
+                  aboutInfo.style.display = 'block';
+            }
+
+            if (scaleValue === 1) {
+                  aboutInfo.style.display = 'none';
+                  window.scrollTo(0, 0);
+            }
+            if (scaleValue >= 6 && !executed) {
+                  typeText(text1, lineElement, function () {
+                        typeText(text2, lineElement2, function () {
+                              typeText(text3, lineElement3, function () {
+                                    typeText(text4, lineElement4, function () {
+                                          typeText(text5, lineElement5, function () {
+                                                typeText(text6, lineElement6, function () {
+                                                      typeText(text7, lineElement7, function () {
+                                                            typeText(text8, lineElement8, function () {
+                                                                  typeText(text9, lineElement9, function () {
+                                                                        typeText(text10, lineElement10, function () {
+                                                                              typeText(text11, lineElement11);
+                                                                        });
+                                                                  });
+                                                            });
+                                                      });
+                                                });
+                                          });
+                                    });
+                              });
+                        });
+                  });
+                  console.log('ok')
+                  cta.classList.add('show-left')
+                  executed = true;
+            }
+
+      }
+      zoomContainer.addEventListener('wheel', zooomAbout);
+      // CURSOR-ABOUT
+
+
+      function updateCursorPosition(event) {
+            customCursor.src = './assets/cursor.png';
+            customCursor.style.width = '32px';
+            customCursor.style.height = '32px';
+            customCursor.style.position = 'fixed';
+            customCursor.style.pointerEvents = 'none';
+            document.body.style.cursor = 'none';
+            document.body.appendChild(customCursor);
+            customCursor.style.left = `${event.clientX}px`;
+            customCursor.style.top = `${event.clientY}px`;
+      }
+      // EFFECT -HOME-ABOUT
+      $(document).ready(function () {
+            $(window).scroll(function () {
+                  if ($(this).scrollTop() > 0) {
+                        $('.loader').addClass('show-anime');
+                        $('.about').removeClass('scale-less-than-6');
+                        $('.about').addClass('show-anime');
+                        $('.div2').addClass('on-top');
+                        document.addEventListener('mousemove', updateCursorPosition);
+
+                  } else {
+                        $('.about').addClass('scale-less-than-6');
+                        $('.about').removeClass('show-anime');
+                        $('.loader').removeClass('show-anime');
+                        $('.div2').removeClass('on-top');
+                        document.removeEventListener('mousemove', updateCursorPosition);
+                        customCursor.src = './assets/b.png';
+
+                  }
+            });
+      });
+      cta.addEventListener('click', experience);
+      function experience() {
+
+            console.log('next')
+            div3.classList.remove("zn-10");
+            trans1.classList.add('show-trans1');
+            trans2.classList.add('show-trans2');
+            trans3.classList.add('show-trans3');
+            trans4.classList.add('show-trans4');
+            trans5.classList.add('show-trans5');
+            setTimeout(() => {
+                  $('.div2').addClass('d-none');
+                  $('.div1').addClass('d-none');
+                        skills.classList.remove("zn-10");
+            }, 1900)
+            setTimeout(() => {
+                  trans1.classList.add('d-none');
+                  trans2.classList.add('d-none');
+                  trans3.classList.add('d-none');
+                  trans4.classList.add('d-none');
+                  trans5.classList.add('d-none');
+            }, 3000)
+      }
+</script>
 
 </html>
