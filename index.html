@@ -222,9 +222,8 @@
             const delta = e.deltaY || e.detail || e.wheelDelta;
             console.log(e.deltaY, e.detail, e.wheelDelta)
 
-            if (e.deltaY >= 125) {
-                  zoomContainer.removeEventListener('wheel', zooomAbout);
-            }
+            if (e.deltaY >= 125) zoomContainer.removeEventListener('wheel', zooomAbout);
+            
 
             scaleValue += delta * 0.5;
             scaleValue = Math.max(1, Math.min(15, scaleValue));
