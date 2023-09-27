@@ -356,6 +356,7 @@ svg {
   font-weight: bold;
   letter-spacing: 5px;
   -webkit-text-stroke: 1px #000000;
+  stroke: 1px #000000;
   user-select: none;
   pointer-events: none;
 }
