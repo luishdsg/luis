@@ -10,13 +10,14 @@ body {
   background-color: black !important;
   padding: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   justify-content: center;
   height: 100%;
   font-family: "Roboto" !important;
   color: white;
 }
+
 ::-webkit-scrollbar {
   width: 0px;
 }
