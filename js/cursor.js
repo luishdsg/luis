@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded",() => {
         if(script.getAttribute("difference") == "disable"){
             innerDiv.style.backgroundColor = "black"
         } else {
-            innerDiv.style.backgroundColor = "#ED0DD9"
+            innerDiv.style.backgroundColor = "#1797cf"
         }
     }
       iDiv.appendChild(innerDiv);
