@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link href="/css/style.css" rel="stylesheet">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
@@ -33,10 +34,43 @@
 </style>
 
 <body>
+      <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
+            id="load">
+            <div class="w-100 bg-transparent mt-0 pt-0 h-auto">
+                  <iframe style="height: 100vh;" class="w-100" src="pages/loading.html"></iframe>
+            </div>
+      </div>
 
-      <div id="content">
-            <div class="GlobalCanvas"><canvas width="1161" height="942" id="global-canvas"
-                        style="touch-action: none; width: 1239px; height: 1005px; cursor: inherit;"></canvas></div>
+
+      <div id="content" class="w-100 h-100">
+            <main class="w-100 h-100">
+                  <div id="_start-transition-home" style="background-image: url('/assets/b.png');"
+                        class="_start-transition-home z-10 w-100 h-100 position-absolute">
+                  </div>
+                  <section id="main-home" style="display: none;" class="w-100 h-100">
+                        <canvas></canvas>
+                  </section>
+                  <!-- <div id="_start-transition-col"
+                        class="row align-items-center z-100 _start-transition-col position-relative  w-100 h-100">
+                        <div class="col col-mod-1">
+                              <div class="w-100 d-flex align-items-center overflow-auto"><img src="/assets/1.png"></div>
+                        </div>
+                        <div class="col col-mod-2">
+                              <div class="w-100 d-flex align-items-center overflow-auto"><img src="/assets/2.png"></div>
+                        </div>
+                        <div class="col col-mod-3">
+                              <div class="w-100 d-flex align-items-center overflow-auto"><img src="/assets/3.png"></div>
+                        </div>
+                        <div class="col col-mod-4">
+                              <div class="w-100 d-flex align-items-center overflow-auto"><img src="/assets/4.png"></div>
+                        </div>
+                        <div class="col col-mod-5">
+                              <div class="w-100 d-flex align-items-center overflow-auto"><img src="/assets/5.png"></div>
+                        </div>
+                  </div> -->
+
+      </div>
+      </main>
       </div>
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
       <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
@@ -44,8 +78,8 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+      <script src="/js/background-main.js"></script>
       <script type="module">
-
             // FUNCTION-ANIMATE-SCROLL
             gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
             smoothScroll("#content");
@@ -133,7 +167,55 @@
                   );
             }
 
+            function hideProgressBar() {
+                  const _transitionHome = document.getElementById('_start-transition-home');
+                  const load = document.getElementById('load');
+                  const mainHome = document.getElementById('main-home');
+                  const _startTransitionCol = document.getElementById('_start-transition-col');
+                  const _startTransitionCol1 = document.querySelector('._start-transition-col > .col:nth-child(1) > div');
+                  const _startTransitionCol2 = document.querySelector('._start-transition-col > .col:nth-child(2) > div');
+                  const _startTransitionCol3 = document.querySelector('._start-transition-col > .col:nth-child(3) > div');
+                  const _startTransitionCol4 = document.querySelector('._start-transition-col > .col:nth-child(4) > div');
+                  const _startTransitionCol5 = document.querySelector('._start-transition-col > .col:nth-child(5) > div');
+                  
+                  const _colMod1 = document.querySelector('.col-mod-1');
+                  const _colMod2 = document.querySelector('.col-mod-2');
+                  const _colMod3 = document.querySelector('.col-mod-3');
+                  const _colMod4 = document.querySelector('.col-mod-4');
+                  const _colMod5 = document.querySelector('.col-mod-5');
+                  setTimeout(() => {
+                        _startTransitionCol3.classList.add('_end-transition-col-main-3');
+                  }, 3800)
+                  setTimeout(() => {
+                        _startTransitionCol3.classList.remove('_end-transition-col-main-3');
+                        _startTransitionCol3.classList.add('_the-end-transition-col-main-3');
+                        _startTransitionCol3.classList.add('h-600');
+                  }, 4700)
+                  setTimeout(() => {
+                        // _colMod1.classList.add('d-none');
+                        // _colMod2.classList.add('d-none');
+                        // _colMod3.classList.add('d-none');
+                        // _colMod4.classList.add('d-none');
+                        // _colMod5.classList.add('d-none');
+                  }, 6000)
+                  setTimeout(() => {
+                        load.classList.add('d-none');
+                        _transitionHome.classList.add('top-0');
+                        mainHome.classList.add('d-block');
+                  }, 4200)
+                  setTimeout(() => {
+                        _transitionHome.classList.remove('_start-transition-home');
+                        _transitionHome.classList.remove('top-0');
+                        _transitionHome.classList.add('_end-transition-home');
+                  }, 4500)
 
+                  setTimeout(() => {
+                        _transitionHome.classList.add('d-none');
+                  }, 7700)
+            }
+            window.addEventListener('load', function () {
+                  hideProgressBar();
+            });
             document.addEventListener("DOMContentLoaded", function () {
                   smoothScroll();
             });

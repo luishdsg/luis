@@ -167,6 +167,7 @@
     .dot {
         font-size: 5vmin;
         width: 1em;
+        opacity: 0;
         height: 1em;
         -webkit-animation: dot var(--duration) var(--easing) both;
         animation: dot var(--duration) var(--easing) both;
@@ -249,37 +250,22 @@
         }
 
         30% {
+
             transform: translateY(1em) scaleY(0.5);
         }
 
         40% {
+            opacity: 0;
+
             transform: translateY(-400%);
-        }
-
-        50% {
-            transform: translateY(-1em);
-        }
-
-        53% {
-            transform: translateY(-300%);
-        }
-
-        56% {
-            transform: translateY(-1em);
-        }
-
-        59% {
-            transform: translateY(-200%);
-        }
-
-        62% {
-            transform: translateY(1em);
         }
 
         80%,
         90%,
         to {
-            transform: translateY(1em);
+
+            transform: translateY(-400%);
+
         }
     }
 
@@ -303,89 +289,25 @@
         }
 
         30% {
+
             transform: translateY(1em) scaleY(0.5);
         }
 
         40% {
+            opacity: 0;
+
             transform: translateY(-400%);
-        }
-
-        50% {
-            transform: translateY(-1em);
-        }
-
-        53% {
-            transform: translateY(-300%);
-        }
-
-        56% {
-            transform: translateY(-1em);
-        }
-
-        59% {
-            transform: translateY(-200%);
-        }
-
-        62% {
-            transform: translateY(1em);
         }
 
         80%,
         90%,
         to {
-            transform: translateY(1em);
+
+            transform: translateY(-400%);
+
         }
     }
 
-    @-webkit-keyframes dot-inner {
-
-        from,
-        45% {
-            transform: none;
-        }
-
-        70% {
-            transform: translateX(6em);
-            -webkit-animation-timing-function: cubic-bezier(0.5, 0, 1, 0);
-            animation-timing-function: cubic-bezier(0.5, 0, 1, 0);
-        }
-
-        80% {
-            transform: translateX(4.3em);
-            -webkit-animation-timing-function: var(--easing);
-            animation-timing-function: var(--easing);
-        }
-
-        83%,
-        to {
-            transform: translateX(4.4em);
-        }
-    }
-
-    @keyframes dot-inner {
-
-        from,
-        45% {
-            transform: none;
-        }
-
-        70% {
-            transform: translateX(6em);
-            -webkit-animation-timing-function: cubic-bezier(0.5, 0, 1, 0);
-            animation-timing-function: cubic-bezier(0.5, 0, 1, 0);
-        }
-
-        80% {
-            transform: translateX(4.3em);
-            -webkit-animation-timing-function: var(--easing);
-            animation-timing-function: var(--easing);
-        }
-
-        83%,
-        to {
-            transform: translateX(4.4em);
-        }
-    }
 
     body:not([data-play]) *,
     body:not([data-play]) *:before,
