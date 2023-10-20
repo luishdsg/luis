@@ -28,9 +28,13 @@ function showPreview() {
             mainHome.classList.add('d-block');
       }, 6700)
 
+     
       setTimeout(() => {
             _transitionHome.classList.add('d-none');
       }, 7700)
+     
+
+
 }
 window.addEventListener('load', function () {
       showPreview();

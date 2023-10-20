@@ -7,6 +7,7 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link href="/css/style.css" rel="stylesheet">
+      <link href="/css/about.css" rel="stylesheet">
       <link href="/css/cursor.css" rel="stylesheet">
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -15,20 +16,19 @@
       <title>Exemplo de Animação com transform: matrix3d</title>
 </head>
 <style>
-  
+
 </style>
 
 <body>
+
       <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
             id="load">
             <div class="w-100 bg-transparent mt-0 pt-0 h-auto">
                   <iframe style="height: 100vh;" class="w-100" src="pages/loading.html"></iframe>
             </div>
       </div>
-
-
-      <div id="content" class="w-100 h-100">
-            <main class="w-100 h-100">
+      <div class="w-100 h-100">
+            <main class="w-100 h-vh">
                   <div id="_start-transition-home" class="_start-transition-home z-10 w-100 h-100 position-absolute">
                   </div>
                   <section id="main-home" style="display: none;" class="w-100 h-100">
@@ -36,7 +36,8 @@
                         <div class="bord">
                               <div>
                                     <div class="title-home align-center line-drawing-demo">
-                                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <g fill="none" fill-rule="evenodd" stroke="currentColor"
                                                       stroke-width="1" class="lines" data-darkreader-inline-stroke=""
                                                       style="--darkreader-inline-stroke: currentColor;">
@@ -530,10 +531,22 @@
                                                             d="M 434.5,377.5 C 431.995,377.02 429.662,376.02 427.5,374.5C 424.349,377.15 421.349,379.984 418.5,383C 416.423,384.705 414.09,385.872 411.5,386.5C 417.09,382.416 422.256,377.749 427,372.5C 429.807,373.812 432.307,375.479 434.5,377.5 Z" />
                                                 </g>
                                           </svg>
+
+                                    </div>
+                                    <div class="title-line">
+                                          <div style="transform: rotate(180deg);" class=" specific-unit-values-demo">
+                                                <div class="square  el">
+                                                </div>
+                                          </div>
+                                          <p class="mb-0 hack-way">1 Hacker Way</p>
+                                          <div class=" specific-unit-values-demo">
+                                                <div class="square  el">
+                                                </div>
+                                          </div>
                                     </div>
                               </div>
                         </div>
-                       
+
                   </section>
                   <div id="_start-transition-col"
                         class="row align-items-center top-0 z-100 _start-transition-col position-absolute  w-100 h-100">
@@ -544,7 +557,8 @@
                               <div class="w-100 d-flex align-items-center overflow-auto"></div>
                         </div>
                         <div class="col  col-mod-3">
-                              <div class="w-100 _start-transition-col-3 d-flex align-items-center overflow-auto"></div>
+                              <div class="w-100 _start-transition-col-3 d-flex align-items-center overflow-auto">
+                              </div>
                         </div>
                         <div class="col col-mod-4">
                               <div class="w-100 d-flex align-items-center overflow-auto"></div>
@@ -553,34 +567,113 @@
                               <div class="w-100 d-flex align-items-center overflow-auto"></div>
                         </div>
                   </div>
-                  
 
-      
-      </main>
+                  <div class="about">
+                        <div id="content">
+                              <section style="width: 100%; height: 2000px;" class="bg-warning"></section>
+                              <section style="width: 100%; height: 2000px;" class="bg-light"></section>
+                        </div>
+                  </div>
+            </main>
       </div>
+
+
+
+
+
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
       <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-      <script src="/js/background-main.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       <script src="/js/cursor.js"></script>
-      <script src="/js/scroll.js"></script>
+      <script src="/js/background-main.js"></script>
       <script src="/js/show-preview.js"></script>
       <script src="/js/anime-master/lib/anime.min.js"></script>
       <script type="module">
+            gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+            smoothScroll("#content");
+            function smoothScroll(content, viewport, smoothness) {
+                  content = gsap.utils.toArray(content)[0];
 
+                  gsap.set(viewport || content.parentNode, { overflow: "hidden", position: "fixed", height: "100%", width: "100%", top: 0, left: 0, right: 0, bottom: 0 });
+                  gsap.set(content, { overflow: "visible", width: "100%", });
 
+                  let getProp = gsap.getProperty(content),
+                        setProp = gsap.quickSetter(content, "y", "px"),
+                        removeScroll = () => content.style.overflow = "visible",
+                        needsRefreshFix = parseFloat(ScrollTrigger.version.split(".").map(n => ("00" + n).substr(n.length - 1, 3)).join("")) < 3006002,
+                        height;
+
+                  function onResize() {
+                        height = content.clientHeight;
+                        content.style.overflow = "visible"
+                        document.body.style.height = height + "px";
+                  }
+                  onResize();
+                  ScrollTrigger.addEventListener("refreshInit", onResize);
+                  ScrollTrigger.addEventListener("refresh", () => {
+                        removeScroll();
+                        requestAnimationFrame(removeScroll);
+                  })
+
+                  ScrollTrigger.defaults({ scroller: content });
+
+                  ScrollTrigger.prototype.update = p => p; // works around an issue in ScrollTrigger 3.6.1 and earlier (fixed in 3.6.2, so this line could be deleted if you're using 3.6.2 or later)
+
+                  ScrollTrigger.scrollerProxy(content, {
+                        scrollTop(value) {
+                              return arguments.length ? setProp(-value) : -getProp("y");
+                        },
+                        getBoundingClientRect() {
+                              return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+                        }
+                  });
+
+                  gsap.fromTo(content, { y: 0 }, {
+                        y: () => document.documentElement.clientHeight - height,
+                        ease: "none",
+                        onUpdate: ScrollTrigger.update,
+                        scrollTrigger: {
+                              scroller: window,
+                              invalidateOnRefresh: true,
+                              start: 0,
+                              end: () => height - document.documentElement.clientHeight,
+                              scrub: smoothness || 3,
+                              onRefresh: self => {
+                                    // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
+                                    gsap.killTweensOf(self.animation);
+                                    self.animation.progress(self.progress);
+                                    if (needsRefreshFix) {
+                                          let all = ScrollTrigger.getAll();
+                                          all.slice(all.indexOf(self) + 1).forEach(t => t.refresh());
+                                    }
+                              }
+                        }
+                  });
+            }
+
+ 
             anime({
-                  targets: '.line-drawing-demo .lines path',
-                  strokeDashoffset: [anime.setDashoffset, 0],
-                  easing: 'easeInOutSine',
-                  duration: 1000,
-                  delay: function (el, i) { return i * 2 },
+            targets: '.line-drawing-demo .lines path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1000,
+            delay: function (el, i) { return i * 2 },
+            direction: 'alternate',
+            loop: true
+      });
+      setTimeout(() => {
+            anime({
+                  targets: '.specific-unit-values-demo .el',
+                  duration: 2500,
+                  width: '100%',
+                  easing: 'easeInOutQuad',
                   direction: 'alternate',
-                  loop: true
+                  loop: false
             });
+      }, 7000); 
 
       </script>
 </body>
