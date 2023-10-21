@@ -1,6 +1,7 @@
 function showPreview() {
       const _transitionHome = document.getElementById('_start-transition-home');
       const load = document.getElementById('load');
+      const body = document.getElementById('body');
       const mainHome = document.getElementById('main-home');
       const _startTransitionCol = document.getElementById('_start-transition-col');
       const _startTransitionCol1 = document.querySelector('._start-transition-col > .col:nth-child(1) > div');
@@ -28,14 +29,35 @@ function showPreview() {
             mainHome.classList.add('d-block');
       }, 6700)
 
-     
+
       setTimeout(() => {
             _transitionHome.classList.add('d-none');
       }, 7700)
-     
+      body.style.cursor = 'none';
 
 
 }
+function goodDay() {
+      var txt = window.document.getElementById('day')
+      var data = new Date()
+      var hora = data.getHours()
+      var min = data.getMinutes()
+      if (hora >= 0 && hora <= 6) {
+            txt.innerHTML = `Boa madrugada`
+      }
+      else if (hora >= 6 && hora <= 12) {
+            txt.innerHTML = `Bom dia`
+      }
+      else if (hora >= 12 && hora <= 18) {
+            txt.innerHTML = `Boa Tarde`
+      }
+      else {
+            txt.innerHTML = `Boa Noite`
+      }
+
+}
+
 window.addEventListener('load', function () {
       showPreview();
+      goodDay();
 });

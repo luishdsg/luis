@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-wf-page="5efb88b4915f363abfb7f9cb" data-wf-site="5efb88b4915f360129b7f9ca"
+      data-darkreader-mode="dynamic" data-darkreader-scheme="dark">
 
 <head>
       <meta charset="UTF-8">
@@ -9,17 +10,27 @@
       <link href="/css/style.css" rel="stylesheet">
       <link href="/css/about.css" rel="stylesheet">
       <link href="/css/cursor.css" rel="stylesheet">
-
+      <style class="darkreader darkreader--fallback" media="screen"></style>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
       <title>Exemplo de Animação com transform: matrix3d</title>
 </head>
+<style class="darkreader darkreader--fallback" media="screen"></style>
 <style>
+      canvas.light-splatter {
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9;
+            opacity: 0
+      }
 
 </style>
 
-<body>
+<body id="body">
 
       <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
             id="load">
@@ -33,6 +44,7 @@
                   </div>
                   <section id="main-home" style="display: none;" class="w-100 h-100">
                         <canvas></canvas>
+                        <canvas class="light-splatter" width="1920" height="942" style="opacity: 1;"></canvas>
                         <div class="bord">
                               <div>
                                     <div class="title-home align-center line-drawing-demo">
@@ -544,7 +556,24 @@
                                                 </div>
                                           </div>
                                     </div>
+                                    <div class="row">
+                                          <div class="col-md-6 ">
+                                                <main class="bord-info-l">
+                                                      <!-- <p id="day" class="mb-0"></p> -->
+                                                      <p class="mb-0">Dev</p>
+                                                      <section class="bord-info-l-animation">
+                                                        <div class="first"><div>Back-End Jr</div></div>
+                                                        <div class="second"><div>Front-End Pleno</div></div>
+                                                        <div class="third"><div>Full-Stack Jr</div></div>
+                                                      </section>
+                                                    </main>
+                                          </div>
+                                          <div class="col-md-6">
+                                                
+                                          </div>
+                                    </div>
                               </div>
+                           
                         </div>
 
                   </section>
@@ -570,7 +599,9 @@
 
                   <div class="about">
                         <div id="content">
-                              <section style="width: 100%; height: 2000px;" class="bg-warning"></section>
+                              <section style="width: 100%; height: 2000px;" class="bg-warning">
+                                    <!-- <iframe src="" class=""/> -->
+                              </section>
                               <section style="width: 100%; height: 2000px;" class="bg-light"></section>
                         </div>
                   </div>
@@ -589,8 +620,11 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       <script src="/js/cursor.js"></script>
       <script src="/js/background-main.js"></script>
-      <script src="/js/show-preview.js"></script>
+      <script src="/js/home.js"></script>
+      <script src="/js/effect-plugins.min.js.transferir"></script>
+      <script src="/js/effect-script.min.js.transferir"></script>
       <script src="/js/anime-master/lib/anime.min.js"></script>
+
       <script type="module">
             gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
             smoothScroll("#content");
@@ -654,26 +688,27 @@
                   });
             }
 
- 
+
+
             anime({
-            targets: '.line-drawing-demo .lines path',
-            strokeDashoffset: [anime.setDashoffset, 0],
-            easing: 'easeInOutSine',
-            duration: 1000,
-            delay: function (el, i) { return i * 2 },
-            direction: 'alternate',
-            loop: true
-      });
-      setTimeout(() => {
-            anime({
-                  targets: '.specific-unit-values-demo .el',
-                  duration: 2500,
-                  width: '100%',
-                  easing: 'easeInOutQuad',
+                  targets: '.line-drawing-demo .lines path',
+                  strokeDashoffset: [anime.setDashoffset, 0],
+                  easing: 'easeInOutSine',
+                  duration: 1000,
+                  delay: function (el, i) { return i * 2 },
                   direction: 'alternate',
-                  loop: false
+                  loop: true
             });
-      }, 7000); 
+            setTimeout(() => {
+                  anime({
+                        targets: '.specific-unit-values-demo .el',
+                        duration: 2500,
+                        width: '100%',
+                        easing: 'easeInOutQuad',
+                        direction: 'alternate',
+                        loop: false
+                  });
+            }, 7000);
 
       </script>
 </body>

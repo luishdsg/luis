@@ -1,5 +1,6 @@
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;900&display=swap');
   @import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
+  @import url('https://fonts.googleapis.com/css?family=Roboto:700');
 
   :root {
     --purple: rgba(121, 68, 154, 0.13);
@@ -372,11 +373,11 @@
   }
 
 
-  .hack-way{
+  .hack-way {
     font-size: calc(2px + 2vh);
     text-shadow: 0 0 5px #0074e4, 0 0 15px #0074e4, 0 0 20px #0074e4, 0 0 40px #0047ab, 0 0 60px #0047ab, 0 0 10px #002b66, 0 0 98px #002b66;
     color: #0074e4;
-    font-family: "Sacramento", cursive ;
+    font-family: "Sacramento", cursive;
     text-align: center;
     animation: blink 3s infinite;
     -webkit-animation: blink 3s infinite;
@@ -424,5 +425,166 @@
     100% {
       text-shadow: 0 0 5px #0074e4, 0 0 15px #0074e4, 0 0 20px #0074e4, 0 0 40px #0047ab, 0 0 60px #0047ab, 0 0 10px #002b66, 0 0 98px #002b66;
       color: #0074e4;
+    }
+  }
+
+
+  .bord-info-l {
+    color: #e5e5e5;
+    font-size: 1rem;
+    text-transform: uppercase;
+    display: flex;
+    font-family: 'Roboto', sans-serif !important;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .bord-info-l p {
+    background: linear-gradient(to right, #4d4d4d 0, white 30%, #4d4d4d 60%);
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 30s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+  }
+
+  @-moz-keyframes shine {
+    0% {
+      background-position: 0;
+    }
+
+    60% {
+      background-position: 180px;
+    }
+
+    100% {
+      background-position: 180px;
+    }
+  }
+
+  @-webkit-keyframes shine {
+    0% {
+      background-position: 0;
+    }
+
+    60% {
+      background-position: 180px;
+    }
+
+    100% {
+      background-position: 180px;
+    }
+  }
+
+  @-o-keyframes shine {
+    0% {
+      background-position: 0;
+    }
+
+    60% {
+      background-position: 180px;
+    }
+
+    100% {
+      background-position: 180px;
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 0;
+    }
+
+    60% {
+      background-position: 180px;
+    }
+
+    100% {
+      background-position: 180px;
+    }
+  }
+
+  .bord-info-l-animation {
+    height: 27px;
+    width: 199px;
+    overflow: hidden;
+  }
+
+  .bord-info-l-animation>div>div {
+    padding: 0.25rem 0.75rem;
+    height: 26px;
+    margin-bottom: 40px;
+    margin-left: 10%;
+    display: inline-block;
+  }
+
+  .bord-info-l-animation div:first-child {
+      animation: text-bord-info-l 8s infinite;
+    line-height: 18px;
+
+  }
+
+  .first div {
+    border: 1px solid rgb(0, 208, 255);
+    color: #00e9ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 9px 1px darkblue;
+  }
+
+  .second div {
+    border: 1px solid #05ff86;
+    color: #03b429;
+    border-radius: 5px;
+    box-shadow: 0px 0px 9px 1px rgb(0, 139, 65);
+  }
+
+  .third div {
+    border: 1px solid #5805ff;
+    color: #aa48ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 9px 1px rgb(97, 0, 139);
+  }
+
+  @keyframes text-bord-info-l {
+    0% {
+      margin-top: 0rem;
+    }
+
+    10% {
+      margin-top: 0rem;
+    }
+
+    20% {
+      margin-top: -59px;
+    }
+
+    30% {
+      margin-top: -59px;
+    }
+
+    40% {
+      margin-top: -123px;
+    }
+
+    60% {
+      margin-top: -123px;
+    }
+
+    70% {
+      margin-top: -59px;
+    }
+
+    80% {
+      margin-top: -59px;
+    }
+
+    90% {
+      margin-top: 0rem;
+    }
+
+    100% {
+      margin-top: 0rem;
     }
   }
