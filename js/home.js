@@ -13,26 +13,26 @@ function showPreview() {
             load.classList.add('d-none');
             _transitionHome.classList.add('top-0');
             mainHome.classList.add('show-main-home');
-      }, 4000)
+      }, 40)
       setTimeout(() => {
             _transitionHome.classList.remove('_start-transition-home');
             _transitionHome.classList.remove('top-0');
             _transitionHome.classList.add('_end-transition-home');
-      }, 4900)
+      }, 49)
       setTimeout(() => {
             _startTransitionCol3.classList.remove('_start-transition-col-3');
             _startTransitionCol3.classList.add('h-600');
             _startTransitionCol3.classList.add('_start-zoom-col-3');
-      }, 5500)
+      }, 55)
       setTimeout(() => {
             _startTransitionCol.classList.add('d-none');
             mainHome.classList.add('d-block');
-      }, 6700)
+      }, 67)
 
 
       setTimeout(() => {
             _transitionHome.classList.add('d-none');
-      }, 7700)
+      }, 77)
       body.style.cursor = 'none';
 
 
