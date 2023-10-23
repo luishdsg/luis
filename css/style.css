@@ -593,7 +593,8 @@
     }
   }
   .dotlottie-title {
-    transform: scale(.7) !important;
+    transform: scale(calc(100 / 426 * 3)) !important;
+    max-height: 200px !important;
   }
   .dotlottie-title > .col{
     padding-left: 0px !important;
