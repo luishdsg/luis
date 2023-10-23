@@ -1,6 +1,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;900&display=swap');
   @import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
   @import url('https://fonts.googleapis.com/css?family=Roboto:700');
+  @font-face {
+    font-family: "Anybody";
+    src: url("https://assets.codepen.io/1492907/Anybody.woff2") format("woff2");
+  }
 
   :root {
     --purple: rgba(121, 68, 154, 0.13);
@@ -521,7 +525,7 @@
   }
 
   .bord-info-l-animation div:first-child {
-      animation: text-bord-info-l 8s infinite;
+    animation: text-bord-info-l 8s infinite;
     line-height: 18px;
 
   }
@@ -588,3 +592,65 @@
       margin-top: 0rem;
     }
   }
+  .dotlottie-title {
+    transform: scale(.7) !important;
+  }
+  .dotlottie-title > .col{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .dotlottie-title > .col > dotlottie-player{
+    width: 100%;
+    height: 11rem;
+  }
+  .dotlottie-title > .col:nth-child(2) > dotlottie-player{
+    position:relative;
+    left: -48px;
+  }
+  .dotlottie-title > .col:nth-child(3) > dotlottie-player:nth-child(1){
+    transform: rotate(270deg);
+    position: relative;
+    top: 39px;
+  }
+  .dotlottie-title > .col:nth-child(3) > dotlottie-player:nth-child(2){
+    transform: rotate(180deg);
+    position: relative;
+    top: -179px;
+    left: -14px;
+  } 
+
+
+  
+  ::-moz-selection {
+    background: #0e0e0e;
+    color: #f0f0f0;
+  }
+  
+  ::selection {
+    background: #0e0e0e;
+    color: #f0f0f0;
+  }
+  
+  .home-text-info {
+    font-family: "Anybody";
+    filter: url(#distortionFilter);
+    font-size: calc(100vw / 126 * 3);
+    color: #0e0e0e;
+    font-variation-settings: "wght" 700;
+  }
+  @media (max-width: 800px) {
+    .home-text-info {
+      font-size: 8rem;
+    }
+  }
+  
+  .distort {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -9999px;
+    pointer-events: none;
+  }
+  
+
+  
