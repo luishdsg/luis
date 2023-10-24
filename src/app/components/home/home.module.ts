@@ -11,6 +11,7 @@ import { MoreProyectsComponent } from './more-proyects/more-proyects.component';
 import { NgbModule, NgbNav, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FormationComponent } from './formation/formation.component';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -23,6 +24,7 @@ export function HttpLoaderFactory(http: HttpClient){
     HomeComponent,
     BannerComponent,
     AboutComponent,
+    FormationComponent,
     JobsComponent,
     MoreProyectsComponent,
     ContactComponent,

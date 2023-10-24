@@ -53,7 +53,39 @@
         }
     ],
 
-
+    "Formation.Title": "Formation",
+    "Formation.Formation": [
+      {
+        "Tab": "ESTACIO",
+        "Title": "Software Engineering",
+        "Date": "Jul-2020 | Aug-2023"
+      },
+      {
+        "Tab": "UDEMY",
+        "Title": "C# .NET full-stack",
+        "Date": "Present",
+        "Title2": "Angular full-stack project",
+        "Date2": "Nov-2019",
+        "Title3": "Html5, Css3, Js, API, NodeJs & React",
+        "Date3": "April-2020"
+      },
+      {
+        "Tab": "BOWTIE",
+        "Title": "Advanced Excel",
+        "Date": "Jan-2017"
+      },
+      {
+        "Tab": "PREPARA CURSOS",
+        "Title": "Computer Assembly, Maintenance, and Configuration",
+        "Date": "Jul-2016"
+      },
+      {
+        "Tab": "DINNONE",
+        "Title": "Git & GitHub",
+        "Date": "Jul-2020"
+      }
+    ],
+    
 
     "OtherProjects.Title": "Projects",
     "OtherProjects.Projects": [{

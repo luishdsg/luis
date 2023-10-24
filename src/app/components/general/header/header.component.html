@@ -14,14 +14,19 @@
                         class="underline nav-text"> {{"Header.Item2" | translate}}</span></a>
                 <ng-template ngbNavContent>Second content</ng-template>
             </li>
-            <li ngbNavItem >
-                <a ngbNavLink (click)='scroll("projects")'><span class='nav-number'>03. </span> <span
+            <li ngbNavItem>
+                <a ngbNavLink (click)='scroll("formation")'><span class='nav-number'>03. </span> <span
                         class="underline nav-text"> {{"Header.Item3" | translate}}</span></a>
                 <ng-template ngbNavContent>Second content</ng-template>
             </li>
-            <li ngbNavItem>
-                <a ngbNavLink (click)='scroll("contact")'><span class='nav-number'>04. </span> <span
+            <li ngbNavItem >
+                <a ngbNavLink (click)='scroll("projects")'><span class='nav-number'>04. </span> <span
                         class="underline nav-text"> {{"Header.Item4" | translate}}</span></a>
+                <ng-template ngbNavContent>Second content</ng-template>
+            </li>
+            <li ngbNavItem>
+                <a ngbNavLink (click)='scroll("contact")'><span class='nav-number'>05. </span> <span
+                        class="underline nav-text"> {{"Header.Item5" | translate}}</span></a>
                 <ng-template ngbNavContent>Second content</ng-template>
             </li>
             <li ngbNavItem>
@@ -92,13 +97,18 @@
                             </a>
                         </li>
                         <li>
-                            <a (click)='scroll("proyects")'>
+                            <a (click)='scroll("formation")'>
                                 <span>03. </span> {{"Header.Item3" | translate}}
                             </a>
                         </li>
                         <li>
-                            <a (click)='scroll("proyects")'>
+                            <a (click)='scroll("projects")'>
                                 <span>04. </span> {{"Header.Item4" | translate}}
+                            </a>
+                        </li>
+                        <li>
+                            <a (click)='scroll("contact")'>
+                                <span>05. </span> {{"Header.Item5" | translate}}
                             </a>
                         </li>
                         <li>
