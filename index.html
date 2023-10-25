@@ -36,14 +36,13 @@
 
       <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
             id="load">
-            <div class="w-100 bg-transparent mt-0 pt-0 h-auto">
-                  <iframe style="height: 100vh;" class="w-100" src="pages/loading.html"></iframe>
+            <div class="w-100 bg-transparent d-flex justify-content-center align-content-center mt-0 pt-0 h-auto">
+                  <iframe style="height: 100vh;" id="_animation-name" class="w-100 " src="pages/loading.html"></iframe>
+                  <dotlottie-player id="_animation-splash" style="display: none;" src="https://lottie.host/448d509e-ab9a-4650-8bff-6d3e4cbd1235/OnzKVIuWa2.json" background="transparent" speed="1" autoplay></dotlottie-player>
             </div>
       </div>
       <div class="w-100 h-100">
             <main class="w-100 h-vh">
-                  <div id="_start-transition-home" class="_start-transition-home z-10 w-100 h-100 position-absolute">
-                  </div>
                   <section id="main-home" style="display: none;" class="w-100 h-100">
                         <canvas></canvas>
                         <canvas class="light-splatter" width="1920" height="942" style="opacity: 1;"></canvas>
@@ -631,9 +630,9 @@
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                             </div>
-                                                            <div class="row bg-danger">
-                                                                  <div class="col">
-                                                                        <h1 style="transform: scale(.7) !important;" class="home-text-info mb-0 position-relative z-100">jair bolsonaro</h1>
+                                                            <div class="row">
+                                                                  <div class="col-9 d-flex justify-content-center">
+                                                                        <h1 class="home-text-info mb-0 position-relative z-100">the stronger your trials, <br/> the greater your victories." <BR/> <span class="h3"><strong><i>_Esther Kuku</i></strong></h1>
                                                                         <svg class="distort">
                                                                               <filter id="distortionFilter">
                                                                                     <feTurbulence type="fractalNoise"
@@ -658,10 +657,10 @@
 
                                                       </div>
                                                       <div class="col-2">
-                                                            <dotlottie-player
+                                                            <dotlottie-player class="position-absolute"
                                                                   src="https://lottie.host/655055f2-59a6-433e-9e9e-f8ef94412d26/dnlDbPletb.json"
                                                                   background="transparent" speed="1"
-                                                                  style="width: 60px; height: 60px;" loop
+                                                                  style="width: 60px; height: 60px; right: 4%; bottom: 6%;" loop
                                                                   autoplay></dotlottie-player>
                                                       </div>
                                                 </div>
@@ -670,27 +669,8 @@
                               </div>
 
                         </div>
-
                   </section>
-                  <div id="_start-transition-col"
-                        class="row align-items-center top-0 z-100 _start-transition-col position-absolute  w-100 h-100">
-                        <div class="col col-mod-1">
-                              <div class="w-100 d-flex align-items-center overflow-auto"></div>
-                        </div>
-                        <div class="col col-mod-2">
-                              <div class="w-100 d-flex align-items-center overflow-auto"></div>
-                        </div>
-                        <div class="col  col-mod-3">
-                              <div class="w-100 _start-transition-col-3 d-flex align-items-center overflow-auto">
-                              </div>
-                        </div>
-                        <div class="col col-mod-4">
-                              <div class="w-100 d-flex align-items-center overflow-auto"></div>
-                        </div>
-                        <div class="col col-mod-5">
-                              <div class="w-100 d-flex align-items-center overflow-auto"></div>
-                        </div>
-                  </div>
+                 
 
                   <div class="about">
                         <div id="content">
