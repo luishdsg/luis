@@ -40,8 +40,18 @@ function goodDay() {
       }
 
 }
-
+function disableScroll() {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+          document.body.style.overflow = 'auto';
+          window.scrollTo(0, scrollY);
+      }, 7000);
+      
+  }
 window.addEventListener('load', function () {
+      disableScroll();
       showPreview();
       goodDay();
+
 });

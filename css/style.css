@@ -54,6 +54,22 @@
       margin-top: 0px;
     }
   }
+  .show-page {
+    animation-name: showpage;
+    animation-duration: 1s;
+  }
+
+  @keyframes showpage {
+    0% {
+      top: 100vh;
+      z-index: 100000;
+
+    }
+
+    100% {
+      top: 0px;
+    }
+  }
 
   .dnone {
     display: none;
@@ -63,7 +79,9 @@
     z-index: 10;
   }
 
-
+.top-100{
+  top: 100vh !important;
+}
 
   .z-100 {
     z-index: 100;
