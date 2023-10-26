@@ -31,14 +31,26 @@
             opacity: 0
       }
 </style>
-
+ <!-- <div id="strip" style="z-index: 1001; " class="py-2">
+                  <div id="stripText" class="h-100">
+                        <h4 class="mb-0 mt-0 ps-2" style="line-height: 0.9;" id="stripTextScroll">cafiosgipos nahwae fi
+                              hwe
+                              hwiui ywe y ui i wigisgiysegisfis issyg fiwsE FIUwe ifWSEIFwh ifweihsigdiughaieughiau iuar
+                              giar hiua hgiurhgiuaer hgiuargir hgiuarhgiuarhiarhgiuartg iagaauigirh g</h4>
+                  </div>
+            </div> -->
 <body id="body">
+           
+
+      </div>
 
       <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
             id="load">
             <div class="w-100 bg-transparent d-flex justify-content-center align-content-center mt-0 pt-0 h-auto">
                   <iframe style="height: 100vh;" id="_animation-name" class="w-100 " src="pages/loading.html"></iframe>
-                  <dotlottie-player id="_animation-splash" style="display: none;" src="https://lottie.host/448d509e-ab9a-4650-8bff-6d3e4cbd1235/OnzKVIuWa2.json" background="transparent" speed="1" autoplay></dotlottie-player>
+                  <dotlottie-player id="_animation-splash" style="display: none;"
+                        src="https://lottie.host/448d509e-ab9a-4650-8bff-6d3e4cbd1235/OnzKVIuWa2.json"
+                        background="transparent" speed="1" autoplay></dotlottie-player>
             </div>
       </div>
       <div class="w-100 h-100">
@@ -48,9 +60,9 @@
                         <canvas class="light-splatter" width="1920" height="942" style="opacity: 1;"></canvas>
                         <div class="bord">
                               <div>
-                                    <div class="title-home align-center line-drawing-demo">
-                                          <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <div class="title-home align-center overflow-hidden line-drawing-demo">
+                                          <svg onmouseover="flat()" class="z-100" xmlns="http://www.w3.org/2000/svg"
+                                                version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <g fill="none" fill-rule="evenodd" stroke="currentColor"
                                                       stroke-width="1" class="lines" data-darkreader-inline-stroke=""
                                                       style="--darkreader-inline-stroke: currentColor;">
@@ -562,7 +574,8 @@
                                                 <main class="bord-info-l show-info">
                                                       <!-- <p id="day" class="mb-0"></p> -->
                                                       <p class="mb-0">Dev</p>
-                                                      <section class="bord-info-l-animation">
+                                                      <section onmouseover="clicked()"
+                                                            class="bord-info-l-animation z-100">
                                                             <div class="first">
                                                                   <div>Back-End Jr</div>
                                                             </div>
@@ -581,7 +594,7 @@
                                           <div class="col-12">
                                                 <div class="row align-items-end">
                                                       <div class="col-10">
-                                                            <div class="row dotlottie-title">
+                                                            <div class="row show-info dotlottie-title">
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/df44b85b-d82b-402f-b89e-e7168271266a/B6omR6q68E.json"
@@ -631,8 +644,15 @@
                                                                   </div>
                                                             </div>
                                                             <div class="row">
-                                                                  <div class="col-9 d-flex justify-content-center">
-                                                                        <h1 class="home-text-info mb-0 position-relative z-100">the stronger your trials, <br/> the greater your victories." <BR/> <span class="h3"><strong><i>_Esther Kuku</i></strong></h1>
+                                                                  <div
+                                                                        class="col-9 show-info d-flex justify-content-center">
+                                                                        <h1 onmouseover="clicked()"
+                                                                              class="home-text-info mb-0 position-relative z-100">
+                                                                              the stronger your trials, <br /> the
+                                                                              greater your victories." <BR />
+                                                                              <span class="h3"><strong><i>_Esther
+                                                                                                Kuku</i></strong>
+                                                                        </h1>
                                                                         <svg class="distort">
                                                                               <filter id="distortionFilter">
                                                                                     <feTurbulence type="fractalNoise"
@@ -656,12 +676,13 @@
                                                             </div>
 
                                                       </div>
-                                                      <div class="col-2">
-                                                            <dotlottie-player class="position-absolute"
+                                                      <div class="col-2 show-info">
+                                                            <dotlottie-player onmouseover="won()"
+                                                                  class="position-absolute z-100"
                                                                   src="https://lottie.host/655055f2-59a6-433e-9e9e-f8ef94412d26/dnlDbPletb.json"
                                                                   background="transparent" speed="1"
-                                                                  style="width: 60px; height: 60px; right: 4%; bottom: 6%;" loop
-                                                                  autoplay></dotlottie-player>
+                                                                  style="width: 60px; height: 60px; right: 4%; bottom: 6%;"
+                                                                  loop autoplay></dotlottie-player>
                                                       </div>
                                                 </div>
                                           </div>
@@ -670,12 +691,28 @@
 
                         </div>
                   </section>
-                 
 
-                  <div class="about bg-dark top-100 position-relative">
+
+                  <div class="about bg-dark top-100">
                         <div id="content">
-                              <section style="width: 100%; height: 2000px;" class="">
-                                    <!-- <iframe src="" class=""/> -->
+                              <section style="width: 100%; height: 2000px;" class="w3-black">
+                                    <div class="about-title">
+                                          <video autoplay playsinline muted loop preload>
+                                                <source
+                                                      src="./assets/music/about.mp4" />
+                                          </video>
+                                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285 80"
+                                                preserveAspectRatio="xMidYMid slice">
+                                                <defs>
+                                                      <mask id="mask" x="0" y="0" width="100%" height="100%">
+                                                            <rect x="0" y="0" width="100%" height="100%" />
+                                                            <text x="54" y="70">SOBRE</text>
+                                                      </mask>
+                                                </defs>
+                                                <rect x="0" y="0" width="100%" height="100%" />
+                                          </svg>
+                                    </div>
+                                    <section style="width: 100%; height: 2000px; padding-top: 230px;" class="bg-info z-10 position-relative"></section>
                               </section>
                               <section style="width: 100%; height: 2000px;" class="bg-light"></section>
                         </div>
@@ -685,17 +722,29 @@
 
 
 
-
+      <!-- AUDIOS -->
+      <audio id="won">
+            <source src="/assets/music/won.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <audio id="flat">
+            <source src="/assets/music/air.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <audio id="clicked">
+            <source src="/assets/music/click.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+      </audio>
 
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
       <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
       <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+      <script src="https://assets.codepen.io/16327/gsap-latest-beta.min.js?r=v3.11.3"></script>
+      <script src="https://assets.codepen.io/16327/MotionPathPlugin.min.js"></script>
+      <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.2/TweenMax.min.js"></script>
+      <script src="/js/glitch-text.js"></script>
       <script src="/js/cursor.js"></script>
       <script src="/js/background-main.js"></script>
       <script src="/js/home.js"></script>
@@ -705,13 +754,35 @@
       <script src="/js/anime-master/lib/anime.min.js"></script>
 
       <script type="module">
+                 anime({
+                  targets: '.line-drawing-demo .lines path',
+                  strokeDashoffset: [anime.setDashoffset, 0],
+                  easing: 'easeInOutSine',
+                  duration: 1000,
+                  delay: function (el, i) { return i * 2 },
+                  direction: 'alternate',
+                  loop: true
+            });
+            setTimeout(() => {
+                  anime({
+                        targets: '.specific-unit-values-demo .el',
+                        duration: 2500,
+                        width: '100%',
+                        easing: 'easeInOutQuad',
+                        direction: 'alternate',
+                        loop: false
+                  });
+            }, 7000);
             gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
             smoothScroll("#content");
+            stripTextScroll("#stripText");
+
             function smoothScroll(content, viewport, smoothness) {
                   content = gsap.utils.toArray(content)[0];
 
                   gsap.set(viewport || content.parentNode, { overflow: "hidden", position: "fixed", height: "100%", width: "100%", top: 0, left: 0, right: 0, bottom: 0 });
-                  gsap.set(content, { overflow: "visible", width: "100%", });
+                  gsap.set(content, { overflow: "visible", width: "100%" });
 
                   let getProp = gsap.getProperty(content),
                         setProp = gsap.quickSetter(content, "y", "px"),
@@ -767,85 +838,70 @@
                   });
             }
 
-            // 404
-            const title = document.querySelector("h1");
-            if (title) {
-                  title.addEventListener("mouseenter", () => {
-                        gsap.to(".distort feDisplacementMap", 1, {
-                              attr: {
-                                    scale: 100
-                              },
-                              ease: "circ.out"
-                        });
-                        gsap.to(".distort feTurbulence", 1, {
-                              attr: {
-                                    baseFrequency: '2.08 .08'
-                              },
-                              ease: "circ.out"
-                        }, 1);
-                        gsap.to(title, 1, {
-                              fontVariationSettings: "'wght' 650",
-                              ease: "back.out"
-                        });
+            function stripTextScroll(content, viewport, smoothness) {
+                  content = gsap.utils.toArray(content)[0];
+
+                  gsap.set(viewport || content.parentNode, { overflow: "hidden", position: "fixed", height: "100%", width: "100%", top: 0, left: 0, right: 0, bottom: 0 });
+                  gsap.set(content, { overflow: "visible", width: "100%" });
+
+                  let getProp = gsap.getProperty(content),
+                        setProp = gsap.quickSetter(content, "x", "px"),
+                        removeScroll = () => content.style.overflow = "visible",
+                        needsRefreshFix = parseFloat(ScrollTrigger.version.split(".").map(n => ("00" + n).substr(n.length - 1, 3)).join("")) < 3006002,
+                        width;
+
+                  function onResize() {
+                        width = content.clientwidth;
+                        content.style.overflow = "visible"
+                        document.body.style.width = width + "px";
+                  }
+                  onResize();
+                  ScrollTrigger.addEventListener("refreshInit", onResize);
+                  ScrollTrigger.addEventListener("refresh", () => {
+                        removeScroll();
+                        requestAnimationFrame(removeScroll);
+                  })
+
+                  ScrollTrigger.defaults({ scroller: content });
+
+                  ScrollTrigger.prototype.update = p => p; // works around an issue in ScrollTrigger 3.6.1 and earlier (fixed in 3.6.2, so this line could be deleted if you're using 3.6.2 or later)
+
+                  ScrollTrigger.scrollerProxy(content, {
+                        scrollTop(value) {
+                              return arguments.length ? setProp(-value) : -getProp("x");
+                        },
+                        getBoundingClientRect() {
+                              return { top: 0, left: 0, width: window.innerWidth, width: window.innerwidth };
+                        }
                   });
-                  title.addEventListener("mouseleave", () => {
-                        gsap.to(".distort feDisplacementMap", 1, {
-                              attr: {
-                                    scale: 0
-                              },
-                              ease: "circ.out"
-                        }, 1);
-                        gsap.to(".distort feTurbulence", 1, {
-                              attr: {
-                                    baseFrequency: '2.01 .01'
-                              },
-                              ease: "circ.out"
-                        }, 1);
-                        gsap.to(title, 1, {
-                              fontVariationSettings: "'wght' 700",
-                              ease: "back.out"
-                        }, 1);
+
+                  gsap.fromTo(content, { y: 0 }, {
+                        y: () => document.documentElement.clientwidth - width,
+                        ease: "none",
+                        onUpdate: ScrollTrigger.update,
+                        scrollTrigger: {
+                              scroller: window,
+                              invalidateOnRefresh: true,
+                              start: 0,
+                              end: () => width - document.documentElement.clientwidth,
+                              scrub: smoothness || 3,
+                              onRefresh: self => {
+                                    // when the screen resizes, we just want the animation to immediately go to the appropriate spot rather than animating there, so basically kill the scrub.
+                                    gsap.killTweensOf(self.animation);
+                                    self.animation.progress(self.progress);
+                                    if (needsRefreshFix) {
+                                          let all = ScrollTrigger.getAll();
+                                          all.slice(all.indexOf(self) + 1).forEach(t => t.refresh());
+                                    }
+                              }
+                        }
                   });
             }
 
-            anime({
-                  targets: '.line-drawing-demo .lines path',
-                  strokeDashoffset: [anime.setDashoffset, 0],
-                  easing: 'easeInOutSine',
-                  duration: 1000,
-                  delay: function (el, i) { return i * 2 },
-                  direction: 'alternate',
-                  loop: true
-            });
-            setTimeout(() => {
-                  anime({
-                        targets: '.specific-unit-values-demo .el',
-                        duration: 2500,
-                        width: '100%',
-                        easing: 'easeInOutQuad',
-                        direction: 'alternate',
-                        loop: false
-                  });
-            }, 7000);
-            $("h2").each(function (index, element) {
-                  var animation = TweenMax.to(this, 0.2, {
-                        className: "+= superShadow",
-                        marginTop: "-10px",
-                        marginBottom: "10px",
-                        ease: Power1.easeIn,
-                        paused: true
-                  });
-                  element.animation = animation;
-            });
 
-            $("h2").hover(
-                  function () {
-                        this.animation.play();
-                  },
-                  function () {
-                        this.animation.reverse();
-                  }
-            );
+            window.addEventListener("load", function (event) {
+                  smoothScroll();
+            });
 
 
       </script>

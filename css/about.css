@@ -1,0 +1,44 @@
+.about-title {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    max-height: 500px;
+  }
+  .about-title video {
+    width: 100%;
+  }
+  .about-title svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .about-title svg text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 46px;
+  }
+  .about-title svg > rect {
+    -webkit-mask: url(#mask);
+    mask: url(#mask);
+  }
+  .about-title svg rect:nth-child(1) {
+    fill: aliceblue;
+  }
+  
+  .about-title svg rect:nth-child(2) {
+        fill: black;
+  }
+    
+  .about-title:before, .about-title:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background-color: black;
+  }
+
+  

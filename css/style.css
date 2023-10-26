@@ -27,10 +27,10 @@
   }
 
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 0px; 
   }
 
-  ::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track { 
     background: rgba(212, 8, 8, 0);
   }
 
@@ -40,13 +40,13 @@
 
   .show-info {
     animation-name: showanime;
-    animation-duration: 1.5s;
-  }
+    animation-duration: 1s;
+  }   
 
   @keyframes showanime {
     0% {
       opacity: 0;
-      margin-top: 300px;
+      margin-top: 200px;
     }
 
     100% {
@@ -54,6 +54,23 @@
       margin-top: 0px;
     }
   }
+  .show-info-2 {
+    animation-name: showanime2; 
+    animation-duration: 1s .3s;
+  }   
+
+  @keyframes showanime2 {
+    0% {
+      opacity: 0;
+      margin-top: 200px;
+    }
+
+    100% {
+      opacity: 1;
+      margin-top: 0px;
+    }
+  }
+
   .show-page {
     animation-name: showpage;
     animation-duration: 1s;
@@ -79,9 +96,9 @@
     z-index: 10;
   }
 
-.top-100{
-  top: 100vh !important;
-}
+  .top-100 {
+    top: 100vh !important;
+  }
 
   .z-100 {
     z-index: 100;
@@ -90,6 +107,7 @@
   .z-1000 {
     z-index: 1000;
   }
+
 
   .h-vw {
     height: 100vw;
@@ -108,7 +126,7 @@
   }
 
   /* HOME */
-  #_animation-splash{
+  #_animation-splash {
     width: 300px;
     height: 300px;
   }
@@ -121,21 +139,29 @@
   }
 
   @keyframes animation-splash {
-    0%,10%{
+
+    0%,
+    10% {
       transform: scale(0);
       opacity: 0;
     }
-    20%, 40%,50%,60%,80% {
+
+    20%,
+    40%,
+    50%,
+    60%,
+    80% {
       transform: scale(1);
       opacity: 1;
     }
 
-    90%,100% {
+    90%,
+    100% {
       transform: scale(0);
       opacity: 0;
     }
   }
-  
+
   ._end-animation-name {
     transform: scale(0);
     opacity: 0;
@@ -160,7 +186,7 @@
   }
 
   .show-main-home {
-    animation: show-main-home 2s;
+    animation: show-main-home 2s 0S;
   }
 
   @keyframes show-main-home {
@@ -532,11 +558,11 @@
   }
 
   .home-text-info:nth-child(1),
-    .home-text-info:nth-child(2){
+  .home-text-info:nth-child(2) {
     filter: url(#distortionFilter);
     font-size: calc(100vw / 126 * 3);
     color: #ffffff80;
-    font-weight:  500 !important;
+    font-weight: 500 !important;
   }
 
   @media (max-width: 800px) {
