@@ -1,44 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
 .about-title {
     position: relative;
     width: 100%;
     margin: 0 auto;
-    max-height: 500px;
-  }
-  .about-title video {
+    height: 100%;
+    max-height:900px;
+}
+
+.about-title video {
     width: 100%;
-  }
-  .about-title svg {
+}
+
+.about-title svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
-  .about-title svg text {
-    font-family: "Montserrat", sans-serif;
+}
+
+.about-title svg text {
+    text-transform: uppercase;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: 46px;
-  }
-  .about-title svg > rect {
+    font-size: 40px;
+}
+
+.about-title svg>rect {
     -webkit-mask: url(#mask);
     mask: url(#mask);
-  }
-  .about-title svg rect:nth-child(1) {
+}
+
+.about-title svg rect:nth-child(1) {
     fill: aliceblue;
-  }
-  
-  .about-title svg rect:nth-child(2) {
-        fill: black;
-  }
-    
-  .about-title:before, .about-title:after {
+}
+
+.about-title svg rect:nth-child(2) {
+    fill: black;
+}
+
+.about-title:before,
+.about-title:after {
     content: "";
     position: absolute;
     top: 0;
     width: 10px;
     height: 100%;
     background-color: black;
-  }
+}
 
-  
+
+
+
+
+/* ABOUT-INFO */
+.about-info-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 0, 0, 0),rgba(255, 0, 0, 0), black);
+}
+
+.about-info-bg {
+    background-image: url("/assets/b.png");
+}
+
+.about-info {
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.about-info-button {
+    float: left;
+    position: relative;
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    color: #e55643;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.about-info>div {
+    width: 70%;
+    color: rgb(217, 227, 255);
+    font-size: calc(100vw / 130 * 3);
+    margin: 0;
+    display: flex;
+    line-height: 47px;
+    letter-spacing: 0px;
+}
+
+.about-info-title {
+    transform: translateX(0%);
+    display: flex;
+    padding-right: 1rem;
+    float: left;
+    white-space: nowrap;
+    position: relative;
+}
+
+.about-info-title span {
+    transform: skew(-10deg);
+    position: relative;
+    white-space: nowrap;
+    display: block;
+    font-family: 'Fjalla One', sans-serif !important;
+    text-transform: uppercase;
+    float: left;
+    text-shadow: #3d4353 1px 1px, #000000 2px 2px, #000000 3px 3px, #3e3d53 4px 4px, #473d53 5px 5px, #473d53 6px 6px;
+    max-width: 100%;
+    min-height: 10px;
+}
+
+.about-info>div:nth-child(1) .about-info-title>.char9,
+.about-info>div:nth-child(1) .about-info-title>.char10,
+.about-info>div:nth-child(1) .about-info-title>.char11,
+.about-info>div:nth-child(1) .about-info-title>.char12,
+.about-info>div:nth-child(1) .about-info-title>.char13,
+.about-info>div:nth-child(1) .about-info-title>.char14,
+.about-info>div:nth-child(1) .about-info-title>.char15,
+.about-info>div:nth-child(1) .about-info-title>.char16,
+.about-info>div:nth-child(1) .about-info-title>.char17,
+.about-info>div:nth-child(1) .about-info-title>.char18,
+.about-info>div:nth-child(1) .about-info-title>.char19,
+.about-info>div:nth-child(1) .about-info-title>.char20,
+.about-info>div:nth-child(1) .about-info-title>.char21,
+.about-info>div:nth-child(1) .about-info-title>.char22,
+.about-info>div:nth-child(1) .about-info-title>.char23,
+.about-info>div:nth-child(1) .about-info-title>.char24,
+.about-info>div:nth-child(1) .about-info-title>.char25,
+.about-info>div:nth-child(1) .about-info-title>.char26,
+.about-info>div:nth-child(1) .about-info-title>.char27,
+.about-info>div:nth-child(1) .about-info-title>.char28 {
+    color: #e543c2;
+}
+
+
+.about-info>div:nth-child(3) .about-info-title,
+.about-info>div:nth-child(4) .about-info-title,
+.about-info>div:nth-child(8) .about-info-title {
+    color: #14e6f5;
+}

@@ -578,3 +578,14 @@
     left: -9999px;
     pointer-events: none;
   }
+  
+  canvas.light-splatter {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0
+  }
+
+
