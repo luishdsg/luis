@@ -1,4 +1,4 @@
-! function() {
+! function () {
     function t() {
         var r = window.mobileAndTabletCheck();
         if (!r) {
@@ -161,13 +161,13 @@
                 });
             var q, K = "https://dezea.digital/LDR_LLL1_0.png";
             let j, J, Q, Z, ee, et, er, en, ei, eo = (j = g.createTexture(), g.bindTexture(g.TEXTURE_2D, j), g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MIN_FILTER, g.LINEAR), g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MAG_FILTER, g.LINEAR), g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_S, g.REPEAT), g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_T, g.REPEAT), g.texImage2D(g.TEXTURE_2D, 0, g.RGB, 1, 1, 0, g.RGB, g.UNSIGNED_BYTE, new Uint8Array([255, 255, 255])), J = {
-                    texture: j,
-                    width: 1,
-                    height: 1,
-                    attach: t => (g.activeTexture(g.TEXTURE0 + t), g.bindTexture(g.TEXTURE_2D, j), t)
-                }, Q = new Image, Q.onload = () => {
-                    J.width = Q.width, J.height = Q.height, g.bindTexture(g.TEXTURE_2D, j), g.texImage2D(g.TEXTURE_2D, 0, g.RGB, g.RGB, g.UNSIGNED_BYTE, Q)
-                }, Q.src = K, J),
+                texture: j,
+                width: 1,
+                height: 1,
+                attach: t => (g.activeTexture(g.TEXTURE0 + t), g.bindTexture(g.TEXTURE_2D, j), t)
+            }, Q = new Image, Q.onload = () => {
+                J.width = Q.width, J.height = Q.height, g.bindTexture(g.TEXTURE_2D, j), g.texImage2D(g.TEXTURE_2D, 0, g.RGB, g.RGB, g.UNSIGNED_BYTE, Q)
+            }, Q.src = K, J),
                 ea = new A(L, F),
                 eu = new A(L, U),
                 el = new A(L, b),
@@ -258,7 +258,7 @@
                 let T;
                 return t.width == r && t.height == n || (t.read = (l = t.read, v = r, f = n, c = i, m = o, s = a, T = eS(v, f, c, m, s, h = u), ea.bind(), g.uniform1i(ea.uniforms.uTexture, l.attach(0)), k(T.fbo), T), t.write = eS(r, n, i, o, a, u), t.width = r, t.height = n, t.texelSizeX = 1 / r, t.texelSizeY = 1 / n), t
             }
-            eD(), eU(1000);
+            eD(), eU(parseInt(1 * Math.random()) + 0);
             let e_ = Date.now(),
                 eL = 0;
 
@@ -270,17 +270,17 @@
 
             function eU(t) {
                 for (let r = 0; r < t; r++) {
+                    let n = eB();
+                    n.r *= 10, n.g *= 10, n.b *= 10, eb(Math.random(), Math.random(), 1e3 * (Math.random() - .5), 1e3 * (Math.random() - .5), n)
                 }
             }
-
+// change color
             function eb(t, r, o, a, u) {
                 var l;
                 let v;
-                console.log(0.8,3.1,0.5)
-
                 g.viewport(0, 0, ee.width, ee.height), eE.bind(), g.uniform1i(eE.uniforms.uTarget, ee.read.attach(0)), g.uniform1f(eE.uniforms.aspectRatio, n.width / n.height), g.uniform2f(eE.uniforms.point, t, r),
-                 g.uniform3f(eE.uniforms.color, 12.0, 12.0, 0), g.uniform1f(eE.uniforms.radius, (l = i.SPLAT_RADIUS / 5000, v = n.width / n.height, v > 1 && (l *= v), l)), k(ee.write.fbo), ee.swap(), g.viewport(0, 0, Z.width, Z.height), g.uniform1i(eE.uniforms.uTarget, Z.read.attach(0)),
-                  g.uniform3f(eE.uniforms.color, 0.05345554317, 0.0399115487501 , 0.1515487501), k(Z.write.fbo), Z.swap()
+                    g.uniform3f(eE.uniforms.color, 12.0, 12.0, 0), g.uniform1f(eE.uniforms.radius, (l = i.SPLAT_RADIUS / 5000, v = n.width / n.height, v > 1 && (l *= v), l)), k(ee.write.fbo), ee.swap(), g.viewport(0, 0, Z.width, Z.height), g.uniform1i(eE.uniforms.uTarget, Z.read.attach(0)),
+                    g.uniform3f(eE.uniforms.color, 0.0345554317, 0.0399115487501, 0.1515487501), k(Z.write.fbo), Z.swap()
             }
 
             function ew(t, r, i, o) {
@@ -344,45 +344,45 @@
 
             function eI(t) {
                 return Math.floor(t * (window.devicePixelRatio || 1))
-            }(function t() {
+            } (function t() {
                 let r, o, v = (r = Date.now(), o = (r - e_) / 1e3, o = Math.min(o, .016666), e_ = r, o),
                     f;
                 var c, m, s, h, T, d, E, x, p = null;
                 let $, D, S;
                 eF() && eD(), c = v, s = 0, h = 1, i.COLORFUL && (eL += c * i.COLOR_UPDATE_SPEED) >= 1 && (eL = (m = eL, f = 1 - s, 0 == f ? s : (m - s) % f + s), a.forEach(t => {
-                        t.color = eB()
-                    })), u.length > 0 && eU(u.pop()), a.forEach(t => {
-                        var r;
-                        let n, o;
-                        t.moved && (t.moved = !1, n = (r = t).deltaX * i.SPLAT_FORCE, o = r.deltaY * i.SPLAT_FORCE, eb(r.texcoordX, r.texcoordY, n, o, r.color))
-                    }), i.PAUSED || function t(r) {
-                        g.disable(g.BLEND), g.viewport(0, 0, ee.width, ee.height), ex.bind(), g.uniform2f(ex.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(ex.uniforms.uVelocity, ee.read.attach(0)), k(er.fbo), e0.bind(), g.uniform2f(e0.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(e0.uniforms.uVelocity, ee.read.attach(0)), g.uniform1i(e0.uniforms.uCurl, er.attach(1)), g.uniform1f(e0.uniforms.curl, i.CURL), g.uniform1f(e0.uniforms.dt, r), k(ee.write.fbo), ee.swap(), eR.bind(), g.uniform2f(eR.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(eR.uniforms.uVelocity, ee.read.attach(0)), k(et.fbo), eu.bind(), g.uniform1i(eu.uniforms.uTexture, en.read.attach(0)), g.uniform1f(eu.uniforms.value, i.PRESSURE), k(en.write.fbo), en.swap(), ep.bind(), g.uniform2f(ep.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(ep.uniforms.uDivergence, et.attach(0));
-                        for (let n = 0; n < i.PRESSURE_ITERATIONS; n++) g.uniform1i(ep.uniforms.uPressure, en.read.attach(1)), k(en.write.fbo), en.swap();
-                        e$.bind(), g.uniform2f(e$.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(e$.uniforms.uPressure, en.read.attach(0)), g.uniform1i(e$.uniforms.uVelocity, ee.read.attach(1)), k(ee.write.fbo), ee.swap(), eg.bind(), g.uniform2f(eg.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), R.supportLinearFiltering || g.uniform2f(eg.uniforms.dyeTexelSize, ee.texelSizeX, ee.texelSizeY);
-                        let o = ee.read.attach(0);
-                        g.uniform1i(eg.uniforms.uVelocity, o), g.uniform1i(eg.uniforms.uSource, o), g.uniform1f(eg.uniforms.dt, r), g.uniform1f(eg.uniforms.dissipation, i.VELOCITY_DISSIPATION), k(ee.write.fbo), ee.swap(), g.viewport(0, 0, Z.width, Z.height), R.supportLinearFiltering || g.uniform2f(eg.uniforms.dyeTexelSize, Z.texelSizeX, Z.texelSizeY), g.uniform1i(eg.uniforms.uVelocity, ee.read.attach(0)), g.uniform1i(eg.uniforms.uSource, Z.read.attach(1)), g.uniform1f(eg.uniforms.dissipation, i.DENSITY_DISSIPATION), k(Z.write.fbo), Z.swap()
-                    }(v), i.BLOOM && function t(r, n) {
-                        if (l.length < 2) return;
-                        let o = n;
-                        g.disable(g.BLEND), eh.bind();
-                        let a = i.BLOOM_THRESHOLD * i.BLOOM_SOFT_KNEE + 1e-4,
-                            u = i.BLOOM_THRESHOLD - a;
-                        g.uniform3f(eh.uniforms.curve, u, 2 * a, .25 / a), g.uniform1f(eh.uniforms.threshold, i.BLOOM_THRESHOLD), g.uniform1i(eh.uniforms.uTexture, r.attach(0)), g.viewport(0, 0, o.width, o.height), k(o.fbo), eT.bind();
-                        for (let v = 0; v < l.length; v++) {
-                            let f = l[v];
-                            g.uniform2f(eT.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(eT.uniforms.uTexture, o.attach(0)), g.viewport(0, 0, f.width, f.height), k(f.fbo), o = f
-                        }
-                        g.blendFunc(g.ONE, g.ONE), g.enable(g.BLEND);
-                        for (let c = l.length - 2; c >= 0; c--) {
-                            let m = l[c];
-                            g.uniform2f(eT.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(eT.uniforms.uTexture, o.attach(0)), g.viewport(0, 0, m.width, m.height), k(m.fbo), o = m
-                        }
-                        g.disable(g.BLEND), ed.bind(), g.uniform2f(ed.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(ed.uniforms.uTexture, o.attach(0)), g.uniform1f(ed.uniforms.intensity, i.BLOOM_INTENSITY), g.viewport(0, 0, n.width, n.height), k(n.fbo)
-                    }(Z.read, ei), null != p && i.TRANSPARENT ? g.disable(g.BLEND) : (g.blendFunc(g.ONE, g.ONE_MINUS_SRC_ALPHA), g.enable(g.BLEND)), $ = null == p ? g.drawingBufferWidth : p.width, D = null == p ? g.drawingBufferHeight : p.height, g.viewport(0, 0, $, D), S = null == p ? null : p.fbo, i.TRANSPARENT || (d = S, E = (T = i.BACK_COLOR, {
-                        r: T.r / 255,
-                        g: T.g / 255,
-                        b: T.b / 255
-                    }), el.bind(), g.uniform4f(el.uniforms.color, E.r, E.g, E.b, 0), k(d)), null == p && i.TRANSPARENT && (x = S, ev.bind(), g.uniform1f(ev.uniforms.aspectRatio, n.width / n.height), k(x)),
+                    t.color = eB()
+                })), u.length > 0 && eU(u.pop()), a.forEach(t => {
+                    var r;
+                    let n, o;
+                    t.moved && (t.moved = !1, n = (r = t).deltaX * i.SPLAT_FORCE, o = r.deltaY * i.SPLAT_FORCE, eb(r.texcoordX, r.texcoordY, n, o, r.color))
+                }), i.PAUSED || function t(r) {
+                    g.disable(g.BLEND), g.viewport(0, 0, ee.width, ee.height), ex.bind(), g.uniform2f(ex.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(ex.uniforms.uVelocity, ee.read.attach(0)), k(er.fbo), e0.bind(), g.uniform2f(e0.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(e0.uniforms.uVelocity, ee.read.attach(0)), g.uniform1i(e0.uniforms.uCurl, er.attach(1)), g.uniform1f(e0.uniforms.curl, i.CURL), g.uniform1f(e0.uniforms.dt, r), k(ee.write.fbo), ee.swap(), eR.bind(), g.uniform2f(eR.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(eR.uniforms.uVelocity, ee.read.attach(0)), k(et.fbo), eu.bind(), g.uniform1i(eu.uniforms.uTexture, en.read.attach(0)), g.uniform1f(eu.uniforms.value, i.PRESSURE), k(en.write.fbo), en.swap(), ep.bind(), g.uniform2f(ep.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(ep.uniforms.uDivergence, et.attach(0));
+                    for (let n = 0; n < i.PRESSURE_ITERATIONS; n++) g.uniform1i(ep.uniforms.uPressure, en.read.attach(1)), k(en.write.fbo), en.swap();
+                    e$.bind(), g.uniform2f(e$.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), g.uniform1i(e$.uniforms.uPressure, en.read.attach(0)), g.uniform1i(e$.uniforms.uVelocity, ee.read.attach(1)), k(ee.write.fbo), ee.swap(), eg.bind(), g.uniform2f(eg.uniforms.texelSize, ee.texelSizeX, ee.texelSizeY), R.supportLinearFiltering || g.uniform2f(eg.uniforms.dyeTexelSize, ee.texelSizeX, ee.texelSizeY);
+                    let o = ee.read.attach(0);
+                    g.uniform1i(eg.uniforms.uVelocity, o), g.uniform1i(eg.uniforms.uSource, o), g.uniform1f(eg.uniforms.dt, r), g.uniform1f(eg.uniforms.dissipation, i.VELOCITY_DISSIPATION), k(ee.write.fbo), ee.swap(), g.viewport(0, 0, Z.width, Z.height), R.supportLinearFiltering || g.uniform2f(eg.uniforms.dyeTexelSize, Z.texelSizeX, Z.texelSizeY), g.uniform1i(eg.uniforms.uVelocity, ee.read.attach(0)), g.uniform1i(eg.uniforms.uSource, Z.read.attach(1)), g.uniform1f(eg.uniforms.dissipation, i.DENSITY_DISSIPATION), k(Z.write.fbo), Z.swap()
+                }(v), i.BLOOM && function t(r, n) {
+                    if (l.length < 2) return;
+                    let o = n;
+                    g.disable(g.BLEND), eh.bind();
+                    let a = i.BLOOM_THRESHOLD * i.BLOOM_SOFT_KNEE + 1e-4,
+                        u = i.BLOOM_THRESHOLD - a;
+                    g.uniform3f(eh.uniforms.curve, u, 2 * a, .25 / a), g.uniform1f(eh.uniforms.threshold, i.BLOOM_THRESHOLD), g.uniform1i(eh.uniforms.uTexture, r.attach(0)), g.viewport(0, 0, o.width, o.height), k(o.fbo), eT.bind();
+                    for (let v = 0; v < l.length; v++) {
+                        let f = l[v];
+                        g.uniform2f(eT.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(eT.uniforms.uTexture, o.attach(0)), g.viewport(0, 0, f.width, f.height), k(f.fbo), o = f
+                    }
+                    g.blendFunc(g.ONE, g.ONE), g.enable(g.BLEND);
+                    for (let c = l.length - 2; c >= 0; c--) {
+                        let m = l[c];
+                        g.uniform2f(eT.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(eT.uniforms.uTexture, o.attach(0)), g.viewport(0, 0, m.width, m.height), k(m.fbo), o = m
+                    }
+                    g.disable(g.BLEND), ed.bind(), g.uniform2f(ed.uniforms.texelSize, 1 / o.width, 1 / o.height), g.uniform1i(ed.uniforms.uTexture, o.attach(0)), g.uniform1f(ed.uniforms.intensity, i.BLOOM_INTENSITY), g.viewport(0, 0, n.width, n.height), k(n.fbo)
+                }(Z.read, ei), null != p && i.TRANSPARENT ? g.disable(g.BLEND) : (g.blendFunc(g.ONE, g.ONE_MINUS_SRC_ALPHA), g.enable(g.BLEND)), $ = null == p ? g.drawingBufferWidth : p.width, D = null == p ? g.drawingBufferHeight : p.height, g.viewport(0, 0, $, D), S = null == p ? null : p.fbo, i.TRANSPARENT || (d = S, E = (T = i.BACK_COLOR, {
+                    r: T.r / 255,
+                    g: T.g / 255,
+                    b: T.b / 255
+                }), el.bind(), g.uniform4f(el.uniforms.color, E.r, E.g, E.b, 0), k(d)), null == p && i.TRANSPARENT && (x = S, ev.bind(), g.uniform1f(ev.uniforms.aspectRatio, n.width / n.height), k(x)),
                     function t(r, n, o) {
                         let a = i.SHADING ? i.BLOOM ? es : em : i.BLOOM ? ec : ef;
                         if (a.bind(), i.SHADING && g.uniform2f(a.uniforms.texelSize, 1 / n, 1 / o), g.uniform1i(a.uniforms.uTexture, Z.read.attach(0)), i.BLOOM) {
