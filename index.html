@@ -579,48 +579,48 @@
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/df44b85b-d82b-402f-b89e-e7168271266a/B6omR6q68E.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
 
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/8a24e519-8041-41d5-9a4c-2908aa1329d3/oiJIeRKJMT.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/df44b85b-d82b-402f-b89e-e7168271266a/B6omR6q68E.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/df44b85b-d82b-402f-b89e-e7168271266a/B6omR6q68E.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/9dd27aed-e6a5-453c-9853-01ffa8516c06/0nj2j1cSm7.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/df44b85b-d82b-402f-b89e-e7168271266a/B6omR6q68E.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/14b0cb98-695b-4a22-8bac-aa6902f97f24/AuG16eVaEd.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                                   <div class="col">
                                                                         <dotlottie-player
                                                                               src="https://lottie.host/d76ee337-d54e-4a3d-9276-42d0b8090d3b/fgMVmgNoPt.json"
-                                                                              background="transparent" speed="1" loop
+                                                                              background="transparent" speed="1" 
                                                                               autoplay></dotlottie-player>
                                                                   </div>
                                                             </div>
@@ -675,11 +675,11 @@
 
 
                   <div class="about bg-dark top-100">
-                        <div id="content">
+                        <div id="content" >
                              
 
                               <section style="width: 100%; height: 2000px; background-color: black; padding-top: 240px;" class="">
-                                    <div class="about-title">
+                                    <div class="about-title" style="top: -1px !important;">
                                           <video autoplay playsinline muted loop preload>
                                                 <source src="./assets/music/about.mp4" />
                                           </video>
@@ -688,14 +688,14 @@
                                                 <defs>
                                                       <mask id="mask" x="0" y="0" width="100%" height="100%">
                                                             <rect x="0" y="0" width="100%" height="100%" />
-                                                            <text x="74" y="50">SOBRE</text>
+                                                            <text x="100" y="40">SOBRE</text>
                                                       </mask>
                                                 </defs>
                                                 <rect x="0" y="0" width="100%" height="100%" />
                                           </svg>
                                     </div>
-                                    <section style="width: 100%; height: 2000px;"
-                                          class="about-info-bg z-10 position-relative">
+                                    <section style="width: 100%; height: 2000px; top: -1px;" class="about-info-bg z-10 position-relative">
+                                          <dotlottie-player class="position-absolute" src="https://lottie.host/7662c0dc-0d91-40bb-92a3-dc95dfdd2a91/npqAdvJQww.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
                                           <section class="about-info">
 
                                                 <div>
@@ -742,8 +742,9 @@
                               </section>
                               <section style="width: 100%; height: 2000px;" class="bg-light"></section>
                         </div>
-                        <canvas class="light-splatter z-100" width="1920" height="942"
-                        style="opacity: 1;"></canvas>
+                     <!-- OUTRO LOCAL -->
+                        <!-- <canvas class="light-splatter z-100" width="1920" height="942"
+                        style="opacity: 1;"></canvas> -->
                   </div>
             </main>
       </div>
@@ -784,6 +785,8 @@
       <script src="/js/glitch-text.js"></script>
 
       <script type="module">
+
+
             anime({
                   targets: '.line-drawing-demo .lines path',
                   strokeDashoffset: [anime.setDashoffset, 0],
@@ -791,8 +794,11 @@
                   duration: 1000,
                   delay: function (el, i) { return i * 2 },
                   direction: 'alternate',
-                  loop: true
+                  loop: false
             });
+
+
+
             setTimeout(() => {
                   anime({
                         targets: '.specific-unit-values-demo .el',
