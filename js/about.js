@@ -23,7 +23,7 @@ function _animationAboutInfo() {
     });
     $(document).ready(function () {
         animation();
-    }, 1000);
+    }, 10);
 
     $('.about-info-button').click(function () {
         animation();

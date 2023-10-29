@@ -5,29 +5,35 @@
     width: 100%;
     margin: 0 auto;
     height: 100%;
-    max-height:900px;
+    max-height: 900px;
 }
 
 .about-title video {
     width: 100%;
+    position: relative;
+    max-height: 600px;
+    top: 2px !important;
 }
 
 .about-title svg {
     position: absolute;
-    top: 50%; /* Coloca o topo do SVG no centro vertical */
-    left: 50%; /* Coloca a esquerda do SVG no centro horizontal */
-    transform: translate(-50%, -50%); /* Centraliza o ponto central do SVG */
+    top: 50%;
+    /* Coloca o topo do SVG no centro vertical */
+    left: 50%;
+    /* Coloca a esquerda do SVG no centro horizontal */
+    transform: translate(-50%, -50%);
+    /* Centraliza o ponto central do SVG */
     width: 100%;
     height: 100%;
-  }
-  
-  .about-title svg text {
+}
+
+.about-title svg text {
     text-transform: uppercase;
     font-weight: 900;
-    font-size: 25px; 
-    dominant-baseline: middle; 
-  }
-  
+    font-size: 25px;
+    dominant-baseline: middle;
+}
+
 
 .about-title svg>rect {
     -webkit-mask: url(#mask);
@@ -64,7 +70,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(255, 0, 0, 0),rgba(255, 0, 0, 0), black);
+    background: linear-gradient(to top, rgba(255, 0, 0, 0), rgba(255, 0, 0, 0), black);
 }
 
 .about-info-bg {
