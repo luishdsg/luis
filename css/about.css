@@ -164,3 +164,29 @@
     height: auto;
     width: calc(100vw / 15 * 3);;
 }
+
+.about-sound{
+    position: fixed !important;
+    top: 0;
+    opacity: 1;
+    display: none;
+    left: 0;
+    z-index: 10000;
+}
+.about-close-btn{
+    position: fixed  !important;
+    top: 18px;
+    left: 96px;
+    z-index: 10000;
+    opacity: 1;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    border-radius: 10rem;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.37);
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
