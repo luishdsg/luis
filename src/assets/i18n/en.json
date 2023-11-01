@@ -1,0 +1,126 @@
+{
+
+    "Header.Item1" : "About me",
+    "Header.Item2" : "Experience",
+    "Header.Item3" : "Projects",
+    "Header.Item4" : "Contact",
+    "Header.cvBtn" : "Resume",
+    "Header.cvName": "Luis-Henrique-Da-Silva-Gomes-eng.pdf",
+    "Banner.Pretitle": "Hi! Im´",
+    "Banner.ActionBtn": "Download Curriculo",
+    "AboutMe.Title": "About me",
+    "AboutMe.Paragraphs": [
+        "Just over <span class='underline'>3 years as a developer</span>, My skills include (<span class='underline'>Angular</span>, <span class='underline'>iONIC</span>, <span class='underline'>REST API</span>, <span class='underline'>Nodejs</span>, <span class='underline'>jQuery</span>, <span class='underline'>JavaScript</span>, <span class='underline'>TypeScript</span>, <span class='underline'>NextJs</span>, <span class='underline'>CSS3</span>, <span class='underline'>HTML5</span>...etc), ) I have expertise in maintaining websites and web applications, in addition to working with libraries such as <span class='underline'>React</span> and  <span class='underline'>Bootstrap</span>.",
+        "I am focused on delivering highperformance solutions to meet market demands."
+    ],
+
+
+    "Experience.Title": "Experience",
+    "Experience.Jobs": [{
+            "Tab": "Imoveistock",
+            "Title": "Software developer",
+            "Date": "Jul-2023 | set - 2023",
+            "Description": [
+              "creation of a web app sales platform in the real estate sector and backoffice for data manipulation by its users, with angular.",
+              "creation of an Android and iOS application, for doormen of condominiums of the properties mentioned above in iONIC and Typescript.",
+              "creation of an Android and iOS application, on the imoveistock platform in iONIC and Typescript"
+            ]
+        },
+        {
+            "Tab": "TGT digital",
+            "Title": "Angular & NextJs Developer",
+            "Date": "Jun - 2022 | Jul - 2023",
+            "Description": [
+              "software factory for web apps, iOS and Android creating platforms.",
+              "e-commerce, backoffice as well as inventory management, personnel control and HR-platforms."
+            ]
+        },
+        {
+            "Tab": "My Eshop",
+            "Title": "Front-end VTEX developer",
+            "Date": "Nov - 2017 | Fev - 2022",
+            "Description": [
+              "Created, Manipulated, customized and automated website pages and web applications with VTEX, HTML, Sass & Jquery."
+            ]
+        },
+        {
+            "Tab": "Bit-Nick.INC",
+            "Title": "Front-end React Developer",
+            "Date": "Jul - 2021 - Nov -2021",
+            "Description": [
+              "Create exchange connections to a local blockchain with the function of creating Wallets for a cryptocurrency."
+            ]
+        }
+    ],
+
+    "Formation.Title": "Formation",
+    "Formation.Formation": [
+      {
+        "Tab": "ESTACIO",
+        "Title": "Software Engineering",
+        "Date": "Jul-2020 | Aug-2023"
+      },
+      {
+        "Tab": "UDEMY",
+        "Title": "C# .NET full-stack",
+        "Date": "Present",
+        "Title2": "Angular full-stack project",
+        "Date2": "Nov-2019",
+        "Title3": "Html5, Css3, Js, API, NodeJs & React",
+        "Date3": "April-2020"
+      },
+      {
+        "Tab": "BOWTIE",
+        "Title": "Advanced Excel",
+        "Date": "Jan-2017"
+      },
+      {
+        "Tab": "PREPARA CURSOS",
+        "Title": "Computer Assembly, Maintenance, and Configuration",
+        "Date": "Jul-2016"
+      },
+      {
+        "Tab": "DINNONE",
+        "Title": "Git & GitHub",
+        "Date": "Jul-2020"
+      }
+    ],
+    
+
+    "OtherProjects.Title": "Projects",
+    "OtherProjects.Projects": [{
+            "Title": "Eight",
+            "Description": "web game APP about riddles, and hidden secrets",
+            "ghLink": "https://github.com/luishdsg/eight",
+            "demoLink": "https://eight-sandy.vercel.app/",
+            "Technologies": ["Angular", "iONIC", "API", "Bootstrap"]
+        },
+        {
+            "Title": "ana",
+            "Description": "I create a CV for a friend get a new job ",
+            "ghLink": "https://github.com/luishdsg/anavidal",
+            "demoLink": "https://anavidal.vercel.app/",
+            "Technologies": ["Angular", "SASS", "CSS GRID", "Reactive form"]
+        },
+        {
+            "Title": "Janacakes",
+            "Description": "cake selling website for a client.",
+            "ghLink": "https://github.com/luishdsg/janacakes",
+            "demoLink": "https://janacakes.vercel.app/",
+            "Technologies": ["HTML5", "SASS", "JS"]
+        },
+        {
+            "Title": "Funtools",
+            "Description": "package of small individual projects, with an old CV at the end",
+            "ghLink": "https://github.com/luishdsg/Funtools",
+            "demoLink": "https://funtools.vercel.app/",
+            "Technologies": ["HTML5", "SASS", "GIT", "JS", "Bootstrap", "AnimeJS", "ThressJS"]
+        }
+    ],
+    "Contact.Pretitle": "What’s Next",
+    "Contact.Title": "Get in touch!",
+    "Contact.Content": "I'll be happy if you want to get in touch, if you want to send a message, click the button below.",
+    "Contact.Btn": "Send e-mail"
+
+
+}
