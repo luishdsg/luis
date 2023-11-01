@@ -190,3 +190,18 @@
     padding: 0;
     margin: 0;
 }
+
+@media only screen and (max-width: 1300px) {
+    .about-title video {
+        width: 100%;
+        position: fixed;
+        max-height: 1000px;
+        top: 8%;
+    }
+    .about-title svg text {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 15px;
+        dominant-baseline: middle;
+    }
+  }

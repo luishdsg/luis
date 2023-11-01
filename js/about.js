@@ -55,6 +55,21 @@ function _animationAboutInfo() {
     });
 }
 
+function adjustViewBox() {
+    const abouWord = document.getElementById("about-word");
+  
+    if (window.innerWidth <= 1300) {
+        abouWord.setAttribute("viewBox", "0 0 250 80");
+    } else {
+        abouWord.setAttribute("viewBox", "0 0 280 80");
+    }
+  }
+  
+  // Verifica a largura da janela quando a página é carregada e redimensionada
+  window.addEventListener('load', adjustViewBox);
+  window.addEventListener('resize', adjustViewBox);
+  
+
 function _aboutSound() {
     const audio = document.getElementById("about-learn");
     const aboutCloseBtn = document.querySelector(".about-close-btn");
