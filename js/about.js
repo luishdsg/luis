@@ -13,7 +13,7 @@ function _scrollAbout() {
         aboutSound.style.display = 'none';
         aboutCloseBtn.style.display = 'none';
     }
-    console.log(window.scrollY)
+    // console.log(window.scrollY)
 }
 
 function _animationAboutInfo() {
@@ -59,7 +59,7 @@ function adjustViewBox() {
     const abouWord = document.getElementById("about-word");
   
     if (window.innerWidth <= 1300) {
-        abouWord.setAttribute("viewBox", "0 0 250 80");
+        abouWord.setAttribute("viewBox", "0 0 245 80");
     } else {
         abouWord.setAttribute("viewBox", "0 0 280 80");
     }
@@ -99,13 +99,4 @@ function clicked() {
     var audio = document.getElementById("clicked");
     audio.play();
 }
-function pc1() {
-    var audio = document.getElementById("pc-1");
-    audio.play();
-}
-function pc2() {
-    var audio = document.getElementById("pc-2");
-    audio.play();
-}
-
 

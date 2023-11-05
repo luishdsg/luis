@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
+.about{
+    transition: .5s ease-in-out;
+}
+
 .about-title {
     position: relative;
     width: 100%;
@@ -196,7 +200,7 @@
         width: 100%;
         position: fixed;
         max-height: 1000px;
-        top: 8%;
+        top: 1%;
     }
     .about-title svg text {
         text-transform: uppercase;
@@ -205,3 +209,19 @@
         dominant-baseline: middle;
     }
   }
+  
+  @media only screen and (max-width: 1300px) {
+    .about-title video {
+        width: 100%;
+        position: fixed;
+        max-height: 1000px;
+        top: 7%;
+    }
+    .about-title svg text {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 15px;
+        dominant-baseline: middle;
+    }
+  }
+  

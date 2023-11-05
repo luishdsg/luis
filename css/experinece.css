@@ -1,0 +1,18 @@
+.xp {
+    height: 400px;
+    overflow: auto;
+}
+.div-a-aumentar {
+    width: 0;
+    height: 0;
+    background-color: blue;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.visible {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    visibility: visible;
+}
