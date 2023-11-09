@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <style>
+        body {
+            height: 100vh;
+
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(212, 8, 8, 0);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(232, 232, 250, 0);
+        }
+
+        .container {
+            overscroll-behavior: none;
+            width: 600%;
+            height: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .panel h1 {
+            font-size: 1.8em;
+            color: white;
+            font-weight: 300;
+            margin: 0 auto;
+        }
+
+
+        .gray {
+            background-color: #777;
+            background-image: radial-gradient(circle at 47% 14%, rgba(205, 205, 205, 0.04) 0%, rgba(205, 205, 205, 0.04) 43%, transparent 43%, transparent 100%), radial-gradient(circle at 35% 12%, rgba(215, 215, 215, 0.04) 0%, rgba(215, 215, 215, 0.04) 4%, transparent 4%, transparent 100%), radial-gradient(circle at 1% 35%, rgba(24, 24, 24, 0.04) 0%, rgba(24, 24, 24, 0.04) 37%, transparent 37%, transparent 100%), radial-gradient(circle at 21% 1%, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.04) 26%, transparent 26%, transparent 100%), radial-gradient(circle at 23% 82%, rgba(249, 249, 249, 0.04) 0%, rgba(249, 249, 249, 0.04) 60%, transparent 60%, transparent 100%), radial-gradient(circle at 11% 54%, rgba(251, 251, 251, 0.04) 0%, rgba(251, 251, 251, 0.04) 23%, transparent 23%, transparent 100%), radial-gradient(circle at 69% 68%, rgba(234, 234, 234, 0.04) 0%, rgba(234, 234, 234, 0.04) 10%, transparent 10%, transparent 100%), linear-gradient(90deg, #777, #606060);
+        }
+
+    
+
+        .panel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.5em;
+            text-align: center;
+            color: white;
+            position: relative;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+    </style>
+
+    <style>
+        .title {
+            font-family: "Cairo";
+            text-align: center;
+            z-index: 1;
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            letter-spacing: 1px;
+            line-height: 2
+        }
+
+        .title h1 {
+            background-image: url(https://i.gifer.com/VJi.webp);
+            background-size: cover;
+            background-position: center;
+            color: transparent;
+            font-family: system-ui;
+            -moz-background-clip: text;
+            -webkit-background-clip: text;
+            text-transform: uppercase;
+            font-size: 120px;
+            margin: 10px 0;
+        }
+
+        .white-mode {
+            text-decoration: none;
+            padding: 7px 10px;
+            background-color: #122;
+            border-radius: 3px;
+            color: #FFF;
+            transition: .35s ease-in-out;
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+            font-family: "Montserrat";
+        }
+
+        .white-mode:hover {
+            background-color: #FFF;
+            color: #122;
+        }
+
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+        }
+
+        .click{
+            position: absolute;
+    width: 100px;
+    height: auto;
+    top: 10%;
+    left: 10%;
+        }
+    </style>
+
+    <div class="container">
+        <div class="panel">
+            <canvas id="c"></canvas>
+           
+            <div class="title">
+                    <img class="click" src="../assets/click.png" />
+                <h1>EXPERIENCE</h1>
+            </div>
+        </div>
+
+
+        <section class="panel">
+            ONE
+        </section>
+        <section class="panel">
+            TWO
+        </section>
+        <section class="panel">
+            THREE
+        </section>
+        <section class="panel">
+            FOUR
+        </section>
+        <section class="panel">
+            FIVE
+        </section>
+
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script type="module">
+    gsap.registerPlugin(ScrollTrigger);
+
+    let sections = gsap.utils.toArray(".panel");
+
+    gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".container",
+            pin: true,
+            scrub: 1,
+            snap: 1 / (sections.length - 1),
+            end: "+=3500",
+        }
+    });
+
+    var c = document.getElementById("c");
+    var ctx = c.getContext("2d");
+    var cH;
+    var cW;
+    var bgColor = "#FF6138";
+    var animations = [];
+    var circles = [];
+
+    var colorPicker = (function () {
+        var colors = ["#FF6138", "#FFBE53", "#2980B9", "#282741"];
+        var index = 0;
+        function next() {
+            index = index++ < colors.length - 1 ? index : 0;
+            return colors[index];
+        }
+        function current() {
+            return colors[index];
+        }
+        return {
+            next: next,
+            current: current
+        };
+    })();
+
+    function removeAnimation(animation) {
+        var index = animations.indexOf(animation);
+        if (index > -1) animations.splice(index, 1);
+    }
+
+    function calcPageFillRadius(x, y) {
+        var l = Math.max(x - 0, cW - x);
+        var h = Math.max(y - 0, cH - y);
+        return Math.sqrt(Math.pow(l, 2) + Math.pow(h, 2));
+    }
+
+    function addClickListeners() {
+        document.addEventListener("touchstart", handleEvent);
+        document.addEventListener("mousedown", handleEvent);
+    }
+
+    function handleEvent(e) {
+        if (e.touches) {
+            e.preventDefault();
+            e = e.touches[0];
+        }
+        var currentColor = colorPicker.current();
+        var nextColor = colorPicker.next();
+        var targetR = calcPageFillRadius(e.pageX, e.pageY);
+        var rippleSize = Math.min(200, cW * 0.4);
+        var minCoverDuration = 750;
+
+        var pageFill = new Circle({
+            x: e.pageX,
+            y: e.pageY,
+            r: 0,
+            fill: nextColor
+        });
+        var fillAnimation = anime({
+            targets: pageFill,
+            r: targetR,
+            duration: Math.max(targetR / 2, minCoverDuration),
+            easing: "easeOutQuart",
+            complete: function () {
+                bgColor = pageFill.fill;
+                removeAnimation(fillAnimation);
+            }
+        });
+
+        var ripple = new Circle({
+            x: e.pageX,
+            y: e.pageY,
+            r: 0,
+            fill: currentColor,
+            stroke: {
+                width: 3,
+                color: currentColor
+            },
+            opacity: 1
+        });
+        var rippleAnimation = anime({
+            targets: ripple,
+            r: rippleSize,
+            opacity: 0,
+            easing: "easeOutExpo",
+            duration: 900,
+            complete: removeAnimation
+        });
+
+        var particles = [];
+        for (var i = 0; i < 32; i++) {
+            var particle = new Circle({
+                x: e.pageX,
+                y: e.pageY,
+                fill: currentColor,
+                r: anime.random(24, 48)
+            });
+            particles.push(particle);
+        }
+        var particlesAnimation = anime({
+            targets: particles,
+            x: function (particle) {
+                return particle.x + anime.random(rippleSize, -rippleSize);
+            },
+            y: function (particle) {
+                return particle.y + anime.random(rippleSize * 1.15, -rippleSize * 1.15);
+            },
+            r: 0,
+            easing: "easeOutExpo",
+            duration: anime.random(1000, 1300),
+            complete: removeAnimation
+        });
+        animations.push(fillAnimation, rippleAnimation, particlesAnimation);
+    }
+
+    function extend(a, b) {
+        for (var key in b) {
+            if (b.hasOwnProperty(key)) {
+                a[key] = b[key];
+            }
+        }
+        return a;
+    }
+
+    var Circle = function (opts) {
+        extend(this, opts);
+    };
+
+    Circle.prototype.draw = function () {
+        ctx.globalAlpha = this.opacity || 1;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+        if (this.stroke) {
+            ctx.strokeStyle = this.stroke.color;
+            ctx.lineWidth = this.stroke.width;
+            ctx.stroke();
+        }
+        if (this.fill) {
+            ctx.fillStyle = this.fill;
+            ctx.fill();
+        }
+        ctx.closePath();
+        ctx.globalAlpha = 1;
+    };
+
+    var animate = anime({
+        duration: Infinity,
+        update: function () {
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, cW, cH);
+            animations.forEach(function (anim) {
+                anim.animatables.forEach(function (animatable) {
+                    animatable.target.draw();
+                });
+            });
+        }
+    });
+
+    var resizeCanvas = function () {
+        cW = window.innerWidth;
+        cH = window.innerHeight;
+        c.width = cW * devicePixelRatio;
+        c.height = cH * devicePixelRatio;
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+    };
+
+    (function init() {
+        resizeCanvas();
+        if (window.CP) {
+            window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        addClickListeners();
+        if (!!window.location.pathname.match(/fullcpgrid/)) {
+            startFauxClicking();
+        }
+        handleInactiveUser();
+    })();
+
+    function handleInactiveUser() {
+        var inactive = setTimeout(function () {
+            fauxClick(cW / 2, cH / 2);
+        }, 2000);
+
+        function clearInactiveTimeout() {
+            clearTimeout(inactive);
+            document.removeEventListener("mousedown", clearInactiveTimeout);
+            document.removeEventListener("touchstart", clearInactiveTimeout);
+        }
+
+        document.addEventListener("mousedown", clearInactiveTimeout);
+        document.addEventListener("touchstart", clearInactiveTimeout);
+    }
+
+    function startFauxClicking() {
+        setTimeout(function () {
+            fauxClick(
+                anime.random(cW * 0.2, cW * 0.8),
+                anime.random(cH * 0.2, cH * 0.8)
+            );
+            startFauxClicking();
+        }, anime.random(200, 900));
+    }
+
+    function fauxClick(x, y) {
+        var fauxClick = new Event("mousedown");
+        fauxClick.pageX = x;
+        fauxClick.pageY = y;
+        document.dispatchEvent(fauxClick);
+    }
+
+</script>
+
+</html>
