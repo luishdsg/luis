@@ -34,10 +34,6 @@
             background-color: rgba(232, 232, 250, 0);
         }
 
-        .pin-spacer {
-            background-color: black;
-        }
-
         .con {
             overscroll-behavior: none;
             width: 600%;
@@ -49,12 +45,13 @@
         .panel h1 {
             font-size: 1.8em;
             color: white;
-            font-weight: bold;
+            font-weight: 300;
             margin: 0 auto;
         }
 
 
         .gray {
+            background-color: #777;
             background-image: radial-gradient(circle at 47% 14%, rgba(205, 205, 205, 0.04) 0%, rgba(205, 205, 205, 0.04) 43%, transparent 43%, transparent 100%), radial-gradient(circle at 35% 12%, rgba(215, 215, 215, 0.04) 0%, rgba(215, 215, 215, 0.04) 4%, transparent 4%, transparent 100%), radial-gradient(circle at 1% 35%, rgba(24, 24, 24, 0.04) 0%, rgba(24, 24, 24, 0.04) 37%, transparent 37%, transparent 100%), radial-gradient(circle at 21% 1%, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.04) 26%, transparent 26%, transparent 100%), radial-gradient(circle at 23% 82%, rgba(249, 249, 249, 0.04) 0%, rgba(249, 249, 249, 0.04) 60%, transparent 60%, transparent 100%), radial-gradient(circle at 11% 54%, rgba(251, 251, 251, 0.04) 0%, rgba(251, 251, 251, 0.04) 23%, transparent 23%, transparent 100%), radial-gradient(circle at 69% 68%, rgba(234, 234, 234, 0.04) 0%, rgba(234, 234, 234, 0.04) 10%, transparent 10%, transparent 100%), linear-gradient(90deg, #777, #606060);
         }
 
@@ -75,10 +72,16 @@
             padding: 10px;
         }
 
-        .panel:nth-of-type(1) {
-            background: transparent;
+        .container {
+            transition: background 1s ease;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 30px;
+            padding: 20px 25px;
         }
+    </style>
 
+    <style>
         .title {
             font-family: "Cairo";
             text-align: center;
@@ -106,6 +109,24 @@
             margin: 10px 0;
         }
 
+        .white-mode {
+            text-decoration: none;
+            padding: 7px 10px;
+            background-color: #122;
+            border-radius: 3px;
+            color: #FFF;
+            transition: .35s ease-in-out;
+            position: absolute;
+            left: 15px;
+            bottom: 15px;
+            font-family: "Montserrat";
+        }
+
+        .white-mode:hover {
+            background-color: #FFF;
+            color: #122;
+        }
+
         canvas {
             display: block;
             width: 100vw;
@@ -120,21 +141,79 @@
             top: 10%;
             left: 10%;
         }
+    </style>
 
+    <style>
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: prespective(1000px) translate(-50%, -50%);
+            transform: skewY(15deg);
+            transition: 0.5s;
+        }
+
+        .center:hover {
+            transform: prespective(1000px) translate(-50%, -50%);
+            transform: skewY(0deg);
+        }
+
+        .center h1 span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-size: 12em;
+            color: #fff;
+            transform-style: preserve-3d;
+            transition: 0.8s;
+        }
+
+        .center h1 span:nth-child(1) {
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
+
+
+
+        .center h1 span:nth-child(2) {
+            color: #5E17EB;
+            transform: translate(-50%, -50%) skewX(-60deg);
+            left: -38px;
+            clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+        }
+
+        .center h1 span:nth-child(3) {
+            transform: translate(-50%, -50%) skewY(0deg);
+            left: -76px;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+
+        .center:hover h1 span:nth-child(2),
+        .center:hover h1 span:nth-child(3) {
+            transform: translate(-50%, -50%) skewX(0deg);
+            left: 0;
+            color: #fff;
+        }
+    </style>
+
+    <style>
         .text-black {
             color: black;
         }
 
         .card-xp {
-            width: auto;
+            max-width: 350px;
             border-radius: 30px;
             border: 2px solid white;
-            background: url(https://media.licdn.com/dms/image/C4D0BAQGYc554a-eO7Q/company-logo_200_200/0/1669066182276?e=2147483647&v=beta&t=Iw_9xZkh9oOy1TLu6JWiIBAC13H0sg3mqx2nXj7479E) #262626;
+            background-image: url(https://media.licdn.com/dms/image/C4D0BAQGYc554a-eO7Q/company-logo_200_200/0/1669066182276?e=2147483647&v=beta&t=Iw_9xZkh9oOy1TLu6JWiIBAC13H0sg3mqx2nXj7479E);
             background-position: top;
             background-size: contain;
             background-repeat: no-repeat;
             display: flex;
-            height: 100%;
+            min-height: 500px;
             align-items: end;
             transition: 1s;
             overflow: hidden;
@@ -157,26 +236,315 @@
 
         .arrow {
             position: absolute;
+            bottom: 10px;
             padding: 5px 11px 6px 10px;
             border-radius: 5rem;
-            z-index: 10;
+            right: 10px;
             box-shadow: 0px 1px 30px 0px gray;
             cursor: pointer;
         }
     </style>
+    <style>
+        .center {
+            position: absolute;
+            top: 16%;
+            z-index: 2;
+            left: 64%;
+            transform: prespective(1000px) translate(-50%, -50%);
+            transform: skewY(15deg);
+            transition: 0.5s;
+        }
+
+        .center:hover {
+            transform: prespective(1000px) translate(-50%, -50%);
+            transform: skewY(0deg);
+        }
+
+        .center h5 span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            font-size: 12em;
+            color: #fff;
+            transform-style: preserve-3d;
+            transition: 0.8s;
+        }
+
+        .center h5 span:nth-child(1) {
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
 
 
-    <div class="panel">
-        <canvas id="c"></canvas>
-        <div class="title">
-            <img class="click" src="../assets/click.png" />
-            <h1>EXPERIENCE</h1>
+
+        .center h5 span:nth-child(2) {
+            color: #5E17EB;
+            transform: translate(-50%, -50%) skewX(-60deg);
+            left: -38px;
+            clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+        }
+
+        .center h5 span:nth-child(3) {
+            transform: translate(-50%, -50%) skewY(0deg);
+            left: -76px;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+
+        .center:hover h5 span:nth-child(2),
+        .center:hover h5 span:nth-child(3) {
+            transform: translate(-50%, -50%) skewX(0deg);
+            left: 0;
+            color: #fff;
+        }
+    </style>
+
+    <style>
+        .skills-xp {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 500px;
+            gap: 10px;
+        }
+
+        .skills-xp>div {
+            flex: 0 0 120px;
+            border-radius: 0.5rem;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            box-shadow: 1px 5px 15px #1e0e3e;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-xp>div:nth-child(1) {
+            background: url("../assets/angular.jpg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div:nth-of-type(2) {
+            background: url("../assets/nest.jpg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div:nth-of-type(3) {
+            background: url("https://miro.medium.com/v2/resize:fit:1358/1*WDX58nzlaiClqTFT59v7RQ.jpeg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div:nth-of-type(4) {
+            background: url("https://img2.storyblok.com/1600x900/smart/filters:quality(100)/f/108600/2680x1508/b3e305a229/tailwind-article1-featured.jpg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div:nth-of-type(5) {
+            background: url("https://blog.christian-schou.dk/content/images/2022/08/RESTful-Web-API-ASP-NET-Core-80.jpeg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div:nth-of-type(6) {
+            background: url("../assets/ts.jpeg") no-repeat 50%/cover;
+        }
+
+        .skills-xp>div .content {
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            opacity: 0;
+            flex-direction: column;
+            height: 100%;
+            justify-content: flex-end;
+            background: #02022e;
+            background: linear-gradient(0deg, rgba(2, 2, 46, 0.6755077031) 0%, rgba(255, 255, 255, 0) 100%);
+            transform: translatey(100%);
+            transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+            visibility: hidden;
+        }
+
+        .skills-xp>div .content span {
+            display: block;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+
+        .skills-xp>div:hover {
+            flex: 0 0 250px;
+            box-shadow: 1px 3px 15px #7645d8;
+            transform: translatey(-30px);
+        }
+
+        .skills-xp>div:hover .content {
+            opacity: 1;
+            transform: translatey(0%);
+            visibility: visible;
+        }
+    </style>
+
+    <div class="con">
+        <div class="panel">
+            <canvas id="c"></canvas>
+
+            <div class="title">
+                <img class="click" src="../assets/click.png" />
+                <h1>EXPERIENCE</h1>
+            </div>
         </div>
+
+
+        <section class="panel bg-success">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between w-100 h-100">
+                    <div class="card-xp w-100 h-100 position-relative">
+                        <div id="card-xp-info" class="w-100 h-100 p-4">
+                            <h3 class="text-black">Fev/2023 - Atual</h3>
+                            <p class="h3 mt-5 text-black">Task descriptions there</p>
+                            <ul class="p-0 m-0" style="font-size: 13px;max-width: 90%;">
+                                <li>_Creation of a web app sales platform in the real estate sector and backoffice for
+                                    data manipulation by its users, with angular</p>
+                                </li>
+                                <li>_Creation of an Android and iOS application, for doormen of condominiums of the
+                                    properties mentioned above in iONIC and Typescript.</li>
+                                <br />
+                                <li>_Creation of an Android and iOS application, on the imoveistock platform in iONIC
+                                    and
+                                    Typescript</li>
+                                </p>
+                        </div>
+                        <div class="arrow bg-light">
+                            <img src="../assets/arrow.png" />
+                        </div>
+                    </div>
+                    <div class="w-100 h-100 mt-5" id="modalxp">
+                        <div class="center">
+                            <h5 style="transform: scale(.3);">
+                                <span>Text</span>
+                                <span>Text</span>
+                                <span>Text</span>
+                            </h5>
+                        </div>
+                        <div class="skills-xp">
+                            <div id="xp-1">
+                                <div class="content">
+                                    <h2>Angular</h2>
+                                    <span>Framework front-end</span>
+                                </div>
+                            </div>
+                            <div id="xp-2">
+                                <div class="content">
+                                    <h2>Nest Js</h2>
+                                    <span>Framework back-end</span>
+                                </div>
+                            </div>
+                            <div id="xp-3">
+                                <div class="content">
+                                    <h2>Node Js</h2>
+                                    <span>JavaScript interpreter and executor</span>
+                                </div>
+                            </div>
+                            <div id="xp-4">
+                                <div class="content">
+                                    <h2>Tailwind</h2>
+                                    <span>UI & UX Designer</span>
+                                </div>
+                            </div>
+                            <div id="xp-5">
+                                <div class="content">
+                                    <h2>API</h2>
+                                    <span>RESTful</span>
+                                </div>
+                            </div>
+                            <div id="xp-6">
+                                <div class="content">
+                                    <h2>Typescript</h2>
+                                    <span>Security | object orientation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <section class="panel">
+            TWO
+        </section>
+        <section class="panel">
+            THREE
+        </section>
+        <section class="panel">
+            FOUR
+        </section>
+        <section class="panel">
+            FIVE
+        </section>
+
     </div>
 
 </body>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/MyMath.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/Stage%400.1.4.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329180/fscreen%401.0.1.js"></script>
 <script src="/js/bg-click.js"></script>
 
+<script type="module">
+    gsap.registerPlugin(ScrollTrigger);
+
+    let sections = gsap.utils.toArray(".panel");
+
+    gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: ".con",
+            pin: true,
+            scrub: 1,
+            snap: 1 / (sections.length - 1),
+            end: "+=3500",
+        }
+    });
+    function changeBgXpSkils() {
+        const divs = document.querySelectorAll('.skills-xp > div');
+        const container = document.querySelector('.container');
+
+        divs.forEach(div => {
+            div.addEventListener('mouseover', function () {
+                const currentId = this.id;
+                console.log(currentId);
+                const newBackgroundImage = getNewBackgroundImage(currentId);
+                container.style.backgroundImage = `url('${newBackgroundImage}')`;
+            });
+        });
+
+        function getNewBackgroundImage(id) {
+            switch (id) {
+                case 'xp-1':
+                    return 'https://www.creativefabrica.com/wp-content/uploads/2021/12/06/Smooth-Blur-Graphics-21282305-1-580x386.jpg';
+                case 'xp-2':
+                    return 'https://st3.depositphotos.com/29384342/33647/i/450/depositphotos_336471586-stock-photo-colorful-abstract-defocused-blur-background.jpg';
+                case 'xp-3':
+                    return 'https://w0.peakpx.com/wallpaper/15/27/HD-wallpaper-green-blur-gradient-8k-ipad-air-thumbnail.jpg';
+                case 'xp-4':
+                    return 'https://i.ytimg.com/vi/XzTCntGgNJU/maxresdefault.jpg';
+                case 'xp-5':
+                    return 'https://img.freepik.com/free-photo/artistic-blurry-colorful-wallpaper-background_58702-8585.jpg';
+                case 'xp-6':
+                    return 'https://i.ytimg.com/vi/XzTCntGgNJU/maxresdefault.jpg';
+               default:
+                    return '';
+            }
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        changeBgXpSkils();
+    });
+
+
+</script>
 
 </html>
