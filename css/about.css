@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
 
-.about{
+.about {
     transition: .5s ease-in-out;
 }
 
@@ -97,7 +97,7 @@
     color: #e55643;
     opacity: 0;
     visibility: hidden;
-    cursor: pointer;
+
 }
 
 .about-info>div {
@@ -125,7 +125,9 @@
     white-space: nowrap;
     display: block;
     font-family: 'Fjalla One', sans-serif !important;
+    line-height: 45px !important;
     text-transform: uppercase;
+    letter-spacing: -2px !important;
     float: left;
     text-shadow: #3d4353 1px 1px, #000000 2px 2px, #000000 3px 3px, #3e3d53 4px 4px, #473d53 5px 5px, #473d53 6px 6px;
     max-width: 100%;
@@ -161,15 +163,18 @@
 .about-info>div:nth-child(8) .about-info-title {
     color: #14e6f5;
 }
-.about-division{
+
+.about-division {
     height: 5%;
 }
-.about-ill{
+
+.about-ill {
     height: auto;
-    width: calc(100vw / 15 * 3);;
+    width: calc(100vw / 15 * 3);
+    ;
 }
 
-.about-sound{
+.about-sound {
     position: fixed !important;
     top: 0;
     opacity: 1;
@@ -177,8 +182,9 @@
     left: 0;
     z-index: 10000;
 }
-.about-close-btn{
-    position: fixed  !important;
+
+.about-close-btn {
+    position: fixed !important;
     top: 18px;
     left: 96px;
     z-index: 10000;
@@ -202,26 +208,27 @@
         max-height: 1000px;
         top: 1%;
     }
+
     .about-title svg text {
         text-transform: uppercase;
         font-weight: 900;
         font-size: 15px;
         dominant-baseline: middle;
     }
-  }
-  
-  @media only screen and (max-width: 1300px) {
+}
+
+@media only screen and (max-width: 1300px) {
     .about-title video {
         width: 100%;
         position: fixed;
         max-height: 1000px;
         top: 7%;
     }
+
     .about-title svg text {
         text-transform: uppercase;
         font-weight: 900;
         font-size: 15px;
         dominant-baseline: middle;
     }
-  }
-  
+}

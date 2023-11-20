@@ -1,14 +1,15 @@
 .skill{
     background: linear-gradient(to top, black, #220033);
-
+height: 700px;
 }
 .sKmain {
     position: relative;
     width: 100%;
+    overflow: hidden;
     height: 100%;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     transform: scale(.8);
-    border-radius: 30px;
+    border-radius: 40px;
 }
 
 .sKitem {
@@ -19,8 +20,9 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-    background-position: center;
-    background-size: cover;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     border-radius: 30px;
     box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
     transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
@@ -36,6 +38,7 @@
     box-shadow: none;
     opacity: 1;
 }
+
 
 .sKitem:nth-child(3) {
     left: 50%;
@@ -100,7 +103,7 @@
     border: 2px solid white;
     border-radius: 0.25rem;
     padding: 0.75rem;
-    cursor: pointer;
+    
 }
 
 .sKitem:nth-of-type(2) .sKcontent {
@@ -136,7 +139,7 @@
     margin: 0 0.25rem;
     padding: 0.75rem;
     border-radius: 50%;
-    cursor: pointer;
+    
 }
 
 .xPnav .btn:hover {
@@ -268,7 +271,7 @@
 }
 
 .first-container {
-    cursor: pointer;
+    
     position: relative;
 }
 

@@ -1,3 +1,4 @@
+
 function showPreview() {
       const _animationSplash = document.getElementById('_animation-splash');
       const _animationName = document.getElementById('_animation-name');

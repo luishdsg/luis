@@ -7,7 +7,7 @@
    const canvas = document.querySelector('canvas'),
    context = canvas.getContext('2d');
    
-   let scale = 1, // device pixel ratio
+   let scale = 1,
    width,
    height;
    

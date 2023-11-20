@@ -128,7 +128,7 @@
   }
 
   .cursor {
-    cursor: pointer;
+    
   }
 
   /* HOME */
@@ -541,14 +541,15 @@
   .dotlottie-title>.col:nth-child(3)>dotlottie-player:nth-child(1) {
     transform: rotate(270deg);
     position: relative;
-    top: 39px;
+    top: 7%;
+
   }
 
   .dotlottie-title>.col:nth-child(3)>dotlottie-player:nth-child(2) {
     transform: rotate(180deg);
     position: relative;
-    top: -179px;
-    left: -14px;
+    top: -51%;
+    left: -6%;
   }
 
 
@@ -585,13 +586,3 @@
     pointer-events: none;
   }
   
-  canvas.light-splatter {
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    opacity: 0
-  }
-
-

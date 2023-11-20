@@ -1,171 +1,20 @@
-.xPcarousel {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.sKslider {
-    margin-block-end: 0em !important;
-}
-
-.xPcarousel-item {
-    --items: 10;
-    --width: clamp(150px, 30vw, 300px);
-    --height: clamp(200px, 40vw, 400px);
-    --x: calc(var(--active) * 300%);
-    --y: calc(var(--active) * 100%);
-    --rot: calc(var(--active) * 120deg);
-    --opacity: calc(var(--zIndex) / var(--items) * 8 - 2);
-    overflow: hidden;
-    position: absolute;
-    z-index: var(--zIndex);
-    width: var(--width);
-    height: var(--height);
-    margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
-    border-radius: 30px;
-    top: 50%;
-    left: 50%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    transform-origin: 0% 100%;
-    box-shadow: 0 10px 50px 10px rgba(0, 0, 0, 0.5);
-    background: black;
-    pointer-events: all;
-    transform: translate(var(--x), var(--y)) rotate(var(--rot));
-    transition: transform 0.8s cubic-bezier(0, 0.02, 0, 1);
-}
-.xPcarousel-item:nth-of-type(1) {
-    border: 2px solid green;
-}
-
-.xPcarousel-item:nth-of-type(2) {
-    border-top: 2px solid green;
-    border-left: 2px solid green;
-    border-right: 2px solid aqua;
-    border-bottom: 2px solid aqua;
-}
-
-.xPcarousel-item:nth-of-type(3) {
-    border: 2px solid palevioletred;
-}
-
-.xPcarousel-item:nth-of-type(4) {
-    border: 2px solid gold;
-}
-
-.xPcarousel-item .xPcarousel-box {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
-    opacity: var(--opacity);
-    font-family: "Roboto", serif;
-}
-
-.xPcarousel-item .xPcarousel-box:before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-
-    background: linear-gradient(360deg, black, transparent,transparent);
-}
-
-.xPcarousel-item .title {
-    position: absolute;
-    z-index: 1;
-    color: #fff;
-    bottom: 20px;
-    width: 100%;
-    padding: 0px 20px;
-    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
-    font-size: clamp(20px, 10vw, 35px);
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-.xPcarousel-item .num {
-    position: absolute;
-    z-index: 1;
-    color: #fff;
-    top: 10px;
-    left: 20px;
-    transition: opacity 0.8s cubic-bezier(0, 0.02, 0, 1);
-    font-size: 2.3vw;
-    text-shadow: 0px 0px 13px black;
-}
-
-.xPcarousel-item img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    pointer-events: none;
-}
-
-
 .xp {
     background: linear-gradient(to bottom, black, #220033);
 }
 
-.click-down {
-    transform: rotate(180deg);
-    border-radius: 5rem;
-    background: white;
-    width: 33px !important;
-    height: auto !important;
-    padding: 7px;
-}
-
-.tools-xp {
-    width: 100%;
-    position: absolute;
-    transform: translate(0%, 91%);
-    background-color: white;
-    padding: 30px 20px;
-    z-index: 1;
-    height: 100%;
-    border-radius: 30px;
-    bottom: 0;
-    left: 0;
-    transition: .7s ease-in-out;
-}
-
-.tools-xp ul li {
-    color: gray;
-    font-size: 10px;
-    font-family: "poppins", serif;
-    line-height: 10px;
-}
-
-.tools-xp ul li:nth-of-type(2),
-.tools-xp ul li:nth-of-type(3) {
-    margin-top: 10px;
-}
-
-.hide-tools-xp {
-    transform: translate(0%, 35%) !important;
-}
-
-.arrow-down{
-    width: 30px !important;
-    height: auto !important;
-    border-radius: 10rem;
-    background: white;
-    box-shadow: 0px 0px 13px -3px gray;
-    padding: 5px;
-    transform: rotate(136deg);
-    position: relative;
-    left: 42%;
-    top: -25px;
-}
+.group {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: scale(.95);
+  }
+  
+  .xp-un {
+    width: 15vw;
+    height: 75vh;
+    background-position: center;
+    background-size: 75vh;
+    margin: 1vw;
+    border-radius: 3vw;
+    display: inline-block;
+  }
