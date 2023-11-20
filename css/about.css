@@ -134,6 +134,9 @@
     min-height: 10px;
 }
 
+.about-info>div:nth-child(1) .about-info-title>.char6,
+.about-info>div:nth-child(1) .about-info-title>.char7,
+.about-info>div:nth-child(1) .about-info-title>.char8,
 .about-info>div:nth-child(1) .about-info-title>.char9,
 .about-info>div:nth-child(1) .about-info-title>.char10,
 .about-info>div:nth-child(1) .about-info-title>.char11,
@@ -153,7 +156,11 @@
 .about-info>div:nth-child(1) .about-info-title>.char25,
 .about-info>div:nth-child(1) .about-info-title>.char26,
 .about-info>div:nth-child(1) .about-info-title>.char27,
-.about-info>div:nth-child(1) .about-info-title>.char28 {
+.about-info>div:nth-child(1) .about-info-title>.char28,
+.about-info>div:nth-child(1) .about-info-title>.char29,
+.about-info>div:nth-child(1) .about-info-title>.char30,
+.about-info>div:nth-child(1) .about-info-title>.char31, 
+    .about-info>div:nth-child(1) .about-info-title>.char32 {
     color: #e543c2;
 }
 

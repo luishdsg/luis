@@ -13,8 +13,39 @@
     width: 15vw;
     height: 75vh;
     background-position: center;
-    background-size: 75vh;
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 1vw;
     border-radius: 3vw;
     display: inline-block;
+  }
+
+  .back{
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: back 1s 0s ease-in-out;
+  }
+  @keyframes back{
+    0%{
+      opacity: 0;
+    }
+    100%{
+opacity: 1;
+    }
+  }
+  .xp-un:nth-of-type(1){
+    background-image: url('https://scontent.fbsb11-1.fna.fbcdn.net/v/t39.30808-6/374765626_664700012420949_3058005527837142958_n.jpg?stp=cp6_dst-jpg&_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LC9mH2wWr-QAX9fVhes&_nc_oc=AQkjcTI02ggPt0ZOIpE8LwbedHRdwJh5Aq6d7qoZlExKAiD60_Sz-xNQ_EQc9Nk9jNY&_nc_ht=scontent.fbsb11-1.fna&oh=00_AfClOkvASerAau8bW0bU9j6cE10xwhjrrd9wiuCwH_Mjgg&oe=656057CD');
+  }
+  .xp-un:nth-of-type(2){
+    background-image: url('../assets/tgt.digital.jpg');
+  }
+  .xp-un:nth-of-type(3){
+    background-image: url('../assets/eshop.png');
+  }
+  .xp-un:nth-of-type(4){
+    background-image: url('../assets/bit.jpg');
+  }
+  .xp-un:nth-of-type(5){
+    background-image: url('https://media.licdn.com/dms/image/C4D03AQF2RAPK-3WQbw/profile-displayphoto-shrink_800_800/0/1549550880474?e=2147483647&v=beta&t=p_QGH6KMzAajrjaHFy3F04HqCkkvmm9wwaGTpdBj6TM');
   }
