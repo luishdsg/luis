@@ -76,7 +76,7 @@ rgbKineticSlider = new rgbKineticSlider({
   mobileTextSubTitleOffsetTop: 90
 });
 images.push(  "./assets/montain.jpg",);
-texts.push(["Prepara \n Cursos\n", "Montagem manutenção \n e configuração de computadores | Jul - 2016"]);
+texts.push(["Prepara Cursos\n", "Montagem manutenção \n e configuração de computadores | Jul - 2016"]);
 
 function Marquee(selector, speed) {
   const parentSelector = document.querySelector(selector);

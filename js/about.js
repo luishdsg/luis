@@ -57,15 +57,15 @@ function _animationAboutInfo() {
 
 function adjustViewBox() {
     const abouWord = document.getElementById("about-word");
-  
-    if (window.innerWidth <= 1300) {
+    var screenWidth = window.innerWidth;
+   
+    if (screenWidth <= 1300) {
         abouWord.setAttribute("viewBox", "0 0 245 80");
     } else {
         abouWord.setAttribute("viewBox", "0 0 280 80");
     }
   }
-  
-  // Verifica a largura da janela quando a página é carregada e redimensionada
+
   window.addEventListener('load', adjustViewBox);
   window.addEventListener('resize', adjustViewBox);
   

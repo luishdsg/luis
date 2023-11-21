@@ -300,11 +300,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(.8);
+    border-radius: 40px;
 }
 
 .outer_container {
-    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     z-index: 100;
