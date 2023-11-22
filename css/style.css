@@ -579,169 +579,23 @@
 
 
   /* MEDIA-WIDTH */
-  @media only screen and (max-width: 437px) {
-
-    #about-svg-text-mobile {
-      display: none !important;
-    }
-
-    #about-svg-text-mini {
-      display: block !important;
-    }
 
 
-    .title-home svg {
-      width: 250vw !important;
-    }
 
-    .sKmain {
-      height: 50% !important;
-    }
 
-    .marquee h1 {
-      font-size: 2em !important;
-    }
-
-  }
-
-  @media only screen and (max-width: 553px) {
-    .dotlottie-title>.col:nth-child(1)>dotlottie-player:nth-child(1) {
-      transform: rotate(270deg);
-      position: relative;
-      margin-top: -11%;
-    }
-
-    #about-video {
-      width: 100% !important;
-      position: fixed !important;
-      max-height: 1000px !important;
-      top: 7% !important;
-    }
-
-    #about-svg-text {
-      text-transform: uppercase !important;
-      font-weight: 900 !important;
-      font-size: 2vw !important;
-      dominant-baseline: middle !important;
-      transform: translate(3.5%, 0%) !important;
-    }
-
-    .info_container {
-      width: 222px !important;
-      margin-left: -195px !important;
-    }
-    .inner_container{
-      height: 100%;
-      padding-bottom: 0 !important;
-    }
-
-    .outer_container {
-      height: 400px !important;
-    }
-
-    .expanded {
-      padding-left: 178px !important;
-    }
-  }
-
-  @media only screen and (max-width: 660px) {
-    .about-title svg text#about-svg-text {
-      display: none !important;
-    }
-
-    .about-title svg text#about-svg-text-mobile {
+  @media only screen and (max-width: 800px) {
+    .mobile{
       display: block;
+      width: 100vw;
+      height: 100vh;
+      z-index: 100000000000000000000;
+      position: fixed;
     }
-
-    .about-info>div {
-      width: 70% !important;
-      color: rgb(217, 227, 255) !important;
-      font-size: calc(100vw / 100 * 3) !important;
-      margin: 0 !important;
-      display: flex !important;
-      line-height: calc(100vw / 100 * 3) !important;
-      letter-spacing: 0px !important;
-    }
-
-    .about-info {
-      display: grid !important;
-      place-content: normal !important;
-      width: 100% !important;
-      place-items: inherit !important;
-    }
-
-    .skill {
-      height: 500px !important;
-    }
-
-    .sKcontent .xPtitle {
-      font-size: 0.9rem;
-    }
-
-    .sKcontent .description {
-      font-size: 0.45rem !important;
-    }
-
-    .main-container {
-      padding: 0px 35px;
-    }
-
-    .sKitem:nth-child(3) {
-      width: 40% !important;
-      height: 50% !important;
-    }
-
-    .sKitem:nth-child(4) {
-      left: calc(50% + 140px);
-      width: 40% !important;
-      height: 50% !important;
-    }
-
-    .sKitem:nth-child(5) {
-      left: calc(50% + 280px);
-      width: 40% !important;
-      height: 50% !important;
-    }
-
-    .sKitem:nth-child(6) {
-      left: calc(50% + 420px);
-      opacity: 0;
-    }
-
-    .sKitem:nth-child(7) {
-      left: calc(50% + 840px);
-      opacity: 0;
-    }
-
-    .sKitem:nth-child(8) {
-      left: calc(50% + 1680px);
-      opacity: 0;
-    }
-
-    .sKitem:nth-child(9) {
-      left: calc(50% + 3360px);
-      opacity: 0;
-    }
-
-    .sKitem:nth-child(10) {
-      left: calc(50% + 6720px);
-      opacity: 0;
-    }
-
-
-  }
-
-  @media (max-width: 767px) {
-    .dotlottie-title>.col:nth-child(1)>dotlottie-player:nth-child(1) {
-      transform: rotate(270deg);
-      position: relative;
-      top: 6% !important;
-    }
-
-    .sKcontent {
-      width: 30% !important;
+    .desktop{
+      display: none !important;
     }
   }
+
 
   @media only screen and (max-width: 800px) {
     .home-text-info {
@@ -758,13 +612,6 @@
       height: 525px !important;
     }
 
-    .group {
-      display: none !important;
-    }
-
-    .group-mobile {
-      display: block !important;
-    }
 
   }
 
