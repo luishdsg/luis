@@ -239,7 +239,7 @@
   .title-home {
     width: 100%;
     overflow: auto;
-    height: 137px;
+    height: 180px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -773,7 +773,7 @@
     .title-home {
       width: 100%;
       overflow: auto;
-      height: 137px;
+      height: 180px;
       display: grid;
       justify-content: center;
       align-items: center;
