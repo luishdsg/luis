@@ -62,7 +62,10 @@
                         <div class="bord">
                               <div>
                                     <div class="title-home align-center overflow-hidden line-drawing-demo">
-                                          <svg onmouseover="flat()" class="z-100" xmlns="http://www.w3.org/2000/svg"
+                                          <video onmouseover="flat()" autoplay playsinline muted loop preload>
+                                                <source src="./assets/music/soft.mp4" />
+                                          </video>
+                                          <!-- <svg  xmlns="http://www.w3.org/2000/svg"
                                                 version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <g fill="none" fill-rule="evenodd" stroke="currentColor"
                                                       stroke-width="1" class="lines" data-darkreader-inline-stroke=""
@@ -556,7 +559,7 @@
                                                       <path style="opacity:0.043" fill="#02070b"
                                                             d="M 434.5,377.5 C 431.995,377.02 429.662,376.02 427.5,374.5C 424.349,377.15 421.349,379.984 418.5,383C 416.423,384.705 414.09,385.872 411.5,386.5C 417.09,382.416 422.256,377.749 427,372.5C 429.807,373.812 432.307,375.479 434.5,377.5 Z" />
                                                 </g>
-                                          </svg>
+                                          </svg> -->
 
                                     </div>
                                     <div class="title-line">
@@ -1368,7 +1371,7 @@
                   duration: 1000,
                   delay: function (el, i) { return i * 2 },
                   direction: 'alternate',
-                  loop: true
+                  loop: false
             });
             setTimeout(() => {
                   anime({
@@ -1377,7 +1380,7 @@
                         width: '100%',
                         easing: 'easeInOutQuad',
                         direction: 'alternate',
-                        loop: true
+                        loop: false
                   });
             }, 7000);
 

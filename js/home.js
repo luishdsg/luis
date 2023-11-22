@@ -7,17 +7,17 @@ function showPreview() {
       const mainHome = document.getElementById('main-home');
       setTimeout(() => {
             _animationName.classList.add('_end-animation-name');
-      }, 3200)
+      }, 32)
       setTimeout(() => {
             _animationName.classList.add('d-none');
             _animationSplash.classList.add('d-block');
             _animationSplash.classList.add('_animation-splash');
-      }, 3400)
+      }, 34)
       setTimeout(() => {
             load.classList.add('d-none');
             mainHome.classList.add('d-block');
             mainHome.classList.add('show-main-home');
-      }, 5400)
+      }, 54)
       body.style.cursor = 'none';
 
 
@@ -47,7 +47,7 @@ function disableScroll() {
       setTimeout(() => {
             document.body.style.overflow = 'auto';
             window.scrollTo(0, scrollY);
-      }, 7000);
+      }, 70);
 }
 window.addEventListener('load', function () {
       disableScroll();
