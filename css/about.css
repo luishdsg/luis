@@ -37,7 +37,14 @@
     font-size: 25px;
     dominant-baseline: middle;
 }
-
+#about-svg-text-mobile{
+    display: none;
+    font-size: 10px;
+}
+#about-svg-text-mini{
+    display: none;
+    font-size: 6px;
+}
 
 .about-title svg>rect {
     -webkit-mask: url(#mask);
