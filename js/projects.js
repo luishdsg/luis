@@ -2,7 +2,6 @@ var all_item_containers = $(".item_container");
 var hasClicked = false;
 
 $(document).on("click", ".item_container", function () {
-      var clickedItemID = $(this).attr("id");
       $(".item_container").removeClass("expanded");
       $(this).addClass("expanded");
       clearInterval(activeInterval);

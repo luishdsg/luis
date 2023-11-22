@@ -21,7 +21,7 @@ function _animationAboutInfo() {
     const aboutCloseBtn = document.querySelector(".about-close-btn");
     const aboutSound = document.querySelector('.about-sound');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 $(document).ready(function () {
                     animation();
@@ -29,26 +29,29 @@ function _animationAboutInfo() {
                 $('.about-info-button').click(function () {
                     animation();
                 });
-                function animation() {
-                    var title1 = new TimelineMax();
-                    var audio = document.getElementById("about-learn");
-                    audio.play();
-                    aboutSound.style.display = 'block';
-                    aboutCloseBtn.style.display = 'flex';
-                    title1.to(".about-info-button", 0, { visibility: 'hidden', opacity: 0 })
-                    title1.staggerFromTo(".about-info-title span", 0.5,
-                        { ease: Back.easeOut.config(1.7), opacity: 0, bottom: -30 },
-                        { ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0 }, 0.05);
-                    title1.to(".about-info-button", 0.2, { visibility: 'visible', opacity: 1 })
-                }
                 observer.disconnect();
-            }else{
-                console.log('sssd')
             }
         });
-       
     });
+
+    function animation() {
+        var title1 = new TimelineMax();
+        var sound = document.getElementById("about-learn");
+        sound.play();
+        aboutSound.style.display = 'block';
+        aboutCloseBtn.style.display = 'flex';
+        title1.to(".about-info-button", 0, { visibility: 'hidden', opacity: 0 });
+        title1.staggerFromTo(
+            ".about-info-title span",
+            0.5,
+            { ease: Back.easeOut.config(1.7), opacity: 0, bottom: -30 },
+            { ease: Back.easeOut.config(1.7), opacity: 1, bottom: 0 },
+            0.05
+        );
+        title1.to(".about-info-button", 0.2, { visibility: 'visible', opacity: 1 });
+    }
     observer.observe(aboutInfo);
+
     $(document).ready(function () {
         $(".about-info-title").lettering();
         $(".about-info-button").lettering();
@@ -58,25 +61,25 @@ function _animationAboutInfo() {
 function adjustViewBox() {
     const abouWord = document.getElementById("about-word");
     var screenWidth = window.innerWidth;
-   
+
     if (screenWidth <= 1300) {
         abouWord.setAttribute("viewBox", "0 0 245 80");
     } else {
         abouWord.setAttribute("viewBox", "0 0 280 80");
     }
-  }
+}
 
-  window.addEventListener('load', adjustViewBox);
-  window.addEventListener('resize', adjustViewBox);
-  
+window.addEventListener('load', adjustViewBox);
+window.addEventListener('resize', adjustViewBox);
+
 
 function _aboutSound() {
     const audio = document.getElementById("about-learn");
     const aboutCloseBtn = document.querySelector(".about-close-btn");
     const aboutSound = document.querySelector('.about-sound');
-        audio.pause();
-        aboutSound.style.display = 'none';
-        aboutCloseBtn.style.display = 'none';
+    audio.pause();
+    aboutSound.style.display = 'none';
+    aboutCloseBtn.style.display = 'none';
 }
 
 document.addEventListener("scroll", function () {

@@ -29,10 +29,6 @@
 
 
 <body id="body">
-
-
-      </div>
-
       <div class="w-100 top-0 w3-black d-flex justify-content-center align-items-center position-fixed mt-0 pt-0 h-100"
             id="load">
             <div class="w-100 bg-transparent d-flex justify-content-center align-content-center mt-0 pt-0 h-auto">
@@ -671,9 +667,8 @@
 
                   <div class="about w3-black top-100">
                         <div id="content">
-                              <section style="width: 100%; height: 2300px;">
+                              <section class="w-100">
                                     <div class="w-100 w3-black z-10 about-division position-relative"></div>
-
                                     <div class="about-title">
                                           <video autoplay playsinline muted loop preload>
                                                 <source src="./assets/music/about.mp4" />
@@ -689,8 +684,7 @@
                                                 <rect x="0" y="0" width="100%" height="100%" />
                                           </svg>
                                     </div>
-                                    <section style="width: 100%; height: 1300px; top: -3px;"
-                                          class="about-info-bg z-10  position-relative">
+                                    <section class="about-info-bg w-100 z-10  position-relative">
                                           <dotlottie-player class="about-ill"
                                                 src="https://lottie.host/7662c0dc-0d91-40bb-92a3-dc95dfdd2a91/npqAdvJQww.json"
                                                 background="transparent" speed="1" loop autoplay></dotlottie-player>
@@ -707,7 +701,7 @@
                                                       <span class="about-info-title">Angular,&nbsp;&nbsp;Nodejs&nbsp;&nbsp;,TypeScript,&nbsp;&nbsp;NestJs</span>
                                                 </div>
                                                 <div>
-                                                      <span class="about-info-title">HTML5,&nbsp;&nbsp;CSS3,&nbsp;&nbsp;jQuery,&nbsp;&nbsp;REST&nbsp;&nbsp;API,&nbsp;&nbsp;,iONIC..etc</span>
+                                                      <span class="about-info-title">HTML5,&nbsp;CSS3,&nbsp;jQuery,&nbsp;REST&nbsp;API,&nbsp;iONIC,&nbsp;React..etc</span>
                                                 </div>
                                                 <div>
                                                       <span class="about-info-title">tenho&nbsp;&nbsp;expertise&nbsp;&nbsp;na&nbsp;&nbsp;criação</span>
@@ -719,7 +713,7 @@
                                                       <span class="about-info-title">além&nbsp;&nbsp;de&nbsp;&nbsp;trabalhar&nbsp;&nbsp;com&nbsp;&nbsp;bibliotecas&nbsp;&nbsp;como</span>
                                                 </div>
                                                 <div>
-                                                      <span class="about-info-title">React,&nbsp;&nbsp;React Native&nbsp;&nbsp;e&nbsp;&nbsp;Bootstrap.</span>
+                                                      <span class="about-info-title">React Native&nbsp;&nbsp;e&nbsp;&nbsp;Bootstrap.</span>
                                                 </div>
                                                 <div>
                                                       <span class="about-info-title">Estou&nbsp;&nbsp;focado&nbsp;&nbsp;em&nbsp;&nbsp;fornecer&nbsp;&nbsp;soluções&nbsp;&nbsp;de</span>
@@ -727,10 +721,13 @@
                                                 <div>
                                                       <span class="about-info-title">alto&nbsp;&nbsp;desempenho&nbsp;&nbsp;para&nbsp;&nbsp;atender&nbsp;&nbsp;às&nbsp;&nbsp;demandas.</span>
                                                 </div>
+                                                <div>
+                                                      <span class="about-info-title">do&nbsp;&nbsp;mercado</span>
+                                                </div>
 
                                                 &nbsp;&nbsp;
 
-                                                <div class="about-info-button">o que?, dnovo!</div>
+                                                <div class="about-info-button">de novo!</div>
                                           </section>
                                           <script
                                                 src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
@@ -745,6 +742,7 @@
                                           src="./pages/xp.html"></iframe>
                               </section>
                               <section class="xp">
+                                    <!-- desktop -->
                                     <div class="group">
                                           <div class="xp-un">
                                                 <div class="w-100 back h-100"></div>
@@ -761,7 +759,24 @@
                                           <div class="xp-un">
                                                 <div class="w-100 back h-100"></div>
                                           </div>
-
+                                    </div>
+                                    <!-- mobile -->
+                                    <div class="group-mobile" style="display: none;">
+                                          <div class="un-xp">
+                                                <div class="w-100 backMob h-100"></div>
+                                          </div>
+                                          <div class="un-xp">
+                                                <div class="w-100 backMob h-100"></div>
+                                          </div>
+                                          <div class="un-xp">
+                                                <div class="w-100 backMob h-100"></div>
+                                          </div>
+                                          <div class="un-xp">
+                                                <div class="w-100 backMob h-100"></div>
+                                          </div>
+                                          <div class="un-xp">
+                                                <div class="w-100 backMob h-100"></div>
+                                          </div>
                                     </div>
                               </section>
                               <section class="w-100 skill">
@@ -934,7 +949,7 @@
                                     </main>
 
                               </section>
-                              <section class="w-100 mb-5 prejects">
+                              <section class="w-100 prejects">
                                     <!-- <canvas class="light-splatter z-100" width="1920" height="942"
                                           style="opacity: 1;"></canvas> -->
                                     <div class="flex_container">
@@ -1293,13 +1308,11 @@
             <source src="/assets/music/ABOUT-pt.m4a" type="audio/mpeg">
             Seu navegador não suporta o elemento de áudio.
       </audio>
-      <script type="module">
-
-
-      </script>
+   
       <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
       <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
       <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+      <script src="https://unpkg.com/howler"></script>
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
       <script type="module" src="https://assets.codepen.io/16327/MorphSVGPlugin3.min.js"></script>

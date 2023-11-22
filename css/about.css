@@ -3,7 +3,9 @@
 .about {
     transition: .5s ease-in-out;
 }
-
+#content section:nth-child(1){
+    height: 2300px;
+}
 .about-title {
     position: relative;
     width: 100%;
@@ -77,6 +79,7 @@
 
 .about-info-bg {
     background-image: url("/assets/b.png");
+    top: -3px;height: 1300px;
 }
 
 .about-info {
@@ -208,44 +211,4 @@
     margin: 0;
 }
 
-@media only screen and (max-width: 553px) {
-    .about-title video {
-        width: 100% !important;
-        position: fixed !important;
-        max-height: 1000px !important;
-        top: 9% !important;
-    }
-    #about-svg-text{
-        text-transform: uppercase !important;
-        font-weight: 900 !important;
-        font-size: 2vw !important;
-        dominant-baseline: middle !important;
-        transform: translate(3.5%, 0%) !important;
-    }
-}
-@media only screen and (max-width: 660px) {
-    .about-title svg text {
-        text-transform: uppercase !important;
-        font-weight: 900 !important;
-        font-size: 1.5vw !important;
-        dominant-baseline: middle !important;
-        transform: translate(4.5%, 0%) !important;
-    }
-}
-
-@media only screen and (max-width: 1300px) {
-    .about-title video {
-        width: 100%;
-        position: fixed;
-        max-height: 1000px;
-        top: 6%;
-    }
-
-    .about-title svg text {
-        text-transform: uppercase;
-        font-weight: 900;
-        font-size: 15px;
-        dominant-baseline: middle;
-    }
-}
 
