@@ -662,9 +662,7 @@
     .group-mobile {
       display: block !important;
     }
-    #body{
-      height: 6335px !important;
-    }
+
   }
 
   @media (max-width: 910px) {
