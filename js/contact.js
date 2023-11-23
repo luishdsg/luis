@@ -3,8 +3,8 @@ let toggled = false;
 let barOne = document.getElementById("burger-bar-one");
 let barTwo = document.getElementById("burger-bar-two");
 let barThree = document.getElementById("burger-bar-three");
-
-function onToggle() {
+var menu = document.getElementById("contact-body");
+function contact() {
   if (!toggled) {
     toggled = !toggled;
     TweenLite.to(barOne, 0.5, { strokeDashoffset: -1076 });
@@ -16,6 +16,8 @@ function onToggle() {
     TweenLite.to(barTwo, 0.5, { strokeDashoffset: 0 });
     TweenLite.to(barThree, 0.5, { opacity: 1, x: 0 });
   }
+
+    menu.classList.toggle("contact-body");
 }
 
 
