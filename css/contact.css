@@ -9,13 +9,15 @@
 .contact-body{
     width: 50%;
     height: 60vh;
-    background: red;
     right: 4%;
-    /* padding: 3em; */
     position: fixed;
     top: 4%;
     z-index: -1;
     border-radius: 30px;
+}
+.contact-body iframe{
+  border-radius: 30px;
+  border: 2px solid #0065a5;
 }
 .contact-menu {
     position: absolute;
@@ -27,7 +29,6 @@
     border: none;
     outline: none;
     stroke: white;
-    cursor: pointer;
     transition: all 175ms ease-in-out;
   }
   .contact-menu:hover {

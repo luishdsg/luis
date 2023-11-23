@@ -584,14 +584,15 @@
 
 
   @media only screen and (max-width: 800px) {
-    .mobile{
+    .mobile {
       display: block;
       width: 100vw;
       height: 100vh;
       z-index: 100000000000000000000;
       position: fixed;
     }
-    .desktop{
+
+    .desktop {
       display: none !important;
     }
   }
