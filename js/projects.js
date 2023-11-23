@@ -33,7 +33,3 @@ function intervalStart() {
 intervalStart();
 
 
-
-
-// ESTER-EGG
-

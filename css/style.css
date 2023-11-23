@@ -28,6 +28,11 @@
     color: white;
   }
 
+  a:hover,
+    a{
+    cursor: none !important;
+  }
+
   ::-webkit-scrollbar {
     width: 0px;
   }
@@ -585,7 +590,7 @@
 
   @media only screen and (max-width: 800px) {
     .mobile {
-      display: block;
+      display: block !important;
       width: 100vw;
       height: 100vh;
       z-index: 100000000000000000000;
@@ -653,7 +658,7 @@
       width: 100% !important;
       position: fixed !important;
       max-height: 1000px !important;
-      top: 6% !important;
+      top: 2% !important;
     }
 
     .about-title svg text#about-svg-text {
