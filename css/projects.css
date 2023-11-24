@@ -1,6 +1,5 @@
 .projects{
-    /* height: 2000px; */
-    margin-bottom: 8em;
+    border-radius:0px 0px 30px 30px;
 }
 .glitch,
 .glow {
@@ -16,7 +15,7 @@
     position: absolute;
     left: -2px;
     text-shadow: -5px 0 magenta;
-    background: black;
+    background: transparent;
     overflow: hidden;
     top: 0;
     animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
@@ -28,7 +27,7 @@
     position: absolute;
     left: 2px;
     text-shadow: -5px 0 rgb(20, 153, 201);
-    background: black;
+    background: transparent;
     overflow: hidden;
     top: 0;
     animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
@@ -293,7 +292,6 @@
 }
 
 .glow {
-    text-shadow: 0 0 1000px #dfbfbf;
     color: transparent;
     position: absolute;
     top: 0;
@@ -307,7 +305,6 @@
     width: 100%;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     transform: scale(.8);
     border-radius: 40px;
 }
@@ -317,7 +314,7 @@
     width: 100%;
     z-index: 100;
     overflow-y: hidden;
-    border-radius: 30px;
+    border-radius: 30px;    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     border: 2px solid #ffffff2b;
     overflow-x: inherit;
 }

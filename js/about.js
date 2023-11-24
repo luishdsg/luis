@@ -87,7 +87,6 @@ document.addEventListener("scroll", function () {
 });
 window.addEventListener('load', function () {
     _animationAboutInfo();
-
 });
 
 function won() {

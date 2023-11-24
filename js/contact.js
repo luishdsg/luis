@@ -17,7 +17,7 @@ function contact() {
     TweenLite.to(barThree, 0.5, { opacity: 1, x: 0 });
   }
 
-    menu.classList.toggle("contact-body");
+  menu.classList.toggle("contact-body");
 }
 
 
