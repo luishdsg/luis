@@ -147,7 +147,6 @@
 
   ._animation-splash {
     transform: scale(0);
-    opacity: 0;
     animation: animation-splash 2s;
   }
 
