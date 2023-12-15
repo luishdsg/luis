@@ -70,13 +70,16 @@ body{
     }
 }
 
+.br-10{
+    border-radius: 10px;
+}
+
 
 
 .main-btn{
     color: $Green;
     background-color: transparent;
     border: 1px solid $Green;
-    border-radius: 3px;
     font-size: 13px;
     font-family: $CodeFont;
     line-height: 1;

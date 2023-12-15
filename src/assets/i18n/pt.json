@@ -6,86 +6,88 @@
   "Header.Item5": "Contato",
   "Header.cvBtn": "Currículo",
   "Header.cvName": "Luis-Henrique-Da-Silva-Gomes.pdf",
-  "Banner.Pretitle": "Olá! me chamo",
+  "Banner.Pretitle": "Oi! Eu sou",
   "Banner.ActionBtn": "Baixar Currículo",
   "AboutMe.Title": "Sobre mim",
   "AboutMe.Paragraphs": [
-    "Com pouco mais de <span class='underline'>3 anos como desenvolvedor</span>, minhas habilidades incluem (<span class='underline'>Angular</span>, <span class='underline'>iONIC</span>, <span class='underline'>REST API</span>, <span class='underline'>Nodejs</span>, <span class='underline'>jQuery</span>, <span class='underline'>JavaScript</span>, <span class='underline'>TypeScript</span>, <span class='underline'>NextJs</span>, <span class='underline'>CSS3</span>, <span class='underline'>HTML5</span>...etc). Tenho experiência em manter sites e aplicações da web, além de trabalhar com bibliotecas como <span class='underline'>React</span> e <span class='underline'>Bootstrap</span>.",
-    "Estou focado em fornecer soluções de alto desempenho para atender às demandas do mercado."
+    "Como <span class='underline'>Desenvolvedor Front-end</span>, minha principal responsabilidade é melhorar as experiências do usuário. Com uma base sólida em <span class='underline'>Angular</span>, <span class='underline'>NodeJs</span>, <span class='underline'>React-Native</span>, <span class='underline'>NestJs</span> e <span class='underline'>Sass</span> (que venho aprimorando desde 2019), estou bem preparado para enfrentar qualquer desafio de desenvolvimento.",
+    "Em minha trajetória, tenho experiência profissional na criação de aplicativos híbridos, como <span class='underline'>'Porteiros no Comando'</span> e <span class='underline'>'Imoveistock'</span>, que ganharam destaque no mercado imobiliário."
   ],
+
   "Experience.Title": "Experiência",
-  "Experience.Jobs": [{
+  "Experience.Jobs": [
+    {
       "Tab": "Imoveistock",
-      "Title": "Desenvolvedor de Software",
+      "Title": "Desenvolvedor de Software Nível Médio",
       "Date": "Jul-2023 | Nov - 2023",
       "Description": [
-        "Criação de uma plataforma de vendas de aplicativos da web no setor imobiliário e backoffice para manipulação de dados por seus usuários, com Angular.",
-        "Criação de um aplicativo Android e iOS para porteiros de condomínios das propriedades mencionadas acima em iONIC e Typescript.",
-        "Criação de um aplicativo Android e iOS na plataforma imoveistock em iONIC e Typescript."
+        "Utilizei o Angular para criar a plataforma de venda e aluguel de imóveis, além de desenvolver um sistema interno de backoffice para uso dos funcionários.",
+        "Integrei tempo no desenvolvimento do aplicativo 'Imoveistock' e 'Porteiros no Comando' em react-native utilizando MySQL na AWS e NestJS no Firebase."
       ]
     },
     {
-      "Tab": "TGT digital",
-      "Title": "Desenvolvedor Angular & NestJs",
+      "Tab": "TGT digital S/A",
+      "Title": "Desenvolvedor Frontend Nível Médio",
       "Date": "Jun - 2022 | Jul - 2023",
       "Description": [
-        "Fábrica de software para aplicativos da web, iOS e Android, criando plataformas.",
-        "E-commerce, backoffice, bem como gerenciamento de estoque, controle de pessoal e plataformas de RH."
+        "Trabalhei como Desenvolvedor Full Front-End, liderando projetos como sites de e-commerce e aplicativos em Angular, React-Native e NestJS.",
+        "Adotamos o Bundle Analyzer e testes unitários com Jest para priorizar o desempenho eficiente de carregamento de recursos, além do Redux para estados de navegação do React e Styled Components para uma abordagem mais coesa e modular.",
+        "Orquestrei mudanças de esquema por meio de migrações no MongoDB, para transições entre versões de banco de dados com versionamento usando NestJS, módulos e estrutura de injeção de dependência para criar uma arquitetura escalável e modular usando o Swagger para um melhor tratamento de métodos HTTPS.",
+        "As alterações de versão do banco de dados foram gerenciadas por meio de migrações no contexto do NestJS, permitindo atualizações incrementais e controladas do esquema. Essa abordagem garantiu a manutenção eficiente do banco de dados MongoDB, adaptando-se às necessidades em evolução do sistema.",
+        "Utilizei o Storybook para garantir consistência visual e assegurei acessibilidade com o uso de ferramentas como Axe, resultando em produtos de melhor qualidade."
       ]
     },
     {
       "Tab": "My Eshop",
-      "Title": "Desenvolvedor Front-end VTEX",
-      "Date": "Nov - 2021 | Fev - 2022",
+      "Title": "Desenvolvedor React Júnior",
+      "Date": "Fev - 2020 | Jun - 2022",
       "Description": [
-        "Criação, manipulação, personalização e automação de páginas de site e aplicações da web com VTEX, HTML, Sass e Jquery."
-      ]
-    },
-    {
-      "Tab": "Bit-Nick.INC",
-      "Title": "Desenvolvedor Front-end React",
-      "Date": "Jul - 2021 - Nov -2021",
-      "Description": [
-        "Criação de conexões de troca para uma blockchain local com a função de criar carteiras para uma criptomoeda."
+        "Participei do desenvolvimento de sites de e-commerce usando React.",
+        "Implementei o Server-Side Rendering para melhorar o desempenho, aproveitando React Hooks e Redux para uma melhor gestão de navegação.",
+        "Na estilização, adotei Styled Components e otimizei o desempenho com Code Splitting e carregamento preguiçoso de imagens.",
+        "O uso do Webpack e Babel foi crucial para garantir um pacote otimizado em testes e depurações."
       ]
     }
   ],
+
   "Formation.Title": "Formação",
-  "Formation.Formation": [{
-      "Tab": "  ESTACIO",
-      "Title": "Engenharia de Sofware",
-      "Date": "Jul-2020 | ago - 2023"
+  "Formation.Formation": [
+    {
+      "Tab": "ESTÁCIO",
+      "Title": "Engenharia de Software",
+      "Date": "Jul-2020 | Ago-2023"
     },
     {
       "Tab": "UDEMY",
       "Title": "C# .NET full-stack",
-      "Date": "atual",
-      "Title2": "Angular full-stack project",
-      "Date2": "Nov - 2019",
+      "Date": "Presente",
+      "Title2": "Projeto Angular full-stack",
+      "Date2": "Nov-2019",
       "Title3": "Html5, Css3, Js, API, NodeJs & React",
-      "Date3": "Abril - 2020"
+      "Date3": "Abril-2020"
     },
-
     {
       "Tab": "BOWTIE",
       "Title": "Excel Avançado",
-      "Date": "Jan - 2017"
+      "Date": "Jan-2017"
     },
     {
       "Tab": "PREPARA CURSOS",
-      "Title": "Montagem manutenção e configuração de computadores",
-      "Date": "Jul - 2016"
+      "Title": "Montagem, Manutenção e Configuração de Computadores",
+      "Date": "Jul-2016"
     },
     {
       "Tab": "DINNONE",
-      "Title": "Git & Git-Hub",
-      "Date": "Jul - 2020"
+      "Title": "Git & GitHub",
+      "Date": "Jul-2020"
     }
   ],
+
   "OtherProjects.Title": "Projetos",
-  "OtherProjects.Projects": [{
+  "OtherProjects.Projects": [
+    {
       "Title": "Eight",
-      "Description": "Aplicativo de jogo web sobre enigmas e segredos ocultos",
+      "Description": "Aplicativo de jogo web sobre charadas e segredos ocultos",
       "ghLink": "https://github.com/luishdsg/eight",
       "demoLink": "https://eight-sandy.vercel.app/",
       "Technologies": ["Angular", "iONIC", "API", "Bootstrap"]
@@ -95,25 +97,54 @@
       "Description": "Criei um currículo para um amigo conseguir um novo emprego",
       "ghLink": "https://github.com/luishdsg/anavidal",
       "demoLink": "https://anavidal.vercel.app/",
-      "Technologies": ["Angular", "SASS", "CSS GRID", "Formulário reativo"]
+      "Technologies": ["Angular", "SASS", "CSS GRID", "Formulário Reativo"]
     },
     {
       "Title": "Janacakes",
-      "Description": "Site de venda de bolos para um cliente.",
+      "Description": "Site de venda de bolos para um cliente",
       "ghLink": "https://github.com/luishdsg/janacakes",
       "demoLink": "https://janacakes.vercel.app/",
       "Technologies": ["HTML5", "SASS", "JS"]
     },
     {
       "Title": "Funtools",
-      "Description": "Pacote de pequenos projetos individuais, com um currículo antigo no final",
+      "Description": "Pacote de pequenos projetos individuais, com um antigo currículo no final",
       "ghLink": "https://github.com/luishdsg/Funtools",
       "demoLink": "https://funtools.vercel.app/",
       "Technologies": ["HTML5", "SASS", "GIT", "JS", "Bootstrap", "AnimeJS", "ThressJS"]
+    },
+    {
+      "Title": "Superhero",
+      "Description": "Demonstração e comparação das características de super-heróis (clique em dois heróis)",
+      "ghLink": "https://github.com/luishdsg/superhero",
+      "demoLink": "https://superheroe.vercel.app/",
+      "Technologies": ["HTML5", "SASS", "Emotion", "JS", "Bootstrap", "React", "Webpack", "MUI", "PWA"]
+    },
+    {
+      "Title": "MksSistems",
+      "Description": "Demo de adicionar ao carrinho em um site de varejista fictício",
+      "ghLink": "https://github.com/luishdsg/mksSistems",
+      "demoLink": "https://mkssistemas.vercel.app/",
+      "Technologies": ["HTML5", "SASS", "Tailwind CSS", "React", "JS", "TS"]
+    },
+    {
+      "Title": "FarmaInc",
+      "Description": "Desafio para desenvolvimento mobile. O objetivo é avaliar a forma de estruturação e autonomia nas decisões para construir algo escalável usando um framework React Native no desenvolvimento da solução.",
+      "ghLink": "https://github.com/luishdsg/alfred-mobile-challenge",
+      "demoLink": "https://github.com/luishdsg/alfred-mobile-challenge",
+      "Technologies": ["HTML5", "SASS", "React-native", "expo", "JS", "TS"]
+    },
+    {
+      "Title": "Portifólio", 
+      "Description": "em desenvolvimento (necessita de computador ou notebook i3 10g ou superior & 16gb RAM ou superior",
+      "ghLink": "https://github.com/luishdsg/luis/tree/origin/dev",
+      "demoLink": "https://louish.netlify.app/",
+      "Technologies": ["HTML5", "SASS", "GSAP", "Firebase", "JS", "Webflow","Bootstrap","HowlerJs","Jquery","ThreeJs", "animejs", "PIXLjs", "Cloudflare", "Swioer", "Open Graph"]
     }
   ],
-  "Contact.Pretitle": "O que vem a seguir",
+
+  "Contact.Pretitle": "Próximos Passos",
   "Contact.Title": "Entre em contato!",
-  "Contact.Content": "Ficarei feliz se você quiser entrar em contato, se quiser enviar uma mensagem, clique no botão abaixo.",
+  "Contact.Content": "Ficarei feliz se quiser entrar em contato. Se quiser enviar uma mensagem, clique no botão abaixo.",
   "Contact.Btn": "Enviar e-mail"
 }

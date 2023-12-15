@@ -30,13 +30,13 @@
                 <ng-template ngbNavContent>Second content</ng-template>
             </li>
             <li ngbNavItem>
-                <a (click)="downloadCV()" class="main-btn cv-btn" ngbNavLink>
+                <a (click)="downloadCV()" class="main-btn br-10 cv-btn" ngbNavLink>
                     {{"Header.cvBtn" | translate}}
                 </a>
             </li>
             <li>
                 <div ngbDropdown class="d-inline-block">
-                    <div class="language-container" id="dropdownForm1" ngbDropdownToggle>
+                    <div class="language-container br-10 " id="dropdownForm1" ngbDropdownToggle>
                         <img *ngIf='languageFormControl.value == "en"' width="20px"
                             src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
                         <span *ngIf='languageFormControl.value == "en"' class="flag-text">English</span>
@@ -52,7 +52,7 @@
                     <div ngbDropdownMenu aria-labelledby="dropdownForm1">
                         <div (click)='changeLanguage("pt")'
                             style='border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;'
-                            class="language-container language-container-selector active"
+                            class="language-container language-container-selector br-10  active"
                             [class.active]='languageFormControl.value == "pt"'>
                             <img width="20px" src="https://www.worldometers.info/img/flags/br-flag.gif" alt="Português">
                             <span class="flag-text">Português</span>
@@ -64,7 +64,7 @@
                         </div>
                         <div (click)='changeLanguage("en")'
                             style="margin-top: 1px !important; border-top-left-radius: 0px !important; border-top-right-radius: 0px !important;"
-                            class="language-container language-container-selector"
+                            class="language-container br-10  language-container-selector"
                             [class.active]='languageFormControl.value == "en"'>
                             <img width="20px" src="https://www.worldometers.info/img/flags/us-flag.gif" alt="English">
                             <span class="flag-text">English</span>
@@ -112,12 +112,12 @@
                             </a>
                         </li>
                         <li>
-                            <a (click)="downloadCV()" class="main-btn cv-btn">
+                            <a (click)="downloadCV()" class="main-btn br-10  cv-btn">
                                 {{"Header.cvBtn" | translate}}
                             </a>
                         </li>
                         <li>
-                            <div class="language-container">
+                            <div class="language-container br-10 ">
                                 <div (click)='changeLanguage("pt")'
                                     style='border-bottom-left-radius: 0px !important;border-bottom-right-radius: 0px !important;'
                                     class="language-container language-container-selector active"
