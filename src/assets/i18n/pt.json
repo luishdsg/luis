@@ -18,7 +18,7 @@
   "Experience.Jobs": [
     {
       "Tab": "Imoveistock",
-      "Title": "Desenvolvedor de Software Nível Médio",
+      "Title": "Desenvolvedor de Software Pleno",
       "Date": "Jul-2023 | Nov - 2023",
       "Description": [
         "Utilizei o Angular para criar a plataforma de venda e aluguel de imóveis, além de desenvolver um sistema interno de backoffice para uso dos funcionários.",
@@ -26,8 +26,8 @@
       ]
     },
     {
-      "Tab": "TGT digital S/A",
-      "Title": "Desenvolvedor Frontend Nível Médio",
+      "Tab": "TGT digital",
+      "Title": "Desenvolvedor Frontend Pleno",
       "Date": "Jun - 2022 | Jul - 2023",
       "Description": [
         "Trabalhei como Desenvolvedor Full Front-End, liderando projetos como sites de e-commerce e aplicativos em Angular, React-Native e NestJS.",
