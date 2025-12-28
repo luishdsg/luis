@@ -980,6 +980,7 @@
 .e,
 .f,
 .g,
+.i,
 .u-media-wrapper {
     background-position: center;
     background-size: cover
@@ -1100,6 +1101,10 @@
 
 .c-mouse-vertical-carousel__list li:nth-child(7) a:hover {
     color: #00fff2 !important;
+    transition: .4s
+}
+.c-mouse-vertical-carousel__list li:nth-child(8) a:hover {
+    color: #ff00d4 !important;
     transition: .4s
 }
 
@@ -1227,7 +1232,8 @@
 .d,
 .e,
 .f,
-.g {
+.g,
+.i{
     background-repeat: no-repeat
 }
 
@@ -1257,6 +1263,9 @@
 
 .g {
     background-image: url("https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png")
+}
+.i {
+    background-image: url("https://i.ibb.co/G3PfBfy7/Captura-de-Tela-254.png")
 }
 
 body .footer {
