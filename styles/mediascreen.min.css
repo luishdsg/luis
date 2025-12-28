@@ -1,1 +1,207 @@
-@media screen and (max-width:1400px){.welcome{left:-10vw;position:relative}}@media screen and (max-width:1050px){.jobs,.sep-main{right:0;position:relative}.sep-main{z-index:1;display:grid;justify-content:center;align-content:center;width:100%;justify-items:center}.card{min-width:300px;min-height:300px}#hero-text{max-width:900px;font-family:Poppins,Arial;font-size:100%;z-index:10;padding:1rem;font-weight:700;color:#766b5d}.jobs{max-width:40em;top:20%}}@media screen and (max-width:767px){.glass{width:7em!important;height:7em!important}.description{perspective:800px;transform:scale(.7);max-width:100%;max-height:25em}.shadows{padding:0!important;margin:0!important;justify-items:baseline}.shadows ul li{font-size:3em}.jobstitle{flex-direction:column;color:var(--honey);width:100%;max-width:100%;z-index:0}.jobstitle .linejob{height:50px}.jobstitle .linejob span{font-size:46px;line-height:40px}.jobs-card article{height:54vh}.API,.Angular,.Docker,.Html,.MongoDB,.MySql,.Native,.NestJs,.React,.Tools,.iOnic,.intro{width:100vw}.tecskills p:first-child{font-size:2em}.tecskills p:nth-child(2){font-size:.7em}.skill-arrow{display:flex!important}.project-arrow{display:block!important}}@media screen and (max-width:600px){.title,.welcome{left:0;position:relative}.description{perspective:800px;transform:scale(.6);max-width:100%;max-height:25em}.about-arrow{display:block!important;mix-blend-mode:color-burn;transform:rotate(349deg) rotateY(182deg)}.bg-svg-home{display:none!important}.shadows{padding:3em 0!important;margin:0!important;justify-items:baseline}.shadows ul li{font-size:5em}.title{color:#f1ebe5;text-shadow:0 8px 9px #c4b59d,0 -2px 1px #fff;border-radius:20px;font-family:var(--font1);font-size:61px;font-weight:600;text-align:center;text-transform:uppercase;letter-spacing:-3px;line-height:56px;height:68px;margin:0;overflow:hidden;display:block;float:left}#hero-text{font-size:1.5rem}.msg{font-size:13px}.owl{font-size:1.3em}.welcome{width:100%!important;padding:0!important}.title-about{height:fit-content!important}}
+@media screen and (max-width:1400px) {
+    .welcome {
+        left: -10vw;
+        position: relative
+    }
+}
+
+@media screen and (max-width:1050px) {
+
+    .jobs,
+    .sep-main {
+        right: 0;
+        position: relative
+    }
+
+    .sep-main {
+        z-index: 1;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        justify-items: center
+    }
+
+    .card {
+        min-width: 300px;
+        min-height: 300px
+    }
+
+    #hero-text {
+        max-width: 900px;
+        font-family: Poppins, Arial;
+        font-size: 100%;
+        z-index: 10;
+        padding: 1rem;
+        font-weight: 700;
+        color: #766b5d
+    }
+
+    .jobs {
+        max-width: 40em;
+        top: 20%
+    }
+
+    .project-arrow {
+        display: block !important
+    }
+
+    .project-content {
+        display: flex !important;
+    }
+
+    .projects {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .glass {
+        width: 7em !important;
+        height: 7em !important
+    }
+
+    .description {
+        perspective: 800px;
+        transform: scale(.7);
+        max-width: 100%;
+        max-height: 25em
+    }
+
+    .shadows {
+        padding: 0 !important;
+        margin: 0 !important;
+        justify-items: baseline
+    }
+
+    .shadows ul li {
+        font-size: 3em
+    }
+
+    .jobstitle {
+        flex-direction: column;
+        color: var(--honey);
+        width: 100%;
+        max-width: 100%;
+        z-index: 0
+    }
+
+    .jobstitle .linejob {
+        height: 50px
+    }
+
+    .jobstitle .linejob span {
+        font-size: 46px;
+        line-height: 40px
+    }
+
+    .jobs-card article {
+        height: 54vh
+    }
+
+    .API,
+    .Angular,
+    .Docker,
+    .Html,
+    .MongoDB,
+    .MySql,
+    .Native,
+    .NestJs,
+    .React,
+    .Tools,
+    .iOnic,
+    .intro {
+        width: 100vw
+    }
+
+    .tecskills p:first-child {
+        font-size: 2em
+    }
+
+    .tecskills p:nth-child(2) {
+        font-size: .7em
+    }
+
+    .skill-arrow {
+        display: flex !important
+    }
+
+
+
+
+}
+
+@media screen and (max-width:600px) {
+
+    .title,
+    .welcome {
+        left: 0;
+        position: relative
+    }
+
+    .description {
+        perspective: 800px;
+        transform: scale(.6);
+        max-width: 100%;
+        max-height: 25em
+    }
+
+    .about-arrow {
+        display: block !important;
+        mix-blend-mode: color-burn;
+        transform: rotate(349deg) rotateY(182deg)
+    }
+
+    .bg-svg-home {
+        display: none !important
+    }
+
+    .shadows {
+        padding: 3em 0 !important;
+        margin: 0 !important;
+        justify-items: baseline
+    }
+
+    .shadows ul li {
+        font-size: 5em
+    }
+
+    .title {
+        color: #f1ebe5;
+        text-shadow: 0 8px 9px #c4b59d, 0 -2px 1px #fff;
+        border-radius: 20px;
+        font-family: var(--font1);
+        font-size: 61px;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 56px;
+        height: 68px;
+        margin: 0;
+        overflow: hidden;
+        display: block;
+        float: left
+    }
+
+    #hero-text {
+        font-size: 1.5rem
+    }
+
+    .msg {
+        font-size: 13px
+    }
+
+    .owl {
+        font-size: 1.3em
+    }
+
+    .welcome {
+        width: 100% !important;
+        padding: 0 !important
+    }
+
+    .title-about {
+        height: fit-content !important
+    }
+}
