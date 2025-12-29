@@ -209,7 +209,7 @@
 }
 
 .about {
-    background-image: url(".assets/dot.png");
+    background-image: url("../assets/dot.png");
     background-position: center;
     background-repeat: repeat;
     background-size: 10px
