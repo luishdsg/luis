@@ -138,7 +138,7 @@ function gotoSection(e, t) {
 }
 
 function enterNormalScroll() {
-    console.log("Modo Scroll Normal Ativado"), restOfSite.style.display = "block", scrollObserver.disable(), document.body.style.overflow = "auto", gsap.set(sections[4], {
+    restOfSite.style.display = "block", scrollObserver.disable(), document.body.style.overflow = "auto", gsap.set(sections[4], {
         position: "relative"
     }), returnObserver.enable()
 }
@@ -170,6 +170,7 @@ let scrollObserver = Observer.create({
         }
     });
 returnObserver.disable(), gotoSection(0, 1);
+
 function lettering(e) {
     let t = e.textContent;
     e.textContent = "", [...t].forEach(t => {
@@ -177,11 +178,20 @@ function lettering(e) {
         s.textContent = " " === t ? "\xa0" : t, e.appendChild(s)
     })
 }
-document.body.addEventListener("pointermove", (e)=>{
-  const { currentTarget: el, clientX: x, clientY: y } = e;
-  const { top: t, left: l, width: w, height: h } = el.getBoundingClientRect();
-  el.style.setProperty('--posX',  x-l-w/2);
-  el.style.setProperty('--posY',  y-t-h/2);
+document.body.addEventListener("pointermove", (e) => {
+    const {
+        currentTarget: el,
+        clientX: x,
+        clientY: y
+    } = e;
+    const {
+        top: t,
+        left: l,
+        width: w,
+        height: h
+    } = el.getBoundingClientRect();
+    el.style.setProperty('--posX', x - l - w / 2);
+    el.style.setProperty('--posY', y - t - h / 2);
 })
 document.addEventListener("DOMContentLoaded", () => {
     let e = {
@@ -286,7 +296,7 @@ readmore.forEach((e, t) => {
 }), document.addEventListener("scroll", () => {
     let e = document.querySelector(".third").getBoundingClientRect(),
         t = window.innerHeight / 2;
-    e.top < t && e.bottom > t && console.log("bariu")
+    e.top < t && e.bottom > t && c
 }), document.addEventListener("DOMContentLoaded", () => {
     let e = CustomEase.create("custom", "M0,0 C0.548,0.032 0.63,1 1,1 "),
         t = document.querySelectorAll(".linejob"),
@@ -444,15 +454,65 @@ title && (title.addEventListener("mouseenter", () => {
             this.o = e, this.vars(), this.listeners()
         }
         vars() {
-            this.$effect = $("#js-effect"), this.$close = $("#js-close-button"), this.$modal = $("#js-modal"), this.$modalHolder = $("#js-modal-holder"), this.$protoImage = $(".js-proto-image"), this.$breakParts = $("#js-break-parts"), this.$modalOverlay = $("#js-modal-overlay"), this.$burst = $("#js-burst"), this.$burstPaths = this.$burst.find("path"), this.$showModal = $("#js-show-modal"), this.$circle = $("#js-circle"), this.$breakParts = $("#js-break-parts"), this.$breakOverlays = this.$breakParts.find(".svg-overlay"), this.$breakPart1 = this.$breakOverlays.eq(0), this.$breakPart2 = this.$breakOverlays.eq(1), this.$breakPart3 = this.$breakOverlays.eq(2), this.$breakPart4 = this.$breakOverlays.eq(3), this.$svgOverlay = $(".svg-overlay"), this.$lines = $(".js-line").children(), this.loop = this.loop.bind(this), this.$modal.hide(), this.$modalHolder.hide(), this.$modalOverlay.hide(), this.$breakParts.hide(), this.loop(), this.initEffectTweens()
+            this.$effect = $("#js-effect"),
+                this.$close = $("#js-close-button"),
+                this.$modal = $("#js-modal"),
+                this.$modalHolder = $("#js-modal-holder"),
+                this.$protoImage = $(".js-proto-image"),
+                this.$breakParts = $("#js-break-parts"),
+                this.$modalOverlay = $("#js-modal-overlay"),
+                this.$burst = $("#js-burst"),
+                this.$burstPaths = this.$burst.find("path"),
+                this.$showModal = $("#js-show-modal"),
+                this.$circle = $("#js-circle"),
+                this.$breakParts = $("#js-break-parts"),
+                this.$breakOverlays = this.$breakParts.find(".svg-overlay"),
+                this.$breakPart1 = this.$breakOverlays.eq(0),
+                this.$breakPart2 = this.$breakOverlays.eq(1),
+                this.$breakPart3 = this.$breakOverlays.eq(2),
+                this.$breakPart4 = this.$breakOverlays.eq(3),
+                this.$svgOverlay = $(".svg-overlay"),
+                this.$lines = $(".js-line").children(),
+                this.loop = this.loop.bind(this),
+                requestAnimationFrame(this.loop),
+                this.$modal.hide(),
+                this.$modalHolder.hide(),
+                this.$modalOverlay.hide(),
+                this.$breakParts.hide(),
+                this.loop(),
+                this.initEffectTweens()
         }
         showModal(e) {
+            console.log("showModal executou");
+
+            this.initEffectTweens(e);
+
+            this.showModalT.start();
+
+            console.log("após start:", this.showModalT._isPlaying);
             var t;
-            return e && (t = setTimeout(() => (this.$modal.find("input").val(""), clearTimeout(t)), 10)), this.initEffectTweens(e), this.showModalT.start()
+
+            if (e) {
+                t = setTimeout(() => {
+                    this.$modal.find("input").val("");
+                    clearTimeout(t);
+                }, 10);
+            }
+
+            this.initEffectTweens(e);
+            this.showModalT.start();
         }
         listeners() {
             var e;
-            return this.$showModal.on("click", () => this.showModal(!0)), this.$modal.on("keyup", "input", function (e) {
+            return this.$showModal.on("click", (e) => {
+                console.log("clicou");
+
+                try {
+                    this.showModal(true);
+                } catch (err) {
+                    console.error(err);
+                }
+            }), this.$modal.on("keyup", "input", function (e) {
                 var t, s, r;
                 if (r = (t = $(e.target)).val(), t.toggleClass("is-fill", !!r), "text" === t.attr("type") && (r = r.replace(/\s/g, "")), (s = e.keyCode) > 48 && s < 90 || 48 === s || 45 === s || 32 === s) return t.val(r)
             }), e = null, this.$close.on("mouseenter touchstart", () => html2canvas(this.$modal, {
@@ -473,113 +533,216 @@ title && (title.addEventListener("mouseenter", () => {
             var t, s, r, o, a, i, n, l, c, d, h;
             for (r = this, this.s = 1, l = r.$burstPaths, s = o = 0, i = l.length; o < i; s = ++o) a = (n = l[s]).getTotalLength(), d = this.rand(0, ~~a / 2), h = this.rand(0, -~~a), n.len = a, n.showLen = d, n.showOffset = h, n.strokeWidth = this.rand(0, 5), n.setAttribute("stroke-dasharray", `${d} ${3*a}`), n.setAttribute("stroke-dashoffset", d), n.setAttribute("stroke-linecap", "round");
             return a = 900, t = ["hotpink", "yellow", "cyan"], this.linesT = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 900 * this.s).easing(TWEEN.Easing.Exponential.Out).onUpdate(function () {
-                var e, o, i, n, l, c, d;
-                for (c = a * (n = 1 - (l = this.p)) - a * l, d = r.$lines, s = e = 0, o = d.length; e < o; s = ++e)(i = d[s]).setAttribute("stroke-dashoffset", c + 500 * s * n), i.setAttribute("stroke", t[s]), i.setAttribute("stroke-width", 2 * n);
-                return r.$circle.attr({
-                    r: 11 * l,
-                    fill: `rgba(${~~(0+255*l)},${~~(255-153*l)},${~~(255-75*l)}, ${n})`,
-                    "stroke-width": 7 * n
+                    p: 0
+                }).to({
+                    p: 1
+                }, 900 * this.s)
+                .easing(TWEEN.Easing.Exponential.Out)
+                // linesT
+                .onUpdate((obj) => {
+                    let e, o, i, n, l, c, d;
+
+                    l = obj.p;
+                    n = 1 - l;
+
+                    c = a * n - a * l;
+                    d = r.$lines;
+
+                    for (s = e = 0, o = d.length; e < o; s = ++e) {
+                        i = d[s];
+
+                        i.setAttribute(
+                            "stroke-dashoffset",
+                            c + 500 * s * n
+                        );
+
+                        i.setAttribute("stroke", t[s]);
+                        i.setAttribute("stroke-width", 2 * n);
+                    }
+
+                    r.$circle.attr({
+                        r: 11 * l,
+                        fill: `rgba(${~~(255*l)},${~~(255-153*l)},${~~(255-75*l)},${n})`,
+                        "stroke-width": 7 * n
+                    });
+                }).onComplete(() => this.$effect.css({
+                    display: "none"
+                })), this.burstT = new TWEEN.Tween({
+                    p: 0
+                }).to({
+                    p: 1
+                }, 400 * this.s)
+                // burstT
+                .onUpdate((obj) => {
+                    let e, t, o, a, i, l;
+
+                    a = obj.p;
+                    o = 1 - a;
+
+                    i = r.$burstPaths;
+                    l = [];
+
+                    for (s = e = 0, t = i.length; e < t; s = ++e) {
+                        n = i[s];
+
+                        n.setAttribute(
+                            "stroke-dashoffset",
+                            n.showOffset - n.len * a
+                        );
+
+                        l.push(
+                            n.setAttribute(
+                                "stroke-width",
+                                n.strokeWidth * o
+                            )
+                        );
+                    }
+
+                    return l;
+                }), c = 50, this.shakeT = new TWEEN.Tween({
+                    p: 0
+                }).to({
+                    p: 1
+                }, 350 * this.s)
+                // shakeT
+                .onUpdate((obj) => {
+                    const t = obj.p;
+                    const e = 1 - t;
+                    const desloc = c * e;
+
+                    r.$breakParts.css({
+                        transform: `translate(${desloc}px, ${desloc}px)`
+                    });
+
+                    r.$effect.css({
+                        transform: `translate(${-0.75 * desloc}px, ${-0.5 * desloc}px)`
+                    });
+                }).easing(TWEEN.Easing.Elastic.Out), this.shiftT = new TWEEN.Tween({
+                    p: 0
+                }).to({
+                    p: 1
+                }, 1350 * this.s)
+                .easing(TWEEN.Easing.Sinusoidal.In)
+                // shiftT
+                .onUpdate((obj) => {
+                    const t = obj.p;
+                    const e = 1 - t;
+
+                    const s = 900 * t;
+
+                    const part1 =
+                        `translate(${-s}px, ${1000*t}px) rotate(${-50*t}deg)`;
+
+                    const part4 =
+                        `translate(0, ${1000*t}px) rotate(${-15*t}deg)`;
+
+                    r.$breakPart1.css({
+                        transform: part1
+                    });
+
+                    r.$breakPart4.css({
+                        transform: part4
+                    });
+
+                    r.$modalOverlay.css({
+                        transform: `translate(0, ${50*t}px)`,
+                        opacity: e
+                    });
+                }).onComplete(() => (this.$modalOverlay.css({
+                    display: "none"
+                }), this.$breakParts.css({
+                    display: "none"
+                }), this.$modalHolder.css({
+                    display: "none"
+                }))), this.shiftT2 = new TWEEN.Tween({
+                    p: 0
+                }).to({
+                    p: 1
+                }, 1350 * this.s)
+                // shiftT2
+                .onUpdate((obj) => {
+                    const t = obj.p;
+                    const e = 1 - t;
+
+                    const part2 =
+                        `translate(${-1670*t}px, ${-800*t}px) rotate(${905*t}deg)`;
+
+                    const part3 =
+                        `translate(${1000*t}px, ${700*t}px) rotate(${-1500*t}deg)`;
+
+                    r.$breakPart2.css({
+                        transform: part2
+                    });
+
+                    r.$breakPart3.css({
+                        transform: part3
+                    });
+                }),
+                this.showModalT = new TWEEN.Tween({
+                    p: 0
+                }).to({
+                    p: 1
+                }, 800 * this.s)
+                .easing(TWEEN.Easing.Exponential.Out)
+                .onStart(() => (
+                    console.log("ON START"),
+                    this.shiftT.stop(),
+                    this.shiftT2.stop(),
+                    this.shakeT.stop(),
+                    this.linesT.stop(),
+                    this.burstT.stop(),
+                    this.$modal.css({
+                        display: "block",
+                        opacity: 0
+                    }),
+                    this.$breakParts.css({
+                        display: "block"
+                    }), this.$modalHolder.css({
+                        display: "block"
+                    }), e || this.$modalOverlay.css({
+                        display: "block",
+                        opacity: 0
+                    }), this.$breakPart1.css({
+                        transform: "none"
+                    }), this.$breakPart2.css({
+                        transform: "none"
+                    }), this.$breakPart3.css({
+                        transform: "none"
+                    }), this.$breakPart4.css({
+                        transform: "none"
+                    }), this.$modal.css({
+                        display: "block"
+                    }), this.$breakParts.css({
+                        "z-index": 0,
+                        opacity: 0
+                    })))
+                .onUpdate((obj) => {
+                    console.log(obj.p);
+                    const s = obj.p;
+                    const t = 1 - s;
+
+                    r.$modal.css({
+                        opacity: s,
+                        transform: `translateY(${15 * t}px)`
+                    });
+
+                    if (!e) {
+                        r.$modalOverlay.css({
+                            opacity: s
+                        });
+                    }
                 })
-            }).onComplete(() => this.$effect.css({
-                display: "none"
-            })), this.burstT = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 400 * this.s).onUpdate(function () {
-                var e, t, o, a, i, l;
-                for (o = 1 - (a = this.p), i = r.$burstPaths, l = [], s = e = 0, t = i.length; e < t; s = ++e)(n = i[s]).setAttribute("stroke-dashoffset", n.showOffset - n.len * a), l.push(n.setAttribute("stroke-width", n.strokeWidth * o));
-                return l
-            }), c = 50, this.shakeT = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 350 * this.s).onUpdate(function () {
-                var e, t, s;
-                return s = c * (e = 1 - (t = this.p)), r.$breakParts.css({
-                    transform: `translate(${s}px, ${s}px)`
-                }), r.$effect.css({
-                    transform: `translate(${-.75*s}px, ${-.5*s}px)`
-                })
-            }).easing(TWEEN.Easing.Elastic.Out), this.shiftT = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 1350 * this.s).easing(TWEEN.Easing.Sinusoidal.In).onUpdate(function () {
-                var e, t, s, o, a;
-                return e = 1 - (t = this.p), o = `translate(${-(s=900*t)}px, ${1e3*t}px) rotate(${-50*t}deg)`, a = `translate(0, ${1e3*t}px) rotate(${-15*t}deg)`, r.$breakPart1.css({
-                    transform: o
-                }), r.$breakPart4.css({
-                    transform: a
-                }), r.$modalOverlay.css({
-                    transform: `translate(0, ${50*t})`,
-                    opacity: e
-                })
-            }).onComplete(() => (this.$modalOverlay.css({
-                display: "none"
-            }), this.$breakParts.css({
-                display: "none"
-            }), this.$modalHolder.css({
-                display: "none"
-            }))), this.shiftT2 = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 1350 * this.s).onUpdate(function () {
-                var e, t, s, o, a;
-                return e = 1 - (t = this.p), s = 900 * t, o = `translate(${-1670*t}px, ${-800*t}px) rotate(${905*t}deg)`, a = `translate(${1e3*t}px, ${700*t}px) rotate(${-1500*t}deg)`, r.$breakPart2.css({
-                    transform: o
-                }), r.$breakPart3.css({
-                    transform: a
-                })
-            }), this.showModalT = new TWEEN.Tween({
-                p: 0
-            }).to({
-                p: 1
-            }, 800 * this.s).easing(TWEEN.Easing.Exponential.Out).onStart(() => (TWEEN.remove(this.shiftT), TWEEN.remove(this.shiftT2), TWEEN.remove(this.shakeT), TWEEN.remove(this.linesT), TWEEN.remove(this.burstT), this.$modal.css({
-                display: "block",
-                opacity: 0
-            }), this.$breakParts.css({
-                display: "block"
-            }), this.$modalHolder.css({
-                display: "block"
-            }), e || this.$modalOverlay.css({
-                display: "block",
-                opacity: 0
-            }), this.$breakPart1.css({
-                transform: "none"
-            }), this.$breakPart2.css({
-                transform: "none"
-            }), this.$breakPart3.css({
-                transform: "none"
-            }), this.$breakPart4.css({
-                transform: "none"
-            }), this.$modal.css({
-                display: "block"
-            }), this.$breakParts.css({
-                "z-index": 0,
-                opacity: 0
-            }))).onUpdate(function () {
-                var t, s;
-                return t = 1 - (s = this.p), r.$modal.css({
-                    opacity: s,
-                    transform: `translateY(${15*t}px)`
-                }), !e && r.$modalOverlay.css({
-                    opacity: s
-                })
-            })
         }
         launchEffects() {
             return this.burstT.start(), this.linesT.start(), this.shiftT.start(), this.shiftT2.start(), this.shakeT.start()
         }
-        loop() {
-            console.log("alooou" ,TWEEN);
-            return requestAnimationFrame(this.loop), TWEEN.update()
-            
+        loop(time) {
+            requestAnimationFrame(this.loop);
+            try {
+                TWEEN.update(time);
+            } catch (err) {
+                console.error(err);
+            }
         }
         rand(e, t) {
             return Math.floor(Math.random() * (t + 1 - e) + e)
