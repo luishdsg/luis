@@ -280,7 +280,7 @@ jobscards.forEach(e => e.classList.add("is-active")), document.addEventListener(
     let t = e.target.closest(".jobscard");
     t && (jobscards.forEach(e => e.classList.remove("is-active")), t.classList.add("is-active"))
 }, !0), document.addEventListener("mouseleave", e => {
-    e.target.closest(".jobscard") && jobscards.forEach(e => e.classList.add("is-active"))
+    // e.target.closest(".jobscard") && jobscards.forEach(e => e.classList.add("is-active"))
 }, !0);
 const infojob = document.querySelectorAll(".info-job"),
     readmore = document.querySelectorAll(".readmore span");

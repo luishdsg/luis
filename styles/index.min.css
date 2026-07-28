@@ -118,29 +118,21 @@ linear-gradient(
 ),
 
 radial-gradient(
-    90% 100% at calc(50% + var(--x))
-    calc(0% + var(--y)),
     #ece4d9,
     #00000038
 ),
 
 radial-gradient(
-    100% 100% at calc(80% - var(--x))
-    calc(0% - var(--y)),
     #ffffff,
     #e9dfd1
 ),
 
 radial-gradient(
-    150% 210% at calc(100% + var(--x))
-    calc(0% + var(--y)),
     #ead0ad,
     #766b5d
 ),
 
 radial-gradient(
-    100% 100% at calc(100% - var(--x))
-    calc(30% - var(--y)),
     #e9dfd1,
     #00000038
 ),
