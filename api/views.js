@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     try {
 
         const resposta = await fetch(
-            "https://api.counterapi.dev/v2/luishdsgs-team-5280/first-counter-5280/up",
+            // "https://api.counterapi.dev/v2/luishdsgs-team-5280/first-counter-5280/up",
             {
                 method: "GET",
 

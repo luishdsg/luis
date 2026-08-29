@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -9,844 +9,273 @@
         rel="stylesheet" />
 
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles.css" rel="stylesheet" />
     <title>Document</title>
 </head>
-<style>
-    :root {
-        --bg: #f5efe2;
-        --bg-2: #ede6d6;
-        --ink: #141416;
-        --ink-soft: #2b2b30;
-        --mute: #8b847a;
-        --line: #dad2bf;
-        --ghost: #c5bfae;
-        /* faded "big results" gray */
-        --orange-1: #d9351f;
-        --orange-2: #e85a2b;
-        --orange-3: #f58b4e;
-        --orange-4: #fdc68a;
-    }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html,
-    body {
-        background: var(--bg);
-        color: var(--ink);
-        font-family: "DM Sans", system-ui, sans-serif;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-        background: radial-gradient(120% 70% at 50% 0%,
-                #f8f3e7 0%,
-                #f2ead6 60%,
-                #e9dec3 100%);
-        min-height: 100vh;
-    }
-
-    /* Grain */
-    .grain {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 100;
-        opacity: 0.06;
-        mix-blend-mode: multiply;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    }
-
-    /* ============ NAV ============ */
-    .nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        padding: 28px 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        font-size: 16px;
-    }
-
-    .logo-dot {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: linear-gradient(180deg, var(--orange-1), var(--orange-4));
-        box-shadow: 0 4px 8px -2px rgba(220, 60, 30, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4),
-            inset 0 -2px 3px rgba(120, 20, 0, 0.3);
-    }
-
-    .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 30px;
-    }
-
-    .nav-links a {
-        color: var(--ink-soft);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        position: relative;
-        transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-        color: var(--ink);
-    }
-
-    .nav-links a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -3px;
-        width: 0;
-        height: 1.5px;
-        background: currentColor;
-        border-radius: 2px;
-        transition: width 0.4s cubic-bezier(0.7, 0, 0.2, 1);
-    }
-
-    .nav-links a:hover::after {
-        width: 100%;
-    }
-
-    .nav-cta {
-        background: var(--ink);
-        color: #fafaf7;
-        border: none;
-        padding: 12px 22px;
-        border-radius: 999px;
-        font-family: inherit;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.4),
-            0 4px 8px -2px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-        transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
-    }
-
-    .nav-cta:hover {
-        transform: translateY(-2px);
-    }
-
-    /* ============ HERO ============ */
-    .hero {
-        position: relative;
-        min-height: 100vh;
-        padding: 130px 32px 60px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 5;
-    }
-
-    .small-team {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 700;
-        font-size: clamp(40px, 6.4vw, 92px);
-        letter-spacing: -0.035em;
-        line-height: 1;
-        color: var(--ink);
-        text-align: center;
-        margin-bottom: 0;
-        z-index: 4;
-        position: relative;
-    }
-
-    .small-team .word {
-        display: inline-block;
-        overflow: hidden;
-        vertical-align: top;
-    }
-
-    .small-team .word>span {
-        display: inline-block;
-        transform: translateY(105%);
-    }
-
-    /* Big results faded back text */
-    .big-results-wrap {
-        position: relative;
-        width: 100%;
-        margin-top: -20px;
-        display: flex;
-        justify-content: center;
-        z-index: 1;
-    }
-
-    .big-results {
-        font-family: "DM Sans", sans-serif;
-        font-style: italic;
-        font-weight: 800;
-        font-size: clamp(110px, 21vw, 300px);
-        letter-spacing: -0.045em;
-        line-height: 0.85;
-        color: var(--ghost);
-        text-align: center;
-        white-space: nowrap;
-        user-select: none;
-        z-index: 1;
-        text-shadow: 0 4px 12px rgba(120, 100, 50, 0.04);
-    }
-
-    .big-results .letter {
-        display: inline-block;
-        transform-origin: bottom;
-    }
-
-    /* Cards row */
-    .cards-row {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
-        height: 320px;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    .cards-row>* {
-        pointer-events: auto;
-    }
-
-    .card {
-        position: absolute;
-        border-radius: 18px;
-        overflow: hidden;
-        background: linear-gradient(180deg,
-                var(--orange-1) 0%,
-                var(--orange-2) 35%,
-                var(--orange-3) 70%,
-                var(--orange-4) 100%);
-        box-shadow: 0 30px 50px -16px rgba(180, 50, 20, 0.5),
-            0 14px 26px -8px rgba(140, 40, 10, 0.32),
-            0 5px 10px -2px rgba(80, 20, 0, 0.2),
-            inset 0 2px 0 rgba(255, 220, 180, 0.45),
-            inset 0 -4px 8px rgba(120, 20, 0, 0.4);
-        cursor: pointer;
-        will-change: transform;
-        transition: box-shadow 0.5s cubic-bezier(0.6, 0, 0.2, 1);
-    }
-
-    .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(155deg,
-                rgba(255, 255, 255, 0.25) 0%,
-                transparent 30%,
-                transparent 70%,
-                rgba(100, 20, 0, 0.25) 100%);
-        pointer-events: none;
-        border-radius: inherit;
-        z-index: 2;
-    }
-
-    .card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        display: block;
-    }
-
-    .card:hover {
-        box-shadow: 0 44px 70px -20px rgba(180, 50, 20, 0.6),
-            0 22px 38px -10px rgba(140, 40, 10, 0.38),
-            0 8px 14px -3px rgba(80, 20, 0, 0.22),
-            inset 0 2px 0 rgba(255, 220, 180, 0.5),
-            inset 0 -4px 8px rgba(120, 20, 0, 0.4);
-    }
-
-    /* Card sizing/positioning */
-    .card-1 {
-        width: 130px;
-        height: 180px;
-        left: 4%;
-        top: 30px;
-        z-index: 1;
-    }
-
-    .card-2 {
-        width: 160px;
-        height: 220px;
-        left: 12%;
-        top: 50px;
-        z-index: 2;
-    }
-
-    .card-3 {
-        width: 200px;
-        height: 270px;
-        left: 22%;
-        top: 20px;
-        z-index: 4;
-    }
-
-    .card-4 {
-        width: 150px;
-        height: 200px;
-        left: 36%;
-        top: 70px;
-        z-index: 3;
-    }
-
-    .card-5 {
-        width: 230px;
-        height: 310px;
-        left: 44%;
-        top: 0px;
-        z-index: 5;
-    }
-
-    .card-6 {
-        width: 160px;
-        height: 215px;
-        left: 59%;
-        top: 55px;
-        z-index: 3;
-    }
-
-    .card-7 {
-        width: 175px;
-        height: 240px;
-        left: 70%;
-        top: 30px;
-        z-index: 4;
-    }
-
-    .card-8 {
-        width: 130px;
-        height: 175px;
-        left: 84%;
-        top: 50px;
-        z-index: 2;
-    }
-
-    /* Subtitle below */
-    .subline {
-        margin-top: 180px;
-        text-align: center;
-        z-index: 4;
-        position: relative;
-    }
-
-    .subline .arrow-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--ink);
-        color: #fafaf7;
-        border: none;
-        padding: 12px 20px 12px 24px;
-        border-radius: 999px;
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        box-shadow: 0 14px 24px -8px rgba(0, 0, 0, 0.4),
-            0 5px 10px -2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12),
-            inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-        transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
-    }
-
-    .subline .arrow-pill:hover {
-        transform: translateY(-2px);
-    }
-
-    .subline .arrow-pill .ar {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: linear-gradient(180deg, var(--orange-1), var(--orange-3));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
-    }
-
-    .subline .arrow-pill:hover .ar {
-        transform: rotate(45deg);
-    }
-
-    .subline-text {
-        margin-top: 22px;
-        font-size: 13px;
-        color: var(--mute);
-        letter-spacing: 0.06em;
-    }
-
-    /* ============ SECTION 2: TEAM GRID ============ */
-    .team-section {
-        padding: 140px 40px 80px;
-        position: relative;
-        z-index: 5;
-    }
-
-    .team-head {
-        max-width: 1280px;
-        margin: 0 auto 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 40px;
-        flex-wrap: wrap;
-    }
-
-    .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 11px;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        color: var(--mute);
-        font-weight: 500;
-        margin-bottom: 16px;
-    }
-
-    .eyebrow::before {
-        content: "";
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--orange-1);
-        box-shadow: 0 0 0 3px rgba(217, 53, 31, 0.2);
-    }
-
-    .team-head h2 {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 700;
-        font-size: clamp(34px, 4.4vw, 64px);
-        line-height: 1;
-        letter-spacing: -0.03em;
-        max-width: 600px;
-    }
-
-    .team-head h2 em {
-        font-style: italic;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--orange-1), var(--orange-3));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .team-head p {
-        font-size: 15px;
-        line-height: 1.55;
-        color: var(--ink-soft);
-        max-width: 320px;
-    }
-
-    .team-grid {
-        max-width: 1280px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
-    }
-
-    .t-card {
-        aspect-ratio: 3 / 4;
-        border-radius: 22px;
-        overflow: hidden;
-        background: linear-gradient(180deg,
-                var(--orange-1) 0%,
-                var(--orange-2) 35%,
-                var(--orange-3) 70%,
-                var(--orange-4) 100%);
-        position: relative;
-        box-shadow: 0 24px 40px -16px rgba(180, 50, 20, 0.4),
-            0 10px 22px -6px rgba(140, 40, 10, 0.22),
-            inset 0 2px 0 rgba(255, 220, 180, 0.4),
-            inset 0 -3px 6px rgba(120, 20, 0, 0.3);
-        cursor: pointer;
-        transition: transform 0.5s cubic-bezier(0.6, 0, 0.2, 1), box-shadow 0.5s;
-    }
-
-    .t-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(155deg,
-                rgba(255, 255, 255, 0.22) 0%,
-                transparent 30%,
-                transparent 70%,
-                rgba(100, 20, 0, 0.22) 100%);
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    .t-card:hover {
-        transform: translateY(-10px) rotate(-1deg);
-    }
-
-    .t-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-    }
-
-    /* Hover info overlay */
-    .t-meta {
-        position: absolute;
-        left: 14px;
-        right: 14px;
-        bottom: 14px;
-        background: rgba(20, 10, 6, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        color: #fafaf7;
-        padding: 12px 16px;
-        border-radius: 14px;
-        z-index: 3;
-        transform: translateY(8px);
-        opacity: 0;
-        transition: opacity 0.4s, transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .t-card:hover .t-meta {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .t-meta .nm {
-        font-weight: 700;
-        font-size: 14px;
-    }
-
-    .t-meta .rl {
-        font-size: 11px;
-        color: rgba(255, 255, 255, 0.65);
-        margin-top: 2px;
-        letter-spacing: 0.03em;
-    }
-
-    /* ============ SECTION 3: STATS / CTA ============ */
-    .stats {
-        padding: 80px 40px 140px;
-        position: relative;
-        z-index: 5;
-    }
-
-    .stats-inner {
-        max-width: 1280px;
-        margin: 0 auto;
-        background: var(--ink);
-        border-radius: 36px;
-        padding: 80px 60px;
-        color: #f4edde;
-        display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr 1fr;
-        gap: 40px;
-        align-items: end;
-        box-shadow: 0 40px 80px -30px rgba(20, 8, 0, 0.45),
-            0 16px 32px -12px rgba(20, 8, 0, 0.25),
-            inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -3px 8px rgba(0, 0, 0, 0.5);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .stats-inner::before {
-        content: "";
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(232, 90, 43, 0.35), transparent 65%);
-        top: -200px;
-        right: -100px;
-        filter: blur(40px);
-    }
-
-    .stats-inner::after {
-        content: "";
-        position: absolute;
-        width: 350px;
-        height: 350px;
-        border-radius: 50%;
-        background: radial-gradient(circle,
-                rgba(253, 198, 138, 0.2),
-                transparent 65%);
-        bottom: -150px;
-        left: 20%;
-        filter: blur(30px);
-    }
-
-    .stats h3 {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 700;
-        font-size: clamp(28px, 3vw, 42px);
-        line-height: 1.05;
-        letter-spacing: -0.03em;
-        position: relative;
-        z-index: 1;
-    }
-
-    .stats h3 em {
-        font-style: italic;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--orange-3), var(--orange-4));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .stat-block {
-        position: relative;
-        z-index: 1;
-    }
-
-    .stat-block .num {
-        font-family: "DM Sans", sans-serif;
-        font-weight: 700;
-        font-size: clamp(44px, 4.5vw, 68px);
-        line-height: 1;
-        letter-spacing: -0.04em;
-        display: flex;
-        align-items: baseline;
-        gap: 4px;
-    }
-
-    .stat-block .num small {
-        font-size: 0.42em;
-        color: var(--mute);
-        font-weight: 500;
-    }
-
-    .stat-block .lbl {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--mute);
-        margin-top: 14px;
-        padding-top: 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    /* Responsive */
-    @media (max-width: 1100px) {
-        .team-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .stats-inner {
-            grid-template-columns: 1fr 1fr;
-            padding: 50px 30px;
-        }
-    }
-
-    @media (max-width: 750px) {
-        .nav {
-            padding: 18px 18px;
-        }
-
-        .nav-links {
-            display: none;
-        }
-
-        .hero {
-            padding: 100px 16px 40px;
-        }
-
-        .small-team {
-            font-size: 10vw;
-        }
-
-        .big-results {
-            font-size: 24vw;
-        }
-
-        .cards-row {
-            height: 220px;
-            top: 52%;
-        }
-
-        .card-1 {
-            width: 80px;
-            height: 110px;
-            left: 0%;
-            top: 20px;
-        }
-
-        .card-2 {
-            width: 90px;
-            height: 130px;
-            left: 10%;
-            top: 35px;
-        }
-
-        .card-3 {
-            width: 110px;
-            height: 150px;
-            left: 22%;
-            top: 15px;
-        }
-
-        .card-4 {
-            width: 90px;
-            height: 120px;
-            left: 36%;
-            top: 50px;
-        }
-
-        .card-5 {
-            width: 130px;
-            height: 180px;
-            left: 46%;
-            top: 0;
-        }
-
-        .card-6 {
-            width: 95px;
-            height: 130px;
-            left: 62%;
-            top: 40px;
-        }
-
-        .card-7 {
-            width: 100px;
-            height: 140px;
-            left: 74%;
-            top: 20px;
-        }
-
-        .card-8 {
-            width: 80px;
-            height: 110px;
-            left: 87%;
-            top: 35px;
-        }
-
-        .subline {
-            margin-top: 120px;
-        }
-
-        .team-section {
-            padding: 80px 20px 40px;
-        }
-
-        .team-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .stats {
-            padding: 20px 20px 60px;
-        }
-
-        .stats-inner {
-            grid-template-columns: 1fr 1fr;
-            padding: 40px 24px;
-            gap: 24px;
-        }
-    }
-</style>
+<div class="image-modal" id="imageModal">
+    <div class="modal-card" id="modalCard">
+        <div class="modal-image-container align-content-center">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-labelledby="t">
+                <image id="modalImage" class="w-100 cursor h-100" alt="" href="" preserveAspectRatio="xMidYMid slice"
+                    clip-path="url(#blobClip)" />
+                <clipPath id="blobClip">
+                    <path
+                        d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                        transform="translate(100 100)" />
+                </clipPath>
+
+                <path class="blob"
+                    d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                    transform="translate(100 100)" fill="url(#imgFill)" />
+                <path id="text"
+                    d="M43.1,-68.5C56.2,-58.6,67.5,-47.3,72.3,-33.9C77.2,-20.5,75.5,-4.9,74.2,11.3C72.9,27.6,71.9,44.5,63.8,57.2C55.7,69.8,40.6,78.2,25.5,79.2C10.4,80.1,-4.7,73.6,-20.9,69.6C-37.1,65.5,-54.5,63.9,-66,54.8C-77.5,45.8,-83.2,29.3,-85.7,12.3C-88.3,-4.8,-87.7,-22.3,-79.6,-34.8C-71.5,-47.3,-55.8,-54.9,-41.3,-64.2C-26.7,-73.6,-13.4,-84.7,0.8,-86C15,-87.2,29.9,-78.5,43.1,-68.5Z"
+                    transform="translate(100 100)" fill="none" stroke="none" pathLength="100" />
+
+                <text class="text-content">
+                    <textPath href="#text" startOffset="0%">❤ OS PROJETOS SÃO DE CÓDIGO ABERTO, NÃO DETEM DIREITOS
+                        AUTORAIS ❤
+                        <animate attributeName="startOffset" from="0%" to="100%" dur="15s" repeatCount="indefinite" />
+                    </textPath>
+                    <textPath href="#text" startOffset="100%">❤ OS PROJETOS SÃO DE CÓDIGO ABERTO, NÃO DETEM DIREITOS
+                        AUTORAIS ❤
+                        <animate attributeName="startOffset" from="-100%" to="0%" dur="15s" repeatCount="indefinite" />
+                    </textPath>
+                </text>
+            </svg>
+            <img id="modalImage" src="" class="rounded rounded-5" alt="">
+        </div>
+        <div id="modalContent" class=" modal-content align-content-center justify-content-center align-items-center">
+            <div class="w-100 h-100 align-items-center justify-content-center justify-items-center align-content-center">
+                
+
+                <span class="modal-date" id="modalDate"></span>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-text" id="modalText"></p>
+         
+  <a class="btn cta">So Click-a-licious</a>
+
+            </div>   
+        
+        </div>
+    </div>
+
+
+    <!-- VOLTAR -->
+    <button class="modal-arrow modal-prev" id="modalPrev" aria-label="Imagem anterior">
+        ‹
+    </button>
+
+
+    <!-- AVANÇAR -->
+    <button class="modal-arrow modal-next" id="modalNext" aria-label="Próxima imagem">
+        ›
+    </button>
+
+
+    <!-- FECHAR -->
+    <button class="modal-close" id="modalClose" aria-label="Fechar">
+        ×
+    </button>
+
+
+    <!-- INDICADOR -->
+    <div class="modal-counter" id="modalCounter">
+        1 / 8
+    </div>
+
+</div>
 
 <body>
-
+    <div class="circle"></div>
     <div class="grain"></div>
 
     <!-- NAV -->
-    <nav class="nav" id="nav">
+    <nav class="nav " id="nav">
         <div class="logo">
             <span class="logo-dot"></span>
             <span id="contador">...</span>
-
             DERMEXCEL
         </div>
-        <ul class="nav-links">
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Treatment plans</a></li>
-            <li><a href="#">Diagnosis</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <button class="nav-cta">
-            Diagnosis Diagnosis
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-            </svg>
+        <fieldset class="switcher px-4 py-3">
+            <ul class="nav-links">
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Treatment plans</a></li>
+                <li><a href="#">Diagnosis</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </fieldset>
+
+
+
+        <div class="glassContainer" id="glassContainer">
+            asdadadsdsa
+        </div>
+
+        <svg style="display: none">
+            <filter id="container-glass" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="0.02" result="blur" />
+                <feDisplacementMap in="SourceGraphic" in2="blur" scale="77" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id="btn-glass" primitiveUnits="objectBoundingBox">
+                <feImage href="./assets/bol.png" x="0" y="0" width="1" height="1" result="map" />
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.02" result="blur"></feGaussianBlur>
+                <feDisplacementMap id="disp" in="blur" in2="map" scale="1" xChannelSelector="R" yChannelSelector="G" />
+                </feDisplacementMap>
+            </filter>
+        </svg>
+        <button id="btn" class="glass">
+
         </button>
+
+        <svg style="position:absolute;width:0;height:0">
+            <filter id="frosted" primitiveUnits="objectBoundingBox">
+                <feImage href="./assets/bol.png" x="0" y="0" width="1" height="1" result="map" />
+                <feGaussianBlur in="SourceGraphic" stdDeviation="0.02" result="blur" />
+                <feDisplacementMap id="disp" in="blur" in2="map" scale="1" xChannelSelector="R" yChannelSelector="G">
+                    <animate attributeName="scale" to="1.4" dur="0.3s" begin="btn.mouseover" fill="freeze" />
+                    <animate attributeName="scale" to="1" dur="0.3s" begin="btn.mouseout" fill="freeze" />
+                </feDisplacementMap>
+            </filter>
+        </svg>
     </nav>
 
     <!-- HERO -->
     <section class="hero">
         <h1 class="small-team" id="smallTeam">
-            <span class="word"><span>Small</span></span>&nbsp;<span class="word"><span>team,</span></span>
+            <span class="word pe-2"><span>Pequenos</span></span>&nbsp;<span class="word"><span>projetos,</span></span>
         </h1>
 
         <div class="big-results-wrap">
             <div class="big-results" id="bigResults">
-                <span class="letter">b</span><span class="letter">i</span><span class="letter">g</span><span
-                    class="letter">&nbsp;</span><span class="letter">r</span><span class="letter">e</span><span
-                    class="letter">s</span><span class="letter">u</span><span class="letter">l</span><span
-                    class="letter">t</span><span class="letter">s</span>
+                <span class="letter">G</span>
+                <span class="letter">r</span>
+                <span class="letter">a</span>
+                <span class="letter">n</span>
+                <span class="letter">d</span>
+                <span class="letter">e</span>
+                <span class="letter">s</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">r</span>
+                <span class="letter">e</span>
+                <span class="letter">s</span>
+                <span class="letter">u</span>
+                <span class="letter">l</span>
+                <span class="letter">t</span>
+                <span class="letter">a</span>
+                <span class="letter">d</span>
+                <span class="letter">o</span>
+                <span class="letter">s</span>
+
             </div>
         </div>
 
         <!-- Card row of portraits -->
         <div class="cards-row" id="cardsRow">
             <div class="card card-1" data-rot="-9" data-depth="14">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dhs-brand-3x4-07.jpg?v=1782043727?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/KpTS6ZQc/Captura-de-Tela-255.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">Cadasro e classificaçõe de Funcionários</h2>
+                    <p class="info-text">
+
+                    </p>
+                </div>
             </div>
             <div class="card card-2" data-rot="-5" data-depth="10">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/enr-1x1-01.jpg?v=1782002435?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/G3PfBfy7/Captura-de-Tela-254.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">1° Portifólio Online</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-3" data-rot="-2" data-depth="8">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dhs-brand-3x4-05.jpg?v=1782043916?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">Classificador de Heróis</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-4" data-rot="3" data-depth="12">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/fes-3x4-09.jpg?v=1782034037?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://wallpapers.com/images/hd/chess-background-ix8mdj14lbfu9r8l.jpg"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">Xadrez (em desenvolvimento)</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-5" data-rot="0" data-depth="6">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/enr20-3x4-01.jpg?v=1782002435?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/3YLb1bh9/Captura-de-Tela-248.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">Pack de Tool Fun</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-6" data-rot="4" data-depth="11">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dcs-3x4-01.jpg?v=1782035651?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/Xrd6C9p2/Captura-de-Tela-250.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">2° Portifólio Online</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-7" data-rot="7" data-depth="9">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/fes-3x4-01.jpg?v=1782034037?v=1782042890?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">E-commerce de deleção e compra de produtos</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
             <div class="card card-8" data-rot="-4" data-depth="13">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dhs-brand-3x4-07.jpg?v=1782043727?w=400&h=600&fit=crop&crop=faces&q=80"
+                <img src="https://www.itsecurity.pt/img/uploads/1140x641_59746092c07e42da21d3ef653f9f93a5.jpg"
                     alt="" />
+                <div class="card-info">
+                    <span class="info-date">26 Agosto 2026</span>
+                    <h2 class="info-title">Mini-Game de Puzzle e Enigmas</h2>
+                    <p class="info-text">
+                        Descrição da primeira imagem.
+                        Aqui você pode colocar todas as informações que quiser.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -869,11 +298,28 @@
     <section class="team-section">
         <div class="team-head">
             <div>
-                <div class="eyebrow">CLINICAL FRAMEWORK ARCHITECTURE</div>
-                <h2>Biocentric Integration<br />of <em>Dermal Systems</em> and <em>Cellar Identity</em>.</h2>
+                <div class="eyebrow">A prática leva á perfeição</div>
+                <h2>+ de 4 anos como <br /><em>Engenheiro de Software</em><br />me trouxeram até aqui, <br />quem sabe
+                    até onde podemos ir <br /><em>colaborando juntos</em>.</h2>
             </div>
-            <p>Explore the systemic lifecycle matrix balancing infrastructural process design and custom target
-                therapeutics formulas.</p>
+            <div class="d-flex justify-content-between ">
+
+                <p>Caro Dev fique a vontade <br />para explorar o site, <br />pois há algums ester eggs <br />e coisas
+                    legais expalhadas por ai... <br /><em style="color:#cfc8c0;">Clique no ano atual no footer da
+                        página</em></p>
+                <div class="coruja">
+                    <div class="owl">
+                        <span class="head-owl"><span class="brows-owl"><span class="brow-left">_</span><span
+                                    class="brow-right">_</span></span><br />
+                            {<span class="eye-left">0</span><span class="nose-owl">,</span><span
+                                class="eye-right">0</span>}</span><br />
+                        <span class="wing-left">(</span><span class="belly">__</span><span
+                            class="wing-right">(</span><span class="back-owl">|</span><br />
+                        <span class="stick-owl">-<span class="foot-left">"</span>-<span class="foot-right">"</span>-
+                            </stick>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="team-grid" id="teamGrid">
@@ -944,6 +390,7 @@
         </div>
     </section>
 
+
     <!-- ============ SECTION 3: STATS ============ -->
     <section class="stats">
         <div class="stats-inner">
@@ -962,313 +409,426 @@
             </div>
         </div>
     </section>
-    <script src="/script.js"></script>
+    <div class="footer">
+        <div class="bubbles">
+            <div class="bubble"
+                style="--size:2.8227970467219228rem; --distance:7.506144140120468rem; --position:87.71042183809548%; --time:2.580677745821894s; --delay:-2.9418441998954834s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.610662620114394rem; --distance:7.84049244657167rem; --position:97.97177421062247%; --time:3.606137834473721s; --delay:-2.39594580290967s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.1785515329587053rem; --distance:9.485885454077872rem; --position:18.386676269889467%; --time:2.1664166415310326s; --delay:-3.44976725680158s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.7879151677607066rem; --distance:8.16917336207609rem; --position:65.25595655544318%; --time:2.560898168569372s; --delay:-3.6484973945598282s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.508733012285405rem; --distance:9.815632715338579rem; --position:27.29394210212454%; --time:3.7827614202785482s; --delay:-2.70345090802346s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.08859311708483rem; --distance:7.693803168411393rem; --position:36.866122330682934%; --time:3.794271208938841s; --delay:-3.0428106801088943s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.82175461255199rem; --distance:7.234347341717741rem; --position:56.91731461724941%; --time:3.105923968746479s; --delay:-2.146864190099727s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.628526314125834rem; --distance:6.509043504263959rem; --position:53.87160970217845%; --time:3.214757950994366s; --delay:-2.6168123153481644s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.279042371237512rem; --distance:9.770706263336702rem; --position:-2.4125201624458636%; --time:3.9921927529740793s; --delay:-3.4991965953974913s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.0606113728476387rem; --distance:6.698661596879082rem; --position:62.821082675632255%; --time:3.0702443659459195s; --delay:-2.6774914894025006s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.885610533706939rem; --distance:7.574241658363756rem; --position:48.52266241667782%; --time:2.1167638513639737s; --delay:-3.975473298348281s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.159896359004674rem; --distance:8.781170023788748rem; --position:56.66775136640775%; --time:2.5741854822436077s; --delay:-2.7626797327736856s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.189341971648332rem; --distance:8.221069879182442rem; --position:-4.973075577432975%; --time:3.614020407834564s; --delay:-2.201690397547862s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.7531771203258373rem; --distance:8.80424719044952rem; --position:101.18536233715983%; --time:2.336330279167598s; --delay:-3.5674619867400863s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.752013600539007rem; --distance:9.888937474041192rem; --position:35.88283005501331%; --time:3.447466878714051s; --delay:-3.66711692794255s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.287691589991979rem; --distance:6.678508960416732rem; --position:31.472492482649045%; --time:2.1661423247171s; --delay:-3.516566876072813s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.626612423460605rem; --distance:8.697769058262491rem; --position:71.0728845695397%; --time:3.238327863754891s; --delay:-3.539129952468817s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.248322048043435rem; --distance:9.590555874960735rem; --position:24.64631231042418%; --time:3.932866415348757s; --delay:-2.4921647435168324s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.8742126196454487rem; --distance:9.295547298899798rem; --position:69.40702361147513%; --time:3.294808352817616s; --delay:-3.1464332585757537s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.556540408377843rem; --distance:7.449518289219452rem; --position:47.124258889214815%; --time:2.2297316127716935s; --delay:-3.076592905347044s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.160283265462947rem; --distance:7.759927676288885rem; --position:64.82876982633525%; --time:2.8855997654434007s; --delay:-3.19875962535113s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.578849936138496rem; --distance:9.977888947226848rem; --position:-2.39964363477871%; --time:2.369109593004436s; --delay:-3.7298018823856354s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.096116044459583rem; --distance:8.672922820534076rem; --position:0.8086572945766086%; --time:2.142037798401411s; --delay:-3.6661853296081177s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.80950556070704rem; --distance:7.569106703444561rem; --position:103.54486657181066%; --time:2.029396201666673s; --delay:-2.7326046550726493s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.011811552155176rem; --distance:7.278530025558931rem; --position:84.50475669988322%; --time:2.841507652923215s; --delay:-3.505222673821496s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.8676685627584426rem; --distance:9.883206039048058rem; --position:22.863844550806434%; --time:2.2873009709607572s; --delay:-3.706334768298317s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.243745895499991rem; --distance:8.287943615789256rem; --position:51.6781372337073%; --time:2.6384819151850367s; --delay:-2.4262451872393993s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.3828693622938495rem; --distance:8.225442827463137rem; --position:39.7710659517565%; --time:3.7706642197199116s; --delay:-2.6564445184301877s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5050881336244926rem; --distance:8.078397246669207rem; --position:12.532117467487524%; --time:2.6510233866203223s; --delay:-3.555997547414254s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.050769849227795rem; --distance:6.9568970075985rem; --position:33.71689057469261%; --time:2.004313803898021s; --delay:-2.9359045451132895s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.906604433920384rem; --distance:7.2763467363691365rem; --position:81.42940400240614%; --time:2.624883375562982s; --delay:-2.5087210608352577s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.3113496844655534rem; --distance:7.007241998844074rem; --position:24.572337270470396%; --time:3.435299801712676s; --delay:-2.9373956961558583s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.734809129120962rem; --distance:9.208056013414069rem; --position:-0.2786511213137004%; --time:3.0445545335523385s; --delay:-2.378758370135794s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.9279810249277727rem; --distance:7.783351846562797rem; --position:87.4368462637148%; --time:2.8530227618096804s; --delay:-2.917496636041309s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.1651406638482085rem; --distance:9.177642682097403rem; --position:33.93839201192088%; --time:3.3832507439024497s; --delay:-2.284479334925678s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.4724406215514403rem; --distance:9.60365896852278rem; --position:-4.5111632573676115%; --time:2.851146589452705s; --delay:-3.108451575218756s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.5098331006195584rem; --distance:6.4511446685018425rem; --position:75.24620954986548%; --time:2.3747748228724155s; --delay:-3.6485012231713725s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.311615554699231rem; --distance:6.1046176073258085rem; --position:60.43872989425%; --time:3.590504725859736s; --delay:-2.048002799951991s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.9384647342300445rem; --distance:7.3558929803381465rem; --position:83.83309640454695%; --time:3.8530160089293792s; --delay:-2.425670882625013s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.685804100180391rem; --distance:7.290190128685131rem; --position:54.787740602783764%; --time:2.219312136658289s; --delay:-3.3788202174891455s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.8125269868133644rem; --distance:8.51000172806934rem; --position:2.8233275212936597%; --time:3.431273942480459s; --delay:-3.433070438366649s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.628141836135rem; --distance:9.296214844395863rem; --position:79.26484221362772%; --time:2.1009533647533596s; --delay:-2.8165916506587925s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.832606466743754rem; --distance:8.440624598387345rem; --position:65.16687564704712%; --time:3.6568760680221972s; --delay:-2.2891460231990517s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.3743451365954433rem; --distance:8.644037656021544rem; --position:32.73514183157258%; --time:2.3600141563894983s; --delay:-2.6629648628629106s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.427598300542791rem; --distance:8.153969776548788rem; --position:33.56020508101341%; --time:3.6061871330611837s; --delay:-2.7005545622723384s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.039128465090954rem; --distance:8.504102340736917rem; --position:40.8219997408327%; --time:3.5204644282282103s; --delay:-2.5645352914396344s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.891387979260458rem; --distance:7.243928787901001rem; --position:32.6894818836199%; --time:2.696514190223279s; --delay:-2.867036670835153s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.383192865835068rem; --distance:8.124403688208655rem; --position:42.46616823282268%; --time:2.4417702714375973s; --delay:-2.556369798067352s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.6513215714636225rem; --distance:9.099602536820061rem; --position:46.253892853612584%; --time:3.841915453625834s; --delay:-3.162712104939827s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.660313288350597rem; --distance:7.1980824214145995rem; --position:98.14559517324078%; --time:3.133627218877464s; --delay:-2.7969944543044365s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.6662015276535973rem; --distance:6.566000179574053rem; --position:102.45253265764441%; --time:3.925268210719029s; --delay:-2.5111368420243014s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5777781381754172rem; --distance:8.297292691774446rem; --position:19.78768362337976%; --time:2.9089409997054942s; --delay:-3.397991656418152s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.181123758190697rem; --distance:8.905670047858873rem; --position:58.11736541685177%; --time:2.8105910539860224s; --delay:-2.6627933103129147s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.652704169645572rem; --distance:9.739842568133238rem; --position:41.98318914397004%; --time:2.733766287457496s; --delay:-2.1579225403743494s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.683378879727509rem; --distance:6.618898436591833rem; --position:-0.683507603217377%; --time:2.466644546179578s; --delay:-3.269916433128711s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.4747135775861775rem; --distance:7.213197203880148rem; --position:66.35149188179528%; --time:3.125537033865882s; --delay:-3.0198411239191407s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.364655147868361rem; --distance:9.044731659816rem; --position:22.363593948870957%; --time:2.2652282384254994s; --delay:-3.7079295560293453s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.917972567840414rem; --distance:7.2230116987538295rem; --position:37.1534457470685%; --time:2.8595572135909286s; --delay:-3.632390466451689s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.218077873836153rem; --distance:9.332891837291768rem; --position:69.33906770797427%; --time:2.616294297628388s; --delay:-3.124713119658771s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.8996685603663614rem; --distance:9.885173348276318rem; --position:58.39723921340557%; --time:2.5185172943845635s; --delay:-2.602810052211278s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.55530508791158rem; --distance:6.753469643372696rem; --position:20.371640622424188%; --time:2.529201813565264s; --delay:-2.402912925134133s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.9590702304782326rem; --distance:7.88985548541352rem; --position:94.31710808361481%; --time:3.9725223515848245s; --delay:-2.713384211095872s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.346274824832964rem; --distance:7.155715593240792rem; --position:79.22605210159023%; --time:2.2136739703511643s; --delay:-2.675799736625864s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.415830774741562rem; --distance:8.22939289118296rem; --position:97.44830877543014%; --time:2.151047814256142s; --delay:-2.6921912782148887s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.990744688812134rem; --distance:9.439765445574585rem; --position:3.704656202556089%; --time:2.7710088890417235s; --delay:-2.7881195713538527s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.117102029150708rem; --distance:7.004311985987203rem; --position:12.66044316556902%; --time:2.7897241230056427s; --delay:-2.3707102271696896s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.2534885897752535rem; --distance:6.316796025349378rem; --position:11.697838590533042%; --time:3.8747584497402117s; --delay:-3.6043705981872143s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.970912867279805rem; --distance:8.806292773961081rem; --position:50.327403341625676%; --time:3.534516803171996s; --delay:-2.6593198932705233s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.8957255657026773rem; --distance:6.155197331405337rem; --position:100.3793221553854%; --time:2.965413934794982s; --delay:-2.009140386735436s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5217458528739476rem; --distance:6.45055114589968rem; --position:36.102155702947194%; --time:3.098884776097727s; --delay:-2.9039081639948807s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.0943665375335945rem; --distance:8.270209738886411rem; --position:104.67035709544088%; --time:2.9447837086558506s; --delay:-2.5511450184226097s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.216385937733233rem; --distance:9.563565103831737rem; --position:69.33096570172357%; --time:2.713082244236814s; --delay:-3.861004614788998s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.407488911232335rem; --distance:8.838587644586251rem; --position:27.25820937879857%; --time:2.522110637674977s; --delay:-2.883719795252115s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.822427644245237rem; --distance:8.643862807267048rem; --position:87.54727002508697%; --time:2.980478051891713s; --delay:-3.9173830445404114s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5084403313707533rem; --distance:9.656494736459972rem; --position:99.7906189772598%; --time:2.280470425270816s; --delay:-2.956294695270477s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.360075500873787rem; --distance:7.7052923446695845rem; --position:81.74734649111178%; --time:3.7127386331364076s; --delay:-3.759992826373514s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.147760843920024rem; --distance:9.42235467434761rem; --position:86.54581853390025%; --time:2.6122451427673616s; --delay:-2.3480705543134923s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.738006021658835rem; --distance:6.502782172721545rem; --position:12.67490642270365%; --time:3.0893603586586593s; --delay:-2.40378107315704s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.7900408698436596rem; --distance:7.775244326582774rem; --position:76.68003931714208%; --time:3.172610127900274s; --delay:-2.9375599176221283s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.973386437300224rem; --distance:6.486935066783722rem; --position:45.06438754812822%; --time:3.606822406898297s; --delay:-2.052182137509863s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.945920570813082rem; --distance:7.294243173561353rem; --position:48.874166103077805%; --time:2.8698979028744374s; --delay:-2.1419470310891615s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.4995700764359574rem; --distance:7.425401849515097rem; --position:14.980893809389684%; --time:3.596898013604315s; --delay:-3.190612907059717s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.6380249202805954rem; --distance:9.861983313411734rem; --position:61.56152870514639%; --time:3.104325503664384s; --delay:-3.866361611836677s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.858005801854431rem; --distance:8.06525927060488rem; --position:15.506974479089518%; --time:2.248989034713548s; --delay:-3.12607303286587s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.960966561904799rem; --distance:7.169337745686259rem; --position:71.13298566256415%; --time:2.6255511454463862s; --delay:-3.9574771185371826s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5703537726979855rem; --distance:9.035655074334105rem; --position:63.00593397592405%; --time:2.522222309215505s; --delay:-2.1562211060809067s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.952439870363759rem; --distance:9.508438377653796rem; --position:25.796729857393238%; --time:3.4493150996462854s; --delay:-3.4005065685368288s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.2483986711968775rem; --distance:9.346606572224008rem; --position:-3.6597035491162155%; --time:2.5636433633820666s; --delay:-2.0674296055016725s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.998221277070243rem; --distance:9.054852107085765rem; --position:11.087226959363107%; --time:2.386868677532483s; --delay:-3.931453916991702s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.16296365263827rem; --distance:8.765078093182026rem; --position:14.81503263972553%; --time:2.52198335177109s; --delay:-2.8912132073829517s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.5269556371105137rem; --distance:7.883310875177857rem; --position:95.58061086862034%; --time:3.3786070672005053s; --delay:-2.967902691591838s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.935511202180399rem; --distance:9.454330617859078rem; --position:5.0602342285782935%; --time:3.848572290400933s; --delay:-3.2670420052950724s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.013600614726572rem; --distance:7.075718473934804rem; --position:26.817905728014416%; --time:2.0032637256622463s; --delay:-2.5964202938551s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.302723704622824rem; --distance:7.688847040976196rem; --position:87.7668458197606%; --time:2.2022699434946236s; --delay:-2.279529792958574s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.77203943450421rem; --distance:7.867239186877906rem; --position:28.301843989280677%; --time:3.9419071102167647s; --delay:-3.9429658182327176s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.831472853356298rem; --distance:6.978552913565008rem; --position:68.49430936730043%; --time:2.431126984321723s; --delay:-2.6230365816531704s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.48689766177206rem; --distance:6.867356015515495rem; --position:81.6385861273778%; --time:2.4335276571759112s; --delay:-2.5170144410280426s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.0073804475574892rem; --distance:8.904879198550061rem; --position:44.07693713967212%; --time:3.951736258389082s; --delay:-3.6620543891155606s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.6192671261835807rem; --distance:9.960720208240932rem; --position:96.01972328301791%; --time:2.775603165046897s; --delay:-2.4468907578146193s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.475310690919775rem; --distance:9.455722083236354rem; --position:80.15616742800479%; --time:2.61371143678444s; --delay:-2.49653070343792s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.5869592811272035rem; --distance:8.731929877375066rem; --position:53.610755961360475%; --time:2.842150760331642s; --delay:-3.307426993695413s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.692415298448003rem; --distance:9.887101031484521rem; --position:99.43172449113167%; --time:3.817035886780597s; --delay:-2.960735888596179s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.216874181385949rem; --distance:9.425942026740614rem; --position:41.71619236086114%; --time:3.453397048589008s; --delay:-3.0150047162151976s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.510210445646033rem; --distance:7.068483898757216rem; --position:63.93755579057216%; --time:3.324191403993111s; --delay:-2.4298396688695374s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.8212135638271576rem; --distance:6.479288155493772rem; --position:63.37786171123963%; --time:2.3878523559961424s; --delay:-2.1248470856727124s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.264776674433017rem; --distance:7.067175677541402rem; --position:65.79896459943514%; --time:3.4530003903919s; --delay:-2.7007508916337444s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.8292988936488435rem; --distance:6.052107065832434rem; --position:26.47785479817864%; --time:3.096442168855968s; --delay:-3.9228735447141463s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.654562032991941rem; --distance:7.346703428693563rem; --position:19.822609735322967%; --time:3.6529843177430203s; --delay:-3.297862600942735s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.88460769721094rem; --distance:9.05581324768206rem; --position:93.18899137442352%; --time:3.8046922088304127s; --delay:-2.439083631794193s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.8954656841006896rem; --distance:6.117893828014333rem; --position:27.14601187453188%; --time:3.9838973737057475s; --delay:-2.721269443365473s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.197397143961581rem; --distance:8.952978812255303rem; --position:28.70258381634944%; --time:3.330922924714056s; --delay:-3.4030223708923986s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.630264613048885rem; --distance:7.873238764960344rem; --position:60.85460907152725%; --time:3.294688533154665s; --delay:-3.857151703260057s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.862630365838838rem; --distance:6.270198486343009rem; --position:52.837633387461885%; --time:3.95321403241115s; --delay:-2.686074297209426s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.157307222039157rem; --distance:8.526401274728247rem; --position:57.15084199440386%; --time:3.6180314999634056s; --delay:-2.299569481894957s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.007387714886702rem; --distance:8.315411780135246rem; --position:-0.11256207991635847%; --time:2.5960135042915944s; --delay:-3.3630277899879006s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.720498107616076rem; --distance:7.838958363705719rem; --position:84.5190504364104%; --time:3.156410740578314s; --delay:-3.8194767653045805s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.523833091193304rem; --distance:7.690605829120617rem; --position:14.455654520844007%; --time:3.2163307320048564s; --delay:-3.3587084069062256s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.22170256155975rem; --distance:9.716508653022203rem; --position:77.08498089473757%; --time:3.52120699025264s; --delay:-2.8291173201248347s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.069758141186512rem; --distance:9.079537114602182rem; --position:95.47601103660162%; --time:2.6368190024576794s; --delay:-2.7284559955909464s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.111067078359963rem; --distance:6.793058352345958rem; --position:7.196836820407228%; --time:3.220771479311149s; --delay:-3.1064400800935075s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.894471006256108rem; --distance:7.836550833968479rem; --position:96.5790157443341%; --time:3.224547152703394s; --delay:-3.617546260185484s;">
+            </div>
+            <div class="bubble"
+                style="--size:2.2255994636081518rem; --distance:6.31973449336598rem; --position:95.56009210674755%; --time:2.4294888456656003s; --delay:-3.829401544146441s;">
+            </div>
+            <div class="bubble"
+                style="--size:5.444966317464254rem; --distance:7.670320206708248rem; --position:50.43375538581788%; --time:3.346374761225548s; --delay:-2.3592320357735743s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.638115006469494rem; --distance:6.583443940579601rem; --position:90.19039325600504%; --time:2.683127090041479s; --delay:-3.096407896545722s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.1621015397258745rem; --distance:8.625691141962047rem; --position:99.43168729105972%; --time:3.406439526966247s; --delay:-3.863005080705605s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.100645475090067rem; --distance:6.0041744266807795rem; --position:75.31090213484336%; --time:3.900877067746695s; --delay:-3.392020698191714s;">
+            </div>
+            <div class="bubble"
+                style="--size:3.86073408732908rem; --distance:7.048222791734817rem; --position:5.140367185621603%; --time:2.5094852649840096s; --delay:-3.393935893443837s;">
+            </div>
+            <div class="bubble"
+                style="--size:4.483729089957669rem; --distance:6.694990159737968rem; --position:85.18653067611996%; --time:3.853464618936131s; --delay:-3.567391861686692s;">
+            </div>
+        </div>
+        <div class="content">
+            <div>
+                <div><b>Eldew</b><a href="#">Secuce</a><a href="#">Drupand</a><a href="#">Oceash</a><a
+                        href="#">Ugefe</a><a href="#">Babed</a></div>
+                <div><b>Spotha</b><a href="#">Miskasa</a><a href="#">Agithe</a><a href="#">Scesha</a><a
+                        href="#">Lulle</a></div>
+                <div><b>Chashakib</b><a href="#">Chogauw</a><a href="#">Phachuled</a><a href="#">Tiebeft</a><a
+                        href="#">Ocid</a><a href="#">Izom</a><a href="#">Ort</a></div>
+                <div><b>Athod</b><a href="#">Pamuz</a><a href="#">Vapert</a><a href="#">Neesk</a><a
+                        href="#">Omemanen</a></div>
+            </div>
+            <div><a class="image" href="https://codepen.io/z-" target="_blank"
+                    style="background-image: url(&quot;https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/happy.svg&quot;)"></a>
+                <p>©2019 Not Really</p>
+            </div>
+        </div>
+    </div>
+    <svg style="position: fixed; top: 100vh">
+        <defs>
+            <filter id="blob">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="blob"></feColorMatrix>
+                <!--feComposite(in="SourceGraphic" in2="blob" operator="atop") //After reviewing this after years I can't remember why I added this but it isn't necessary for the blob effect-->
+            </filter>
+        </defs>
+    </svg>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+    <script src="/script.js"></script>
 
-        // ============================================================
-        // INITIAL STATES + APPLY DATA-ROT
-        // ============================================================
-        gsap.set("#nav", { opacity: 0, y: -20 });
-        gsap.set(".small-team .word > span", { y: "105%" });
-        gsap.set(".big-results .letter", { y: 80, opacity: 0 });
-        gsap.set("#subline", { opacity: 0, y: 20 });
-        gsap.set(".t-card", { opacity: 0 });
-        gsap.set(".stats-inner", { opacity: 0 });
-
-        // Apply each card's natural rotation as the rest-state, but start them off-screen above + rotated
-        document.querySelectorAll(".card").forEach((card) => {
-            const rot = parseFloat(card.dataset.rot) || 0;
-            card.dataset.restRot = rot;
-            gsap.set(card, { y: -800, rotation: rot + 25, opacity: 0, scale: 0.7 });
-        });
-
-        // ============================================================
-        // INTRO TIMELINE
-        // ============================================================
-        const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-        intro
-            .to("#nav", { opacity: 1, y: 0, duration: 0.8 }, 0.1)
-            .to(
-                ".small-team .word > span",
-                {
-                    y: "0%",
-                    duration: 0.9,
-                    stagger: 0.08,
-                    ease: "power3.out"
-                },
-                0.3
-            )
-            .to(
-                ".big-results .letter",
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 0.9,
-                    stagger: 0.05,
-                    ease: "back.out(1.6)"
-                },
-                0.55
-            )
-            .to(
-                ".card",
-                {
-                    y: 0,
-                    opacity: 1,
-                    scale: 1,
-                    rotation: (i, el) => parseFloat(el.dataset.restRot) || 0,
-                    duration: 1.1,
-                    stagger: { each: 0.08, from: "center" },
-                    ease: "back.out(1.4)"
-                },
-                0.8
-            )
-            .to("#subline", { opacity: 1, y: 0, duration: 0.8 }, 1.6);
-
-        // ============================================================
-        // CONTINUOUS FLOAT ON CARDS
-        // ============================================================
-        document.querySelectorAll(".card").forEach((card, i) => {
-            const rot = parseFloat(card.dataset.restRot) || 0;
-            gsap.to(card, {
-                y: `+=${8 + (i % 3) * 5}`,
-                rotation: rot + (i % 2 === 0 ? 1.5 : -1.5),
-                duration: 3 + (i % 4) * 0.5,
-                delay: 1.8 + i * 0.1,
-                ease: "sine.inOut",
-                yoyo: true,
-                repeat: -1
-            });
-        });
-
-        // ============================================================
-        // MOUSE PARALLAX ON CARDS
-        // ============================================================
-        const hero = document.querySelector(".hero");
-        let mx = 0,
-            my = 0,
-            tx = 0,
-            ty = 0;
-        hero.addEventListener("mousemove", (e) => {
-            const r = hero.getBoundingClientRect();
-            mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-            my = ((e.clientY - r.top) / r.height - 0.5) * 2;
-        });
-        hero.addEventListener("mouseleave", () => {
-            mx = 0;
-            my = 0;
-        });
-
-        function parallax() {
-            tx += (mx - tx) * 0.05;
-            ty += (my - ty) * 0.05;
-            document.querySelectorAll(".card").forEach((card) => {
-                const d = parseFloat(card.dataset.depth) || 8;
-                card.style.translate = `${tx * d}px ${ty * d * 0.5}px`;
-            });
-            requestAnimationFrame(parallax);
-        }
-        parallax();
-
-        // ============================================================
-        // CARD HOVER 3D LIFT
-        // ============================================================
-        document.querySelectorAll(".card").forEach((card) => {
-            const restRot = parseFloat(card.dataset.restRot) || 0;
-            card.addEventListener("mousemove", (e) => {
-                const r = card.getBoundingClientRect();
-                const px = (e.clientX - r.left) / r.width - 0.5;
-                const py = (e.clientY - r.top) / r.height - 0.5;
-                gsap.to(card, {
-                    rotateX: -py * 16,
-                    rotateY: px * 16,
-                    scale: 1.12,
-                    zIndex: 20,
-                    duration: 0.4,
-                    ease: "power2.out",
-                    transformPerspective: 700,
-                    overwrite: "auto"
-                });
-            });
-            card.addEventListener("mouseleave", () => {
-                gsap.to(card, {
-                    rotateX: 0,
-                    rotateY: 0,
-                    scale: 1,
-                    zIndex: card.style.zIndex || "",
-                    duration: 0.8,
-                    ease: "elastic.out(1, 0.6)",
-                    overwrite: "auto"
-                });
-            });
-            card.addEventListener("click", () => {
-                gsap.fromTo(
-                    card,
-                    { scale: 1.15 },
-                    {
-                        scale: 1.05,
-                        duration: 0.15,
-                        yoyo: true,
-                        repeat: 1,
-                        ease: "power2.inOut"
-                    }
-                );
-            });
-        });
-
-        // ============================================================
-        // SCROLL: CARDS FAN OUT, "big results" SCALES UP
-        // ============================================================
-        ScrollTrigger.create({
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.8,
-            onUpdate: (self) => {
-                const p = self.progress;
-                // Big results scales up and stays gray
-                gsap.set(".big-results", { scale: 1 + 0.15 * p, opacity: 1 - 0.4 * p });
-                // Small team rises out
-                gsap.set(".small-team", { y: -60 * p, opacity: 1 - p * 1.5 });
-                // Cards: outer cards fly further out, center cards drift up more
-                const moves = [
-                    { x: -260, y: -40, rot: -25 }, // 1
-                    { x: -200, y: 20, rot: -18 }, // 2
-                    { x: -120, y: 80, rot: -10 }, // 3
-                    { x: -40, y: 120, rot: -4 }, // 4
-                    { x: 40, y: 120, rot: 4 }, // 5
-                    { x: 120, y: 80, rot: 12 }, // 6
-                    { x: 200, y: 20, rot: 22 }, // 7
-                    { x: 260, y: -40, rot: 28 } // 8
-                ];
-                document.querySelectorAll(".card").forEach((card, i) => {
-                    const m = moves[i];
-                    const rest = parseFloat(card.dataset.restRot) || 0;
-                    gsap.set(card, {
-                        x: m.x * p,
-                        y: m.y * p,
-                        rotation: rest + m.rot * p
-                    });
-                });
-                gsap.set("#subline", { opacity: 1 - p * 2 });
-            }
-        });
-
-        // ============================================================
-        // TEAM GRID REVEAL ON SCROLL
-        // ============================================================
-        gsap.from(".eyebrow, .team-head h2, .team-head p", {
-            opacity: 0,
-            y: 30,
-            duration: 0.9,
-            stagger: 0.1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ".team-head", start: "top 80%" }
-        });
-
-        gsap.to(".t-card", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ".team-grid", start: "top 80%" }
-        });
-        gsap.from(".t-card", {
-            y: 80,
-            scale: 0.9,
-            rotation: (i) => (i % 2 === 0 ? -3 : 3),
-            duration: 1,
-            stagger: 0.08,
-            ease: "back.out(1.3)",
-            scrollTrigger: { trigger: ".team-grid", start: "top 80%" }
-        });
-
-        // ============================================================
-        // STATS REVEAL + COUNTERS
-        // ============================================================
-        gsap.to(".stats-inner", {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ".stats", start: "top 80%" }
-        });
-        gsap.from(".stats-inner", {
-            y: 60,
-            scale: 0.97,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: { trigger: ".stats", start: "top 80%" }
-        });
-
-        ScrollTrigger.create({
-            trigger: ".stats",
-            start: "top 75%",
-            onEnter: () => {
-                document.querySelectorAll(".stat-block .num").forEach((el) => {
-                    const target = parseFloat(el.dataset.count);
-                    const span = el.querySelector("span");
-                    gsap.to(
-                        { v: 0 },
-                        {
-                            v: target,
-                            duration: 2,
-                            ease: "power2.out",
-                            onUpdate: function () {
-                                span.textContent = Math.floor(this.targets()[0].v).toLocaleString();
-                            }
-                        }
-                    );
-                });
-            },
-            once: true
-        });
-
-        // ============================================================
-        // CTA / BUTTON CLICKS
-        // ============================================================
-        document.querySelectorAll(".nav-cta, .arrow-pill").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                gsap.fromTo(
-                    btn,
-                    { scale: 1 },
-                    {
-                        scale: 0.93,
-                        duration: 0.12,
-                        yoyo: true,
-                        repeat: 1,
-                        ease: "power2.inOut"
-                    }
-                );
-            });
-        });
-
-        // Big results: subtle letter rise on hover of the wrap
-        document
-            .querySelector(".big-results-wrap")
-            .addEventListener("mouseenter", () => {
-                gsap.to(".big-results .letter", {
-                    y: -8,
-                    duration: 0.5,
-                    stagger: 0.03,
-                    ease: "back.out(1.6)"
-                });
-            });
-        document
-            .querySelector(".big-results-wrap")
-            .addEventListener("mouseleave", () => {
-                gsap.to(".big-results .letter", {
-                    y: 0,
-                    duration: 0.6,
-                    stagger: 0.03,
-                    ease: "elastic.out(1, 0.6)"
-                });
-            });
-     
-    </script>
 </body>
 
 </html>
