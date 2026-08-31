@@ -36,6 +36,52 @@ async function registrarVisita() {
     }
 }
 
+// navbar
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+
+        const alvo = document.querySelector(link.getAttribute('href'));
+
+        if (!alvo) return;
+
+        const offset = window.innerHeight * 0.1; // 10% do topo
+
+        const posicao =
+            alvo.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
+
+        window.scrollTo({
+            top: posicao,
+            behavior: 'smooth'
+        });
+    });
+});
+// title text
+let initial = 0,
+    interval = 1000;
+
+const randle = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+
+const animateTitle = star => {
+    star.style.setProperty("--star-left", `${randle(-10, 100)}%`);
+    star.style.setProperty("--star-top", `${randle(-40, 80)}%`);
+
+    star.style.animation = "none";
+    star.offsetHeight;
+    star.style.animation = "";
+}
+
+for (const star of document.getElementsByClassName("magic-star")) {
+    setTimeout(() => {
+        animateTitle(star);
+
+        setInterval(() => animateTitle(star), 1000);
+    }, initial++ * (interval / 3))
+}
+
 
 registrarVisita();
 
@@ -44,6 +90,69 @@ gsap.registerPlugin(ScrollTrigger);
 // ============================================================
 // INITIAL STATES + APPLY DATA-ROT
 // ============================================================
+// loading
+const stage = document.querySelector('.stage')
+const col = document.querySelector('.col')
+const box = document.querySelector('.box')
+
+for (i=0; i<9; i++){
+  const b = box.cloneNode(true)
+  col.append(b)
+}
+gsap.set('.box', { y:(i)=>i*10 })
+
+for (i=0; i<=9; i++){
+  const c = col.cloneNode(true)
+  gsap.set(c, {x:10*i, attr:{class:'col col'+i}})
+  gsap.set(c.querySelectorAll('.box'), {attr:{class:'box'+i}})
+  stage.append(c)
+}
+
+col.remove()// remove initial column
+
+
+const tl= gsap.timeline()
+.to('.col', {
+  duration:1.5,
+  y:11,
+  ease:'sine.inOut',
+  stagger:{
+    amount:3,
+    repeat:-1,
+    yoyo:true
+  }
+}, 0)
+
+for (i=0; i<=9; i++){
+  tl.add(
+  gsap.fromTo('.box'+i+' *', {
+    y:(j)=>gsap.utils.interpolate(77,-77,j/10),
+    transformOrigin:'50%',
+    scale:0.133
+  },{
+    y:(j)=>gsap.utils.interpolate(i,-i,j/10),
+    scale:0.8,
+    duration:1,
+    ease:'sine',
+    repeat:-1,
+    yoyo:true,
+    yoyoEase:'sine.in'
+  }), i/10)
+}
+
+tl.play(50)
+
+window.onclick = ()=> {
+  gsap.to(stage, {fill:(tl.isActive()?'#ccc':'#000')})
+  gsap.to(tl, {timeScale:(tl.isActive()?0:1)})
+}
+
+
+
+
+
+
+
 gsap.set("#nav", {
     opacity: 0,
     y: -20
@@ -1378,7 +1487,7 @@ if ($('#home-animation-wrapper').length) {
 
 
 // SECTION JOOB
-const div = document.querySelector("#minhaDiv");
+const div = document.querySelector("#jobs");
 const letter1 = document.querySelector("#letter-1");
 const letter2 = document.querySelector("#letter-2");
 const letter3 = document.querySelector("#letter-3");
@@ -1408,19 +1517,19 @@ observer.observe(div);
 
 function iniciarSequencia() {
     div.classList.add("ativo");
-      setTimeout(() => {
+    setTimeout(() => {
         letter1.classList.add("letter-1");
     }, 100);
     setTimeout(() => {
         letter2.classList.add("letter-2");
     }, 200);
-     setTimeout(() => {
+    setTimeout(() => {
         letter3.classList.add("letter-3");
     }, 300);
-     setTimeout(() => {
+    setTimeout(() => {
         letter4.classList.add("letter-4");
     }, 1000);
-    
+
 }
 
 function rolarAteFinalDaDiv(elemento) {
@@ -1452,302 +1561,413 @@ function rolarAteFinalDaDiv(elemento) {
 function easeOutExpo(t) {
     return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
+// skills section
+/*
+	This pen cleverly utilizes SVG filters to create a "Morphing Text" effect. Essentially, it layers 2 text elements on top of each other, and blurs them depending on which text element should be more visible. Once the blurring is applied, both texts are fed through a threshold filter together, which produces the "gooey" effect. Check the CSS - Comment the #container rule's filter out to see how the blurring works!
+*/
 
+const elts = {
+    habilidades: document.getElementById("habilidades"),
+    skills: document.getElementById("skills")
+};
 
+// The strings to morph between. You can change these to anything you want!
+const texts = [
+    "Habilidades",
+    "Skills",
+    "Tecnologias",
+    "Aptidões",
+    "Competências",
+
+];
+
+// Controls the speed of morphing.
+const morphTime = 1;
+const cooldownTime = 0.25;
+
+let textIndex = texts.length - 1;
+let time = new Date();
+let morph = 0;
+let cooldown = cooldownTime;
+
+elts.habilidades.textContent = texts[textIndex % texts.length];
+elts.skills.textContent = texts[(textIndex + 1) % texts.length];
+
+function doMorph() {
+    morph -= cooldown;
+    cooldown = 0;
+
+    let fraction = morph / morphTime;
+
+    if (fraction > 1) {
+        cooldown = cooldownTime;
+        fraction = 1;
+    }
+
+    setMorph(fraction);
+}
+
+// A lot of the magic happens here, this is what applies the blur filter to the text.
+function setMorph(fraction) {
+    // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
+
+    elts.skills.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    elts.skills.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    fraction = 1 - fraction;
+    elts.habilidades.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+    elts.habilidades.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+    elts.habilidades.textContent = texts[textIndex % texts.length];
+    elts.skills.textContent = texts[(textIndex + 1) % texts.length];
+}
+
+function doCooldown() {
+    morph = 0;
+
+    elts.skills.style.filter = "";
+    elts.skills.style.opacity = "100%";
+
+    elts.habilidades.style.filter = "";
+    elts.habilidades.style.opacity = "0%";
+}
+
+// Animation loop, which is called every frame.
+function animate() {
+    requestAnimationFrame(animate);
+
+    let newTime = new Date();
+    let shouldIncrementIndex = cooldown > 0;
+    let dt = (newTime - time) / 1000;
+    time = newTime;
+
+    cooldown -= dt;
+
+    if (cooldown <= 0) {
+        if (shouldIncrementIndex) {
+            textIndex++;
+        }
+
+        doMorph();
+    } else {
+        doCooldown();
+    }
+}
+
+// Start the animation.
+animate();
 // jobs section
 
-		(() => {
-			"use strict";
+(() => {
+    "use strict";
 
-			const galleryAssets = [
-				"./assets/myeshop.png",
-				"./assets/tgt.png",
-				"./assets/imovestock.png",
-				"./assets/mocar.png",
-			];
+    const galleryAssets = [
+        "./assets/myeshop.png",
+        "./assets/tgt.png",
+        "./assets/imovestock.png",
+        "./assets/mocar.png",
+    ];
 
-			const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
-			const toOptionNumber = (indexValue) => String(indexValue + 1).padStart(2, "0");
+    const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+    const toOptionNumber = (indexValue) => String(indexValue + 1).padStart(2, "0");
 
-			function initGallery() {
-				const root = document.documentElement;
-				const body = document.body;
-				const stage = document.querySelector("#gallery-stage");
-				const viewport = document.querySelector("#gallery-viewport");
-				const canvas = document.querySelector("#gallery-canvas");
-				const focusButton = document.querySelector("#gallery-focus-button");
-				const backButton = document.querySelector("#gallery-back-button");
-				const zoomControl = document.querySelector("#gallery-zoom-control");
-				const galleryItems = Array.from(canvas.querySelectorAll(".gallery-option"));
-				const gridSize = Number.parseInt(stage.dataset.galleryGridSize, 10) || 2;
-				const zoomStep = Number.parseFloat(zoomControl.step) || 0.05;
-				const minZoom = Number.parseFloat(zoomControl.min);
-				const maxZoom = Number.parseFloat(zoomControl.max);
-				let selectedIndex = galleryItems.findIndex((item) => item.classList.contains("gallery-option--selected"));
-				let currentZoom = Number.parseFloat(zoomControl.value);
-				let isTransitioning = false;
-				let loadFinished = false;
-				let coordinates = { x: 0, y: 0 };
-				let stageMetrics = {
-					width: 0,
-					height: 0,
-					columnGap: 0,
-					rowGap: 0
-				};
+    function initGallery() {
+        const root = document.documentElement;
+        const body = document.body;
+        const stage = document.querySelector("#gallery-stage");
+        const viewport = document.querySelector("#gallery-viewport");
+        const canvas = document.querySelector("#gallery-canvas");
+        const focusButton = document.querySelector("#gallery-focus-button");
+        const backButton = document.querySelector("#gallery-back-button");
+        const zoomControl = document.querySelector("#gallery-zoom-control");
+        const galleryItems = Array.from(canvas.querySelectorAll(".gallery-option"));
+        const gridSize = Number.parseInt(stage.dataset.galleryGridSize, 10) || 2;
+        const zoomStep = Number.parseFloat(zoomControl.step) || 0.05;
+        const minZoom = Number.parseFloat(zoomControl.min);
+        const maxZoom = Number.parseFloat(zoomControl.max);
+        let selectedIndex = galleryItems.findIndex((item) => item.classList.contains("gallery-option--selected"));
+        let currentZoom = Number.parseFloat(zoomControl.value);
+        let isTransitioning = false;
+        let loadFinished = false;
+        let coordinates = {
+            x: 0,
+            y: 0
+        };
+        let stageMetrics = {
+            width: 0,
+            height: 0,
+            columnGap: 0,
+            rowGap: 0
+        };
 
-				if (selectedIndex < 0) {
-					selectedIndex = 0;
-				}
+        if (selectedIndex < 0) {
+            selectedIndex = 0;
+        }
 
-				const getGridCoordinates = (indexValue) => ({
-					x: indexValue % gridSize,
-					y: Math.floor(indexValue / gridSize)
-				});
-const galleryFrameOffsets = [
-	{ x: 0, y: 0 },
-	{ x: -24, y: 0 },
-	{ x: 16, y: -10 },
-	{ x: -12, y: 18 }
-];
-				const translateCanvas = () => {
-					const frameOffset = galleryFrameOffsets[selectedIndex];
-	const xOffset = -coordinates.x * (stageMetrics.width + stageMetrics.columnGap) + frameOffset.x;
-	const yOffset = -coordinates.y * (stageMetrics.height + stageMetrics.rowGap) + frameOffset.y;
-					canvas.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
-				};
+        const getGridCoordinates = (indexValue) => ({
+            x: indexValue % gridSize,
+            y: Math.floor(indexValue / gridSize)
+        });
+        const galleryFrameOffsets = [{
+                x: 0,
+                y: 0
+            },
+            {
+                x: -24,
+                y: 0
+            },
+            {
+                x: 16,
+                y: -10
+            },
+            {
+                x: -12,
+                y: 18
+            }
+        ];
+        const translateCanvas = () => {
+            const frameOffset = galleryFrameOffsets[selectedIndex];
+            const xOffset = -coordinates.x * (stageMetrics.width + stageMetrics.columnGap) + frameOffset.x;
+            const yOffset = -coordinates.y * (stageMetrics.height + stageMetrics.rowGap) + frameOffset.y;
+            canvas.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+        };
 
-				const syncStageMetrics = () => {
-					const stageBox = stage.getBoundingClientRect();
-					const canvasStyles = window.getComputedStyle(canvas);
-					const columnGap = Number.parseFloat(canvasStyles.columnGap);
-					const rowGap = Number.parseFloat(canvasStyles.rowGap);
+        const syncStageMetrics = () => {
+            const stageBox = stage.getBoundingClientRect();
+            const canvasStyles = window.getComputedStyle(canvas);
+            const columnGap = Number.parseFloat(canvasStyles.columnGap);
+            const rowGap = Number.parseFloat(canvasStyles.rowGap);
 
-					stageMetrics = {
-						width: stageBox.width,
-						height: stageBox.height,
-						columnGap: Number.isNaN(columnGap) ? 0 : columnGap,
-						rowGap: Number.isNaN(rowGap) ? 0 : rowGap
-					};
+            stageMetrics = {
+                width: stageBox.width,
+                height: stageBox.height,
+                columnGap: Number.isNaN(columnGap) ? 0 : columnGap,
+                rowGap: Number.isNaN(rowGap) ? 0 : rowGap
+            };
 
-					translateCanvas();
-				};
+            translateCanvas();
+        };
 
-				const moveToIndex = (indexValue) => {
-					coordinates = getGridCoordinates(indexValue);
-					translateCanvas();
-				};
+        const moveToIndex = (indexValue) => {
+            coordinates = getGridCoordinates(indexValue);
+            translateCanvas();
+        };
 
-				const setZoom = (zoomValue) => {
-					currentZoom = clamp(Number.parseFloat(zoomValue), minZoom, maxZoom);
-					stage.style.setProperty("--gallery-zoom", currentZoom.toFixed(2));
-					zoomControl.value = currentZoom.toFixed(2);
-				};
+        const setZoom = (zoomValue) => {
+            currentZoom = clamp(Number.parseFloat(zoomValue), minZoom, maxZoom);
+            stage.style.setProperty("--gallery-zoom", currentZoom.toFixed(2));
+            zoomControl.value = currentZoom.toFixed(2);
+        };
 
-				const setSelectedClasses = (indexValue, shouldSelect) => {
-					const optionClassMethod = shouldSelect ? "add" : "remove";
+        const setSelectedClasses = (indexValue, shouldSelect) => {
+            const optionClassMethod = shouldSelect ? "add" : "remove";
 
-					galleryItems[indexValue].classList[optionClassMethod]("gallery-option--selected", "selected");
-				};
+            galleryItems[indexValue].classList[optionClassMethod]("gallery-option--selected", "selected");
+        };
 
-				const makeSelection = (nextIndex) => {
-					if (nextIndex === selectedIndex || nextIndex < 0 || nextIndex >= galleryItems.length) {
-						return;
-					}
+        const makeSelection = (nextIndex) => {
+            if (nextIndex === selectedIndex || nextIndex < 0 || nextIndex >= galleryItems.length) {
+                return;
+            }
 
-					setSelectedClasses(selectedIndex, false);
-					selectedIndex = nextIndex;
-					setSelectedClasses(selectedIndex, true);
-					moveToIndex(selectedIndex);
-				};
+            setSelectedClasses(selectedIndex, false);
+            selectedIndex = nextIndex;
+            setSelectedClasses(selectedIndex, true);
+            moveToIndex(selectedIndex);
+        };
 
-				const handleSelection = (event) => {
-					const selectedControl = event.target.closest("[data-gallery-index]");
+        const handleSelection = (event) => {
+            const selectedControl = event.target.closest("[data-gallery-index]");
 
-					if (!selectedControl || isTransitioning) {
-						return;
-					}
+            if (!selectedControl || isTransitioning) {
+                return;
+            }
 
-					const nextIndex = Number.parseInt(selectedControl.dataset.galleryIndex, 10);
+            const nextIndex = Number.parseInt(selectedControl.dataset.galleryIndex, 10);
 
-					if (Number.isNaN(nextIndex) || nextIndex === selectedIndex) {
-						return;
-					}
+            if (Number.isNaN(nextIndex) || nextIndex === selectedIndex) {
+                return;
+            }
 
-					event.preventDefault();
-					makeSelection(nextIndex);
-					event.stopPropagation();
-				};
+            event.preventDefault();
+            makeSelection(nextIndex);
+            event.stopPropagation();
+        };
 
-				const handleToggleOpen = (event) => {
-					if (isTransitioning) {
-						return;
-					}
+        const handleToggleOpen = (event) => {
+            if (isTransitioning) {
+                return;
+            }
 
-					event.preventDefault();
-					root.classList.toggle("gallery-root--open");
-					focusButton.setAttribute("aria-expanded", String(root.classList.contains("gallery-root--open")));
-					event.stopPropagation();
-				};
+            event.preventDefault();
+            root.classList.toggle("gallery-root--open");
+            focusButton.setAttribute("aria-expanded", String(root.classList.contains("gallery-root--open")));
+            event.stopPropagation();
+        };
 
-				const handleZoomInput = (event) => {
-					if (isTransitioning) {
-						return;
-					}
+        const handleZoomInput = (event) => {
+            if (isTransitioning) {
+                return;
+            }
 
-					setZoom(event.target.value);
-				};
+            setZoom(event.target.value);
+        };
 
-				const handleZoomFromWheel = (event) => {
-					if (isTransitioning) {
-						return;
-					}
+        const handleZoomFromWheel = (event) => {
+            if (isTransitioning) {
+                return;
+            }
 
-					const direction = event.deltaY < 0 ? 1 : -1;
-					setZoom(currentZoom + direction * zoomStep);
-				};
+            const direction = event.deltaY < 0 ? 1 : -1;
+            setZoom(currentZoom + direction * zoomStep);
+        };
 
-				const handleKeyboard = (event) => {
-					const handledKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"]);
+        const handleKeyboard = (event) => {
+            const handledKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"]);
 
-					if (!handledKeys.has(event.key) || event.target === zoomControl || isTransitioning) {
-						return;
-					}
+            if (!handledKeys.has(event.key) || event.target === zoomControl || isTransitioning) {
+                return;
+            }
 
-					event.preventDefault();
+            event.preventDefault();
 
-					if (event.key === "Enter") {
-						handleToggleOpen(event);
-						return;
-					}
+            if (event.key === "Enter") {
+                handleToggleOpen(event);
+                return;
+            }
 
-					let nextX = coordinates.x;
-					let nextY = coordinates.y;
-					const maxCoordinate = gridSize - 1;
+            let nextX = coordinates.x;
+            let nextY = coordinates.y;
+            const maxCoordinate = gridSize - 1;
 
-					if (event.key === "ArrowLeft") {
-						nextX -= 1;
-					}
+            if (event.key === "ArrowLeft") {
+                nextX -= 1;
+            }
 
-					if (event.key === "ArrowRight") {
-						nextX += 1;
-					}
+            if (event.key === "ArrowRight") {
+                nextX += 1;
+            }
 
-					if (event.key === "ArrowUp") {
-						nextY -= 1;
-					}
+            if (event.key === "ArrowUp") {
+                nextY -= 1;
+            }
 
-					if (event.key === "ArrowDown") {
-						nextY += 1;
-					}
+            if (event.key === "ArrowDown") {
+                nextY += 1;
+            }
 
-					coordinates = {
-						x: clamp(nextX, 0, maxCoordinate),
-						y: clamp(nextY, 0, maxCoordinate)
-					};
+            coordinates = {
+                x: clamp(nextX, 0, maxCoordinate),
+                y: clamp(nextY, 0, maxCoordinate)
+            };
 
-					makeSelection(coordinates.y * gridSize + coordinates.x);
-					event.stopPropagation();
-				};
+            makeSelection(coordinates.y * gridSize + coordinates.x);
+            event.stopPropagation();
+        };
 
-				const beginTransition = (event) => {
-					if (event.target !== canvas && event.target !== viewport) {
-						return;
-					}
+        const beginTransition = (event) => {
+            if (event.target !== canvas && event.target !== viewport) {
+                return;
+            }
 
-					isTransitioning = true;
-					body.classList.add("gallery-is-panning");
-				};
+            isTransitioning = true;
+            body.classList.add("gallery-is-panning");
+        };
 
-				const finishTransition = (event) => {
-					if (event.target !== canvas && event.target !== viewport) {
-						return;
-					}
+        const finishTransition = (event) => {
+            if (event.target !== canvas && event.target !== viewport) {
+                return;
+            }
 
-					isTransitioning = false;
-					body.classList.remove("gallery-is-panning");
-				};
+            isTransitioning = false;
+            body.classList.remove("gallery-is-panning");
+        };
 
-				const buildResponsiveAssetUrl = (assetUrl) => {
-					const requestedWidth = Math.max(640, Math.round(stageMetrics.width * 1.5));
-					const requestedHeight = Math.max(480, Math.round(stageMetrics.height * 1.5));
+        const buildResponsiveAssetUrl = (assetUrl) => {
+            const requestedWidth = Math.max(640, Math.round(stageMetrics.width * 1.5));
+            const requestedHeight = Math.max(480, Math.round(stageMetrics.height * 1.5));
 
-					return assetUrl
-						.replace(/w=\d+/g, `w=${requestedWidth}`)
-						.replace(/h=\d+/g, `h=${requestedHeight}`);
-				};
+            return assetUrl
+                .replace(/w=\d+/g, `w=${requestedWidth}`)
+                .replace(/h=\d+/g, `h=${requestedHeight}`);
+        };
 
-				const markGalleryLoaded = () => {
-					if (loadFinished) {
-						return;
-					}
+        const markGalleryLoaded = () => {
+            if (loadFinished) {
+                return;
+            }
 
-					loadFinished = true;
-					root.classList.remove("gallery-root--loading");
-					root.classList.add("gallery-root--loaded");
-				};
+            loadFinished = true;
+            root.classList.remove("gallery-root--loading");
+            root.classList.add("gallery-root--loaded");
+        };
 
-				const loadGalleryImages = () => {
-					let finishedAssets = 0;
-					const fallbackTimer = window.setTimeout(markGalleryLoaded, 3500);
+        const loadGalleryImages = () => {
+            let finishedAssets = 0;
+            const fallbackTimer = window.setTimeout(markGalleryLoaded, 3500);
 
-					const completeImageLoad = () => {
-						finishedAssets += 1;
+            const completeImageLoad = () => {
+                finishedAssets += 1;
 
-						if (finishedAssets === galleryItems.length) {
-							window.clearTimeout(fallbackTimer);
-							window.setTimeout(markGalleryLoaded, 300);
-						}
-					};
+                if (finishedAssets === galleryItems.length) {
+                    window.clearTimeout(fallbackTimer);
+                    window.setTimeout(markGalleryLoaded, 300);
+                }
+            };
 
-					galleryItems.forEach((galleryOption, optionIndex) => {
-						const optionNumber = toOptionNumber(optionIndex);
-						const galleryOptionImage = new Image();
+            galleryItems.forEach((galleryOption, optionIndex) => {
+                const optionNumber = toOptionNumber(optionIndex);
+                const galleryOptionImage = new Image();
 
-						galleryOptionImage.id = `gallery-image-option-${optionNumber}`;
-						galleryOptionImage.className = `gallery-option-image gallery-option-image--${optionNumber}`;
-						galleryOptionImage.dataset.galleryIndex = String(optionIndex);
-						galleryOptionImage.alt = `Imagem da galeria ${optionIndex + 1}`;
-						galleryOptionImage.crossOrigin = "anonymous";
-						galleryOptionImage.onload = completeImageLoad;
-						galleryOptionImage.onerror = () => {
-							galleryOption.classList.add("gallery-option--image-error");
-							completeImageLoad();
-						};
-						galleryOptionImage.src = buildResponsiveAssetUrl(galleryAssets[optionIndex]);
-						galleryOption.replaceChildren(galleryOptionImage);
-					});
-				};
+                galleryOptionImage.id = `gallery-image-option-${optionNumber}`;
+                galleryOptionImage.className = `gallery-option-image gallery-option-image--${optionNumber}`;
+                galleryOptionImage.dataset.galleryIndex = String(optionIndex);
+                galleryOptionImage.alt = `Imagem da galeria ${optionIndex + 1}`;
+                galleryOptionImage.crossOrigin = "anonymous";
+                galleryOptionImage.onload = completeImageLoad;
+                galleryOptionImage.onerror = () => {
+                    galleryOption.classList.add("gallery-option--image-error");
+                    completeImageLoad();
+                };
+                galleryOptionImage.src = buildResponsiveAssetUrl(galleryAssets[optionIndex]);
+                galleryOption.replaceChildren(galleryOptionImage);
+            });
+        };
 
-				canvas.addEventListener("click", handleSelection, false);
-				focusButton.addEventListener("click", handleToggleOpen, false);
-				backButton.addEventListener("click", handleToggleOpen, false);
-				zoomControl.addEventListener("input", handleZoomInput);
-				document.addEventListener("wheel", handleZoomFromWheel, { passive: true });
-				document.addEventListener("keydown", handleKeyboard);
+        canvas.addEventListener("click", handleSelection, false);
+        focusButton.addEventListener("click", handleToggleOpen, false);
+        backButton.addEventListener("click", handleToggleOpen, false);
+        zoomControl.addEventListener("input", handleZoomInput);
+        document.addEventListener("wheel", handleZoomFromWheel, {
+            passive: true
+        });
+        document.addEventListener("keydown", handleKeyboard);
 
-				canvas.addEventListener("transitionrun", beginTransition);
-				canvas.addEventListener("transitionstart", beginTransition);
-				canvas.addEventListener("transitionend", finishTransition);
-				viewport.addEventListener("transitionrun", beginTransition);
-				viewport.addEventListener("transitionstart", beginTransition);
-				viewport.addEventListener("transitionend", finishTransition);
+        canvas.addEventListener("transitionrun", beginTransition);
+        canvas.addEventListener("transitionstart", beginTransition);
+        canvas.addEventListener("transitionend", finishTransition);
+        viewport.addEventListener("transitionrun", beginTransition);
+        viewport.addEventListener("transitionstart", beginTransition);
+        viewport.addEventListener("transitionend", finishTransition);
 
-				setZoom(currentZoom);
-				moveToIndex(selectedIndex);
-				syncStageMetrics();
+        setZoom(currentZoom);
+        moveToIndex(selectedIndex);
+        syncStageMetrics();
 
-				if ("ResizeObserver" in window) {
-					const stageResizeObserver = new ResizeObserver(syncStageMetrics);
-					stageResizeObserver.observe(stage);
-				}
+        if ("ResizeObserver" in window) {
+            const stageResizeObserver = new ResizeObserver(syncStageMetrics);
+            stageResizeObserver.observe(stage);
+        }
 
-				window.addEventListener("resize", syncStageMetrics);
-				loadGalleryImages();
-			}
+        window.addEventListener("resize", syncStageMetrics);
+        loadGalleryImages();
+    }
 
-			if (document.readyState === "loading") {
-				document.addEventListener("DOMContentLoaded", initGallery, { once: true });
-			} else {
-				initGallery();
-			}
-		})();
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initGallery, {
+            once: true
+        });
+    } else {
+        initGallery();
+    }
+})();

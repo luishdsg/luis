@@ -26,6 +26,355 @@
     <title>Document</title>
 </head>
 
+<div class="loader" id="loader">
+    <div class="loader-content" id="loaderContent">
+        <svg class="stage" viewBox="0 0 98 108">
+            <mask id="m">
+                <rect width="10" height="10" fill="#fff" />
+            </mask>
+            <g class="col">
+                <g class="box" style="fill: #fff" mask="url(#m)">
+                    <circle cx="5" cy="5" r="5" />
+                </g>
+            </g>
+        </svg>
+        <div class="loader-logo">
+            Carregando...
+        </div>
+
+        <div class="loader-bar">
+            <div class="loader-bar-progress" id="loaderProgress"></div>
+        </div>
+        <div class="loader-percentage" id="loaderPercentage">
+            0%
+        </div>
+
+    </div>
+
+</div>
+<script>
+    (() => {
+
+        const loader = document.getElementById("loader");
+        const loaderContent = document.getElementById("loaderContent");
+        const progress = document.getElementById("loaderProgress");
+        const percentage = document.getElementById("loaderPercentage");
+
+        let progressValue = 0;
+
+
+        /*
+         * =========================================
+         * ATUALIZA PROGRESSO
+         * =========================================
+         */
+
+        function setProgress(value) {
+
+            progressValue = Math.min(
+                100,
+                Math.max(0, value)
+            );
+
+            progress.style.width = `${progressValue}%`;
+
+            percentage.textContent =
+                `${Math.round(progressValue)}%`;
+        }
+
+
+        /*
+         * =========================================
+         * CARREGA IMAGENS
+         * =========================================
+         */
+
+        function waitForImages() {
+
+            const images = [
+                ...document.images
+            ];
+
+            if (!images.length) {
+                return Promise.resolve();
+            }
+
+            return Promise.all(
+
+                images.map((image) => {
+
+                    return new Promise((resolve) => {
+
+                        if (image.complete) {
+                            resolve();
+                            return;
+                        }
+
+                        image.addEventListener(
+                            "load",
+                            resolve,
+                            { once: true }
+                        );
+
+                        image.addEventListener(
+                            "error",
+                            resolve,
+                            { once: true }
+                        );
+
+                    });
+
+                })
+
+            );
+        }
+
+
+        /*
+         * =========================================
+         * CARREGA FONTES
+         * =========================================
+         */
+
+        async function waitForFonts() {
+
+            if (
+                document.fonts &&
+                document.fonts.ready
+            ) {
+                await document.fonts.ready;
+            }
+
+        }
+
+
+        /*
+         * =========================================
+         * ESPERA TODAS AS PROMISES
+         * =========================================
+         */
+
+        async function waitForEverything() {
+
+            setProgress(10);
+
+            await waitForImages();
+
+            setProgress(70);
+
+            await waitForFonts();
+
+            setProgress(90);
+
+            /*
+             * Dá uma pequena folga para o browser
+             * terminar layout/paint.
+             */
+
+            await new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(resolve);
+                });
+            });
+
+            setProgress(100);
+
+        }
+
+
+        /*
+         * =========================================
+         * ANIMAÇÃO DE SAÍDA
+         * =========================================
+         */
+
+        function revealSite() {
+
+            const tl = gsap.timeline({
+
+                defaults: {
+                    ease: "power4.inOut"
+                },
+
+                onComplete() {
+
+                    /*
+                     * Remove completamente o loader
+                     * depois da animação.
+                     */
+
+                    loader.remove();
+
+                    /*
+                     * Libera o scroll.
+                     */
+
+                    document.body.style.overflow = "";
+
+                }
+
+            });
+
+
+            /*
+             * ======================================
+             * 1. Conteúdo do loader dá uma "puxada"
+             * ======================================
+             */
+
+            tl.to(loaderContent, {
+
+                y: -80,
+                scale: 1.08,
+                opacity: 0,
+
+                duration: 0.35,
+
+                ease: "power4.in"
+
+            });
+
+
+            /*
+             * ======================================
+             * 2. A TELA INTEIRA SOBE
+             * ======================================
+             *
+             * O segredo aqui é usar uma curva
+             * extremamente agressiva.
+             */
+
+            tl.to(loader, {
+
+                yPercent: -100,
+
+                duration: 1.15,
+
+                ease: "expo.inOut"
+
+            }, "-=0.05");
+
+
+            /*
+             * ======================================
+             * 3. Pequeno "overshoot" visual
+             * ======================================
+             *
+             * Dá aquela sensação mais brutal.
+             */
+
+            tl.set(loader, {
+
+                yPercent: -103
+
+            });
+
+
+            tl.to(loader, {
+
+                yPercent: -100,
+
+                duration: 0.18,
+
+                ease: "power2.out"
+
+            });
+
+        }
+
+
+        /*
+         * =========================================
+         * INICIALIZA
+         * =========================================
+         */
+
+        async function init() {
+
+            /*
+             * Impede scroll enquanto carrega.
+             */
+
+            document.body.style.overflow = "hidden";
+
+
+            /*
+             * Estado inicial.
+             */
+
+            gsap.set(loader, {
+                yPercent: 0
+            });
+
+            gsap.set(loaderContent, {
+                y: 0,
+                opacity: 1,
+                scale: 1
+            });
+
+
+            /*
+             * Anima a barra enquanto os recursos
+             * estão sendo processados.
+             */
+
+            gsap.to(progress, {
+
+                opacity: 1,
+
+                duration: 0.3
+
+            });
+
+
+            /*
+             * Aguarda tudo.
+             */
+
+            await waitForEverything();
+
+
+            /*
+             * Pequeno delay para o 100% ser percebido.
+             */
+
+            await new Promise(resolve => {
+
+                setTimeout(resolve, 150);
+
+            });
+
+
+            /*
+             * Revela o site.
+             */
+
+            revealSite();
+
+        }
+
+
+        /*
+         * DOM completamente processado.
+         */
+
+        if (document.readyState === "loading") {
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                init,
+                { once: true }
+            );
+
+        } else {
+
+            init();
+
+        }
+
+    })();
+</script>
+
 <div class="image-modal" id="imageModal">
     <div class="modal-card justify-content-end align-items-center" id="modalCard">
         <div id="modalImageContainer" class="modal-image-container align-content-center">
@@ -74,18 +423,40 @@
         <div class="logo">
             <span class="logo-dot"></span>
             <span id="contador">...</span>
-            DERMEXCEL
+            <h1 class="title-page">
+                <span class="magic">
+                    <span class="magic-star">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                        </svg>
+                    </span>
+                    <span class="magic-star">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                        </svg>
+                    </span>
+                    <span class="magic-star">
+                        <svg viewBox="0 0 512 512">
+                            <path
+                                d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+                        </svg>
+                    </span>
+                    <span class="magic-text cursor">Não clique aqui!!</span>
+                </span>
+            </h1>
         </div>
         <fieldset class="switcher px-4 py-3">
             <ul class="nav-links">
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Treatment plans</a></li>
-                <li><a href="#">Diagnosis</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#intro">Sobre</a></li>
+                <li><a href="#skill">Habilidades</a></li>
+                <li><a href="#jobs">Trabalhos</a></li>
+                <li><a>MAIS</a></li>
             </ul>
         </fieldset>
         <div class="glassContainer" id="glassContainer">
-            asdadadsdsa
+            hhhhhhhhhhhhhhh
         </div>
         <svg style="display: none">
             <filter id="container-glass" x="0%" y="0%" width="100%" height="100%">
@@ -100,9 +471,7 @@
                 </feDisplacementMap>
             </filter>
         </svg>
-        <button id="btn" class="glass">
-
-        </button>
+        <button id="btn" class="glass"></button>
 
         <svg style="position:absolute;width:0;height:0">
             <filter id="frosted" primitiveUnits="objectBoundingBox">
@@ -271,8 +640,8 @@
     </section>
 
     <!-- ============ SECTION 2: TEAM GRID ============ -->
-    
-    <section class="team-section">
+
+    <section id="intro" class="team-section">
         <div class="team-head">
             <div>
                 <div class="eyebrow">A prática leva á perfeição</div>
@@ -281,9 +650,11 @@
             </div>
             <div class="d-flex justify-content-between ">
 
-                <p>Caro Dev fique a vontade <br />para explorar o site, <br />pois há algums ester eggs <br />e coisas
-                    legais expalhadas por ai... <br /><em style="color:#cfc8c0;">Clique no ano atual no footer da
-                        página</em></p>
+                <p>Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e mobile utilizando React,
+                    Angular, Node.js, NestJS e TypeScript. Experiência em desenvolvimento frontend focado em
+                    performance, acessibilidade e experiência do usuário, além de atuação em APIs REST, integrações,
+                    sistemas escaláveis e banco de dados MySQL e MongoDB. Vivência em aplicações do mercado
+                    imobiliário, backoffice administrativo e rastreamento em tempo real.</p>
                 <div class="coruja">
                     <div class="owl">
                         <span class="head-owl"><span class="brows-owl"><span class="brow-left">_</span><span
@@ -298,88 +669,103 @@
                 </div>
             </div>
         </div>
-      
+        <div id="skill">
+            <span id="habilidades"></span>
+            <span id="skills"></span>
+        </div>
+
+        <!-- The SVG filter used to create the merging effect -->
+        <svg id="filters">
+            <defs>
+                <filter id="threshold">
+                    <!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+									0 1 0 0 0
+									0 0 1 0 0
+									0 0 0 255 -140" />
+                </filter>
+            </defs>
+        </svg>
+
 
         <div class="team-grid" id="teamGrid">
-            <div data-title="myehop" class="t-card prog-blur image-1">
+            <div class="t-card prog-blur">
                 <div class="text">
-                    <p class="mb-0">Dev. jr</p>
+                    <p class="mb-0">React-Native</p>
                 </div>
-                <button class="btc btc-2 hover-slide-up">
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">React</p>
+                </div>
+                <!-- <button onclick="showMoreInfo(trad)" class="btc btc-2 hover-slide-up">
                     <span>ver detalhes</span>
-                </button>
+                </button> -->
             </div>
-            <div class="t-card prog-blur image-2">
-                <div class="text mb-5">
-                    <p class="mb-0">Dev. jr</p>
-                    <p class="mb-0">02/2020-02/2021</p>
-                    <p class="mb-0">My Eshop</p>
-                </div>
-                <button onclick="showMoreInfo(trad)" class="btc btc-2 hover-slide-up">
-                    <span>ver detalhes</span>
-
-                </button>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dermd_portrait-02.jpg?v=1782006127?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Eli Ramirez</div>
-                    <div class="rl">Design Lead</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Angular</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/moist-3x4-05.jpg?v=1781995150?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Naomi Park</div>
-                    <div class="rl">Brand Strategist</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Html&Css</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-09.jpg?v=1781989746?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Theo Vance</div>
-                    <div class="rl">Senior Engineer</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">JavaScript</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/ret-9x16-02.jpg?v=1781973910?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Kit Bellamy</div>
-                    <div class="rl">Art Direction</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">TypeScript</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/col-1x1-07.jpg?v=1781969450?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Ravi Saigal</div>
-                    <div class="rl">Motion · 3D</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Ionic</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-14.jpg?v=1781989745?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Iris Caldwell</div>
-                    <div class="rl">Producer</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Firebase</p>
                 </div>
             </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/fes-3x4-01.jpg?v=1782034037?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Maya Okafor</div>
-                    <div class="rl">Founder · CEO</div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Git</p>
+                </div>
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Docker</p>
+                </div>
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">Go Lang</p>
+                </div>
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">MongoDB</p>
+                </div>
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">MySql</p>
+                </div>
+            </div>
+            <div class="t-card prog-blur">
+                <div class="text">
+                    <p class="mb-0">NestJs</p>
                 </div>
             </div>
         </div>
-    <canvas id="morse-wave-background" aria-hidden="true"></canvas>
+        <canvas id="morse-wave-background" aria-hidden="true"></canvas>
 
-          <div id="home-animation-wrapper" style="opacity: 0">
+        <div id="home-animation-wrapper" style="opacity: 0">
 
             <div class="slides">
                 <div class="slide" count="0" data-1="EXPERIÊNCIA" data-2="otimismo" data-3="+cautela"></div>
@@ -491,7 +877,7 @@
 
     </section>
 
-    <section class=" w-100 jobs-section bloco-animado" id="minhaDiv">
+    <section class=" w-100 jobs-section bloco-animado" id="jobs">
         <div id="letter-3" class="letterjob"></div>
         <div id="letter-2" class="letterjob"></div>
         <div id="letter-1" class="letterjob">
@@ -525,7 +911,8 @@
                         </button>
                     </div>
 
-                    <aside id="gallery-zoom-container" class="d-none gallery-zoom-container" aria-label="Controle de zoom">
+                    <aside id="gallery-zoom-container" class="d-none gallery-zoom-container"
+                        aria-label="Controle de zoom">
                         <div id="gallery-zoom-panel" class="gallery-zoom-panel">
                             <div id="gallery-zoom-input" class="gallery-zoom-input">
                                 <input type="range" id="gallery-zoom-control" class="gallery-zoom-range"
@@ -575,12 +962,12 @@
                 <div class="lbl">Em tempo de excução</div>
             </div>
             <div class="stat-block">
-                <div class="num" data-count="150.000"><span>0</span><small>Linhas</small></div>
-                <div class="lbl">de acordo com o (GitHub)</div>
+                <div class="num" data-count="150Mil"><span>0</span><small>Mil</small></div>
+                <div class="lbl">Linhas de Código</div>
             </div>
         </div>
     </section>
-    <div class="footer">
+    <div id="footer" class="footer">
         <div class="bubbles">
             <div class="bubble"
                 style="--size:2.8227970467219228rem; --distance:7.506144140120468rem; --position:87.71042183809548%; --time:2.580677745821894s; --delay:-2.9418441998954834s;">

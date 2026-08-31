@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+
 :root {
     --bg: #f5efe2;
     --bg-2: #ede6d6;
@@ -33,7 +35,7 @@ html,
 body {
     overscroll-behavior-x: none;
     overscroll-behavior-y: none;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     background: var(--bg);
     color: var(--ink);
     font-family: "DM Sans", system-ui, sans-serif;
@@ -63,6 +65,74 @@ html.lenis,
 html.lenis body {
     height: auto;
 }
+
+/* loader */
+.loader {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 999999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0b0b0b;
+
+    overflow: hidden;
+
+    will-change: transform;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    will-change: transform, opacity;
+}
+
+.loader-logo {
+    font-size: clamp(40px, 8vw, 100px);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+}
+
+.loader-bar {
+    width: min(300px, 60vw);
+    height: 3px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    overflow: hidden;
+}
+
+.loader-bar-progress {
+    width: 0%;
+    height: 100%;
+
+    background: white;
+
+    transform-origin: left center;
+}
+
+.loader-percentage {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+}
+
+.stage {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+}
+
 
 .lenis.lenis-smooth {
     scroll-behavior: auto !important;
@@ -138,6 +208,147 @@ html.lenis body {
         inset 0 -2px 3px rgba(120, 20, 0, 0.3);
 }
 
+/* title text */
+:root {
+    --purple: rgb(123, 31, 162);
+    --violet: rgb(103, 58, 183);
+}
+
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+
+    to {
+        background-position: -200% center;
+    }
+}
+
+@keyframes scale {
+
+    from,
+    to {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.title-page {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-size: clamp(2em, 2vw, 4em);
+    font-weight: 400;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+}
+
+.title-page>.magic {
+    display: inline-block;
+    position: relative;
+}
+
+.title-page>.magic>.magic-star {
+    --size: clamp(20px, 1.5vw, 30px);
+
+    animation: scale 700ms ease forwards;
+    display: block;
+    height: var(--size);
+    left: var(--star-left);
+    position: absolute;
+    top: var(--star-top);
+    width: var(--size);
+}
+
+.title-page>.magic>.magic-star>svg {
+    animation: rotate 1000ms linear infinite;
+    display: block;
+    opacity: 0.7;
+}
+
+.title-page>.magic>.magic-star>svg>path {
+    fill: var(--violet);
+}
+
+.title-page>.magic>.magic-text {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(to right,
+            var(--purple),
+            var(--violet),
+            var(--pink),
+            var(--purple));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+/* -- YouTube Link Styles -- */
+
+#source-link {
+    top: 60px;
+}
+
+#source-link>i {
+    color: rgb(94, 106, 210);
+}
+
+#yt-link {
+    top: 10px;
+}
+
+#yt-link>i {
+    color: rgb(239, 83, 80);
+}
+
+.meta-link {
+    align-items: center;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    display: inline-flex;
+    gap: 5px;
+    left: 10px;
+    padding: 10px 20px;
+    position: fixed;
+    text-decoration: none;
+    transition: background-color 600ms, border-color 600ms;
+    z-index: 10000;
+}
+
+.meta-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.meta-link>i,
+.meta-link>span {
+    height: 20px;
+    line-height: 20px;
+}
+
+.meta-link>span {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    transition: color 600ms;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -154,7 +365,7 @@ html.lenis body {
 }
 
 .nav-links a:hover {
-    color: var(--bg);
+    color: white;
 }
 
 .nav-links a::after {
@@ -962,7 +1173,7 @@ body.modal-open {
 
 .team-grid {
     max-width: 1280px;
-    margin: 38em auto auto;
+    margin: 2em auto auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
@@ -976,9 +1187,6 @@ body.modal-open {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background: linear-gradient(180deg,
-            #ffffff 0%,
-            var(--orange-3) 100%);
     position: relative;
     box-shadow: 0 24px 40px -16px rgba(180, 50, 20, 0.4),
         0 10px 22px -6px rgba(140, 40, 10, 0.22),
@@ -999,6 +1207,66 @@ body.modal-open {
             rgba(100, 20, 0, 0.22) 100%);
     pointer-events: none;
     z-index: 2;
+}
+
+.t-card:nth-child(1) {
+    background-image: url('https://miro.medium.com/v2/resize:fit:800/1*BEEkxmqBkpdgtGUDgH3t9g.png');
+}
+
+.t-card:nth-child(2) {
+    background-image: url('https://i.pinimg.com/736x/b0/73/e9/b073e9150cc603e3a5b757be38fc771b.jpg');
+}
+
+.t-card:nth-child(3) {
+    background-image: url('https://opensource.google/images/projects/os-projects-angular_thumbnail.png');
+}
+
+.t-card:nth-child(4) {
+    background-image: url('https://w0.peakpx.com/wallpaper/870/448/HD-wallpaper-coder-black-logo-minimal-programmer-programming-thumbnail.jpg');
+}
+
+.t-card:nth-child(5) {
+    background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*Shk_5yhp2D-cWi40_4X4ow.jpeg');
+}
+
+.t-card:nth-child(6) {
+    background-image: url('https://wallpaperaccess.com/full/7990029.png');
+}
+
+.t-card:nth-child(7) {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoABJNJUQ6FbRJC_JkX62HNmiC1Ohk1XirHEJW_YQ&s=10');
+}
+
+.t-card:nth-child(8) {
+    background-image: url('https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png?hl=pt-br');
+}
+
+.t-card:nth-child(9) {
+    background-image: url('https://w0.peakpx.com/wallpaper/909/662/HD-wallpaper-git-hub-chedesign-code-github-programming.jpg');
+}
+
+.t-card:nth-child(10) {
+    background-image: url('https://thetribe.io/wp-content/uploads/docker-container-management-illustration.jpg');
+}
+
+.t-card:nth-child(11) {
+    background-image: url('https://sagacitysoftware.co.in/wp-content/uploads/2020/07/RPA3.jpg');
+}
+
+.t-card:nth-child(12) {
+    background-image: url('https://wallpaperaccess.com/full/8658745.jpg');
+}
+
+.t-card:nth-child(13) {
+    background-image: url('https://dkrn4sk0rn31v.cloudfront.net/uploads/2019/08/30114919/MYSQL-PRIMEIROS-PASSOS.png');
+}
+
+.t-card:nth-child(14) {
+    background-image: url('https://wallpaperaccess.com/full/26627027.jpg');
+}
+
+.t-card:nth-child(15) {
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/361/665/85/node-js-hexagon-wallpaper-preview.jpg');
 }
 
 
@@ -1627,6 +1895,7 @@ body {
     box-sizing: border-box;
     margin: 0 auto;
     border: none;
+    border: 1px solid rgba(255, 255, 255, 0.411);
     border-radius: 99em;
     font-size: var(--fz);
     background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
@@ -1950,7 +2219,7 @@ body {
 /* bg canva */
 #morse-wave-background {
     position: absolute;
-    transform: translate(-1%, 90%);
+    transform: translate(-2%, 100%);
     top: 0;
     z-index: -1;
 }
@@ -2050,12 +2319,17 @@ body {
     z-index: 99;
     pointer-events: none;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: system-ui, sans-serif;
     font-weight: 800;
+    border-radius: 5em;
+    border: 1px solid rgba(255, 255, 255, 0.247);
+    padding: .2em .7em .4em .7em;
+    background-color: color-mix(in srgb, var(--c-glass) 12%, transparent);
+    backdrop-filter: blur(8px) url(#switcher) saturate(var(--saturation));
+    -webkit-backdrop-filter: blur(8px) saturate(var(--saturation));
 
     color: white;
-    mix-blend-mode: overlay;
 
     transform: translate3d(0, calc(100% + 0.5rem), 0);
     filter: blur(24px);
@@ -2082,7 +2356,6 @@ body {
 
     background: var(--image) no-repeat center center / cover;
 
-    mask: linear-gradient(to top, transparent 4rem, white 50%);
 
     transition: all 200ms;
 }
@@ -2318,20 +2591,20 @@ body {
         transform: rotate(7deg);
         bottom: -200%;
         width: 90%;
-    height: 200vh;
+        height: 200vh;
 
     }
 
     25% {
         transform: rotate(7deg);
         bottom: -180%;
-    height: 200vh;
+        height: 200vh;
 
         width: 90%;
     }
 
     50% {
-    height: 200vh;
+        height: 200vh;
 
         width: 90%;
         bottom: -180%;
@@ -2349,7 +2622,7 @@ body {
 
 @keyframes letter-2 {
     0% {
-    height: 200vh;
+        height: 200vh;
 
         transform: rotate(13deg);
         bottom: -200%;
@@ -2358,7 +2631,7 @@ body {
     }
 
     25% {
-    height: 200vh;
+        height: 200vh;
 
         transform: rotate(13deg);
         bottom: -175%;
@@ -2367,7 +2640,7 @@ body {
 
     50% {
 
-    height: 200vh;
+        height: 200vh;
         width: 90%;
         bottom: -175%;
         transform: rotate(0deg);
@@ -2387,7 +2660,7 @@ body {
     0% {
         transform: rotate(18deg);
         bottom: -200%;
-    height: 200vh;
+        height: 200vh;
         width: 90%;
 
     }
@@ -2395,12 +2668,12 @@ body {
     25% {
         transform: rotate(18deg);
         bottom: -170%;
-    height: 200vh;
+        height: 200vh;
         width: 90%;
     }
 
     50% {
-    height: 200vh;
+        height: 200vh;
 
         width: 90%;
         bottom: -170%;
@@ -2419,7 +2692,7 @@ body {
 
 @keyframes letter-4 {
     0% {
-    height: 200vh;
+        height: 200vh;
         bottom: -200%;
     }
 
@@ -2927,4 +3200,31 @@ body {
             var(--musgo) 100%);
     transform: translate3d(105.2083333333%, 0, 0);
     transform-origin: 155.2083333333% 50%;
+}
+
+#skill {
+    margin: auto;
+    width: 100vw;
+    height: 10em;
+    top: 0;
+    bottom: 0;
+
+    /* This filter is a lot of the magic, try commenting it out to see how the morphing works! */
+    filter: url(#threshold) blur(0.6px);
+}
+
+/* Your average text styling */
+#skills,
+#habilidades {
+    color: tomato;
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+
+    font-family: 'Raleway', sans-serif;
+    font-size: 80pt;
+
+    text-align: center;
+
+    user-select: none;
 }
