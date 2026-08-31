@@ -8,6 +8,11 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&display=swap"
         rel="stylesheet" />
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -141,7 +146,7 @@
             </div>
         </div>
 
-        <!-- Card row of portraits -->
+        <!--  -->
         <div class="cards-row" id="cardsRow">
             <div class="card card-1" data-rot="-9" data-depth="14">
                 <img src="https://i.ibb.co/KpTS6ZQc/Captura-de-Tela-255.png"
@@ -266,6 +271,7 @@
     </section>
 
     <!-- ============ SECTION 2: TEAM GRID ============ -->
+    
     <section class="team-section">
         <div class="team-head">
             <div>
@@ -292,7 +298,88 @@
                 </div>
             </div>
         </div>
-        <div id="home-animation-wrapper" style="opacity: 0">
+      
+
+        <div class="team-grid" id="teamGrid">
+            <div data-title="myehop" class="t-card prog-blur image-1">
+                <div class="text">
+                    <p class="mb-0">Dev. jr</p>
+                </div>
+                <button class="btc btc-2 hover-slide-up">
+                    <span>ver detalhes</span>
+                </button>
+            </div>
+            <div class="t-card prog-blur image-2">
+                <div class="text mb-5">
+                    <p class="mb-0">Dev. jr</p>
+                    <p class="mb-0">02/2020-02/2021</p>
+                    <p class="mb-0">My Eshop</p>
+                </div>
+                <button onclick="showMoreInfo(trad)" class="btc btc-2 hover-slide-up">
+                    <span>ver detalhes</span>
+
+                </button>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dermd_portrait-02.jpg?v=1782006127?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Eli Ramirez</div>
+                    <div class="rl">Design Lead</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/moist-3x4-05.jpg?v=1781995150?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Naomi Park</div>
+                    <div class="rl">Brand Strategist</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-09.jpg?v=1781989746?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Theo Vance</div>
+                    <div class="rl">Senior Engineer</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/ret-9x16-02.jpg?v=1781973910?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Kit Bellamy</div>
+                    <div class="rl">Art Direction</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/col-1x1-07.jpg?v=1781969450?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Ravi Saigal</div>
+                    <div class="rl">Motion · 3D</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-14.jpg?v=1781989745?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Iris Caldwell</div>
+                    <div class="rl">Producer</div>
+                </div>
+            </div>
+            <div class="t-card">
+                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/fes-3x4-01.jpg?v=1782034037?w=400&h=540&fit=crop&crop=faces&q=80"
+                    alt="" />
+                <div class="t-meta">
+                    <div class="nm">Maya Okafor</div>
+                    <div class="rl">Founder · CEO</div>
+                </div>
+            </div>
+        </div>
+    <canvas id="morse-wave-background" aria-hidden="true"></canvas>
+
+          <div id="home-animation-wrapper" style="opacity: 0">
 
             <div class="slides">
                 <div class="slide" count="0" data-1="EXPERIÊNCIA" data-2="otimismo" data-3="+cautela"></div>
@@ -315,7 +402,6 @@
                     </g>
                 </mask>
 
-                <!-- BUBBLES -->
                 <g id="bubbles" style="mask:url(#bubbles-1);">
                     <path d="M1915.1-195.3c-87.9,90.4-16.3,268,122.9,331.9S2339,73.2,2365.6,15.3
 			c26.6-57.8-59-269.3-108-291.9C2208.5-299.1,2068.2-352.9,1915.1-195.3z" />
@@ -403,113 +489,94 @@
 
         </div>
 
-        <div class="team-grid" id="teamGrid">
+    </section>
 
-            <div data-title="myehop" class="t-card prog-blur image-1">
-                <div class="text">
-                    <p class="mb-0">Dev. jr</p>
-                </div>
-                <!-- <button class="btc btc-2 hover-slide-up">
-                    <span>ver detalhes</span>
-                </button> -->
-            </div>
-            <div class="t-card prog-blur image-2">
-                <div class="text mb-5">
-                    <p class="mb-0">Dev. jr</p>
-                    <p class="mb-0">02/2020-02/2021</p>
-                    <p class="mb-0">My Eshop</p>
-                </div>
-                <button onclick="showMoreInfo(trad)" class="btc btc-2 hover-slide-up">
-                    <span>ver detalhes</span>
+    <section class=" w-100 jobs-section bloco-animado" id="minhaDiv">
+        <div id="letter-3" class="letterjob"></div>
+        <div id="letter-2" class="letterjob"></div>
+        <div id="letter-1" class="letterjob">
+            <div class="w-100 h-100" style="border-radius: 3em;backdrop-filter: blur(40px);"></div>
+        </div>
+        <div id="letter-4" class="letterjob h-90 bg-info">
+            <main id="gallery-app" class="gallery-app" aria-label="Galeria com quatro opcoes">
+                <section id="gallery-stage" class="gallery-stage" data-gallery-grid-size="2"
+                    aria-label="Area de visualizacao da galeria">
+                    <div id="gallery-viewport" class="gallery-viewport">
+                        <div id="gallery-canvas" class="gallery-canvas">
+                            <button type="button" id="gallery-option-01"
+                                class="gallery-option gallery-option--selected selected" data-gallery-index="0"
+                                aria-label="Selecionar imagem 1"></button>
+                            <button type="button" id="gallery-option-02" class="gallery-option" data-gallery-index="1"
+                                aria-label="Selecionar imagem 2"></button>
+                            <button type="button" id="gallery-option-03" class="gallery-option" data-gallery-index="2"
+                                aria-label="Selecionar imagem 3"></button>
+                            <button type="button" id="gallery-option-04" class="gallery-option" data-gallery-index="3"
+                                aria-label="Selecionar imagem 4"></button>
+                        </div>
+                    </div>
 
-                </button>
-            </div>
 
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/dermd_portrait-02.jpg?v=1782006127?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Eli Ramirez</div>
-                    <div class="rl">Design Lead</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/moist-3x4-05.jpg?v=1781995150?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Naomi Park</div>
-                    <div class="rl">Brand Strategist</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-09.jpg?v=1781989746?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Theo Vance</div>
-                    <div class="rl">Senior Engineer</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/ret-9x16-02.jpg?v=1781973910?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Kit Bellamy</div>
-                    <div class="rl">Art Direction</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/col-1x1-07.jpg?v=1781969450?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Ravi Saigal</div>
-                    <div class="rl">Motion · 3D</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/lit-3x4-14.jpg?v=1781989745?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Iris Caldwell</div>
-                    <div class="rl">Producer</div>
-                </div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.shopify.com/s/files/1/0185/5999/1872/files/fes-3x4-01.jpg?v=1782034037?w=400&h=540&fit=crop&crop=faces&q=80"
-                    alt="" />
-                <div class="t-meta">
-                    <div class="nm">Maya Okafor</div>
-                    <div class="rl">Founder · CEO</div>
-                </div>
-            </div>
+                    <button type="button" id="gallery-back-button" class="gallery-back-button">Fechar</button>
+
+                    <div id="gallery-focus-layer" class="gallery-focus-layer">
+                        <button type="button" id="gallery-focus-button" class="gallery-focus-button"
+                            aria-labelledby="gallery-focus-label" aria-expanded="false">
+                            <span class="visually-hidden" id="gallery-focus-label">Expandir imagem selecionada</span>
+                        </button>
+                    </div>
+
+                    <aside id="gallery-zoom-container" class="d-none gallery-zoom-container" aria-label="Controle de zoom">
+                        <div id="gallery-zoom-panel" class="gallery-zoom-panel">
+                            <div id="gallery-zoom-input" class="gallery-zoom-input">
+                                <input type="range" id="gallery-zoom-control" class="gallery-zoom-range"
+                                    name="gallery-zoom" min="0.45" max="0.9" value="0.5" step="0.05"
+                                    orient="vertical" />
+                                <div id="gallery-zoom-lines" class="gallery-zoom-lines" aria-hidden="true">
+                                    <div id="gallery-zoom-tick-01" class="gallery-zoom-tick"></div>
+                                    <div id="gallery-zoom-tick-02" class="gallery-zoom-tick"></div>
+                                    <div id="gallery-zoom-tick-03" class="gallery-zoom-tick"></div>
+                                    <div id="gallery-zoom-tick-04" class="gallery-zoom-tick"></div>
+                                    <div id="gallery-zoom-tick-05" class="gallery-zoom-tick"></div>
+                                </div>
+                                <label for="gallery-zoom-control" id="gallery-zoom-label"
+                                    class="gallery-zoom-label">zoom</label>
+                            </div>
+                            <div id="gallery-zoom-values" class="gallery-zoom-values" aria-hidden="true">
+                                <div id="gallery-zoom-value-high" class="gallery-zoom-value">[.900]</div>
+                                <div id="gallery-zoom-value-mid" class="gallery-zoom-value">[.675]</div>
+                                <div id="gallery-zoom-value-low" class="gallery-zoom-value">[.450]</div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <div id="gallery-loader" class="gallery-loader" aria-hidden="true">
+                        <div id="gallery-loader-vertical-line"
+                            class="gallery-loader-line gallery-loader-line--vertical"></div>
+                        <div id="gallery-loader-horizontal-line"
+                            class="gallery-loader-line gallery-loader-line--horizontal"></div>
+                        <div id="gallery-loader-center" class="gallery-loader-center"></div>
+                    </div>
+                </section>
+            </main>
         </div>
 
     </section>
-    <canvas id="morse-wave-background" aria-hidden="true"></canvas>
-    <section style="height: 100vh;">asdasdasdasdasd</section>
-    <section class="jobs-section bloco-animado" id="minhaDiv">
-       <div id="letter-3" class="letterjob"></div>
-       <div id="letter-2" class="letterjob"></div>
-       <div id="letter-1" class="letterjob"></div>
-    </section>
-
-    <section style="height: 100vh;">asdasdsadasdsads</section>
-
 
     <!-- ============ SECTION 3: STATS ============ -->
     <section class="stats">
         <div class="stats-inner">
-            <h3>Cellular Dermal<br /> <em>Intelligence</em>.</h3>
+            <h3>Análise Dev<br /> <em>Desempenho</em>.</h3>
             <div class="stat-block">
-                <div class="num" data-count="62"><span>0</span></div>
-                <div class="lbl">Projects shipped</div>
+                <div class="num" data-count="32"><span>0</span></div>
+                <div class="lbl">Projetos Entregue</div>
             </div>
             <div class="stat-block">
-                <div class="num" data-count="14"><span>0</span><small>yrs</small></div>
-                <div class="lbl">Combined craft</div>
+                <div class="num" data-count="4"><span>0</span><small> anos</small></div>
+                <div class="lbl">Em tempo de excução</div>
             </div>
             <div class="stat-block">
-                <div class="num" data-count="9"><span>0</span><small>.4</small></div>
-                <div class="lbl">Avg NPS</div>
+                <div class="num" data-count="150.000"><span>0</span><small>Linhas</small></div>
+                <div class="lbl">de acordo com o (GitHub)</div>
             </div>
         </div>
     </section>

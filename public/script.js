@@ -1382,6 +1382,7 @@ const div = document.querySelector("#minhaDiv");
 const letter1 = document.querySelector("#letter-1");
 const letter2 = document.querySelector("#letter-2");
 const letter3 = document.querySelector("#letter-3");
+const letter4 = document.querySelector("#letter-4");
 
 let jaAnimou = false;
 
@@ -1391,11 +1392,9 @@ const observer = new IntersectionObserver(
             if (entry.isIntersecting && !jaAnimou) {
                 jaAnimou = true;
 
-                div.classList.add("ativo");
-                letter1.classList.add("letter-1");
-                letter2.classList.add("letter-2");
-                letter3.classList.add("letter-3");
+
                 rolarAteFinalDaDiv(div);
+                iniciarSequencia();
 
                 observer.unobserve(div);
             }
@@ -1406,6 +1405,23 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(div);
+
+function iniciarSequencia() {
+    div.classList.add("ativo");
+      setTimeout(() => {
+        letter1.classList.add("letter-1");
+    }, 100);
+    setTimeout(() => {
+        letter2.classList.add("letter-2");
+    }, 200);
+     setTimeout(() => {
+        letter3.classList.add("letter-3");
+    }, 300);
+     setTimeout(() => {
+        letter4.classList.add("letter-4");
+    }, 1000);
+    
+}
 
 function rolarAteFinalDaDiv(elemento) {
     const inicio = window.scrollY;
@@ -1436,3 +1452,302 @@ function rolarAteFinalDaDiv(elemento) {
 function easeOutExpo(t) {
     return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
+
+
+// jobs section
+
+		(() => {
+			"use strict";
+
+			const galleryAssets = [
+				"./assets/myeshop.png",
+				"./assets/tgt.png",
+				"./assets/imovestock.png",
+				"./assets/mocar.png",
+			];
+
+			const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+			const toOptionNumber = (indexValue) => String(indexValue + 1).padStart(2, "0");
+
+			function initGallery() {
+				const root = document.documentElement;
+				const body = document.body;
+				const stage = document.querySelector("#gallery-stage");
+				const viewport = document.querySelector("#gallery-viewport");
+				const canvas = document.querySelector("#gallery-canvas");
+				const focusButton = document.querySelector("#gallery-focus-button");
+				const backButton = document.querySelector("#gallery-back-button");
+				const zoomControl = document.querySelector("#gallery-zoom-control");
+				const galleryItems = Array.from(canvas.querySelectorAll(".gallery-option"));
+				const gridSize = Number.parseInt(stage.dataset.galleryGridSize, 10) || 2;
+				const zoomStep = Number.parseFloat(zoomControl.step) || 0.05;
+				const minZoom = Number.parseFloat(zoomControl.min);
+				const maxZoom = Number.parseFloat(zoomControl.max);
+				let selectedIndex = galleryItems.findIndex((item) => item.classList.contains("gallery-option--selected"));
+				let currentZoom = Number.parseFloat(zoomControl.value);
+				let isTransitioning = false;
+				let loadFinished = false;
+				let coordinates = { x: 0, y: 0 };
+				let stageMetrics = {
+					width: 0,
+					height: 0,
+					columnGap: 0,
+					rowGap: 0
+				};
+
+				if (selectedIndex < 0) {
+					selectedIndex = 0;
+				}
+
+				const getGridCoordinates = (indexValue) => ({
+					x: indexValue % gridSize,
+					y: Math.floor(indexValue / gridSize)
+				});
+const galleryFrameOffsets = [
+	{ x: 0, y: 0 },
+	{ x: -24, y: 0 },
+	{ x: 16, y: -10 },
+	{ x: -12, y: 18 }
+];
+				const translateCanvas = () => {
+					const frameOffset = galleryFrameOffsets[selectedIndex];
+	const xOffset = -coordinates.x * (stageMetrics.width + stageMetrics.columnGap) + frameOffset.x;
+	const yOffset = -coordinates.y * (stageMetrics.height + stageMetrics.rowGap) + frameOffset.y;
+					canvas.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+				};
+
+				const syncStageMetrics = () => {
+					const stageBox = stage.getBoundingClientRect();
+					const canvasStyles = window.getComputedStyle(canvas);
+					const columnGap = Number.parseFloat(canvasStyles.columnGap);
+					const rowGap = Number.parseFloat(canvasStyles.rowGap);
+
+					stageMetrics = {
+						width: stageBox.width,
+						height: stageBox.height,
+						columnGap: Number.isNaN(columnGap) ? 0 : columnGap,
+						rowGap: Number.isNaN(rowGap) ? 0 : rowGap
+					};
+
+					translateCanvas();
+				};
+
+				const moveToIndex = (indexValue) => {
+					coordinates = getGridCoordinates(indexValue);
+					translateCanvas();
+				};
+
+				const setZoom = (zoomValue) => {
+					currentZoom = clamp(Number.parseFloat(zoomValue), minZoom, maxZoom);
+					stage.style.setProperty("--gallery-zoom", currentZoom.toFixed(2));
+					zoomControl.value = currentZoom.toFixed(2);
+				};
+
+				const setSelectedClasses = (indexValue, shouldSelect) => {
+					const optionClassMethod = shouldSelect ? "add" : "remove";
+
+					galleryItems[indexValue].classList[optionClassMethod]("gallery-option--selected", "selected");
+				};
+
+				const makeSelection = (nextIndex) => {
+					if (nextIndex === selectedIndex || nextIndex < 0 || nextIndex >= galleryItems.length) {
+						return;
+					}
+
+					setSelectedClasses(selectedIndex, false);
+					selectedIndex = nextIndex;
+					setSelectedClasses(selectedIndex, true);
+					moveToIndex(selectedIndex);
+				};
+
+				const handleSelection = (event) => {
+					const selectedControl = event.target.closest("[data-gallery-index]");
+
+					if (!selectedControl || isTransitioning) {
+						return;
+					}
+
+					const nextIndex = Number.parseInt(selectedControl.dataset.galleryIndex, 10);
+
+					if (Number.isNaN(nextIndex) || nextIndex === selectedIndex) {
+						return;
+					}
+
+					event.preventDefault();
+					makeSelection(nextIndex);
+					event.stopPropagation();
+				};
+
+				const handleToggleOpen = (event) => {
+					if (isTransitioning) {
+						return;
+					}
+
+					event.preventDefault();
+					root.classList.toggle("gallery-root--open");
+					focusButton.setAttribute("aria-expanded", String(root.classList.contains("gallery-root--open")));
+					event.stopPropagation();
+				};
+
+				const handleZoomInput = (event) => {
+					if (isTransitioning) {
+						return;
+					}
+
+					setZoom(event.target.value);
+				};
+
+				const handleZoomFromWheel = (event) => {
+					if (isTransitioning) {
+						return;
+					}
+
+					const direction = event.deltaY < 0 ? 1 : -1;
+					setZoom(currentZoom + direction * zoomStep);
+				};
+
+				const handleKeyboard = (event) => {
+					const handledKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"]);
+
+					if (!handledKeys.has(event.key) || event.target === zoomControl || isTransitioning) {
+						return;
+					}
+
+					event.preventDefault();
+
+					if (event.key === "Enter") {
+						handleToggleOpen(event);
+						return;
+					}
+
+					let nextX = coordinates.x;
+					let nextY = coordinates.y;
+					const maxCoordinate = gridSize - 1;
+
+					if (event.key === "ArrowLeft") {
+						nextX -= 1;
+					}
+
+					if (event.key === "ArrowRight") {
+						nextX += 1;
+					}
+
+					if (event.key === "ArrowUp") {
+						nextY -= 1;
+					}
+
+					if (event.key === "ArrowDown") {
+						nextY += 1;
+					}
+
+					coordinates = {
+						x: clamp(nextX, 0, maxCoordinate),
+						y: clamp(nextY, 0, maxCoordinate)
+					};
+
+					makeSelection(coordinates.y * gridSize + coordinates.x);
+					event.stopPropagation();
+				};
+
+				const beginTransition = (event) => {
+					if (event.target !== canvas && event.target !== viewport) {
+						return;
+					}
+
+					isTransitioning = true;
+					body.classList.add("gallery-is-panning");
+				};
+
+				const finishTransition = (event) => {
+					if (event.target !== canvas && event.target !== viewport) {
+						return;
+					}
+
+					isTransitioning = false;
+					body.classList.remove("gallery-is-panning");
+				};
+
+				const buildResponsiveAssetUrl = (assetUrl) => {
+					const requestedWidth = Math.max(640, Math.round(stageMetrics.width * 1.5));
+					const requestedHeight = Math.max(480, Math.round(stageMetrics.height * 1.5));
+
+					return assetUrl
+						.replace(/w=\d+/g, `w=${requestedWidth}`)
+						.replace(/h=\d+/g, `h=${requestedHeight}`);
+				};
+
+				const markGalleryLoaded = () => {
+					if (loadFinished) {
+						return;
+					}
+
+					loadFinished = true;
+					root.classList.remove("gallery-root--loading");
+					root.classList.add("gallery-root--loaded");
+				};
+
+				const loadGalleryImages = () => {
+					let finishedAssets = 0;
+					const fallbackTimer = window.setTimeout(markGalleryLoaded, 3500);
+
+					const completeImageLoad = () => {
+						finishedAssets += 1;
+
+						if (finishedAssets === galleryItems.length) {
+							window.clearTimeout(fallbackTimer);
+							window.setTimeout(markGalleryLoaded, 300);
+						}
+					};
+
+					galleryItems.forEach((galleryOption, optionIndex) => {
+						const optionNumber = toOptionNumber(optionIndex);
+						const galleryOptionImage = new Image();
+
+						galleryOptionImage.id = `gallery-image-option-${optionNumber}`;
+						galleryOptionImage.className = `gallery-option-image gallery-option-image--${optionNumber}`;
+						galleryOptionImage.dataset.galleryIndex = String(optionIndex);
+						galleryOptionImage.alt = `Imagem da galeria ${optionIndex + 1}`;
+						galleryOptionImage.crossOrigin = "anonymous";
+						galleryOptionImage.onload = completeImageLoad;
+						galleryOptionImage.onerror = () => {
+							galleryOption.classList.add("gallery-option--image-error");
+							completeImageLoad();
+						};
+						galleryOptionImage.src = buildResponsiveAssetUrl(galleryAssets[optionIndex]);
+						galleryOption.replaceChildren(galleryOptionImage);
+					});
+				};
+
+				canvas.addEventListener("click", handleSelection, false);
+				focusButton.addEventListener("click", handleToggleOpen, false);
+				backButton.addEventListener("click", handleToggleOpen, false);
+				zoomControl.addEventListener("input", handleZoomInput);
+				document.addEventListener("wheel", handleZoomFromWheel, { passive: true });
+				document.addEventListener("keydown", handleKeyboard);
+
+				canvas.addEventListener("transitionrun", beginTransition);
+				canvas.addEventListener("transitionstart", beginTransition);
+				canvas.addEventListener("transitionend", finishTransition);
+				viewport.addEventListener("transitionrun", beginTransition);
+				viewport.addEventListener("transitionstart", beginTransition);
+				viewport.addEventListener("transitionend", finishTransition);
+
+				setZoom(currentZoom);
+				moveToIndex(selectedIndex);
+				syncStageMetrics();
+
+				if ("ResizeObserver" in window) {
+					const stageResizeObserver = new ResizeObserver(syncStageMetrics);
+					stageResizeObserver.observe(stage);
+				}
+
+				window.addEventListener("resize", syncStageMetrics);
+				loadGalleryImages();
+			}
+
+			if (document.readyState === "loading") {
+				document.addEventListener("DOMContentLoaded", initGallery, { once: true });
+			} else {
+				initGallery();
+			}
+		})();
