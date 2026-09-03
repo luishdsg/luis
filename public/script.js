@@ -1,3 +1,4 @@
+// GET VIEWS COUNTER
 async function registrarVisita() {
 
     try {
@@ -36,7 +37,7 @@ async function registrarVisita() {
     }
 }
 
-// navbar
+// navbar NAVEGATION
 document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
@@ -58,1606 +59,469 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         });
     });
 });
-// title text
-let initial = 0,
-    interval = 1000;
-
-const randle = (min, max) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
-
-const animateTitle = star => {
-    star.style.setProperty("--star-left", `${randle(-10, 100)}%`);
-    star.style.setProperty("--star-top", `${randle(-40, 80)}%`);
-
-    star.style.animation = "none";
-    star.offsetHeight;
-    star.style.animation = "";
-}
-
-for (const star of document.getElementsByClassName("magic-star")) {
-    setTimeout(() => {
-        animateTitle(star);
-
-        setInterval(() => animateTitle(star), 1000);
-    }, initial++ * (interval / 3))
-}
 
 
-registrarVisita();
+// DONT CLICK HERE
+(() => {
+    let initial = 0,
+        interval = 1000;
 
-gsap.registerPlugin(ScrollTrigger);
+    const randle = (min, max) =>
+        Math.floor(Math.random() * (max - min + 1)) + min;
 
-// ============================================================
-// INITIAL STATES + APPLY DATA-ROT
-// ============================================================
-// loading
-const stage = document.querySelector('.stage')
-const col = document.querySelector('.col')
-const box = document.querySelector('.box')
+    const animateTitle = star => {
+        star.style.setProperty("--star-left", `${randle(-10, 100)}%`);
+        star.style.setProperty("--star-top", `${randle(-40, 80)}%`);
 
-for (i=0; i<9; i++){
-  const b = box.cloneNode(true)
-  col.append(b)
-}
-gsap.set('.box', { y:(i)=>i*10 })
-
-for (i=0; i<=9; i++){
-  const c = col.cloneNode(true)
-  gsap.set(c, {x:10*i, attr:{class:'col col'+i}})
-  gsap.set(c.querySelectorAll('.box'), {attr:{class:'box'+i}})
-  stage.append(c)
-}
-
-col.remove()// remove initial column
-
-
-const tl= gsap.timeline()
-.to('.col', {
-  duration:1.5,
-  y:11,
-  ease:'sine.inOut',
-  stagger:{
-    amount:3,
-    repeat:-1,
-    yoyo:true
-  }
-}, 0)
-
-for (i=0; i<=9; i++){
-  tl.add(
-  gsap.fromTo('.box'+i+' *', {
-    y:(j)=>gsap.utils.interpolate(77,-77,j/10),
-    transformOrigin:'50%',
-    scale:0.133
-  },{
-    y:(j)=>gsap.utils.interpolate(i,-i,j/10),
-    scale:0.8,
-    duration:1,
-    ease:'sine',
-    repeat:-1,
-    yoyo:true,
-    yoyoEase:'sine.in'
-  }), i/10)
-}
-
-tl.play(50)
-
-window.onclick = ()=> {
-  gsap.to(stage, {fill:(tl.isActive()?'#ccc':'#000')})
-  gsap.to(tl, {timeScale:(tl.isActive()?0:1)})
-}
-
-
-
-
-
-
-
-gsap.set("#nav", {
-    opacity: 0,
-    y: -20
-});
-gsap.set(".small-team .word > span", {
-    y: "105%"
-});
-gsap.set(".big-results .letter", {
-    y: 80,
-    opacity: 0
-});
-gsap.set("#subline", {
-    opacity: 0,
-    y: 20
-});
-gsap.set(".t-card", {
-    opacity: 0
-});
-gsap.set(".stats-inner", {
-    opacity: 0
-});
-
-// Apply each card's natural rotation as the rest-state, but start them off-screen above + rotated
-document.querySelectorAll(".card").forEach((card) => {
-    const rot = parseFloat(card.dataset.rot) || 0;
-    card.dataset.restRot = rot;
-    gsap.set(card, {
-        y: -800,
-        rotation: rot + 25,
-        opacity: 0,
-        scale: 0.7
-    });
-});
-
-// ============================================================
-// INTRO TIMELINE
-// ============================================================
-const intro = gsap.timeline({
-    defaults: {
-        ease: "power3.out"
+        star.style.animation = "none";
+        star.offsetHeight;
+        star.style.animation = "";
     }
-});
-intro
-    .to("#nav", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8
-    }, 0.1)
-    .to(
-        ".small-team .word > span", {
-            y: "0%",
-            duration: 0.9,
-            stagger: 0.08,
-            ease: "power3.out"
-        },
-        0.3
-    )
-    .to(
-        ".big-results .letter", {
-            y: 0,
-            opacity: 1,
-            duration: 0.9,
-            stagger: 0.05,
-            ease: "back.out(1.6)"
-        },
-        0.55
-    )
-    .to(
-        ".card", {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotation: (i, el) => parseFloat(el.dataset.restRot) || 0,
-            duration: 1.1,
-            stagger: {
-                each: 0.08,
-                from: "center"
-            },
-            ease: "back.out(1.4)"
-        },
-        0.8
-    )
-    .to("#subline", {
-        opacity: 1,
-        y: 0,
-        duration: 0.8
-    }, 1.6);
 
-// ============================================================
-// CONTINUOUS FLOAT ON CARDS
-// ============================================================
-document.querySelectorAll(".card").forEach((card, i) => {
-    const rot = parseFloat(card.dataset.restRot) || 0;
-    gsap.to(card, {
-        y: `+=${8 + (i % 3) * 5}`,
-        rotation: rot + (i % 2 === 0 ? 1.5 : -1.5),
-        duration: 3 + (i % 4) * 0.5,
-        delay: 1.8 + i * 0.1,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1
-    });
-});
+    for (const star of document.getElementsByClassName("magic-star")) {
+        setTimeout(() => {
+            animateTitle(star);
 
-// ============================================================
-// MOUSE PARALLAX ON CARDS
-// ============================================================
-const hero = document.querySelector(".hero");
-let mx = 0,
-    my = 0,
-    tx = 0,
-    ty = 0;
-hero.addEventListener("mousemove", (e) => {
-    const r = hero.getBoundingClientRect();
-    mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-    my = ((e.clientY - r.top) / r.height - 0.5) * 2;
-});
-hero.addEventListener("mouseleave", () => {
-    mx = 0;
-    my = 0;
-});
-
-function parallax() {
-    tx += (mx - tx) * 0.05;
-    ty += (my - ty) * 0.05;
-    document.querySelectorAll(".card").forEach((card) => {
-        const d = parseFloat(card.dataset.depth) || 8;
-        card.style.translate = `${tx * d}px ${ty * d * 0.5}px`;
-    });
-    requestAnimationFrame(parallax);
-}
-parallax();
-
-// ============================================================
-// CARD HOVER 3D LIFT
-// ============================================================
-document.querySelectorAll(".card").forEach((card) => {
-    const restRot = parseFloat(card.dataset.restRot) || 0;
-    card.addEventListener("mousemove", (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        gsap.to(card, {
-            rotateX: -py * 16,
-            rotateY: px * 16,
-            scale: 1.12,
-            zIndex: 20,
-            duration: 0.4,
-            ease: "power2.out",
-            transformPerspective: 700,
-            overwrite: "auto"
-        });
-    });
-    card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-            rotateX: 0,
-            rotateY: 0,
-            scale: 1,
-            zIndex: card.style.zIndex || "",
-            duration: 0.8,
-            ease: "elastic.out(1, 0.6)",
-            overwrite: "auto"
-        });
-    });
-    card.addEventListener("click", () => {
-        gsap.fromTo(
-            card, {
-                scale: 1.15
-            }, {
-                scale: 1.05,
-                duration: 0.15,
-                yoyo: true,
-                repeat: 1,
-                ease: "power2.inOut"
-            }
-        );
-    });
-});
-
-// ============================================================
-// SCROLL: CARDS FAN OUT, "big results" SCALES UP
-// ============================================================
-ScrollTrigger.create({
-    trigger: ".hero",
-    start: "top top",
-    end: "bottom top",
-    scrub: 0.8,
-    onUpdate: (self) => {
-        const p = self.progress;
-        // Big results scales up and stays gray
-        gsap.set(".big-results", {
-            scale: 1 + 0.15 * p,
-            opacity: 1 - 0.4 * p
-        });
-        // Small team rises out
-        gsap.set(".small-team", {
-            y: -60 * p,
-            opacity: 1 - p * 1.5
-        });
-        // Cards: outer cards fly further out, center cards drift up more
-        const moves = [{
-                x: -260,
-                y: -40,
-                rot: -25
-            }, // 1
-            {
-                x: -200,
-                y: 20,
-                rot: -18
-            }, // 2
-            {
-                x: -120,
-                y: 80,
-                rot: -10
-            }, // 3
-            {
-                x: -40,
-                y: 120,
-                rot: -4
-            }, // 4
-            {
-                x: 40,
-                y: 120,
-                rot: 4
-            }, // 5
-            {
-                x: 120,
-                y: 80,
-                rot: 12
-            }, // 6
-            {
-                x: 200,
-                y: 20,
-                rot: 22
-            }, // 7
-            {
-                x: 260,
-                y: -40,
-                rot: 28
-            } // 8
-        ];
-        document.querySelectorAll(".card").forEach((card, i) => {
-            const m = moves[i];
-            const rest = parseFloat(card.dataset.restRot) || 0;
-            gsap.set(card, {
-                x: m.x * p,
-                y: m.y * p,
-                rotation: rest + m.rot * p
-            });
-        });
-        gsap.set("#subline", {
-            opacity: 1 - p * 2
-        });
+            setInterval(() => animateTitle(star), 1000);
+        }, initial++ * (interval / 3))
     }
-});
 
-// ============================================================
-// TEAM GRID REVEAL ON SCROLL
-// ============================================================
-gsap.from(".eyebrow, .team-head h2, .team-head p", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    skewY: 7,
-    stagger: 1,
-    ease: "power4.out",
-    stagger: {
-        amount: 0.3
-    },
-    scrollTrigger: {
-        trigger: ".team-head",
-        start: "top 80%"
+
+    registrarVisita();
+})();
+
+
+/* ANIMATION SCROLLING */
+(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
     }
-});
 
-gsap.to(".t-card", {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    stagger: 0.08,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".team-grid",
-        start: "top 80%"
-    }
-});
-gsap.from(".t-card", {
-    y: 80,
-    scale: 0.9,
-    rotation: (i) => (i % 2 === 0 ? -3 : 3),
-    duration: 1,
-    stagger: 0.08,
-    ease: "back.out(1.3)",
-    scrollTrigger: {
-        trigger: ".team-grid",
-        start: "top 80%"
-    }
-});
-
-// ============================================================
-// STATS REVEAL + COUNTERS
-// ============================================================
-gsap.to(".stats-inner", {
-    opacity: 1,
-    y: 0,
-    duration: 1.2,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".stats",
-        start: "top 80%"
-    }
-});
-gsap.from(".stats-inner", {
-    y: 60,
-    scale: 0.97,
-    duration: 1.2,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".stats",
-        start: "top 80%"
-    }
-});
-
-ScrollTrigger.create({
-    trigger: ".stats",
-    start: "top 75%",
-    onEnter: () => {
-        document.querySelectorAll(".stat-block .num").forEach((el) => {
-            const target = parseFloat(el.dataset.count);
-            const span = el.querySelector("span");
-            gsap.to({
-                v: 0
-            }, {
-                v: target,
-                duration: 2,
-                ease: "power2.out",
-                onUpdate: function () {
-                    span.textContent = Math.floor(this.targets()[0].v).toLocaleString();
-                }
-            });
-        });
-    },
-    once: true
-});
-
-// ============================================================
-// CTA / BUTTON CLICKS
-// ============================================================
-document.querySelectorAll(".nav-cta, .arrow-pill").forEach((btn) => {
-    btn.addEventListener("click", () => {
-        gsap.fromTo(
-            btn, {
-                scale: 1
-            }, {
-                scale: 0.93,
-                duration: 0.12,
-                yoyo: true,
-                repeat: 1,
-                ease: "power2.inOut"
-            }
-        );
-    });
-});
-
-// Big results: subtle letter rise on hover of the wrap
-document
-    .querySelector(".big-results-wrap")
-    .addEventListener("mouseenter", () => {
-        gsap.to(".big-results .letter", {
-            y: -8,
-            duration: 0.5,
-            stagger: 0.03,
-            ease: "back.out(1.6)"
-        });
-    });
-document
-    .querySelector(".big-results-wrap")
-    .addEventListener("mouseleave", () => {
-        gsap.to(".big-results .letter", {
-            y: 0,
-            duration: 0.6,
-            stagger: 0.03,
-            ease: "elastic.out(1, 0.6)"
-        });
-    });
-
-
-
-
-
-
-
-
-// new zone
-/* suave scroll */
-
-const lenis = new Lenis();
-
-function raf(time) {
-    lenis.raf(time);
     requestAnimationFrame(raf);
-}
 
-requestAnimationFrame(raf);
 
-// + click
-const btn = document.getElementById("btn");
-const glassContainer =
-    document.getElementById("glassContainer");
-btn.addEventListener("click", () => {
-    if (!glassContainer.classList.contains("glassContainerActive")) {
-        glassContainer.classList.add("glassContainerActive");
-        glassContainer.classList.remove("glassContainerInactive");
+})();
 
-    } else if (glassContainer.classList.contains("glassContainerActive")) {
-        glassContainer.classList.add("glassContainerInactive");
-        glassContainer.classList.remove("glassContainerActive");
 
-    }
+// CONTACT MODAL
+(() => {
+    const btn = document.getElementById("btn");
+    const glassContainer =
+        document.getElementById("glassContainer");
+    btn.addEventListener("click", () => {
+        if (!glassContainer.classList.contains("glassContainerActive")) {
+            glassContainer.classList.add("glassContainerActive");
+            glassContainer.classList.remove("glassContainerInactive");
 
-
-});
-
-
-// cursor
-/**
- * YouTube Tutorial:
- * https://youtu.be/wG_5453Vq98
- */
-
-console.clear();
-
-// Select the circle element
-const circleElement = document.querySelector('.circle');
-
-// Create objects to track mouse position and custom cursor position
-const mouse = {
-    x: 0,
-    y: 0
-}; // Track current mouse position
-const previousMouse = {
-    x: 0,
-    y: 0
-} // Store the previous mouse position
-const circle = {
-    x: 0,
-    y: 0
-}; // Track the circle position
-
-// Initialize variables to track scaling and rotation
-let currentScale = 0; // Track current scale value
-let currentAngle = 0; // Track current angle value
-
-// Update mouse position on the 'mousemove' event
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
-});
-
-// Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
-const speed = 0.17;
-
-// Start animation
-const tick = () => {
-    // MOVE
-    // Calculate circle movement based on mouse position and smoothing
-    circle.x += (mouse.x - circle.x) * speed;
-    circle.y += (mouse.y - circle.y) * speed;
-    // Create a transformation string for cursor translation
-    const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
-
-    // SQUEEZE
-    // 1. Calculate the change in mouse position (deltaMouse)
-    const deltaMouseX = mouse.x - previousMouse.x;
-    const deltaMouseY = mouse.y - previousMouse.y;
-    // Update previous mouse position for the next frame
-    previousMouse.x = mouse.x;
-    previousMouse.y = mouse.y;
-    // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
-    const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
-    // 3. Convert mouse velocity to a value in the range [0, 0.5]
-    const scaleValue = (mouseVelocity / 150) * 0.5;
-    // 4. Smoothly update the current scale
-    currentScale += (scaleValue - currentScale) * speed;
-    // 5. Create a transformation string for scaling
-    const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
-
-    // ROTATE
-    // 1. Calculate the angle using the atan2 function
-    const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
-    // 2. Check for a threshold to reduce shakiness at low mouse velocity
-    if (mouseVelocity > 20) {
-        currentAngle = angle;
-    }
-    // 3. Create a transformation string for rotation
-    const rotateTransform = `rotate(${currentAngle}deg)`;
-
-    // Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
-    circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-
-    // Request the next frame to continue the animation
-    window.requestAnimationFrame(tick);
-}
-
-// Start the animation loop
-tick();
-
-
-// cards-project
-const cards = document.querySelectorAll(".card");
-
-const imageModal =
-    document.getElementById("imageModal");
-
-const modalCard =
-    document.getElementById("modalCard");
-
-const modalImageContainer =
-    document.getElementById("modalImageContainer");
-
-const modalContent =
-    document.getElementById("modalContent");
-
-const linkProjects =
-    document.getElementById("linkProjects");
-
-const modalDate =
-    document.getElementById("modalDate");
-
-const modalTitle =
-    document.getElementById("modalTitle");
-
-const modalText =
-    document.getElementById("modalText");
-
-const modalClose =
-    document.getElementById("modalClose");
-
-const modalPrev =
-    document.getElementById("modalPrev");
-
-const modalNext =
-    document.getElementById("modalNext");
-
-const modalCounter =
-    document.getElementById("modalCounter");
-
-
-let currentIndex = 0;
-
-let currentCard = null;
-
-let isAnimating = false;
-
-
-/* =========================================
-   ABRIR CARD
-========================================= */
-
-cards.forEach((card, index) => {
-
-    card.addEventListener("click", () => {
-
-        if (isAnimating) return;
-
-        currentIndex = index;
-
-        currentCard = cards[currentIndex];
-
-        abrirModal();
-
-    });
-
-});
-
-
-/* =========================================
-   CARREGAR INFORMAÇÕES
-========================================= */
-
-function carregarCard(index) {
-
-    const card = cards[index];
-
-    const image =
-        card.querySelector("img");
-
-    const info =
-        card.querySelector(".card-info");
-
-
-    const date =
-        info.querySelector(".info-date");
-
-    const title =
-        info.querySelector(".info-title");
-
-    const text =
-        info.querySelector(".info-text");
-
-
-    modalContent.style.backgroundImage = `url(${image.src})`;
-    modalImageContainer.style.backgroundImage = `url(${image.src})`;
-    linkProjects.setAttribute("href", image.dataset.link);
-
-
-    modalDate.textContent =
-        date.textContent;
-
-
-    modalTitle.textContent =
-        title.textContent;
-
-
-    modalText.textContent =
-        text.textContent;
-
-
-    modalCounter.textContent =
-        `${index + 1} / ${cards.length}`;
-
-}
-
-
-/* =========================================
-   ABRIR MODAL
-========================================= */
-
-function abrirModal() {
-
-    const card =
-        cards[currentIndex];
-
-
-    const image =
-        card.querySelector("img");
-
-
-    const rect =
-        card.getBoundingClientRect();
-
-
-    carregarCard(currentIndex);
-
-
-    isAnimating = true;
-
-
-    imageModal.classList.add("active");
-
-    document.body.classList.add("modal-open");
-
-
-    /*
-        Começa exatamente onde
-        a card está.
-    */
-
-    modalCard.style.left =
-        `${rect.left}px`;
-
-    modalCard.style.top =
-        `${rect.top}px`;
-
-    modalCard.style.width =
-        `${rect.width}px`;
-
-    modalCard.style.height =
-        `${rect.height}px`;
-
-
-    modalCard.style.borderRadius =
-        getComputedStyle(card).borderRadius;
-
-
-    /*
-        Força o browser a registrar
-        o estado inicial.
-    */
-
-    modalCard.getBoundingClientRect();
-
-
-    /*
-        TAMANHO FINAL
-    */
-
-    const finalWidth =
-        Math.min(
-            window.innerWidth * 0.80,
-            1200
-        );
-
-
-    const finalHeight =
-        Math.min(
-            window.innerHeight * 0.82,
-            800
-        );
-
-
-    const finalLeft =
-        (window.innerWidth - finalWidth) / 2;
-
-
-    const finalTop =
-        (window.innerHeight - finalHeight) / 2;
-
-
-    /*
-        TRANSFORMA CARD → MODAL
-    */
-
-    const animation =
-        modalCard.animate(
-
-            [{
-
-                    left: `${rect.left}px`,
-
-                    top: `${rect.top}px`,
-
-                    width: `${rect.width}px`,
-
-                    height: `${rect.height}px`,
-
-                    borderRadius: getComputedStyle(card)
-                        .borderRadius
-
-                },
-
-                {
-
-                    left: `${finalLeft}px`,
-
-                    top: `${finalTop}px`,
-
-                    width: `${finalWidth}px`,
-
-                    height: `${finalHeight}px`,
-
-                    borderRadius: "18px"
-
-                }
-            ],
-
-            {
-
-                duration: 700,
-
-                easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-
-                fill: "forwards"
-
-            }
-        );
-
-
-    animation.finished.then(() => {
-
-        modalCard.style.left =
-            `${finalLeft}px`;
-
-        modalCard.style.top =
-            `${finalTop}px`;
-
-        modalCard.style.width =
-            `${finalWidth}px`;
-
-        modalCard.style.height =
-            `${finalHeight}px`;
-
-        modalCard.style.borderRadius =
-            "18px";
-
-
-        isAnimating = false;
-
-    });
-
-}
-
-
-/* =========================================
-   TROCAR IMAGEM
-========================================= */
-
-function mudarImagem(direction) {
-
-    if (isAnimating) return;
-
-
-    let novoIndex =
-        currentIndex + direction;
-
-
-    /*
-        LOOP
-    */
-
-    if (novoIndex < 0) {
-
-        novoIndex =
-            cards.length - 1;
-
-    }
-
-
-    if (novoIndex >= cards.length) {
-
-        novoIndex = 0;
-
-    }
-
-
-    currentIndex =
-        novoIndex;
-
-
-    /*
-        Anima saída
-    */
-
-    modalImageContainer.style.transition =
-        "opacity 0.22s ease, transform 0.22s ease";
-
-    modalImageContainer.style.opacity = "0";
-
-    modalImageContainer.style.transform =
-        direction > 0 ?
-        "translateX(-25px)" :
-        "translateX(25px)";
-
-
-    modalContentAnimationOut();
-
-
-    setTimeout(() => {
-
-        carregarCard(currentIndex);
-
-
-        modalImageContainer.style.opacity = "1";
-
-        modalImageContainer.style.transform =
-            "translateX(0)";
-
-
-        modalContentAnimationIn();
-
-    }, 220);
-
-}
-
-
-/* =========================================
-   ANIMAÇÃO DO TEXTO
-========================================= */
-
-function modalContentAnimationOut() {
-
-    modalDate.style.opacity = "0";
-
-    modalTitle.style.opacity = "0";
-
-    modalText.style.opacity = "0";
-
-
-    modalDate.style.transform =
-        "translateX(20px)";
-
-    modalTitle.style.transform =
-        "translateX(20px)";
-
-    modalText.style.transform =
-        "translateX(20px)";
-}
-
-
-function modalContentAnimationIn() {
-
-    modalDate.style.transition =
-        "all 0.45s cubic-bezier(0.22,1,0.36,1)";
-
-    modalTitle.style.transition =
-        "all 0.5s cubic-bezier(0.22,1,0.36,1)";
-
-    modalText.style.transition =
-        "all 0.55s cubic-bezier(0.22,1,0.36,1)";
-
-
-    requestAnimationFrame(() => {
-
-        modalDate.style.opacity = "1";
-
-        modalTitle.style.opacity = "1";
-
-        modalText.style.opacity = "1";
-
-
-        modalDate.style.transform =
-            "translateX(0)";
-
-        modalTitle.style.transform =
-            "translateX(0)";
-
-        modalText.style.transform =
-            "translateX(0)";
-
-    });
-
-}
-
-
-/* =========================================
-   BOTÕES
-========================================= */
-
-modalNext.addEventListener(
-    "click",
-    () => mudarImagem(1)
-);
-
-
-modalPrev.addEventListener(
-    "click",
-    () => mudarImagem(-1)
-);
-
-
-/* =========================================
-   FECHAR
-========================================= */
-
-function fecharModal() {
-
-    if (!currentCard || isAnimating)
-        return;
-
-
-    isAnimating = true;
-
-
-    const rect =
-        currentCard.getBoundingClientRect();
-
-
-    const modalRect =
-        modalCard.getBoundingClientRect();
-
-
-    const animation =
-        modalCard.animate(
-
-            [
-
-                {
-
-                    left: `${modalRect.left}px`,
-
-                    top: `${modalRect.top}px`,
-
-                    width: `${modalRect.width}px`,
-
-                    height: `${modalRect.height}px`
-
-                },
-
-                {
-
-                    left: `${rect.left}px`,
-
-                    top: `${rect.top}px`,
-
-                    width: `${rect.width}px`,
-
-                    height: `${rect.height}px`
-
-                }
-
-            ],
-
-            {
-
-                duration: 600,
-
-                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-
-                fill: "forwards"
-
-            }
-
-        );
-
-
-    animation.finished.then(() => {
-
-        imageModal.classList.remove(
-            "active"
-        );
-
-        document.body.classList.remove(
-            "modal-open"
-        );
-
-
-
-        currentCard = null;
-
-        isAnimating = false;
-
-    });
-
-}
-
-
-modalClose.addEventListener(
-    "click",
-    fecharModal
-);
-
-
-/* =========================================
-   CLICAR NO FUNDO
-========================================= */
-
-imageModal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === imageModal
-        ) {
-
-            fecharModal();
+        } else if (glassContainer.classList.contains("glassContainerActive")) {
+            glassContainer.classList.add("glassContainerInactive");
+            glassContainer.classList.remove("glassContainerActive");
 
         }
-
-    }
-);
-
-
-/* =========================================
-   TECLADO
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            !imageModal.classList.contains(
-                "active"
-            )
-        ) return;
-
-
-        if (event.key === "Escape") {
-
-            fecharModal();
-
-        }
-
-
-        if (event.key === "ArrowRight") {
-
-            mudarImagem(1);
-
-        }
-
-
-        if (event.key === "ArrowLeft") {
-
-            mudarImagem(-1);
-
-        }
-
-    }
-);
-
-// close btn
-const generateGlowButtons = () => {
-    document.querySelectorAll(".modal-close").forEach((button) => {
-        let gradientElem = button.querySelector('.gradient');
-
-        if (!gradientElem) {
-            gradientElem = document.createElement("div");
-            gradientElem.classList.add("gradient");
-
-            button.appendChild(gradientElem);
-        }
-
-        button.addEventListener("pointermove", (e) => {
-            const rect = button.getBoundingClientRect();
-
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            gsap.to(button, {
-                "--pointer-x": `${x}px`,
-                "--pointer-y": `${y}px`,
-                duration: 0.6,
-            });
-
-            gsap.to(button, {
-                "--button-glow": chroma
-                    .mix(
-                        getComputedStyle(button)
-                        .getPropertyValue("--button-glow-start")
-                        .trim(),
-                        getComputedStyle(button).getPropertyValue("--button-glow-end").trim(),
-                        x / rect.width
-                    )
-                    .hex(),
-                duration: 0.2,
-            });
-        });
     });
-}
-
-// Set variables on loaded
-document.addEventListener('DOMContentLoaded', generateGlowButtons);
-
-// Set variables on resize
-window.addEventListener('resize', generateGlowButtons);
+})();
 
 
-// jobs title
+// cursor ANIMATION
+(() => {
+
+    console.clear();
+    const circleElement = document.querySelector('.circle');
+    const mouse = {
+        x: 0,
+        y: 0
+    };
+    const previousMouse = {
+        x: 0,
+        y: 0
+    }
+    const circle = {
+        x: 0,
+        y: 0
+    };
+    let currentScale = 0;
+    let currentAngle = 0;
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+
+    const speed = 0.17;
+    const tick = () => {
+        circle.x += (mouse.x - circle.x) * speed;
+        circle.y += (mouse.y - circle.y) * speed;
+        const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+        const deltaMouseX = mouse.x - previousMouse.x;
+        const deltaMouseY = mouse.y - previousMouse.y;
+        previousMouse.x = mouse.x;
+        previousMouse.y = mouse.y;
+        const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
+        const scaleValue = (mouseVelocity / 150) * 0.5;
+        currentScale += (scaleValue - currentScale) * speed;
+        const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+        const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
+        if (mouseVelocity > 20) {
+            currentAngle = angle;
+        }
+        const rotateTransform = `rotate(${currentAngle}deg)`;
+        circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
+        window.requestAnimationFrame(tick);
+    }
+
+    tick();
 
 
-var TextSlider = function () {
-    this.container = $('#home-animation-wrapper');
-    this.currentSlide = 1;
-    this.slidesLength = this.container.find('.slide').length - 1; // To start at 0
-    this.content = {
-        text1: '',
-        text2: '',
-        text3: ''
+})();
+
+
+// skills section
+(() => {
+
+    const elts = {
+        habilidades: document.getElementById("habilidades"),
+        skills: document.getElementById("skills")
     };
 
-    this.allowChange = true;
-
-    this.init();
-};
-
-TextSlider.prototype = {
-
-    init: function () {
-        console.log('init');
-
-        this.bind();
-
-        this.initSvg();
-
-    },
-
-    bind: function () {
-        console.log('bind');
-
-        var self = this;
-
-        // Bind interval
-        var timerDuration = 4000,
-            timer = setInterval(function () {
-                self.resetSlide();
-            }, timerDuration);
-
-        // Bind restart on click with next slide
-        this.container.on('click', function () {
-
-            // Do not allow to change slide until last transition is complete
-            if (!self.allowChange) {
-                return;
-            }
-            self.allowChange = false;
-            setTimeout(function () {
-                self.allowChange = true;
-            }, 800);
-
-            self.resetSlide();
-
-            clearInterval(timer);
-            timer = setInterval(function () {
-                self.resetSlide();
-            }, timerDuration);
-
-
-        });
-
-
-    },
-
-    initSvg: function () {
-        console.log('initSvg');
-
-        this.bubblesRandomColors();
-        this.setTexts();
-        this.bubblesMovement();
-
-        // Trigger First slide
-        this.triggerSlide();
-    },
-
-    setTexts: function () {
-        console.log('setTexts');
-
-        var texts = this.container.find('#svg-texts');
-
-        // Get texts
-        this.content.text1 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-1');
-        this.content.text2 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-2');
-        this.content.text3 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-3');
-
-        // UpperCase Texts
-        this.content.text1 = this.content.text1.toUpperCase();
-        this.content.text2 = this.content.text2.toUpperCase();
-        this.content.text3 = this.content.text3.toUpperCase();
-
-        // Append Texts
-        texts.find('text:nth-child(1)').html(this.content.text1);
-        texts.find('text:nth-child(2)').html(this.content.text2);
-        texts.find('text:nth-child(3)').html(this.content.text3);
-    },
-
-    bubblesRandomColors: function () {
-        console.log('bubblesRandomColors');
-
-        var bubblesGroup = this.container.find('#bubbles'),
-            colors = ['#7700ff', '#f58b4e', '#112b39'];
-
-        bubblesGroup.find('path').each(function () {
-            var rand = getRand(0, colors.length);
-            TweenMax.set(this, {
-                fill: colors[rand],
-                scale: 0,
-                transformOrigin: 'center'
-            });
-        })
-    },
-
-    triggerSlide: function () {
-        console.log('triggerSlide');
-
-        // Container loads invisible, needs this to be shown on the first iteration
-        TweenMax.set(this.container, {
-            autoAlpha: 1
-        });
-
-        var bubbles = this.container.find('#bubbles path');
-        bubbles.each(function () {
-            var rotateRand = getRand(-30, 30);
-            TweenMax.to(this, 1.5, {
-                scale: 1.2,
-                rotation: rotateRand,
-                ease: Power2.easeInOut
-            });
-        })
-    },
-
-    resetSlide: function () {
-        console.log('hideSlide');
-
-        var self = this;
-
-        this.currentSlide++;
-        if (this.currentSlide > this.slidesLength) {
-            this.currentSlide = 0;
-        };
-
-        var bubbles = this.container.find('#bubbles path');
-        TweenMax.to(bubbles, 1.5, {
-            scale: 0,
-            ease: Power2.easeInOut,
-            onComplete: triggerContinue
-        });
-
-        // Workaround gsap onComplete
-        function triggerContinue() {
-            self.initSvg();
-        }
-    },
-
-    // non used function (performance) (remove the 'return' to enable)
-    bubblesMovement: function () {
-
-        return; // Yup, this one
-
-        var bubbles = this.container.find('#bubbles path'),
-            count = 500;
-
-        bubbles.each(function (index) {
-            if (index > count) {
-                return;
-            }
-            $(this).attr('data-rand', getRand(15, 25));
-        });
-
-        this.container.on('mousemove', function (e) {
-            bubbles.each(function () {
-                if (!$(this).attr('data-rand')) {
-                    return;
-                };
-
-                var rand = $(this).attr('data-rand'),
-                    cy = e.pageY,
-                    cx = e.pageX,
-                    py = Math.round($(this).offset().top),
-                    px = Math.round($(this).offset().left),
-                    x = Math.round(-(cx + px) / rand),
-                    y = Math.round(-(cy + py) / rand);
-
-                TweenMax.to($(this), 0.2, {
-                    x: x,
-                    y: y,
-                    transformOrigin: 'center'
-                });
-            });
-        })
-    }
-}
-
-function getRand(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
-window.LLOS = window.LLOS || {};
-if ($('#home-animation-wrapper').length) {
-    window.LLOS.TextSlider = new TextSlider();
-}
-
-
-// SECTION JOOB
-const div = document.querySelector("#jobs");
-const letter1 = document.querySelector("#letter-1");
-const letter2 = document.querySelector("#letter-2");
-const letter3 = document.querySelector("#letter-3");
-const letter4 = document.querySelector("#letter-4");
-
-let jaAnimou = false;
-
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !jaAnimou) {
-                jaAnimou = true;
-
-
-                rolarAteFinalDaDiv(div);
-                iniciarSequencia();
-
-                observer.unobserve(div);
-            }
-        });
-    }, {
-        threshold: 0
-    }
-);
-
-observer.observe(div);
-
-function iniciarSequencia() {
-    div.classList.add("ativo");
-    setTimeout(() => {
-        letter1.classList.add("letter-1");
-    }, 100);
-    setTimeout(() => {
-        letter2.classList.add("letter-2");
-    }, 200);
-    setTimeout(() => {
-        letter3.classList.add("letter-3");
-    }, 300);
-    setTimeout(() => {
-        letter4.classList.add("letter-4");
-    }, 1000);
-
-}
-
-function rolarAteFinalDaDiv(elemento) {
-    const inicio = window.scrollY;
-
-    const destino = elemento.offsetTop + elemento.offsetHeight - window.innerHeight;
-
-    const destinoLimitado = Math.max(0, destino);
-
-    const distancia = destinoLimitado - inicio;
-    const duracao = 1400;
-    const tempoInicial = performance.now();
-
-    function animarScroll(tempoAtual) {
-        const progresso = Math.min((tempoAtual - tempoInicial) / duracao, 1);
-
-        const suavizado = easeOutExpo(progresso);
-
-        window.scrollTo(0, inicio + distancia * suavizado);
-
-        if (progresso < 1) {
-            requestAnimationFrame(animarScroll);
-        }
-    }
-
-    requestAnimationFrame(animarScroll);
-}
-
-function easeOutExpo(t) {
-    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
-// skills section
-/*
-	This pen cleverly utilizes SVG filters to create a "Morphing Text" effect. Essentially, it layers 2 text elements on top of each other, and blurs them depending on which text element should be more visible. Once the blurring is applied, both texts are fed through a threshold filter together, which produces the "gooey" effect. Check the CSS - Comment the #container rule's filter out to see how the blurring works!
-*/
-
-const elts = {
-    habilidades: document.getElementById("habilidades"),
-    skills: document.getElementById("skills")
-};
-
-// The strings to morph between. You can change these to anything you want!
-const texts = [
-    "Habilidades",
-    "Skills",
-    "Tecnologias",
-    "Aptidões",
-    "Competências",
-
-];
-
-// Controls the speed of morphing.
-const morphTime = 1;
-const cooldownTime = 0.25;
-
-let textIndex = texts.length - 1;
-let time = new Date();
-let morph = 0;
-let cooldown = cooldownTime;
-
-elts.habilidades.textContent = texts[textIndex % texts.length];
-elts.skills.textContent = texts[(textIndex + 1) % texts.length];
-
-function doMorph() {
-    morph -= cooldown;
-    cooldown = 0;
-
-    let fraction = morph / morphTime;
-
-    if (fraction > 1) {
-        cooldown = cooldownTime;
-        fraction = 1;
-    }
-
-    setMorph(fraction);
-}
-
-// A lot of the magic happens here, this is what applies the blur filter to the text.
-function setMorph(fraction) {
-    // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
-
-    elts.skills.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-    elts.skills.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-    fraction = 1 - fraction;
-    elts.habilidades.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-    elts.habilidades.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+    // The strings to morph between. You can change these to anything you want!
+    const texts = [
+        "Habilidades",
+        "Skills",
+        "Tecnologias",
+        "Aptidões",
+        "Competências",
+
+    ];
+
+    // Controls the speed of morphing.
+    const morphTime = 1;
+    const cooldownTime = 0.25;
+
+    let textIndex = texts.length - 1;
+    let time = new Date();
+    let morph = 0;
+    let cooldown = cooldownTime;
 
     elts.habilidades.textContent = texts[textIndex % texts.length];
     elts.skills.textContent = texts[(textIndex + 1) % texts.length];
-}
 
-function doCooldown() {
-    morph = 0;
+    function doMorph() {
+        morph -= cooldown;
+        cooldown = 0;
 
-    elts.skills.style.filter = "";
-    elts.skills.style.opacity = "100%";
+        let fraction = morph / morphTime;
 
-    elts.habilidades.style.filter = "";
-    elts.habilidades.style.opacity = "0%";
-}
-
-// Animation loop, which is called every frame.
-function animate() {
-    requestAnimationFrame(animate);
-
-    let newTime = new Date();
-    let shouldIncrementIndex = cooldown > 0;
-    let dt = (newTime - time) / 1000;
-    time = newTime;
-
-    cooldown -= dt;
-
-    if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-            textIndex++;
+        if (fraction > 1) {
+            cooldown = cooldownTime;
+            fraction = 1;
         }
 
-        doMorph();
-    } else {
-        doCooldown();
+        setMorph(fraction);
     }
-}
 
-// Start the animation.
-animate();
-// jobs section
+    // A lot of the magic happens here, this is what applies the blur filter to the text.
+    function setMorph(fraction) {
+        // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
 
+        elts.skills.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        elts.skills.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+        fraction = 1 - fraction;
+        elts.habilidades.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        elts.habilidades.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+        elts.habilidades.textContent = texts[textIndex % texts.length];
+        elts.skills.textContent = texts[(textIndex + 1) % texts.length];
+    }
+
+    function doCooldown() {
+        morph = 0;
+
+        elts.skills.style.filter = "";
+        elts.skills.style.opacity = "100%";
+
+        elts.habilidades.style.filter = "";
+        elts.habilidades.style.opacity = "0%";
+    }
+
+    // Animation loop, which is called every frame.
+    function animate() {
+        requestAnimationFrame(animate);
+
+        let newTime = new Date();
+        let shouldIncrementIndex = cooldown > 0;
+        let dt = (newTime - time) / 1000;
+        time = newTime;
+
+        cooldown -= dt;
+
+        if (cooldown <= 0) {
+            if (shouldIncrementIndex) {
+                textIndex++;
+            }
+
+            doMorph();
+        } else {
+            doCooldown();
+        }
+    }
+
+    // Start the animation.
+    animate();
+})();
+
+
+// ANIMATION JOBS TITLE
+(() => {
+
+    var TextSlider = function () {
+        this.container = $('#home-animation-wrapper');
+        this.currentSlide = 1;
+        this.slidesLength = this.container.find('.slide').length - 1; // To start at 0
+        this.content = {
+            text1: '',
+            text2: '',
+            text3: ''
+        };
+
+        this.allowChange = true;
+
+        this.init();
+    };
+
+    TextSlider.prototype = {
+
+        init: function () {
+            console.log('init');
+
+            this.bind();
+
+            this.initSvg();
+
+        },
+
+        bind: function () {
+            console.log('bind');
+
+            var self = this;
+
+            // Bind interval
+            var timerDuration = 4000,
+                timer = setInterval(function () {
+                    self.resetSlide();
+                }, timerDuration);
+
+            // Bind restart on click with next slide
+            this.container.on('click', function () {
+
+                // Do not allow to change slide until last transition is complete
+                if (!self.allowChange) {
+                    return;
+                }
+                self.allowChange = false;
+                setTimeout(function () {
+                    self.allowChange = true;
+                }, 800);
+
+                self.resetSlide();
+
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    self.resetSlide();
+                }, timerDuration);
+
+
+            });
+
+
+        },
+
+        initSvg: function () {
+            console.log('initSvg');
+
+            this.bubblesRandomColors();
+            this.setTexts();
+            this.triggerSlide();
+        },
+
+        setTexts: function () {
+            console.log('setTexts');
+
+            var texts = this.container.find('#svg-texts');
+
+            // Get texts
+            this.content.text1 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-1');
+            this.content.text2 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-2');
+            this.content.text3 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-3');
+
+            // UpperCase Texts
+            this.content.text1 = this.content.text1.toUpperCase();
+            this.content.text2 = this.content.text2.toUpperCase();
+            this.content.text3 = this.content.text3.toUpperCase();
+
+            // Append Texts
+            texts.find('text:nth-child(1)').html(this.content.text1);
+            texts.find('text:nth-child(2)').html(this.content.text2);
+            texts.find('text:nth-child(3)').html(this.content.text3);
+        },
+
+        bubblesRandomColors: function () {
+            console.log('bubblesRandomColors');
+
+            var bubblesGroup = this.container.find('#bubbles'),
+                colors = ['#7700ff', '#f58b4e', '#112b39'];
+
+            bubblesGroup.find('path').each(function () {
+                var rand = getRand(0, colors.length);
+                TweenMax.set(this, {
+                    fill: colors[rand],
+                    scale: 0,
+                    transformOrigin: 'center'
+                });
+            })
+        },
+
+        triggerSlide: function () {
+            console.log('triggerSlide');
+
+            // Container loads invisible, needs this to be shown on the first iteration
+            TweenMax.set(this.container, {
+                autoAlpha: 1
+            });
+
+            var bubbles = this.container.find('#bubbles path');
+            bubbles.each(function () {
+                var rotateRand = getRand(-30, 30);
+                TweenMax.to(this, 1.5, {
+                    scale: 1.2,
+                    rotation: rotateRand,
+                    ease: Power2.easeInOut
+                });
+            })
+        },
+
+        resetSlide: function () {
+            console.log('hideSlide');
+
+            var self = this;
+
+            this.currentSlide++;
+            if (this.currentSlide > this.slidesLength) {
+                this.currentSlide = 0;
+            };
+
+            var bubbles = this.container.find('#bubbles path');
+            TweenMax.to(bubbles, 1.5, {
+                scale: 0,
+                ease: Power2.easeInOut,
+                onComplete: triggerContinue
+            });
+
+            // Workaround gsap onComplete
+            function triggerContinue() {
+                self.initSvg();
+            }
+        },
+
+
+    }
+
+    function getRand(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    window.LLOS = window.LLOS || {};
+    if ($('#home-animation-wrapper').length) {
+        window.LLOS.TextSlider = new TextSlider();
+    }
+
+})();
+
+
+// ANIMATION OPENING SECTION JOBS
+(() => {
+
+    const div = document.querySelector("#jobs");
+    const letter1 = document.querySelector("#letter-1");
+    const letter2 = document.querySelector("#letter-2");
+    const letter3 = document.querySelector("#letter-3");
+    const letter4 = document.querySelector("#letter-4");
+
+    let jaAnimou = false;
+
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !jaAnimou) {
+                    jaAnimou = true;
+
+
+                    rolarAteFinalDaDiv(div);
+                    iniciarSequencia();
+
+                    observer.unobserve(div);
+                }
+            });
+        }, {
+            threshold: 0
+        }
+    );
+
+    observer.observe(div);
+
+    function iniciarSequencia() {
+        div.classList.add("ativo");
+        setTimeout(() => {
+            letter1.classList.add("letter-1");
+        }, 100);
+        setTimeout(() => {
+            letter2.classList.add("letter-2");
+        }, 200);
+        setTimeout(() => {
+            letter3.classList.add("letter-3");
+        }, 300);
+        setTimeout(() => {
+            letter4.classList.add("letter-4");
+        }, 1000);
+
+    }
+
+    function rolarAteFinalDaDiv(elemento) {
+        const inicio = window.scrollY;
+
+        const destino = elemento.offsetTop + elemento.offsetHeight - window.innerHeight;
+
+        const destinoLimitado = Math.max(0, destino);
+
+        const distancia = destinoLimitado - inicio;
+        const duracao = 1400;
+        const tempoInicial = performance.now();
+
+        function animarScroll(tempoAtual) {
+            const progresso = Math.min((tempoAtual - tempoInicial) / duracao, 1);
+
+            const suavizado = easeOutExpo(progresso);
+
+            window.scrollTo(0, inicio + distancia * suavizado);
+
+            if (progresso < 1) {
+                requestAnimationFrame(animarScroll);
+            }
+        }
+
+        requestAnimationFrame(animarScroll);
+    }
+
+    function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    }
+})();
+
+// INTERACTIVE JOBS CARDS
 (() => {
     "use strict";
 
@@ -1970,4 +834,65 @@ animate();
     } else {
         initGallery();
     }
+})();
+
+// ACADEMIC ANIMATION
+(() => { 
+
+      const topPanels = document.querySelectorAll('.academic-top');
+        const bottomPanels = document.querySelectorAll('.academic-bottom');
+        const btnStart = document.getElementById('btn-start');
+        const btnReverse = document.getElementById('btn-reverse');
+
+        const animationDuration = 1000;
+        const maxDelay = 200;
+        const totalTransitionTime = animationDuration + maxDelay; // 1800ms
+        const centerPauseTime = 800; // 2s no centro
+
+        function startAnimation() {
+            // Oculta o botão de início
+
+            // 1. Entra na tela até se encontrarem
+            topPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
+            bottomPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
+
+            // 2. Aguarda a chegada + pausa de 2s e dispersa
+            setTimeout(() => {
+                topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
+                bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
+
+                // 3. Exibe o botão de rebobinar
+                setTimeout(() => {
+            btnStart.classList.add('hide');
+
+                    btnReverse.classList.add('show');
+                }, totalTransitionTime - centerPauseTime - 100);
+
+            }, totalTransitionTime + centerPauseTime);
+        }
+
+        function rewindAnimation() {
+            // Oculta o botão de rebobinar
+
+            // 1. Volta para o centro
+            topPanels.forEach(p => { p.classList.remove('dispersed'); p.classList.add('center'); });
+            bottomPanels.forEach(p => { p.classList.remove('dispersed'); p.classList.add('center'); });
+
+            // 2. Aguarda a junção no centro + pausa de 2s e esconde para fora da tela
+            setTimeout(() => {
+                topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
+                bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
+
+                // 3. Reexibe o botão inicial após finalizar a saída
+                setTimeout(() => {
+            btnReverse.classList.remove('show');
+                    btnStart.classList.remove('hide');
+                }, totalTransitionTime - centerPauseTime - 100);
+
+            }, totalTransitionTime + centerPauseTime);
+        }
+
+        // Event listeners
+        btnStart.addEventListener('click', startAnimation);
+        btnReverse.addEventListener('click', rewindAnimation);
 })();

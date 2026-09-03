@@ -41,339 +41,15 @@
         <div class="loader-logo">
             Carregando...
         </div>
-
         <div class="loader-bar">
             <div class="loader-bar-progress" id="loaderProgress"></div>
         </div>
         <div class="loader-percentage" id="loaderPercentage">
             0%
         </div>
-
     </div>
-
 </div>
-<script>
-    (() => {
 
-        const loader = document.getElementById("loader");
-        const loaderContent = document.getElementById("loaderContent");
-        const progress = document.getElementById("loaderProgress");
-        const percentage = document.getElementById("loaderPercentage");
-
-        let progressValue = 0;
-
-
-        /*
-         * =========================================
-         * ATUALIZA PROGRESSO
-         * =========================================
-         */
-
-        function setProgress(value) {
-
-            progressValue = Math.min(
-                100,
-                Math.max(0, value)
-            );
-
-            progress.style.width = `${progressValue}%`;
-
-            percentage.textContent =
-                `${Math.round(progressValue)}%`;
-        }
-
-
-        /*
-         * =========================================
-         * CARREGA IMAGENS
-         * =========================================
-         */
-
-        function waitForImages() {
-
-            const images = [
-                ...document.images
-            ];
-
-            if (!images.length) {
-                return Promise.resolve();
-            }
-
-            return Promise.all(
-
-                images.map((image) => {
-
-                    return new Promise((resolve) => {
-
-                        if (image.complete) {
-                            resolve();
-                            return;
-                        }
-
-                        image.addEventListener(
-                            "load",
-                            resolve,
-                            { once: true }
-                        );
-
-                        image.addEventListener(
-                            "error",
-                            resolve,
-                            { once: true }
-                        );
-
-                    });
-
-                })
-
-            );
-        }
-
-
-        /*
-         * =========================================
-         * CARREGA FONTES
-         * =========================================
-         */
-
-        async function waitForFonts() {
-
-            if (
-                document.fonts &&
-                document.fonts.ready
-            ) {
-                await document.fonts.ready;
-            }
-
-        }
-
-
-        /*
-         * =========================================
-         * ESPERA TODAS AS PROMISES
-         * =========================================
-         */
-
-        async function waitForEverything() {
-
-            setProgress(10);
-
-            await waitForImages();
-
-            setProgress(70);
-
-            await waitForFonts();
-
-            setProgress(90);
-
-            /*
-             * Dá uma pequena folga para o browser
-             * terminar layout/paint.
-             */
-
-            await new Promise(resolve => {
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(resolve);
-                });
-            });
-
-            setProgress(100);
-
-        }
-
-
-        /*
-         * =========================================
-         * ANIMAÇÃO DE SAÍDA
-         * =========================================
-         */
-
-        function revealSite() {
-
-            const tl = gsap.timeline({
-
-                defaults: {
-                    ease: "power4.inOut"
-                },
-
-                onComplete() {
-
-                    /*
-                     * Remove completamente o loader
-                     * depois da animação.
-                     */
-
-                    loader.remove();
-
-                    /*
-                     * Libera o scroll.
-                     */
-
-                    document.body.style.overflow = "";
-
-                }
-
-            });
-
-
-            /*
-             * ======================================
-             * 1. Conteúdo do loader dá uma "puxada"
-             * ======================================
-             */
-
-            tl.to(loaderContent, {
-
-                y: -80,
-                scale: 1.08,
-                opacity: 0,
-
-                duration: 0.35,
-
-                ease: "power4.in"
-
-            });
-
-
-            /*
-             * ======================================
-             * 2. A TELA INTEIRA SOBE
-             * ======================================
-             *
-             * O segredo aqui é usar uma curva
-             * extremamente agressiva.
-             */
-
-            tl.to(loader, {
-
-                yPercent: -100,
-
-                duration: 1.15,
-
-                ease: "expo.inOut"
-
-            }, "-=0.05");
-
-
-            /*
-             * ======================================
-             * 3. Pequeno "overshoot" visual
-             * ======================================
-             *
-             * Dá aquela sensação mais brutal.
-             */
-
-            tl.set(loader, {
-
-                yPercent: -103
-
-            });
-
-
-            tl.to(loader, {
-
-                yPercent: -100,
-
-                duration: 0.18,
-
-                ease: "power2.out"
-
-            });
-
-        }
-
-
-        /*
-         * =========================================
-         * INICIALIZA
-         * =========================================
-         */
-
-        async function init() {
-
-            /*
-             * Impede scroll enquanto carrega.
-             */
-
-            document.body.style.overflow = "hidden";
-
-
-            /*
-             * Estado inicial.
-             */
-
-            gsap.set(loader, {
-                yPercent: 0
-            });
-
-            gsap.set(loaderContent, {
-                y: 0,
-                opacity: 1,
-                scale: 1
-            });
-
-
-            /*
-             * Anima a barra enquanto os recursos
-             * estão sendo processados.
-             */
-
-            gsap.to(progress, {
-
-                opacity: 1,
-
-                duration: 0.3
-
-            });
-
-
-            /*
-             * Aguarda tudo.
-             */
-
-            await waitForEverything();
-
-
-            /*
-             * Pequeno delay para o 100% ser percebido.
-             */
-
-            await new Promise(resolve => {
-
-                setTimeout(resolve, 150);
-
-            });
-
-
-            /*
-             * Revela o site.
-             */
-
-            revealSite();
-
-        }
-
-
-        /*
-         * DOM completamente processado.
-         */
-
-        if (document.readyState === "loading") {
-
-            document.addEventListener(
-                "DOMContentLoaded",
-                init,
-                { once: true }
-            );
-
-        } else {
-
-            init();
-
-        }
-
-    })();
-</script>
 
 <div class="image-modal" id="imageModal">
     <div class="modal-card justify-content-end align-items-center" id="modalCard">
@@ -390,26 +66,16 @@
                     <span>X</span>
                 </button>
             </div>
-
         </div>
-
     </div>
-
-
-    <!-- VOLTAR -->
     <button class="modal-arrow px-4 pt-1 pb-2 custom-btn btn-16 modal-prev" id="modalPrev" aria-label="Imagem anterior">
         ‹
     </button>
-
-
-    <!-- AVANÇAR -->
     <button class="modal-arrow px-4 pt-1 pb-2 custom-btn btn-16  modal-next" id="modalNext" aria-label="Próxima imagem">
         ›
     </button>
-
-    <!-- INDICADOR -->
     <div class="modal-counter" id="modalCounter">
-        1 / 8
+        1 / 9
     </div>
 
 </div>
@@ -463,8 +129,10 @@
                 <div class="dark-tile tools-tile">
                     <span class="t">📞 (61) 99572-2550</span>
                     <span class="t">📧 luis.hdsg@gmail.com</span>
-                    <span class="t">🔗 <a href="https://github.com/luishdsg" class="alink text-light" target="_blank">GitHub</a></span>
-                    <span class="t">⌘ <a href="https://www.linkedin.com/in/luis-henrique-gome/" class="alink text-light" target="_blank">LinkedIn</a></span>
+                    <span class="t">🔗 <a href="https://github.com/luishdsg" class="alink text-light"
+                            target="_blank">GitHub</a></span>
+                    <span class="t">⌘ <a href="https://www.linkedin.com/in/luis-henrique-gome/" class="alink text-light"
+                            target="_blank">LinkedIn</a></span>
                     <span class="t"><a href="" class="alink text-light" target="_blank">📩 Currículo</a></span>
                 </div>
             </div>
@@ -660,8 +328,8 @@
                     até onde podemos ir <br /><em>colaborando juntos</em>.</h2>
             </div>
             <div class="d-flex justify-content-between ">
-
-                <p>Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e mobile utilizando React,
+                <p class="mb-0">Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e mobile
+                    utilizando React,
                     Angular, Node.js, NestJS e TypeScript. Experiência em desenvolvimento frontend focado em
                     performance, acessibilidade e experiência do usuário, além de atuação em APIs REST, integrações,
                     sistemas escaláveis e banco de dados MySQL e MongoDB. Vivência em aplicações do mercado
@@ -678,6 +346,95 @@
                             </stick>
                     </div>
                 </div>
+                <div id="formation">
+                    <button id="btn-start" class="academic">
+                        <span class="btn-academic" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                        </span>
+                        <span class="academic-text">Learn More</span>
+                    </button>
+                </div>
+    <style>
+
+        .academic-panel {
+            position: fixed;
+            width: 100vw;
+            height: 50vh;
+            left: 0;
+            
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+
+        .academic-top { top: 0; transform-origin: top left; }
+        .academic-bottom { bottom: 0; transform-origin: bottom right; }
+
+        /* Delays e Z-Index */
+        .academic-layer-1 { z-index: 10; transition-delay: 0ms; }
+        .academic-layer-2 { z-index: 20; transition-delay: 150ms; }
+        .academic-layer-3 { z-index: 30; transition-delay: 300ms; }
+
+        /* Cores */
+        .academic-top.layer-1 { background-color: var(--musgo); }
+        .academic-top.layer-2 { background-color: var(--ciano); }
+        .academic-top.layer-3 { background-color: var(--bg); }
+
+        .academic-bottom.layer-1 { background-color: var(--orange-4); }
+        .academic-bottom.layer-2 { background-color: var(--orange-3); }
+        .academic-bottom.layer-3 { background-color: var(--orange-2); }
+
+        /* Estados da Animação */
+        .academic-top.offscreen { transform: translate(-150vw, -150vh) rotate(-75deg) scale(2); }
+        .academic-bottom.offscreen { transform: translate(150vw, 150vh) rotate(-75deg) scale(2); }
+
+        .academic-top.center { transform: translate(0, 0) rotate(0deg) scale(1); }
+        .academic-bottom.center { transform: translate(0, 0) rotate(0deg) scale(1); }
+
+        .academic-top.dispersed { transform: translateY(-120vh) rotate(0deg) scale(1); }
+        .academic-bottom.dispersed { transform: translateY(120vh) rotate(0deg) scale(1); }
+
+        /* Botão Inicial (Iniciar) */
+        #btn-start {
+            display: block;
+            pointer-events: auto;
+        }
+
+        #btn-start.hide {
+            display: none;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        /* Botão Final (Rebobinar) */
+        #btn-reverse {
+            display: none;
+            background-color: #10b981;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        #btn-reverse.show {
+            display: block;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+
+    <button id="btn-reverse">Rebobinar Animação</button>
+
+    <div class="academic-panel academic-top academic-offscreen academic-layer-1"></div>
+    <div class="academic-panel academic-top academic-offscreen academic-layer-2"></div>
+    <div class="academic-panel academic-top academic-offscreen academic-layer-3"></div>
+
+    <div class="academic-panel academic-bottom academic-offscreen academic-layer-1"></div>
+    <div class="academic-panel academic-bottom academic-offscreen academic-layer-2"></div>
+    <div class="academic-panel academic-bottom academic-offscreen academic-layer-3"></div>
+
+    <script>
+      
+    </script>
+
+</body>
+</html>
             </div>
         </div>
         <div id="skill">
@@ -709,9 +466,7 @@
                 <div class="text">
                     <p class="mb-0">React</p>
                 </div>
-                <!-- <button onclick="showMoreInfo(trad)" class="btc btc-2 hover-slide-up">
-                    <span>ver detalhes</span>
-                </button> -->
+
             </div>
             <div class="t-card prog-blur">
                 <div class="text">
@@ -1401,6 +1156,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
     <script src="./script.js"></script>
+    <script src="./scripts/projects.js"></script>
+    <script src="./scripts/gsap.js"></script>
     <script>
 
         (() => {
