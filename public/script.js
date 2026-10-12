@@ -875,8 +875,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             // Oculta o botão de rebobinar
 
             // 1. Volta para o centro
-            topPanels.forEach(p => { p.classList.remove('dispersed'); p.classList.add('center'); });
-            bottomPanels.forEach(p => { p.classList.remove('dispersed'); p.classList.add('center'); });
+            topPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
+            bottomPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
 
             // 2. Aguarda a junção no centro + pausa de 2s e esconde para fora da tela
             setTimeout(() => {

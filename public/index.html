@@ -361,7 +361,8 @@
             width: 100vw;
             height: 50vh;
             left: 0;
-            
+            /* paineis sao puramente decorativos: nunca devem capturar o cursor */
+            pointer-events: none;
             transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
             will-change: transform;
         }
@@ -375,23 +376,23 @@
         .academic-layer-3 { z-index: 30; transition-delay: 300ms; }
 
         /* Cores */
-        .academic-top.layer-1 { background-color: var(--musgo); }
-        .academic-top.layer-2 { background-color: var(--ciano); }
-        .academic-top.layer-3 { background-color: var(--bg); }
+        .academic-top.academic-layer-1 { background-color: var(--musgo); }
+        .academic-top.academic-layer-2 { background-color: var(--ciano); }
+        .academic-top.academic-layer-3 { background-color: var(--bg); }
 
-        .academic-bottom.layer-1 { background-color: var(--orange-4); }
-        .academic-bottom.layer-2 { background-color: var(--orange-3); }
-        .academic-bottom.layer-3 { background-color: var(--orange-2); }
+        .academic-bottom.academic-layer-1 { background-color: var(--orange-4); }
+        .academic-bottom.academic-layer-2 { background-color: var(--orange-3); }
+        .academic-bottom.academic-layer-3 { background-color: var(--orange-2); }
 
         /* Estados da Animação */
-        .academic-top.offscreen { transform: translate(-150vw, -150vh) rotate(-75deg) scale(2); }
-        .academic-bottom.offscreen { transform: translate(150vw, 150vh) rotate(-75deg) scale(2); }
+        .academic-top.academic-offscreen { transform: translate(-150vw, -150vh) rotate(-75deg) scale(2); }
+        .academic-bottom.academic-offscreen { transform: translate(150vw, 150vh) rotate(-75deg) scale(2); }
 
-        .academic-top.center { transform: translate(0, 0) rotate(0deg) scale(1); }
-        .academic-bottom.center { transform: translate(0, 0) rotate(0deg) scale(1); }
+        .academic-top.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
+        .academic-bottom.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
 
-        .academic-top.dispersed { transform: translateY(-120vh) rotate(0deg) scale(1); }
-        .academic-bottom.dispersed { transform: translateY(120vh) rotate(0deg) scale(1); }
+        .academic-top.academic-dispersed { transform: translateY(-120vh) rotate(0deg) scale(1); }
+        .academic-bottom.academic-dispersed { transform: translateY(120vh) rotate(0deg) scale(1); }
 
         /* Botão Inicial (Iniciar) */
         #btn-start {
@@ -433,8 +434,6 @@
       
     </script>
 
-</body>
-</html>
             </div>
         </div>
         <div id="skill">
