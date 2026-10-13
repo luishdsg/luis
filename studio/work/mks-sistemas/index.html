@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-namespace="work">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MKS Sistemas — Luis H.</title>
+  <meta name="description" content="Vitrine com carrinho persistente, variações de produto e cálculo de total no cliente." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="MKS Sistemas — Luis H." />
+  <meta property="og:description" content="Vitrine com carrinho persistente, variações de produto e cálculo de total no cliente." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/app.css" />
+  <script>
+    // evita flash de tema errado antes do app.js carregar
+    try {
+      var t = localStorage.getItem("studio:theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <div class="loader" role="status" aria-live="polite">
+    <div class="loader-num">000%</div>
+    <div class="loader-track"><div class="loader-fill"></div></div>
+    <span class="sr">Carregando</span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <header class="ui">
+    <a class="ui-logo" href="../../index.html">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Luis H.</span>
+    </a>
+
+    <nav class="ui-nav" aria-label="Principal">
+      <span class="links">
+        <a href="../../index.html">Trabalhos</a>
+            <a href="../../about/index.html">Sobre</a>
+            <a href="../../journal/index.html">Diário</a>
+      </span>
+      <button type="button" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+      </button>
+      <button class="burger" type="button" data-menu-toggle aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="ui-foot">
+      <p class="mono">Remoto — Brasil</p>
+      <div class="social mono">
+          <a href="https://github.com/luishdsg" data-no-router target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" data-no-router target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ti.brl.edu@gmail.com" data-no-router>E-mail</a>
+      </div>
+      <p class="mono credits">© <span data-year>2026</span> — construído à mão</p>
+    </div>
+  </header>
+
+  <nav class="sheet" aria-label="Menu">
+      <a href="../../index.html">Trabalhos</a>
+      <a href="../../about/index.html">Sobre</a>
+      <a href="../../journal/index.html">Diário</a>
+      <a href="mailto:ti.brl.edu@gmail.com" data-no-router>Contato</a>
+  </nav>
+
+  <div id="router">
+    <main class="page" id="main" data-namespace="work">
+      <a class="back" href="../../index.html"><span aria-hidden="true">←</span> Todos os trabalhos</a>
+
+      <header class="case-hero">
+        <h1>MKS Sistemas</h1>
+        <p class="sub">E-commerce de catálogo e carrinho</p>
+      </header>
+
+      <dl class="case-meta">
+        <div><dt>Cliente</dt><dd>Projeto próprio</dd></div>
+        <div><dt>Ano</dt><dd>2026</dd></div>
+        <div><dt>Papel</dt><dd>Front-end · Estado global</dd></div>
+        <div><dt>Stack</dt><dd>React, Redux, Styled</dd></div>
+      </dl>
+
+      <figure class="shot" data-parallax data-reveal>
+        <img src="../../img/myeshop.png" alt="MKS Sistemas — captura de tela" loading="lazy" />
+      </figure>
+
+      <div class="case-body">
+        <section data-reveal>
+          <h2>Resumo</h2>
+          <p>Vitrine com carrinho persistente, variações de produto e cálculo de total no cliente.</p>
+        </section>
+        <section data-reveal>
+          <h2>Carrinho</h2>
+          <p>Estado normalizado por id de variação, persistência em storage com versionamento de schema e reconciliação quando o preço muda entre sessões.</p>
+        </section>
+          <p style="margin-top:2rem"><a class="cta" href="https://mkssistemas.vercel.app" data-no-router target="_blank" rel="noopener">Ver no ar <span aria-hidden="true">↗</span></a></p>
+      </div>
+
+      <a class="next" href="../../work/puzzle/index.html">
+        <span class="mono">Próximo projeto</span>
+        <span class="name">Puzzle</span>
+      </a>
+    </main>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

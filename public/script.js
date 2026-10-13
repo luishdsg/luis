@@ -5,8 +5,8 @@ async function registrarVisita() {
 
         const resposta = await fetch(
             "/api/views", {
-                method: "POST"
-            }
+            method: "POST"
+        }
         );
 
         const dados = await resposta.json();
@@ -94,6 +94,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 /* ANIMATION SCROLLING */
 (() => {
     const lenis = new Lenis();
+    // exposto para quem precisa travar o scroll (ex: o painel de vidro)
+    window.lenis = lenis;
 
     function raf(time) {
         lenis.raf(time);
@@ -106,23 +108,6 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 })();
 
 
-// CONTACT MODAL
-(() => {
-    const btn = document.getElementById("btn");
-    const glassContainer =
-        document.getElementById("glassContainer");
-    btn.addEventListener("click", () => {
-        if (!glassContainer.classList.contains("glassContainerActive")) {
-            glassContainer.classList.add("glassContainerActive");
-            glassContainer.classList.remove("glassContainerInactive");
-
-        } else if (glassContainer.classList.contains("glassContainerActive")) {
-            glassContainer.classList.add("glassContainerInactive");
-            glassContainer.classList.remove("glassContainerActive");
-
-        }
-    });
-})();
 
 
 // cursor ANIMATION
@@ -150,6 +135,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     });
 
     const speed = 0.17;
+    let frameId = 0;
+
     const tick = () => {
         circle.x += (mouse.x - circle.x) * speed;
         circle.y += (mouse.y - circle.y) * speed;
@@ -168,278 +155,39 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         }
         const rotateTransform = `rotate(${currentAngle}deg)`;
         circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-        window.requestAnimationFrame(tick);
+        frameId = window.requestAnimationFrame(tick);
     }
 
-    tick();
+    frameId = window.requestAnimationFrame(tick);
 
-
-})();
-
-
-// skills section
-(() => {
-
-    const elts = {
-        habilidades: document.getElementById("habilidades"),
-        skills: document.getElementById("skills")
-    };
-
-    // The strings to morph between. You can change these to anything you want!
-    const texts = [
-        "Habilidades",
-        "Skills",
-        "Tecnologias",
-        "Aptidões",
-        "Competências",
-
-    ];
-
-    // Controls the speed of morphing.
-    const morphTime = 1;
-    const cooldownTime = 0.25;
-
-    let textIndex = texts.length - 1;
-    let time = new Date();
-    let morph = 0;
-    let cooldown = cooldownTime;
-
-    elts.habilidades.textContent = texts[textIndex % texts.length];
-    elts.skills.textContent = texts[(textIndex + 1) % texts.length];
-
-    function doMorph() {
-        morph -= cooldown;
-        cooldown = 0;
-
-        let fraction = morph / morphTime;
-
-        if (fraction > 1) {
-            cooldown = cooldownTime;
-            fraction = 1;
+    // Liga/desliga o cursor que segue o ponteiro. Usado pelo painel de vidro:
+    // o canvas da rede neural ja consome o frame, e este laco escrevendo
+    // transform a cada frame por cima disso pesa sem necessidade.
+    window.cursorFollow = {
+        running: true,
+        stop() {
+            if (!this.running) return;
+            this.running = false;
+            if (frameId) window.cancelAnimationFrame(frameId);
+            frameId = 0;
+            circleElement.classList.add('circle-off');
+        },
+        start() {
+            if (this.running) return;
+            this.running = true;
+            circleElement.classList.remove('circle-off');
+            // reposiciona antes de voltar, senao ele atravessa a tela
+            // vindo de onde parou
+            circle.x = mouse.x;
+            circle.y = mouse.y;
+            previousMouse.x = mouse.x;
+            previousMouse.y = mouse.y;
+            currentScale = 0;
+            frameId = window.requestAnimationFrame(tick);
         }
-
-        setMorph(fraction);
-    }
-
-    // A lot of the magic happens here, this is what applies the blur filter to the text.
-    function setMorph(fraction) {
-        // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
-
-        elts.skills.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-        elts.skills.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-        fraction = 1 - fraction;
-        elts.habilidades.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-        elts.habilidades.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-        elts.habilidades.textContent = texts[textIndex % texts.length];
-        elts.skills.textContent = texts[(textIndex + 1) % texts.length];
-    }
-
-    function doCooldown() {
-        morph = 0;
-
-        elts.skills.style.filter = "";
-        elts.skills.style.opacity = "100%";
-
-        elts.habilidades.style.filter = "";
-        elts.habilidades.style.opacity = "0%";
-    }
-
-    // Animation loop, which is called every frame.
-    function animate() {
-        requestAnimationFrame(animate);
-
-        let newTime = new Date();
-        let shouldIncrementIndex = cooldown > 0;
-        let dt = (newTime - time) / 1000;
-        time = newTime;
-
-        cooldown -= dt;
-
-        if (cooldown <= 0) {
-            if (shouldIncrementIndex) {
-                textIndex++;
-            }
-
-            doMorph();
-        } else {
-            doCooldown();
-        }
-    }
-
-    // Start the animation.
-    animate();
-})();
-
-
-// ANIMATION JOBS TITLE
-(() => {
-
-    var TextSlider = function () {
-        this.container = $('#home-animation-wrapper');
-        this.currentSlide = 1;
-        this.slidesLength = this.container.find('.slide').length - 1; // To start at 0
-        this.content = {
-            text1: '',
-            text2: '',
-            text3: ''
-        };
-
-        this.allowChange = true;
-
-        this.init();
     };
-
-    TextSlider.prototype = {
-
-        init: function () {
-            console.log('init');
-
-            this.bind();
-
-            this.initSvg();
-
-        },
-
-        bind: function () {
-            console.log('bind');
-
-            var self = this;
-
-            // Bind interval
-            var timerDuration = 4000,
-                timer = setInterval(function () {
-                    self.resetSlide();
-                }, timerDuration);
-
-            // Bind restart on click with next slide
-            this.container.on('click', function () {
-
-                // Do not allow to change slide until last transition is complete
-                if (!self.allowChange) {
-                    return;
-                }
-                self.allowChange = false;
-                setTimeout(function () {
-                    self.allowChange = true;
-                }, 800);
-
-                self.resetSlide();
-
-                clearInterval(timer);
-                timer = setInterval(function () {
-                    self.resetSlide();
-                }, timerDuration);
-
-
-            });
-
-
-        },
-
-        initSvg: function () {
-            console.log('initSvg');
-
-            this.bubblesRandomColors();
-            this.setTexts();
-            this.triggerSlide();
-        },
-
-        setTexts: function () {
-            console.log('setTexts');
-
-            var texts = this.container.find('#svg-texts');
-
-            // Get texts
-            this.content.text1 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-1');
-            this.content.text2 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-2');
-            this.content.text3 = this.container.find('.slide[count="' + this.currentSlide + '"]').attr('data-3');
-
-            // UpperCase Texts
-            this.content.text1 = this.content.text1.toUpperCase();
-            this.content.text2 = this.content.text2.toUpperCase();
-            this.content.text3 = this.content.text3.toUpperCase();
-
-            // Append Texts
-            texts.find('text:nth-child(1)').html(this.content.text1);
-            texts.find('text:nth-child(2)').html(this.content.text2);
-            texts.find('text:nth-child(3)').html(this.content.text3);
-        },
-
-        bubblesRandomColors: function () {
-            console.log('bubblesRandomColors');
-
-            var bubblesGroup = this.container.find('#bubbles'),
-                colors = ['#7700ff', '#f58b4e', '#112b39'];
-
-            bubblesGroup.find('path').each(function () {
-                var rand = getRand(0, colors.length);
-                TweenMax.set(this, {
-                    fill: colors[rand],
-                    scale: 0,
-                    transformOrigin: 'center'
-                });
-            })
-        },
-
-        triggerSlide: function () {
-            console.log('triggerSlide');
-
-            // Container loads invisible, needs this to be shown on the first iteration
-            TweenMax.set(this.container, {
-                autoAlpha: 1
-            });
-
-            var bubbles = this.container.find('#bubbles path');
-            bubbles.each(function () {
-                var rotateRand = getRand(-30, 30);
-                TweenMax.to(this, 1.5, {
-                    scale: 1.2,
-                    rotation: rotateRand,
-                    ease: Power2.easeInOut
-                });
-            })
-        },
-
-        resetSlide: function () {
-            console.log('hideSlide');
-
-            var self = this;
-
-            this.currentSlide++;
-            if (this.currentSlide > this.slidesLength) {
-                this.currentSlide = 0;
-            };
-
-            var bubbles = this.container.find('#bubbles path');
-            TweenMax.to(bubbles, 1.5, {
-                scale: 0,
-                ease: Power2.easeInOut,
-                onComplete: triggerContinue
-            });
-
-            // Workaround gsap onComplete
-            function triggerContinue() {
-                self.initSvg();
-            }
-        },
-
-
-    }
-
-    function getRand(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    window.LLOS = window.LLOS || {};
-    if ($('#home-animation-wrapper').length) {
-        window.LLOS.TextSlider = new TextSlider();
-    }
-
 })();
+
 
 
 // ANIMATION OPENING SECTION JOBS
@@ -467,8 +215,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
                 }
             });
         }, {
-            threshold: 0
-        }
+        threshold: 0
+    }
     );
 
     observer.observe(div);
@@ -573,21 +321,21 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             y: Math.floor(indexValue / gridSize)
         });
         const galleryFrameOffsets = [{
-                x: 0,
-                y: 0
-            },
-            {
-                x: -24,
-                y: 0
-            },
-            {
-                x: 16,
-                y: -10
-            },
-            {
-                x: -12,
-                y: 18
-            }
+            x: 0,
+            y: 0
+        },
+        {
+            x: -24,
+            y: 0
+        },
+        {
+            x: 16,
+            y: -10
+        },
+        {
+            x: -12,
+            y: 18
+        }
         ];
         const translateCanvas = () => {
             const frameOffset = galleryFrameOffsets[selectedIndex];
@@ -837,62 +585,90 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 })();
 
 // ACADEMIC ANIMATION
-(() => { 
+(() => {
 
-      const topPanels = document.querySelectorAll('.academic-top');
-        const bottomPanels = document.querySelectorAll('.academic-bottom');
-        const btnStart = document.getElementById('btn-start');
-        const btnReverse = document.getElementById('btn-reverse');
+    const topPanels = document.querySelectorAll('.academic-top');
+    const bottomPanels = document.querySelectorAll('.academic-bottom');
+    const btnStart = document.getElementById('btn-start');
+    const btnReverse = document.getElementById('btn-reverse');
+    const glassStage = document.getElementById('glassStage');
 
-        const animationDuration = 1000;
-        const maxDelay = 200;
-        const totalTransitionTime = animationDuration + maxDelay; // 1800ms
-        const centerPauseTime = 800; // 2s no centro
+    // O painel acompanha o botao Rebobinar: abre com ele e fecha com ele.
+    // Monta primeiro (display) e so no frame seguinte dispara a transicao,
+    // senao o navegador nao tem estado inicial para animar.
+    function openStage() {
+        if (!glassStage) return;
+        glassStage.classList.add('is-mounted');
+        requestAnimationFrame(() => glassStage.classList.add('is-open'));
+        if (window.lenis) window.lenis.stop();
+        if (window.cursorFollow) window.cursorFollow.stop();
+    }
 
-        function startAnimation() {
-            // Oculta o botão de início
+    // Fecha sem transicao nenhuma. So deve ser chamado no instante em que os
+    // paineis estao no centro cobrindo a tela inteira: a magica acontece fora
+    // das cameras e o espectador nunca ve o painel sumindo.
+    function closeStage() {
+        if (!glassStage) return;
+        glassStage.classList.remove('is-open');
+        glassStage.classList.remove('is-mounted');
+        if (window.lenis) window.lenis.start();
+        if (window.cursorFollow) window.cursorFollow.start();
+    }
 
-            // 1. Entra na tela até se encontrarem
-            topPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
-            bottomPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
+    const animationDuration = 1000;
+    const maxDelay = 200;
+    const totalTransitionTime = animationDuration + maxDelay; // 1800ms
+    const centerPauseTime = 800; // 2s no centro
 
-            // 2. Aguarda a chegada + pausa de 2s e dispersa
+    function startAnimation() {
+        // Oculta o botão de início
+
+        // 1. Entra na tela até se encontrarem
+        topPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
+        bottomPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
+
+        // 2. Aguarda a chegada + pausa de 2s e dispersa
+        setTimeout(() => {
+            topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
+            bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
+
+            // 3. Exibe o botão de rebobinar
             setTimeout(() => {
-                topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
-                bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
+                btnStart.classList.add('hide');
 
-                // 3. Exibe o botão de rebobinar
-                setTimeout(() => {
-            btnStart.classList.add('hide');
+                btnReverse.classList.add('show');
+                openStage();
+            }, totalTransitionTime - centerPauseTime - 100);
 
-                    btnReverse.classList.add('show');
-                }, totalTransitionTime - centerPauseTime - 100);
+        }, totalTransitionTime + centerPauseTime);
+    }
 
-            }, totalTransitionTime + centerPauseTime);
-        }
+    function rewindAnimation() {
+        // Oculta o botão de rebobinar
 
-        function rewindAnimation() {
-            // Oculta o botão de rebobinar
+        // 1. Volta para o centro
+        topPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
+        bottomPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
 
-            // 1. Volta para o centro
-            topPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
-            bottomPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
+        // 2. Aguarda a junção no centro + pausa de 2s e esconde para fora da tela
+        setTimeout(() => {
+            // os paineis estao no centro, cobrindo tudo: e aqui que o painel
+            // de vidro sai de cena, sem ninguem ver
+            closeStage();
 
-            // 2. Aguarda a junção no centro + pausa de 2s e esconde para fora da tela
+            topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
+            bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
+
+            // 3. Reexibe o botão inicial após finalizar a saída
             setTimeout(() => {
-                topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
-                bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-offscreen'); });
+                btnReverse.classList.remove('show');
+                btnStart.classList.remove('hide');
+            }, totalTransitionTime - centerPauseTime - 100);
 
-                // 3. Reexibe o botão inicial após finalizar a saída
-                setTimeout(() => {
-            btnReverse.classList.remove('show');
-                    btnStart.classList.remove('hide');
-                }, totalTransitionTime - centerPauseTime - 100);
+        }, totalTransitionTime + centerPauseTime);
+    }
 
-            }, totalTransitionTime + centerPauseTime);
-        }
-
-        // Event listeners
-        btnStart.addEventListener('click', startAnimation);
-        btnReverse.addEventListener('click', rewindAnimation);
+    // Event listeners
+    btnStart.addEventListener('click', startAnimation);
+    btnReverse.addEventListener('click', rewindAnimation);
 })();

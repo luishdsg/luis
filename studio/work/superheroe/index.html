@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-namespace="work">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Superheroe — Luis H.</title>
+  <meta name="description" content="Interface de busca e comparação que classifica personagens por atributos, com cache local das consultas para tornar a navegação de volta instantânea." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Superheroe — Luis H." />
+  <meta property="og:description" content="Interface de busca e comparação que classifica personagens por atributos, com cache local das consultas para tornar a navegação de volta instantânea." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../../css/app.css" />
+  <script>
+    // evita flash de tema errado antes do app.js carregar
+    try {
+      var t = localStorage.getItem("studio:theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <div class="loader" role="status" aria-live="polite">
+    <div class="loader-num">000%</div>
+    <div class="loader-track"><div class="loader-fill"></div></div>
+    <span class="sr">Carregando</span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <header class="ui">
+    <a class="ui-logo" href="../../index.html">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Luis H.</span>
+    </a>
+
+    <nav class="ui-nav" aria-label="Principal">
+      <span class="links">
+        <a href="../../index.html">Trabalhos</a>
+            <a href="../../about/index.html">Sobre</a>
+            <a href="../../journal/index.html">Diário</a>
+      </span>
+      <button type="button" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+      </button>
+      <button class="burger" type="button" data-menu-toggle aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="ui-foot">
+      <p class="mono">Remoto — Brasil</p>
+      <div class="social mono">
+          <a href="https://github.com/luishdsg" data-no-router target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" data-no-router target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ti.brl.edu@gmail.com" data-no-router>E-mail</a>
+      </div>
+      <p class="mono credits">© <span data-year>2026</span> — construído à mão</p>
+    </div>
+  </header>
+
+  <nav class="sheet" aria-label="Menu">
+      <a href="../../index.html">Trabalhos</a>
+      <a href="../../about/index.html">Sobre</a>
+      <a href="../../journal/index.html">Diário</a>
+      <a href="mailto:ti.brl.edu@gmail.com" data-no-router>Contato</a>
+  </nav>
+
+  <div id="router">
+    <main class="page" id="main" data-namespace="work">
+      <a class="back" href="../../index.html"><span aria-hidden="true">←</span> Todos os trabalhos</a>
+
+      <header class="case-hero">
+        <h1>Superheroe</h1>
+        <p class="sub">Classificador de heróis</p>
+      </header>
+
+      <dl class="case-meta">
+        <div><dt>Cliente</dt><dd>Projeto próprio</dd></div>
+        <div><dt>Ano</dt><dd>2026</dd></div>
+        <div><dt>Papel</dt><dd>Front-end · Consumo de API</dd></div>
+        <div><dt>Stack</dt><dd>React, REST, CSS Modules</dd></div>
+      </dl>
+
+      <figure class="shot" data-parallax data-reveal>
+        <img src="https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png" alt="Superheroe — captura de tela" loading="lazy" />
+      </figure>
+
+      <div class="case-body">
+        <section data-reveal>
+          <h2>Resumo</h2>
+          <p>Interface de busca e comparação que classifica personagens por atributos, com cache local das consultas para tornar a navegação de volta instantânea.</p>
+        </section>
+        <section data-reveal>
+          <h2>Busca</h2>
+          <p>Entrada com debounce, cancelamento de requisições em voo e cache por chave de consulta. Resultados anteriores continuam visíveis enquanto a próxima página carrega.</p>
+        </section>
+        <section data-reveal>
+          <h2>Comparação</h2>
+          <p>Barras de atributo normalizadas pelo maior valor do conjunto selecionado, para que a leitura relativa funcione com qualquer combinação.</p>
+        </section>
+          <p style="margin-top:2rem"><a class="cta" href="https://superheroe.vercel.app/" data-no-router target="_blank" rel="noopener">Ver no ar <span aria-hidden="true">↗</span></a></p>
+      </div>
+
+      <a class="next" href="../../work/xadrez/index.html">
+        <span class="mono">Próximo projeto</span>
+        <span class="name">Xadrez</span>
+      </a>
+    </main>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

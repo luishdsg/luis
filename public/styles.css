@@ -1178,102 +1178,174 @@ body.modal-open {
     max-width: 320px;
 }
 
-.team-grid {
+/* ============ NEURAL FIELD (canvas interativo) ============ */
+.neural-field {
+    position: relative;
     max-width: 1280px;
     margin: 2em auto auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.t-card {
-    aspect-ratio: 3 / 4;
-    border-radius: 22px;
+    aspect-ratio: 16 / 5;
+    min-height: 280px;
+    border-radius: 26px;
     overflow: hidden;
     isolation: isolate;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
+    cursor: crosshair;
+    /* arrasto no toque nao pode virar scroll/zoom da pagina */
+    touch-action: none;
+    background:
+        radial-gradient(120% 140% at 12% 0%, rgba(255, 255, 255, 0.55) 0%, transparent 55%),
+        radial-gradient(90% 120% at 88% 100%, rgba(253, 198, 138, 0.38) 0%, transparent 60%),
+        linear-gradient(145deg, var(--bg) 0%, var(--bg-2) 60%, #e6dcc8 100%);
     box-shadow: 0 24px 40px -16px rgba(180, 50, 20, 0.4),
         0 10px 22px -6px rgba(140, 40, 10, 0.22),
         inset 0 2px 0 rgba(255, 220, 180, 0.4),
         inset 0 -3px 6px rgba(120, 20, 0, 0.3);
-    cursor: pointer;
-    transition: transform 0.5s cubic-bezier(0.6, 0, 0.2, 1), box-shadow 0.5s;
+    transition: box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.t-card::before {
+/* as palavras sao arrastaveis: o cursor anuncia isso */
+.neural-field.is-pointing {
+    cursor: grab;
+}
+
+.neural-field.is-dragging,
+.neural-field.is-dragging.is-pointing {
+    cursor: grabbing;
+}
+
+.neural-field::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(155deg,
-            rgba(255, 255, 255, 0.22) 0%,
-            transparent 30%,
-            transparent 70%,
-            rgba(100, 20, 0, 0.22) 100%);
+    border-radius: inherit;
     pointer-events: none;
     z-index: 2;
+    background: linear-gradient(155deg,
+            rgba(255, 255, 255, 0.18) 0%,
+            transparent 32%,
+            transparent 70%,
+            rgba(100, 20, 0, 0.16) 100%);
+    box-shadow: inset 0 0 0 1px rgba(218, 210, 191, 0.7);
 }
 
-.t-card:nth-child(1) {
-    background-image: url('https://miro.medium.com/v2/resize:fit:800/1*BEEkxmqBkpdgtGUDgH3t9g.png');
+.neural-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-.t-card:nth-child(2) {
-    background-image: url('https://i.pinimg.com/736x/b0/73/e9/b073e9150cc603e3a5b757be38fc771b.jpg');
+/* lista equivalente para leitores de tela / sem JS */
+.neural-legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    list-style: none;
 }
 
-.t-card:nth-child(3) {
-    background-image: url('https://opensource.google/images/projects/os-projects-angular_thumbnail.png');
+/* ============ GLASS STAGE ============
+   Painel de vidro que abre junto com o botao Rebobinar, ocupando 90% da tela.
+   Fica em display:none quando fechado: assim o IntersectionObserver do campo
+   neural o enxerga como fora de tela e o rAF dele dorme ate o painel abrir.
+
+   z-index 9: tem de ficar ABAIXO de qualquer .academic-panel (10, 20 e 30)
+   para os paineis passarem por cima dele na animacao, em vez de as duas
+   animacoes se atropelarem. Acima das secoes da pagina, que ficam em 5. */
+.glass-stage {
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    display: none;
+    place-items: center;
+    padding: 5vh 5vw;
 }
 
-.t-card:nth-child(4) {
-    background-image: url('https://w0.peakpx.com/wallpaper/870/448/HD-wallpaper-coder-black-logo-minimal-programmer-programming-thumbnail.jpg');
+.glass-stage.is-mounted {
+    display: grid;
 }
 
-.t-card:nth-child(5) {
-    background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*Shk_5yhp2D-cWi40_4X4ow.jpeg');
+.glass-stage-panel {
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 1.8vh, 26px);
+    padding: clamp(14px, 2vw, 34px);
+    border-radius: 30px;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: rgba(255, 255, 255, 0.303);
+    -webkit-backdrop-filter: blur(5px) saturate(var(--saturation));
+    backdrop-filter: blur(5px) url(#container-glass) saturate(var(--saturation));
+    box-shadow: 0 40px 80px -30px rgba(40, 30, 10, 0.45),
+        inset 0 2px 0 rgba(255, 255, 255, 0.7),
+        inset 0 -3px 8px rgba(120, 90, 40, 0.18);
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.t-card:nth-child(6) {
-    background-image: url('https://wallpaperaccess.com/full/7990029.png');
+.glass-stage.is-open .glass-stage-panel {
+    opacity: 1;
+    transform: none;
 }
 
-.t-card:nth-child(7) {
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxkJoABJNJUQ6FbRJC_JkX62HNmiC1Ohk1XirHEJW_YQ&s=10');
+.glass-stage .pill {
+    flex: 0 0 auto;
+    max-width: 100%;
 }
 
-.t-card:nth-child(8) {
-    background-image: url('https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png?hl=pt-br');
+/* o campo neural toma todo o espaco que sobrar entre o pill e o botao */
+.glass-stage .neural-field {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    aspect-ratio: auto;
+    margin: 0;
 }
 
-.t-card:nth-child(9) {
-    background-image: url('https://w0.peakpx.com/wallpaper/909/662/HD-wallpaper-git-hub-chedesign-code-github-programming.jpg');
+/* dentro do painel o botao e um item de fluxo: anula o deslocamento antigo */
+.glass-stage #btn-reverse,
+.glass-stage #btn-reverse.show {
+    flex: 0 0 auto;
+    transform: none;
+    padding: 12px 26px;
+    border: 0;
+    border-radius: 999px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 14px 24px -10px rgba(16, 185, 129, 0.7);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
 }
 
-.t-card:nth-child(10) {
-    background-image: url('https://thetribe.io/wp-content/uploads/docker-container-management-illustration.jpg');
+.glass-stage #btn-reverse.show:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px -10px rgba(16, 185, 129, 0.85);
 }
 
-.t-card:nth-child(11) {
-    background-image: url('https://sagacitysoftware.co.in/wp-content/uploads/2020/07/RPA3.jpg');
-}
+@media (max-width: 750px) {
+    .glass-stage {
+        padding: 5vh 3vw;
+    }
 
-.t-card:nth-child(12) {
-    background-image: url('https://wallpaperaccess.com/full/8658745.jpg');
-}
-
-.t-card:nth-child(13) {
-    background-image: url('https://dkrn4sk0rn31v.cloudfront.net/uploads/2019/08/30114919/MYSQL-PRIMEIROS-PASSOS.png');
-}
-
-.t-card:nth-child(14) {
-    background-image: url('https://wallpaperaccess.com/full/26627027.jpg');
-}
-
-.t-card:nth-child(15) {
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/361/665/85/node-js-hexagon-wallpaper-preview.jpg');
+    .glass-stage-panel {
+        width: 94vw;
+        border-radius: 20px;
+    }
 }
 
 
@@ -1384,8 +1456,9 @@ body.modal-open {
 
 /* Responsive */
 @media (max-width: 1100px) {
-    .team-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .neural-field {
+        aspect-ratio: 16 / 7;
+        min-height: 320px;
     }
 
     .stats-inner {
@@ -1484,9 +1557,10 @@ body.modal-open {
         padding: 80px 20px 40px;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+    .neural-field {
+        aspect-ratio: 3 / 4;
+        min-height: 420px;
+        border-radius: 18px;
     }
 
     .stats {
@@ -1935,97 +2009,6 @@ body {
 }
 
 /* liquid glass container */
-.glassContainer {
-    position: absolute;
-    display: flex;
-    right: 3%;
-    transition: .5s ease-in-out;
-    padding: 3em;
-    opacity: 0;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border-radius: 30px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-.glassContainerInactive {
-    position: absolute;
-    transition: .5s ease-in-out;
-    right: 10%;
-    top: 100%;
-    background-color: rgba(255, 255, 255, 0.303);
-    backdrop-filter: blur(5px) url(#container-glass) saturate(var(--saturation));
-    animation-name: closeGlass;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-}
-
-.glassContainerActive {
-    position: absolute;
-    right: 10%;
-    top: 100%;
-    background-color: rgba(255, 255, 255, 0.303);
-    backdrop-filter: blur(5px) url(#container-glass) saturate(var(--saturation));
-    opacity: 1;
-    transition: .5s ease-in-out;
-    animation-name: openGlass;
-    animation-duration: .5s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes openGlass {
-    0% {
-        width: 5em;
-        height: 5em;
-    }
-
-    100% {
-        width: 80%;
-        max-width: 50em;
-        height: auto;
-    }
-}
-
-@keyframes closeGlass {
-    0% {
-        width: 80%;
-        opacity: 1;
-        max-width: 50em;
-        height: auto;
-    }
-
-    100% {
-        width: 5em;
-        opacity: 0;
-        height: 5em;
-    }
-}
-
-.glassContainer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    border-radius: 30px;
-}
-
-.glassContainer::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    border-radius: 30px;
-    -webkit-backdrop-filter: blur(0px);
-    backdrop-filter: blur(0px);
-    -webkit-filter: url(#container-glass);
-    filter: url(#container-glass);
-    overflow: hidden;
-    isolation: isolate;
-}
 .pills {
   display: flex;
   flex-direction: column;
@@ -2147,6 +2130,12 @@ body {
 
 
 /* cursor */
+
+/* cursor desligado enquanto o painel de vidro esta aberto */
+.circle.circle-off {
+    opacity: 0;
+    visibility: hidden;
+}
 
 .circle {
     --circle-size: 40px;
@@ -2346,31 +2335,7 @@ body {
 }
 
 /* Jobs */
-/* bg canva */
-#morse-wave-background {
-    position: absolute;
-   bottom: 30%;
-    left: -2%;
-    z-index: -1;
-}
 
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,900");
-
-#home-animation-wrapper {
-    width: 100%;
-    height: 30em;
-    text-align: -webkit-center;
-    margin-top: 20%;
-    position: relative;
-    cursor: pointer;
-}
-
-#home-animation-wrapper svg {
-    width: 100%;
-    max-width: 980px;
-    max-height: 90%;
-    height: auto;
-}
 
 /* JOBS CARDS */
 
@@ -3135,29 +3100,6 @@ body {
     .gallery-zoom-container {
         height: clamp(4rem, 18vmin, 5rem);
     }
-}
-
-#skill {
-    margin: auto;
-    width: 100vw;
-    height: 10em;
-    top: 0;
-    bottom: 0;
-    filter: url(#threshold) blur(0.6px);
-}
-
-/* Your average text styling */
-#skills,
-#habilidades {
-    color: tomato;
-    position: absolute;
-    display: inline-block;
-    top: 95%;
-    width: 100%;
-    font-family: 'Raleway', sans-serif;
-    font-size: 80pt;
-    text-align: center;
-    user-select: none;
 }
 
 .academic {

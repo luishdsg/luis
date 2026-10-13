@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-namespace="about">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sobre — Luis H.</title>
+  <meta name="description" content="Quem é Luis H.: serviços, stack e forma de trabalho." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Sobre — Luis H." />
+  <meta property="og:description" content="Quem é Luis H.: serviços, stack e forma de trabalho." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/app.css" />
+  <script>
+    // evita flash de tema errado antes do app.js carregar
+    try {
+      var t = localStorage.getItem("studio:theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <div class="loader" role="status" aria-live="polite">
+    <div class="loader-num">000%</div>
+    <div class="loader-track"><div class="loader-fill"></div></div>
+    <span class="sr">Carregando</span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <header class="ui">
+    <a class="ui-logo" href="../index.html">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Luis H.</span>
+    </a>
+
+    <nav class="ui-nav" aria-label="Principal">
+      <span class="links">
+        <a href="../index.html">Trabalhos</a>
+            <a href="../about/index.html">Sobre</a>
+            <a href="../journal/index.html">Diário</a>
+      </span>
+      <button type="button" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+      </button>
+      <button class="burger" type="button" data-menu-toggle aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="ui-foot">
+      <p class="mono">Remoto — Brasil</p>
+      <div class="social mono">
+          <a href="https://github.com/luishdsg" data-no-router target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" data-no-router target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ti.brl.edu@gmail.com" data-no-router>E-mail</a>
+      </div>
+      <p class="mono credits">© <span data-year>2026</span> — construído à mão</p>
+    </div>
+  </header>
+
+  <nav class="sheet" aria-label="Menu">
+      <a href="../index.html">Trabalhos</a>
+      <a href="../about/index.html">Sobre</a>
+      <a href="../journal/index.html">Diário</a>
+      <a href="mailto:ti.brl.edu@gmail.com" data-no-router>Contato</a>
+  </nav>
+
+  <div id="router">
+    <main class="page" id="main" data-namespace="about">
+      <h1 class="page-title">Sobre</h1>
+
+      <div class="about-grid">
+        <div data-reveal>
+          <p>Sou Luis H., desenvolvedor front-end. Trabalho na fatia entre design e engenharia: pego a intenção visual de uma interface e a transformo em algo que roda bem em navegador real, em máquina real.</p>
+          <p style="margin-top:1.2rem">Prefiro código que se explica a documentação que compensa código obscuro, e movimento que orienta a leitura a movimento que apenas chama atenção. Todo projeto aqui respeita <code>prefers-reduced-motion</code> e funciona com teclado.</p>
+          <p style="margin-top:1.2rem"><a class="cta" href="mailto:ti.brl.edu@gmail.com" data-no-router>ti.brl.edu@gmail.com</a></p>
+        </div>
+
+        <div data-reveal>
+          <h2 class="mono" style="margin-bottom:.8rem">Serviços</h2>
+          <ul class="rows">
+          <li><span>Direção técnica</span><span class="mono">disponível</span></li>
+          <li><span>Desenvolvimento front-end</span><span class="mono">disponível</span></li>
+          <li><span>Interfaces animadas</span><span class="mono">disponível</span></li>
+          <li><span>Integração de APIs</span><span class="mono">disponível</span></li>
+          </ul>
+
+          <h2 class="mono" style="margin:2rem 0 .8rem">Stack</h2>
+          <ul class="rows">
+          <li><span>Angular</span></li>
+          <li><span>CSS</span></li>
+          <li><span>CSS Modules</span></li>
+          <li><span>Canvas</span></li>
+          <li><span>GSAP</span></li>
+          <li><span>HTML</span></li>
+          <li><span>JavaScript</span></li>
+          <li><span>Next.js</span></li>
+          <li><span>REST</span></li>
+          <li><span>React</span></li>
+          <li><span>Redux</span></li>
+          <li><span>SCSS</span></li>
+          <li><span>Styled</span></li>
+          <li><span>Tailwind</span></li>
+          <li><span>TypeScript</span></li>
+          <li><span>Vite</span></li>
+          <li><span>Vue</span></li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

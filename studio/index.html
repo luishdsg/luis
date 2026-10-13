@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-namespace="home">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luis H. — Desenvolvedor front-end</title>
+  <meta name="description" content="Direção técnica, front-end e interfaces animadas." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Luis H. — Desenvolvedor front-end" />
+  <meta property="og:description" content="Direção técnica, front-end e interfaces animadas." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/app.css" />
+  <script>
+    // evita flash de tema errado antes do app.js carregar
+    try {
+      var t = localStorage.getItem("studio:theme");
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Pular para o conteúdo</a>
+
+  <div class="loader" role="status" aria-live="polite">
+    <div class="loader-num">000%</div>
+    <div class="loader-track"><div class="loader-fill"></div></div>
+    <span class="sr">Carregando</span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <header class="ui">
+    <a class="ui-logo" href="index.html">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Luis H.</span>
+    </a>
+
+    <nav class="ui-nav" aria-label="Principal">
+      <span class="links">
+        <a href="index.html">Trabalhos</a>
+            <a href="about/index.html">Sobre</a>
+            <a href="journal/index.html">Diário</a>
+      </span>
+      <button type="button" data-theme-toggle aria-pressed="false" aria-label="Alternar tema">
+        <span class="track" aria-hidden="true"><span class="knob"></span></span>
+      </button>
+      <button class="burger" type="button" data-menu-toggle aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="ui-foot">
+      <p class="mono">Remoto — Brasil</p>
+      <div class="social mono">
+          <a href="https://github.com/luishdsg" data-no-router target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/" data-no-router target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:ti.brl.edu@gmail.com" data-no-router>E-mail</a>
+      </div>
+      <p class="mono credits">© <span data-year>2026</span> — construído à mão</p>
+    </div>
+  </header>
+
+  <nav class="sheet" aria-label="Menu">
+      <a href="index.html">Trabalhos</a>
+      <a href="about/index.html">Sobre</a>
+      <a href="journal/index.html">Diário</a>
+      <a href="mailto:ti.brl.edu@gmail.com" data-no-router>Contato</a>
+  </nav>
+
+  <div id="router">
+    <main class="page" id="main" data-namespace="home">
+      <section class="hero">
+        <p class="mono avail"><i aria-hidden="true"></i> Disponível para projetos — Remoto — Brasil</p>
+        <h1>Direção técnica, front-end e interfaces animadas. Construo interfaces que carregam rápido e continuam agradáveis de usar depois da primeira impressão.</h1>
+        <ul class="services">
+          <li>Direção técnica</li>
+          <li>Desenvolvimento front-end</li>
+          <li>Interfaces animadas</li>
+          <li>Integração de APIs</li>
+        </ul>
+      </section>
+
+      <section class="work">
+        <div class="work-head">
+          <h2 class="mono">Trabalhos selecionados</h2>
+          <p class="mono">10 projetos</p>
+        </div>
+
+        <ul class="projects">
+        <li>
+          <a href="work/sea-black/index.html" data-img="https://i.ibb.co/KpTS6ZQc/Captura-de-Tela-255.png">
+            <span class="idx">01</span>
+            <span class="name">Sea Black</span>
+            <span class="meta">
+              <span>Painel · CRUD</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/wordtree/index.html" data-img="https://i.ibb.co/WpBt7syz/Captura-de-tela-2026-08-29-082711.png">
+            <span class="idx">02</span>
+            <span class="name">WordTree</span>
+            <span class="meta">
+              <span>Visualização · Algoritmo</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/superheroe/index.html" data-img="https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png">
+            <span class="idx">03</span>
+            <span class="name">Superheroe</span>
+            <span class="meta">
+              <span>API · Interface</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/xadrez/index.html" data-img="img/tgt.png">
+            <span class="idx">04</span>
+            <span class="name">Xadrez</span>
+            <span class="meta">
+              <span>Jogo · Estado</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/funtools/index.html" data-img="https://i.ibb.co/3YLb1bh9/Captura-de-Tela-248.png">
+            <span class="idx">05</span>
+            <span class="name">Fun Tools</span>
+            <span class="meta">
+              <span>Ferramentas · Experimento</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/gommes/index.html" data-img="https://i.ibb.co/Xrd6C9p2/Captura-de-Tela-250.png">
+            <span class="idx">06</span>
+            <span class="name">Gommes</span>
+            <span class="meta">
+              <span>Portfólio · Animação</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/mks-sistemas/index.html" data-img="img/myeshop.png">
+            <span class="idx">07</span>
+            <span class="name">MKS Sistemas</span>
+            <span class="meta">
+              <span>E-commerce · Carrinho</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/puzzle/index.html" data-img="img/bol.png">
+            <span class="idx">08</span>
+            <span class="name">Puzzle</span>
+            <span class="meta">
+              <span>Jogo · Puzzle</span>
+              <span>2026</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/imovestock/index.html" data-img="img/imovestock.png">
+            <span class="idx">09</span>
+            <span class="name">ImoveStock</span>
+            <span class="meta">
+              <span>Listagem · Filtro</span>
+              <span>2025</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="work/mocar/index.html" data-img="img/mocar.png">
+            <span class="idx">10</span>
+            <span class="name">Mocar</span>
+            <span class="meta">
+              <span>Catálogo</span>
+              <span>2025</span>
+            </span>
+          </a>
+        </li>
+        </ul>
+
+        <div class="grid">
+        <a href="work/sea-black/index.html">
+          <span class="frame"><img src="https://i.ibb.co/KpTS6ZQc/Captura-de-Tela-255.png" alt="Sea Black" loading="lazy" /></span>
+          <span class="name mono">Sea Black — 2026</span>
+        </a>
+        <a href="work/wordtree/index.html">
+          <span class="frame"><img src="https://i.ibb.co/WpBt7syz/Captura-de-tela-2026-08-29-082711.png" alt="WordTree" loading="lazy" /></span>
+          <span class="name mono">WordTree — 2026</span>
+        </a>
+        <a href="work/superheroe/index.html">
+          <span class="frame"><img src="https://i.ibb.co/5WLyLmQ3/Captura-de-Tela-249.png" alt="Superheroe" loading="lazy" /></span>
+          <span class="name mono">Superheroe — 2026</span>
+        </a>
+        <a href="work/xadrez/index.html">
+          <span class="frame"><img src="img/tgt.png" alt="Xadrez" loading="lazy" /></span>
+          <span class="name mono">Xadrez — 2026</span>
+        </a>
+        <a href="work/funtools/index.html">
+          <span class="frame"><img src="https://i.ibb.co/3YLb1bh9/Captura-de-Tela-248.png" alt="Fun Tools" loading="lazy" /></span>
+          <span class="name mono">Fun Tools — 2026</span>
+        </a>
+        <a href="work/gommes/index.html">
+          <span class="frame"><img src="https://i.ibb.co/Xrd6C9p2/Captura-de-Tela-250.png" alt="Gommes" loading="lazy" /></span>
+          <span class="name mono">Gommes — 2026</span>
+        </a>
+        <a href="work/mks-sistemas/index.html">
+          <span class="frame"><img src="img/myeshop.png" alt="MKS Sistemas" loading="lazy" /></span>
+          <span class="name mono">MKS Sistemas — 2026</span>
+        </a>
+        <a href="work/puzzle/index.html">
+          <span class="frame"><img src="img/bol.png" alt="Puzzle" loading="lazy" /></span>
+          <span class="name mono">Puzzle — 2026</span>
+        </a>
+        <a href="work/imovestock/index.html">
+          <span class="frame"><img src="img/imovestock.png" alt="ImoveStock" loading="lazy" /></span>
+          <span class="name mono">ImoveStock — 2025</span>
+        </a>
+        <a href="work/mocar/index.html">
+          <span class="frame"><img src="img/mocar.png" alt="Mocar" loading="lazy" /></span>
+          <span class="name mono">Mocar — 2025</span>
+        </a>
+        </div>
+
+        <div class="stage" aria-hidden="true"><div class="stage-inner"></div></div>
+      </section>
+
+      <section class="stats">
+        <div data-reveal>
+          <p class="value">12</p>
+          <p class="mono">Projetos publicados</p>
+        </div>
+        <div data-reveal>
+          <p class="value">04</p>
+          <p class="mono">Anos de prática</p>
+        </div>
+        <div data-reveal>
+          <p class="value">06</p>
+          <p class="mono">Stacks principais</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

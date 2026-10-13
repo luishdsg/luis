@@ -206,9 +206,6 @@ gsap.registerPlugin(ScrollTrigger);
         opacity: 0,
         y: 20
     });
-    gsap.set(".t-card", {
-        opacity: 0
-    });
     gsap.set(".stats-inner", {
         opacity: 0
     });
@@ -448,7 +445,7 @@ gsap.registerPlugin(ScrollTrigger);
     });
 
     // ============================================================
-    // TEAM GRID REVEAL ON SCROLL
+    // TEAM HEAD REVEAL ON SCROLL
     // ============================================================
     gsap.from(".eyebrow, .team-head h2, .team-head p", {
         opacity: 0,
@@ -462,30 +459,6 @@ gsap.registerPlugin(ScrollTrigger);
         },
         scrollTrigger: {
             trigger: ".team-head",
-            start: "top 80%"
-        }
-    });
-
-    gsap.to(".t-card", {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: ".team-grid",
-            start: "top 80%"
-        }
-    });
-    gsap.from(".t-card", {
-        y: 80,
-        scale: 0.9,
-        rotation: (i) => (i % 2 === 0 ? -3 : 3),
-        duration: 1,
-        stagger: 0.08,
-        ease: "back.out(1.3)",
-        scrollTrigger: {
-            trigger: ".team-grid",
             start: "top 80%"
         }
     });
