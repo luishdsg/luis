@@ -700,18 +700,29 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     const topPanels = document.querySelectorAll('.academic-top');
     const bottomPanels = document.querySelectorAll('.academic-bottom');
     const btnStart = document.getElementById('btn-start');
-    const btnReverse = document.getElementById('btn-reverse');
     const glassStage = document.getElementById('glassStage');
+    // a bola de vidro da nav: "+" parada, "x" com o painel aberto. Ela
+    // substituiu o antigo botao "Rebobinar Animacao", que ficava dentro do
+    // painel e disputava espaco com o campo neural.
+    const glassToggle = document.getElementById('btn');
 
-    // O painel acompanha o botao Rebobinar: abre com ele e fecha com ele.
-    // Monta primeiro (display) e so no frame seguinte dispara a transicao,
-    // senao o navegador nao tem estado inicial para animar.
+    let stageOpen = false;
+    // enquanto a cortina esta correndo, clique nao vale: dois rewinds
+    // sobrepostos deixariam os timers brigando pelo estado dos paineis
+    let busy = false;
+
+    // O painel acompanha a bola de vidro: abre com ela virando "x" e fecha
+    // com ela voltando a "+". Monta primeiro (display) e so no frame seguinte
+    // dispara a transicao, senao o navegador nao tem estado inicial para
+    // animar.
     function openStage() {
         if (!glassStage) return;
         glassStage.classList.add('is-mounted');
         requestAnimationFrame(() => glassStage.classList.add('is-open'));
         if (window.lenis) window.lenis.stop();
         if (window.cursorFollow) window.cursorFollow.stop();
+        stageOpen = true;
+        setToggleState(true);
     }
 
     // Fecha sem transicao nenhuma. So deve ser chamado no instante em que os
@@ -723,6 +734,25 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         glassStage.classList.remove('is-mounted');
         if (window.lenis) window.lenis.start();
         if (window.cursorFollow) window.cursorFollow.start();
+        stageOpen = false;
+        setToggleState(false);
+    }
+
+    // "+" <-> "x" e o rotulo que o leitor de tela anuncia. Fechado, a bola e
+    // so decoracao: nao tem acao, entao tambem nao se apresenta como botao
+    // clicavel.
+    function setToggleState(isClose) {
+        if (!glassToggle) return;
+        glassToggle.classList.toggle('is-close', isClose);
+
+        if (isClose) {
+            glassToggle.setAttribute('aria-label', 'Fechar o painel de tecnologias');
+            glassToggle.removeAttribute('aria-disabled');
+            return;
+        }
+
+        glassToggle.setAttribute('aria-disabled', 'true');
+        glassToggle.removeAttribute('aria-label');
     }
 
     const animationDuration = 1000;
@@ -731,7 +761,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     const centerPauseTime = 800; // 2s no centro
 
     function startAnimation() {
-        // Oculta o botão de início
+        if (busy || stageOpen) return;
+        busy = true;
 
         // 1. Entra na tela até se encontrarem
         topPanels.forEach(p => { p.classList.remove('academic-offscreen'); p.classList.add('academic-center'); });
@@ -742,19 +773,19 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             topPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
             bottomPanels.forEach(p => { p.classList.remove('academic-center'); p.classList.add('academic-dispersed'); });
 
-            // 3. Exibe o botão de rebobinar
+            // 3. Abre o painel e troca o "+" da nav pelo "x"
             setTimeout(() => {
                 btnStart.classList.add('hide');
-
-                btnReverse.classList.add('show');
                 openStage();
+                busy = false;
             }, totalTransitionTime - centerPauseTime - 100);
 
         }, totalTransitionTime + centerPauseTime);
     }
 
     function rewindAnimation() {
-        // Oculta o botão de rebobinar
+        if (busy || !stageOpen) return;
+        busy = true;
 
         // 1. Volta para o centro
         topPanels.forEach(p => { p.classList.remove('academic-dispersed'); p.classList.add('academic-center'); });
@@ -771,8 +802,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 
             // 3. Reexibe o botão inicial após finalizar a saída
             setTimeout(() => {
-                btnReverse.classList.remove('show');
                 btnStart.classList.remove('hide');
+                busy = false;
             }, totalTransitionTime - centerPauseTime - 100);
 
         }, totalTransitionTime + centerPauseTime);
@@ -780,5 +811,13 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 
     // Event listeners
     btnStart.addEventListener('click', startAnimation);
-    btnReverse.addEventListener('click', rewindAnimation);
+
+    // Enquanto e "+" a bola nao faz nada; virou "x", ela rebobina.
+    if (glassToggle) {
+        setToggleState(false);
+        glassToggle.addEventListener('click', (event) => {
+            event.preventDefault();
+            rewindAnimation();
+        });
+    }
 })();

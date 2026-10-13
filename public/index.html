@@ -133,7 +133,8 @@
                 </feDisplacementMap>
             </filter>
         </svg>
-        <button id="btn" class="glass"></button>
+        <!-- "+" em repouso; vira "x" e fecha o painel de vidro quando ele abre -->
+        <button type="button" id="btn" class="glass" aria-disabled="true"></button>
 
         <svg style="position:absolute;width:0;height:0">
             <filter id="frosted" primitiveUnits="objectBoundingBox">
@@ -344,8 +345,8 @@
                     </div>
                 </div>
             </aside>
-    <!-- Painel de vidro: abre junto com o botao Rebobinar, ocupa 90% da tela
-         e trava o scroll da pagina enquanto estiver aberto -->
+    <!-- Painel de vidro: abre junto com a bola de vidro da nav (que vira "x"),
+         ocupa 90% da tela e trava o scroll da pagina enquanto estiver aberto -->
     <div class="glass-stage" id="glassStage">
         <div class="glass-stage-panel">
             <div class="neural-field" id="neuralField">
@@ -370,7 +371,6 @@
                     <li>Railway</li>
                 </ul>
             </div>
-            <button id="btn-reverse">Rebobinar Animação</button>
         </div>
     </div>
 

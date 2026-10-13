@@ -1314,29 +1314,6 @@ body.modal-open {
     margin: 0;
 }
 
-/* dentro do painel o botao e um item de fluxo: anula o deslocamento antigo */
-.glass-stage #btn-reverse,
-.glass-stage #btn-reverse.show {
-    flex: 0 0 auto;
-    transform: none;
-    padding: 12px 26px;
-    border: 0;
-    border-radius: 999px;
-    color: var(--white);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    box-shadow: 0 14px 24px -10px rgba(16, 185, 129, 0.7);
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
-}
-
-.glass-stage #btn-reverse.show:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 18px 30px -10px rgba(16, 185, 129, 0.85);
-}
-
 @media (max-width: 750px) {
     .glass-stage {
         padding: 5vh 3vw;
@@ -1997,6 +1974,7 @@ body .footer .content>div .image {
 /* wather-boll */
 
 .glass {
+    position: relative;
     width: 5em;
     height: 5em;
     border-radius: 50%;
@@ -2019,10 +1997,27 @@ body .footer .content>div .image {
     height: 5px;
     background: var(--white);
     border-radius: 10px;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .glass::after {
     transform: rotate(90deg)
+}
+
+/* "+" vira "x": as duas barras giram 45deg no mesmo sentido, entao a cruz
+   inteira parece rodar em vez de uma barra andar para tras. O JS liga este
+   estado quando o painel de vidro abre e desliga quando ele fecha. */
+#btn.is-close::before {
+    transform: rotate(45deg);
+}
+
+#btn.is-close::after {
+    transform: rotate(135deg);
+}
+
+/* em repouso a bola e decorativa: sem acao, sem cursor de clique */
+#btn[aria-disabled="true"] {
+    cursor: default;
 }
 
 /* liquid glass */
@@ -2421,18 +2416,6 @@ body {
             transform: translate(-50%, -50%) scale(0.8);
         }
 
-        /* Botão Final (Rebobinar) */
-        #btn-reverse {
-            display: none;
-            background-color: #10b981;
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        #btn-reverse.show {
-            display: block;
-            pointer-events: auto;
-            transform: translate(-50%, -50%) scale(1);
-        }
 /* carrousel button */
 
 .custom-btn {

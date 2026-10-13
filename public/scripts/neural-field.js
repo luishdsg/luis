@@ -240,20 +240,41 @@
             });
     }
 
-    function resize() {
+    // Converte coordenada de tela para coordenada do campo. getBoundingClientRect
+    // devolve a caixa JA multiplicada pelo transform dos ancestrais, e o
+    // .glass-stage-panel abre com scale(0.94) -> dividir pela escala real
+    // mantem o ponteiro alinhado com o desenho durante a abertura do painel.
+    function pointerToField(event) {
         const rect = field.getBoundingClientRect();
-        if (!rect.width || !rect.height) return;
+        const scaleX = rect.width ? field.clientWidth / rect.width : 1;
+        const scaleY = rect.height ? field.clientHeight / rect.height : 1;
+
+        return {
+            x: (event.clientX - rect.left) * scaleX,
+            y: (event.clientY - rect.top) * scaleY
+        };
+    }
+
+    function resize() {
+        // clientWidth/clientHeight em vez de getBoundingClientRect pelo mesmo
+        // motivo: medido durante o scale(0.94) de abertura, o rect dava 94% do
+        // tamanho real. O canvas era fixado nesse tamanho menor via style
+        // inline e, com inset:0 (onde left vence right), encostava no canto
+        // superior esquerdo do campo em vez de preencher e centralizar.
+        const width = field.clientWidth;
+        const height = field.clientHeight;
+        if (!width || !height) return;
 
         const prev = { w: state.w, h: state.h, nodes: state.nodes };
         state.dpr = Math.min(window.devicePixelRatio || 1, 2);
-        state.w = rect.width;
-        state.h = rect.height;
+        state.w = width;
+        state.h = height;
         state.fontSize = Math.max(12, Math.min(19, state.w * 0.0132));
 
+        // so o bitmap: o tamanho do elemento quem define e o CSS
+        // (position:absolute + inset:0 + 100%), entao ele cobre o campo exato
         canvas.width = Math.round(state.w * state.dpr);
         canvas.height = Math.round(state.h * state.dpr);
-        canvas.style.width = state.w + "px";
-        canvas.style.height = state.h + "px";
         ctx.setTransform(state.dpr, 0, 0, state.dpr, 0, 0);
 
         vapor.width = Math.max(1, Math.round(state.w * VAPOR_SCALE));
@@ -746,9 +767,9 @@
     field.addEventListener(
         "pointermove",
         (event) => {
-            const rect = field.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
+            const point = pointerToField(event);
+            const x = point.x;
+            const y = point.y;
             const p = state.pointer;
             const now = performance.now();
             const dt = Math.max(0.008, Math.min(0.1, (now - p.stamp) / 1000 || 0.016));
@@ -783,10 +804,10 @@
     /* ---------- arrastar as palavras -------------------------------------- */
 
     field.addEventListener("pointerdown", (event) => {
-        const rect = field.getBoundingClientRect();
+        const point = pointerToField(event);
         const p = state.pointer;
-        p.x = event.clientX - rect.left;
-        p.y = event.clientY - rect.top;
+        p.x = point.x;
+        p.y = point.y;
         p.stamp = performance.now();
         p.inside = true;
 
