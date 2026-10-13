@@ -110,80 +110,141 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 
 
 
-// cursor ANIMATION
+// CURSOR ANIMATION
+// O circulo que segue o ponteiro. Regras desta versao:
+//   - o laco nunca e cancelado, entao ele nunca "volta do zero" nem salta;
+//   - o amortecimento e por tempo (exp), nao por frame: a 30fps ele chega no
+//     ponteiro na mesma velocidade que a 144fps, so com menos quadros. Sem
+//     isso, qualquer queda de fps fazia o circulo parecer lento e arrastado;
+//   - so escreve no DOM quando a posicao realmente muda, entao com o mouse
+//     parado o laco custa praticamente nada;
+//   - transform em translate3d + will-change: a atualizacao fica na GPU e nao
+//     dispara layout/paint da pagina.
 (() => {
 
-    console.clear();
     const circleElement = document.querySelector('.circle');
-    const mouse = {
-        x: 0,
-        y: 0
-    };
-    const previousMouse = {
-        x: 0,
-        y: 0
+    if (!circleElement) return;
+
+    // ponteiro grosso (touch) nao tem cursor para seguir
+    if (!window.matchMedia('(pointer: fine)').matches) {
+        circleElement.remove();
+        window.cursorFollow = { running: false, stop() {}, start() {} };
+        return;
     }
-    const circle = {
-        x: 0,
-        y: 0
+
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // rate do amortecimento em 1/s. 11.2 reproduz o antigo lerp de 0.17/frame
+    // a 60fps: 1 - e^(-11.2/60) ~= 0.17
+    const FOLLOW = 11.2;
+    // velocidade (px/s) em que o alongamento chega no maximo
+    const MAX_SPEED = 2250;
+    // abaixo disso o angulo fica congelado: evita o circulo girar sozinho
+    // quando o mouse quase nao se move
+    const TURN_SPEED = 300;
+
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight / 2;
+    let prevPointerX = pointerX;
+    let prevPointerY = pointerY;
+
+    let x = pointerX;
+    let y = pointerY;
+    let stretch = 0;
+    let angle = 0;
+
+    let lastTransform = '';
+    let last = 0;
+    let visible = false;
+
+    const onMove = (event) => {
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        if (!visible) {
+            // primeira posicao conhecida: aparece ja no lugar certo
+            visible = true;
+            x = pointerX;
+            y = pointerY;
+            prevPointerX = pointerX;
+            prevPointerY = pointerY;
+            circleElement.classList.add('is-visible');
+        }
     };
-    let currentScale = 0;
-    let currentAngle = 0;
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.x;
-        mouse.y = e.y;
+
+    // pointerrawupdate entrega os movimentos sem esperar o frame; o handler so
+    // guarda dois numeros, entao o custo extra e irrelevante e a posicao lida
+    // no inicio do frame e a mais recente possivel
+    if ('onpointerrawupdate' in window) {
+        window.addEventListener('pointerrawupdate', onMove, { passive: true });
+    } else {
+        window.addEventListener('pointermove', onMove, { passive: true });
+    }
+
+    const tick = (now) => {
+        window.requestAnimationFrame(tick);
+
+        // dt em segundos, limitado: um frame perdido (aba em segundo plano,
+        // GC, troca de pagina) faz alpha -> 1 e o circulo gruda no ponteiro em
+        // vez de atravessar a tela devagar
+        const dt = Math.min(0.1, Math.max(0.001, (now - last) / 1000 || 0.016));
+        last = now;
+
+        const dx = pointerX - prevPointerX;
+        const dy = pointerY - prevPointerY;
+        prevPointerX = pointerX;
+        prevPointerY = pointerY;
+
+        const alpha = calm ? 1 : 1 - Math.exp(-FOLLOW * dt);
+        x += (pointerX - x) * alpha;
+        y += (pointerY - y) * alpha;
+
+        if (!calm) {
+            const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+            const target = Math.min(speed / MAX_SPEED, 1) * 0.5;
+            stretch += (target - stretch) * alpha;
+            if (speed > TURN_SPEED) {
+                angle = Math.atan2(dy, dx) * 180 / Math.PI;
+            }
+        }
+
+        // encostou no alvo: encosta de vez e para de escrever no DOM
+        if (Math.abs(pointerX - x) < 0.05 && Math.abs(pointerY - y) < 0.05) {
+            x = pointerX;
+            y = pointerY;
+        }
+        if (stretch < 0.0005) stretch = 0;
+
+        const transform =
+            'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0) ' +
+            'rotate(' + angle.toFixed(1) + 'deg) ' +
+            'scale(' + (1 + stretch).toFixed(3) + ',' + (1 - stretch).toFixed(3) + ')';
+
+        if (transform !== lastTransform) {
+            lastTransform = transform;
+            circleElement.style.transform = transform;
+        }
+    };
+
+    window.requestAnimationFrame((now) => {
+        last = now;
+        tick(now);
     });
 
-    const speed = 0.17;
-    let frameId = 0;
-
-    const tick = () => {
-        circle.x += (mouse.x - circle.x) * speed;
-        circle.y += (mouse.y - circle.y) * speed;
-        const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
-        const deltaMouseX = mouse.x - previousMouse.x;
-        const deltaMouseY = mouse.y - previousMouse.y;
-        previousMouse.x = mouse.x;
-        previousMouse.y = mouse.y;
-        const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
-        const scaleValue = (mouseVelocity / 150) * 0.5;
-        currentScale += (scaleValue - currentScale) * speed;
-        const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
-        const angle = Math.atan2(deltaMouseY, deltaMouseX) * 180 / Math.PI;
-        if (mouseVelocity > 20) {
-            currentAngle = angle;
-        }
-        const rotateTransform = `rotate(${currentAngle}deg)`;
-        circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-        frameId = window.requestAnimationFrame(tick);
-    }
-
-    frameId = window.requestAnimationFrame(tick);
-
-    // Liga/desliga o cursor que segue o ponteiro. Usado pelo painel de vidro:
-    // o canvas da rede neural ja consome o frame, e este laco escrevendo
-    // transform a cada frame por cima disso pesa sem necessidade.
+    // Liga/desliga a VISIBILIDADE do circulo (o painel de vidro usa isso).
+    // O laco continua rodando de proposito: parar e religar era o que fazia o
+    // circulo sumir, voltar atrasado e atravessar a tela correndo atras do
+    // ponteiro.
     window.cursorFollow = {
         running: true,
         stop() {
             if (!this.running) return;
             this.running = false;
-            if (frameId) window.cancelAnimationFrame(frameId);
-            frameId = 0;
             circleElement.classList.add('circle-off');
         },
         start() {
             if (this.running) return;
             this.running = true;
             circleElement.classList.remove('circle-off');
-            // reposiciona antes de voltar, senao ele atravessa a tela
-            // vindo de onde parou
-            circle.x = mouse.x;
-            circle.y = mouse.y;
-            previousMouse.x = mouse.x;
-            previousMouse.y = mouse.y;
-            currentScale = 0;
-            frameId = window.requestAnimationFrame(tick);
         }
     };
 })();
@@ -299,7 +360,6 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         const maxZoom = Number.parseFloat(zoomControl.max);
         let selectedIndex = galleryItems.findIndex((item) => item.classList.contains("gallery-option--selected"));
         let currentZoom = Number.parseFloat(zoomControl.value);
-        let isTransitioning = false;
         let loadFinished = false;
         let coordinates = {
             x: 0,
@@ -307,9 +367,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         };
         let stageMetrics = {
             width: 0,
-            height: 0,
-            columnGap: 0,
-            rowGap: 0
+            height: 0
         };
 
         if (selectedIndex < 0) {
@@ -320,49 +378,61 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             x: indexValue % gridSize,
             y: Math.floor(indexValue / gridSize)
         });
-        const galleryFrameOffsets = [{
-            x: 0,
-            y: 0
-        },
-        {
-            x: -24,
-            y: 0
-        },
-        {
-            x: 16,
-            y: -10
-        },
-        {
-            x: -12,
-            y: 18
-        }
-        ];
-        const translateCanvas = () => {
-            const frameOffset = galleryFrameOffsets[selectedIndex];
-            const xOffset = -coordinates.x * (stageMetrics.width + stageMetrics.columnGap) + frameOffset.x;
-            const yOffset = -coordinates.y * (stageMetrics.height + stageMetrics.rowGap) + frameOffset.y;
-            canvas.style.transform = `translate3d(${xOffset}px, ${yOffset}px, 0)`;
+
+        // CENTRALIZACAO
+        // A conta antiga reconstruia a posicao da celula a partir de
+        // stage.getBoundingClientRect() + os gaps lidos no CSS, e ainda somava
+        // um deslocamento fixo por indice (galleryFrameOffsets). Resultado: a
+        // imagem seleciona parava fora do centro -- o rect e afetado por
+        // qualquer transform/escala de ancestral (a secao #jobs anima), e os
+        // offsets de -24/+16/-12px desalinhavam de proposito, inclusive do
+        // botao de foco, que e centrado pelo CSS.
+        // Agora le-se a posicao real da celula no layout: offsetLeft/offsetTop
+        // sao relativos ao canvas, imunes a transform, e ja embutem o gap.
+        let lastCanvasTransform = "";
+
+        const centerSelected = (instant) => {
+            const item = galleryItems[selectedIndex];
+
+            if (!item) {
+                return;
+            }
+
+            const xOffset = (viewport.clientWidth - item.offsetWidth) / 2 - item.offsetLeft;
+            const yOffset = (viewport.clientHeight - item.offsetHeight) / 2 - item.offsetTop;
+            const transform = `translate3d(${xOffset.toFixed(2)}px, ${yOffset.toFixed(2)}px, 0)`;
+
+            if (transform === lastCanvasTransform) {
+                return;
+            }
+
+            lastCanvasTransform = transform;
+
+            // resize / primeira pintura nao devem animar: o canvas iria
+            // deslizar de 0,0 ate o lugar certo na frente do usuario
+            if (instant) {
+                canvas.classList.add("gallery-canvas--instant");
+                canvas.style.transform = transform;
+                void canvas.offsetWidth;
+                canvas.classList.remove("gallery-canvas--instant");
+                return;
+            }
+
+            canvas.style.transform = transform;
         };
 
         const syncStageMetrics = () => {
-            const stageBox = stage.getBoundingClientRect();
-            const canvasStyles = window.getComputedStyle(canvas);
-            const columnGap = Number.parseFloat(canvasStyles.columnGap);
-            const rowGap = Number.parseFloat(canvasStyles.rowGap);
-
             stageMetrics = {
-                width: stageBox.width,
-                height: stageBox.height,
-                columnGap: Number.isNaN(columnGap) ? 0 : columnGap,
-                rowGap: Number.isNaN(rowGap) ? 0 : rowGap
+                width: viewport.clientWidth,
+                height: viewport.clientHeight
             };
 
-            translateCanvas();
+            centerSelected(true);
         };
 
         const moveToIndex = (indexValue) => {
             coordinates = getGridCoordinates(indexValue);
-            translateCanvas();
+            centerSelected(false);
         };
 
         const setZoom = (zoomValue) => {
@@ -391,7 +461,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         const handleSelection = (event) => {
             const selectedControl = event.target.closest("[data-gallery-index]");
 
-            if (!selectedControl || isTransitioning) {
+            if (!selectedControl) {
                 return;
             }
 
@@ -407,10 +477,6 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         };
 
         const handleToggleOpen = (event) => {
-            if (isTransitioning) {
-                return;
-            }
-
             event.preventDefault();
             root.classList.toggle("gallery-root--open");
             focusButton.setAttribute("aria-expanded", String(root.classList.contains("gallery-root--open")));
@@ -418,17 +484,29 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         };
 
         const handleZoomInput = (event) => {
-            if (isTransitioning) {
-                return;
-            }
-
             setZoom(event.target.value);
         };
 
+        // A roda so mexe no zoom quando o gesto e MESMO de zoom: ponteiro
+        // sobre o palco + ctrl/cmd (o mesmo gesto do pinch no trackpad, que
+        // chega como wheel + ctrlKey). Antes o listener estava no document
+        // inteiro e sem condicao nenhuma: rolar a pagina em qualquer lugar
+        // mexia no zoom das imagens.
         const handleZoomFromWheel = (event) => {
-            if (isTransitioning) {
+            if (!event.ctrlKey && !event.metaKey) {
                 return;
             }
+
+            if (root.classList.contains("gallery-root--open")) {
+                return;
+            }
+
+            if (!event.target.closest("#gallery-stage")) {
+                return;
+            }
+
+            // segura o zoom nativo do navegador, ja que o gesto foi consumido
+            event.preventDefault();
 
             const direction = event.deltaY < 0 ? 1 : -1;
             setZoom(currentZoom + direction * zoomStep);
@@ -437,7 +515,18 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         const handleKeyboard = (event) => {
             const handledKeys = new Set(["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter"]);
 
-            if (!handledKeys.has(event.key) || event.target === zoomControl || isTransitioning) {
+            if (!handledKeys.has(event.key) || event.target === zoomControl) {
+                return;
+            }
+
+            // mesmo problema da roda: o listener e do document, entao as setas
+            // da galeria engoliam a rolagem por teclado da pagina inteira. So
+            // responde quando a galeria esta aberta ou com o foco dentro dela.
+            const galleryHasFocus =
+                root.classList.contains("gallery-root--open") ||
+                stage.contains(document.activeElement);
+
+            if (!galleryHasFocus) {
                 return;
             }
 
@@ -477,22 +566,41 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             event.stopPropagation();
         };
 
+        // A trava existe so para ligar o will-change durante o pan. Ela NAO
+        // bloqueia mais clique/teclado: uma transicao interrompida dispara
+        // transitioncancel (que nao era escutado), a trava ficava presa em
+        // true e a galeria parava de responder de vez.
+        let transitionTimer = 0;
+
+        const finishTransition = (event) => {
+            if (event && event.target !== canvas && event.target !== viewport) {
+                return;
+            }
+
+            if (event && event.propertyName !== "transform") {
+                return;
+            }
+
+            window.clearTimeout(transitionTimer);
+            transitionTimer = 0;
+            body.classList.remove("gallery-is-panning");
+        };
+
         const beginTransition = (event) => {
             if (event.target !== canvas && event.target !== viewport) {
                 return;
             }
 
-            isTransitioning = true;
-            body.classList.add("gallery-is-panning");
-        };
-
-        const finishTransition = (event) => {
-            if (event.target !== canvas && event.target !== viewport) {
+            if (event.propertyName !== "transform") {
                 return;
             }
 
-            isTransitioning = false;
-            body.classList.remove("gallery-is-panning");
+            body.classList.add("gallery-is-panning");
+
+            // rede de seguranca: se nenhum evento de fim chegar (aba oculta,
+            // transicao substituida no meio), a trava cai sozinha
+            window.clearTimeout(transitionTimer);
+            transitionTimer = window.setTimeout(finishTransition, 1400);
         };
 
         const buildResponsiveAssetUrl = (assetUrl) => {
@@ -550,25 +658,27 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         focusButton.addEventListener("click", handleToggleOpen, false);
         backButton.addEventListener("click", handleToggleOpen, false);
         zoomControl.addEventListener("input", handleZoomInput);
-        document.addEventListener("wheel", handleZoomFromWheel, {
-            passive: true
+        stage.addEventListener("wheel", handleZoomFromWheel, {
+            passive: false
         });
         document.addEventListener("keydown", handleKeyboard);
 
-        canvas.addEventListener("transitionrun", beginTransition);
-        canvas.addEventListener("transitionstart", beginTransition);
-        canvas.addEventListener("transitionend", finishTransition);
-        viewport.addEventListener("transitionrun", beginTransition);
-        viewport.addEventListener("transitionstart", beginTransition);
-        viewport.addEventListener("transitionend", finishTransition);
+        [canvas, viewport].forEach((element) => {
+            element.addEventListener("transitionrun", beginTransition);
+            element.addEventListener("transitionend", finishTransition);
+            element.addEventListener("transitioncancel", finishTransition);
+        });
 
         setZoom(currentZoom);
-        moveToIndex(selectedIndex);
+        coordinates = getGridCoordinates(selectedIndex);
         syncStageMetrics();
 
         if ("ResizeObserver" in window) {
-            const stageResizeObserver = new ResizeObserver(syncStageMetrics);
-            stageResizeObserver.observe(stage);
+            // o canvas tambem: mudanca de gap/breakpoint muda a posicao da
+            // celula sem mudar o tamanho do palco
+            const galleryResizeObserver = new ResizeObserver(syncStageMetrics);
+            galleryResizeObserver.observe(stage);
+            galleryResizeObserver.observe(canvas);
         }
 
         window.addEventListener("resize", syncStageMetrics);

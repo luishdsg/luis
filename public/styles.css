@@ -1587,14 +1587,88 @@ body.modal-open {
 /* .owl {
  */
 
+/* ============ INTRO: texto + coruja + botao ============
+   Antes os tres eram filhos diretos de um .d-flex com space-between: o
+   paragrafo encostava na coruja, a coruja flutuava no meio e o botao caia
+   solto na ponta, cada um numa altura diferente (align-items: stretch).
+   Agora e um cartao: texto em cima, e um rodape proprio com o mascote e o
+   CTA alinhados no mesmo eixo. */
+.intro-aside {
+    flex: 1 1 360px;
+    max-width: 430px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.14));
+    box-shadow: 0 22px 48px -34px rgba(20, 20, 22, 0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* vence o .team-head p (max-width: 320px): aqui quem limita e o cartao */
+.intro-aside .intro-text {
+    max-width: none;
+    font-size: 15px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+}
+
+.intro-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--line);
+}
+
+#formation {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+}
+
+/* a coruja ganha um halo macio em vez de ficar solta no branco */
 .coruja {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 70%);
     text-align: center;
 }
 
 .owl {
-    font-family: "Source Code Pro", Courier, monospace;
-    font-size: 1em;
-    color: #444;
+    /* Courier puro deixava o ASCII fino e datado ao lado do resto da pagina */
+    font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px;
+    line-height: 1.18;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 560px) {
+    .intro-aside {
+        padding: 20px;
+        gap: 18px;
+    }
+
+    /* na largura de celular os dois nao cabem lado a lado */
+    .intro-cta {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+
+    #formation {
+        justify-content: center;
+    }
 }
 
 .owl span {
@@ -2131,15 +2205,10 @@ body {
 
 /* cursor */
 
-/* cursor desligado enquanto o painel de vidro esta aberto */
-.circle.circle-off {
-    opacity: 0;
-    visibility: hidden;
-}
-
 .circle {
     --circle-size: 40px;
-    position: fixed;    z-index: 1000;
+    position: fixed;
+    z-index: 1000;
 
     height: var(--circle-size);
     width: var(--circle-size);
@@ -2148,6 +2217,28 @@ body {
     top: calc(var(--circle-size) / 2 * -1);
     left: calc(var(--circle-size) / 2 * -1);
     pointer-events: none;
+
+    /* camera propria no compositor: mover o circulo nao recalcula layout nem
+       repinta a pagina, so o GPU reposiciona a textura. Sem isso, cada frame
+       do cursor entrava na fila do main thread junto com o canvas. */
+    will-change: transform;
+    transform: translate3d(-9999px, -9999px, 0);
+    backface-visibility: hidden;
+    contain: layout style size;
+
+    opacity: 0;
+    transition: opacity 180ms ease;
+}
+
+/* so aparece quando ja sabe onde esta o ponteiro */
+.circle.is-visible {
+    opacity: 1;
+}
+
+/* cursor oculto enquanto o painel de vidro esta aberto (o laco continua
+   rodando, so a pintura some: ao voltar ele ja esta no lugar certo) */
+.circle.circle-off {
+    opacity: 0;
 }
 
 /* btn link */
@@ -2280,6 +2371,68 @@ body {
 }
 
 
+        .academic-panel {
+            position: fixed;
+            width: 100vw;
+            height: 50vh;
+            left: 0;
+            /* paineis sao puramente decorativos: nunca devem capturar o cursor */
+            pointer-events: none;
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+
+        .academic-top { top: 0; transform-origin: top left; }
+        .academic-bottom { bottom: 0; transform-origin: bottom right; }
+
+        /* Delays e Z-Index */
+        .academic-layer-1 { z-index: 10; transition-delay: 0ms; }
+        .academic-layer-2 { z-index: 20; transition-delay: 150ms; }
+        .academic-layer-3 { z-index: 30; transition-delay: 300ms; }
+
+        /* Cores */
+        .academic-top.academic-layer-1 { background-color: var(--musgo); }
+        .academic-top.academic-layer-2 { background-color: var(--ciano); }
+        .academic-top.academic-layer-3 { background-color: var(--bg); }
+
+        .academic-bottom.academic-layer-1 { background-color: var(--orange-4); }
+        .academic-bottom.academic-layer-2 { background-color: var(--orange-3); }
+        .academic-bottom.academic-layer-3 { background-color: var(--orange-2); }
+
+        /* Estados da Animação */
+        .academic-top.academic-offscreen { transform: translate(-150vw, -150vh) rotate(-75deg) scale(2); }
+        .academic-bottom.academic-offscreen { transform: translate(150vw, 150vh) rotate(-75deg) scale(2); }
+
+        .academic-top.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
+        .academic-bottom.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
+
+        .academic-top.academic-dispersed { transform: translateY(-120vh) rotate(0deg) scale(1); }
+        .academic-bottom.academic-dispersed { transform: translateY(120vh) rotate(0deg) scale(1); }
+
+        /* Botão Inicial (Iniciar) */
+        #btn-start {
+            display: block;
+            pointer-events: auto;
+        }
+
+        #btn-start.hide {
+            display: none;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        /* Botão Final (Rebobinar) */
+        #btn-reverse {
+            display: none;
+            background-color: #10b981;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+
+        #btn-reverse.show {
+            display: block;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
 /* carrousel button */
 
 .custom-btn {
@@ -2820,9 +2973,10 @@ body {
     will-change: transform, opacity;
 }
 
-.gallery-is-panning,
-.gallery-is-panning * {
-    pointer-events: none !important;
+/* reposicionamento sem animacao (primeira pintura, resize, troca de
+   breakpoint): sem isto o canvas desliza de 0,0 ate o lugar certo */
+.gallery-canvas--instant {
+    transition: none !important;
 }
 
 .gallery-option {
@@ -3117,7 +3271,9 @@ body {
 }
 .academic {
   width: 12rem;
-  height: auto;
+  /* altura fixa: dentro do .intro-cta a caixa do botao precisa ser
+     previsivel para alinhar com a coruja */
+  height: 3rem;
 }
 .academic .btn-academic {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -3129,6 +3285,16 @@ body {
    background: linear-gradient(45deg, var(--orange-4) 0%, var(--orange-1) 100%);
 
   border-radius: 1.625rem;
+  box-shadow: 0 12px 24px -16px rgba(217, 53, 31, 0.95);
+}
+
+.academic:focus-visible {
+  outline: none;
+}
+
+.academic:focus-visible .btn-academic {
+  outline: 2px solid var(--orange-1);
+  outline-offset: 3px;
 }
 .academic .btn-academic .icon {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -3163,7 +3329,11 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0.75rem 0;
+  /* grid centra o rotulo na altura exata da pilula; o padding fixo deixava
+     o texto alguns pixels acima do centro */
+  display: grid;
+  place-items: center;
+  padding: 0;
   margin: 0 0 0 1.85rem;
   color: var(--orange-2);
   font-weight: 700;

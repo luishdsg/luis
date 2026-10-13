@@ -310,99 +310,40 @@
                 <h2>+ de 4 anos como <br /><em>Engenheiro de Software</em><br />me trouxeram até aqui, <br />quem sabe
                     até onde podemos ir <br /><em>colaborando juntos</em>.</h2>
             </div>
-            <div class="d-flex justify-content-between ">
-                <p class="mb-0">Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e mobile
-                    utilizando React,
-                    Angular, Node.js, NestJS e TypeScript. Experiência em desenvolvimento frontend focado em
-                    performance, acessibilidade e experiência do usuário, além de atuação em APIs REST, integrações,
-                    sistemas escaláveis e banco de dados MySQL e MongoDB. Vivência em aplicações do mercado
-                    imobiliário, backoffice administrativo e rastreamento em tempo real.</p>
-                <div class="coruja">
-                    <div class="owl">
-                        <span class="head-owl"><span class="brows-owl"><span class="brow-left">_</span><span
-                                    class="brow-right">_</span></span><br />
-                            {<span class="eye-left">0</span><span class="nose-owl">,</span><span
-                                class="eye-right">0</span>}</span><br />
-                        <span class="wing-left">(</span><span class="belly">__</span><span
-                            class="wing-right">(</span><span class="back-owl">|</span><br />
-                        <span class="stick-owl">-<span class="foot-left">"</span>-<span class="foot-right">"</span>-
-                            </stick>
+            <!-- Texto + coruja + botao: um bloco so, com o mascote e o CTA
+                 ancorados no mesmo rodape em vez de soltos na linha -->
+            <aside class="intro-aside">
+                <p class="intro-text">Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e
+                    mobile utilizando React, Angular, Node.js, NestJS e TypeScript. Experiência em desenvolvimento
+                    frontend focado em performance, acessibilidade e experiência do usuário, além de atuação em APIs
+                    REST, integrações, sistemas escaláveis e banco de dados MySQL e MongoDB. Vivência em aplicações do
+                    mercado imobiliário, backoffice administrativo e rastreamento em tempo real.</p>
+
+                <div class="intro-cta">
+                    <!-- ASCII decorativo: o leitor de tela nao deve soletrar "{0,0}" -->
+                    <div class="coruja" aria-hidden="true">
+                        <div class="owl">
+                            <span class="head-owl"><span class="brows-owl"><span class="brow-left">_</span><span
+                                        class="brow-right">_</span></span><br />
+                                {<span class="eye-left">0</span><span class="nose-owl">,</span><span
+                                    class="eye-right">0</span>}</span><br />
+                            <span class="wing-left">(</span><span class="belly">__</span><span
+                                class="wing-right">(</span><span class="back-owl">|</span><br />
+                            <span class="stick-owl">-<span class="foot-left">"</span>-<span
+                                    class="foot-right">"</span>-</span>
+                        </div>
+                    </div>
+
+                    <div id="formation">
+                        <button id="btn-start" class="academic">
+                            <span class="btn-academic" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="academic-text">Learn More</span>
+                        </button>
                     </div>
                 </div>
-                <div id="formation">
-                    <button id="btn-start" class="academic">
-                        <span class="btn-academic" aria-hidden="true">
-                            <span class="icon arrow"></span>
-                        </span>
-                        <span class="academic-text">Learn More</span>
-                    </button>
-                </div>
-    <style>
-
-        .academic-panel {
-            position: fixed;
-            width: 100vw;
-            height: 50vh;
-            left: 0;
-            /* paineis sao puramente decorativos: nunca devem capturar o cursor */
-            pointer-events: none;
-            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-            will-change: transform;
-        }
-
-        .academic-top { top: 0; transform-origin: top left; }
-        .academic-bottom { bottom: 0; transform-origin: bottom right; }
-
-        /* Delays e Z-Index */
-        .academic-layer-1 { z-index: 10; transition-delay: 0ms; }
-        .academic-layer-2 { z-index: 20; transition-delay: 150ms; }
-        .academic-layer-3 { z-index: 30; transition-delay: 300ms; }
-
-        /* Cores */
-        .academic-top.academic-layer-1 { background-color: var(--musgo); }
-        .academic-top.academic-layer-2 { background-color: var(--ciano); }
-        .academic-top.academic-layer-3 { background-color: var(--bg); }
-
-        .academic-bottom.academic-layer-1 { background-color: var(--orange-4); }
-        .academic-bottom.academic-layer-2 { background-color: var(--orange-3); }
-        .academic-bottom.academic-layer-3 { background-color: var(--orange-2); }
-
-        /* Estados da Animação */
-        .academic-top.academic-offscreen { transform: translate(-150vw, -150vh) rotate(-75deg) scale(2); }
-        .academic-bottom.academic-offscreen { transform: translate(150vw, 150vh) rotate(-75deg) scale(2); }
-
-        .academic-top.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
-        .academic-bottom.academic-center { transform: translate(0, 0) rotate(0deg) scale(1); }
-
-        .academic-top.academic-dispersed { transform: translateY(-120vh) rotate(0deg) scale(1); }
-        .academic-bottom.academic-dispersed { transform: translateY(120vh) rotate(0deg) scale(1); }
-
-        /* Botão Inicial (Iniciar) */
-        #btn-start {
-            display: block;
-            pointer-events: auto;
-        }
-
-        #btn-start.hide {
-            display: none;
-            pointer-events: none;
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        /* Botão Final (Rebobinar) */
-        #btn-reverse {
-            display: none;
-            background-color: #10b981;
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        #btn-reverse.show {
-            display: block;
-            pointer-events: auto;
-            transform: translate(-50%, -50%) scale(1);
-        }
-    </style>
-
+            </aside>
     <!-- Painel de vidro: abre junto com o botao Rebobinar, ocupa 90% da tela
          e trava o scroll da pagina enquanto estiver aberto -->
     <div class="glass-stage" id="glassStage">
@@ -445,7 +386,6 @@
       
     </script>
 
-            </div>
         </div>
 
 

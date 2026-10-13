@@ -310,16 +310,44 @@ gsap.registerPlugin(ScrollTrigger);
         my = 0;
     });
 
-    function parallax() {
-        tx += (mx - tx) * 0.05;
-        ty += (my - ty) * 0.05;
-        document.querySelectorAll(".card").forEach((card) => {
-            const d = parseFloat(card.dataset.depth) || 8;
-            card.style.translate = `${tx * d}px ${ty * d * 0.5}px`;
-        });
-        requestAnimationFrame(parallax);
+    // A lista de cards e os depths sao fixos: resolver tudo uma vez e nao
+    // repetir querySelectorAll/parseFloat a 60fps. O laco tambem dorme quando
+    // o parallax ja chegou no alvo e quando a hero saiu da tela, para nao
+    // disputar frame com o cursor e com o canvas.
+    const parallaxCards = Array.from(document.querySelectorAll(".card")).map((card) => ({
+        el: card,
+        depth: parseFloat(card.dataset.depth) || 8
+    }));
+    let heroVisible = true;
+
+    if ("IntersectionObserver" in window) {
+        new IntersectionObserver((entries) => {
+            heroVisible = entries[0].isIntersecting;
+        }).observe(hero);
     }
-    parallax();
+
+    function parallax() {
+        requestAnimationFrame(parallax);
+        if (!parallaxCards.length) return;
+
+        const settled = Math.abs(mx - tx) < 0.0005 && Math.abs(my - ty) < 0.0005;
+        if (settled) {
+            if (tx === mx && ty === my) return;
+            tx = mx;
+            ty = my;
+        } else if (!heroVisible) {
+            return;
+        } else {
+            tx += (mx - tx) * 0.05;
+            ty += (my - ty) * 0.05;
+        }
+
+        for (let i = 0; i < parallaxCards.length; i++) {
+            const item = parallaxCards[i];
+            item.el.style.translate = `${tx * item.depth}px ${ty * item.depth * 0.5}px`;
+        }
+    }
+    requestAnimationFrame(parallax);
 
     // ============================================================
     // CARD HOVER 3D LIFT
