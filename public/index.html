@@ -116,7 +116,10 @@
         <fieldset class="switcher px-4 py-3">
             <ul class="nav-links">
                 <li><a href="#intro">Sobre</a></li>
-                <li><a href="#jobs">Trabalhos</a></li>
+                <!-- sem href de proposito: nao e ancora de rolagem, abre o painel
+                     de experiencias (o "compressor") via scripts/experiencias.js -->
+                <li><a id="expToggle" role="button" tabindex="0" aria-controls="expPanel"
+                        aria-expanded="false">Experiências</a></li>
                 <li><a>MAIS</a></li>
             </ul>
         </fieldset>
@@ -389,78 +392,6 @@
         </div>
 
 
-
-    </section>
-
-    <section class=" w-100 jobs-section bloco-animado" id="jobs">
-        <div id="letter-3" class="letterjob"></div>
-        <div id="letter-2" class="letterjob"></div>
-        <div id="letter-1" class="letterjob">
-            <div class="w-100 h-100" style="border-radius: 3em;backdrop-filter: blur(40px);"></div>
-        </div>
-        <div id="letter-4" class="letterjob h-90 bg-info">
-            <main id="gallery-app" class="gallery-app" aria-label="Galeria com quatro opcoes">
-                <section id="gallery-stage" class="gallery-stage" data-gallery-grid-size="2"
-                    aria-label="Area de visualizacao da galeria">
-                    <div id="gallery-viewport" class="gallery-viewport">
-                        <div id="gallery-canvas" class="gallery-canvas">
-                            <button type="button" id="gallery-option-01"
-                                class="gallery-option gallery-option--selected selected" data-gallery-index="0"
-                                aria-label="Selecionar imagem 1"></button>
-                            <button type="button" id="gallery-option-02" class="gallery-option" data-gallery-index="1"
-                                aria-label="Selecionar imagem 2"></button>
-                            <button type="button" id="gallery-option-03" class="gallery-option" data-gallery-index="2"
-                                aria-label="Selecionar imagem 3"></button>
-                            <button type="button" id="gallery-option-04" class="gallery-option" data-gallery-index="3"
-                                aria-label="Selecionar imagem 4"></button>
-                        </div>
-                    </div>
-
-
-                    <button type="button" id="gallery-back-button" class="gallery-back-button">Fechar</button>
-
-                    <div id="gallery-focus-layer" class="gallery-focus-layer">
-                        <button type="button" id="gallery-focus-button" class="gallery-focus-button"
-                            aria-labelledby="gallery-focus-label" aria-expanded="false">
-                            <span class="visually-hidden" id="gallery-focus-label">Expandir imagem selecionada</span>
-                        </button>
-                    </div>
-
-                    <aside id="gallery-zoom-container" class="d-none gallery-zoom-container"
-                        aria-label="Controle de zoom">
-                        <div id="gallery-zoom-panel" class="gallery-zoom-panel">
-                            <div id="gallery-zoom-input" class="gallery-zoom-input">
-                                <input type="range" id="gallery-zoom-control" class="gallery-zoom-range"
-                                    name="gallery-zoom" min="0.45" max="0.9" value="0.5" step="0.05"
-                                    orient="vertical" />
-                                <div id="gallery-zoom-lines" class="gallery-zoom-lines" aria-hidden="true">
-                                    <div id="gallery-zoom-tick-01" class="gallery-zoom-tick"></div>
-                                    <div id="gallery-zoom-tick-02" class="gallery-zoom-tick"></div>
-                                    <div id="gallery-zoom-tick-03" class="gallery-zoom-tick"></div>
-                                    <div id="gallery-zoom-tick-04" class="gallery-zoom-tick"></div>
-                                    <div id="gallery-zoom-tick-05" class="gallery-zoom-tick"></div>
-                                </div>
-                                <label for="gallery-zoom-control" id="gallery-zoom-label"
-                                    class="gallery-zoom-label">zoom</label>
-                            </div>
-                            <div id="gallery-zoom-values" class="gallery-zoom-values" aria-hidden="true">
-                                <div id="gallery-zoom-value-high" class="gallery-zoom-value">[.900]</div>
-                                <div id="gallery-zoom-value-mid" class="gallery-zoom-value">[.675]</div>
-                                <div id="gallery-zoom-value-low" class="gallery-zoom-value">[.450]</div>
-                            </div>
-                        </div>
-                    </aside>
-
-                    <div id="gallery-loader" class="gallery-loader" aria-hidden="true">
-                        <div id="gallery-loader-vertical-line"
-                            class="gallery-loader-line gallery-loader-line--vertical"></div>
-                        <div id="gallery-loader-horizontal-line"
-                            class="gallery-loader-line gallery-loader-line--horizontal"></div>
-                        <div id="gallery-loader-center" class="gallery-loader-center"></div>
-                    </div>
-                </section>
-            </main>
-        </div>
 
     </section>
 
@@ -896,6 +827,83 @@
             </filter>
         </defs>
     </svg>
+    <!-- ============ EXPERIENCIAS: painel-compressor ============
+         Abre pelo link "Experiencias" da nav. Vem da direita ate cobrir 70% da
+         tela; o fundo cobre os 30% que sobram e fecha o painel ao clique.
+         Enquanto o painel avanca, scripts/experiencias.js empurra cada
+         componente da pagina contra a borda esquerda (ver o arquivo). -->
+    <div class="exp-backdrop" id="expBackdrop" aria-hidden="true"></div>
+
+    <aside class="exp-panel" id="expPanel" role="dialog" aria-modal="true" aria-labelledby="expTitle"
+        aria-hidden="true" data-lenis-prevent>
+        <div class="exp-plate" aria-hidden="true"></div>
+
+        <button type="button" class="exp-close" id="expClose" aria-label="Fechar experiências">
+            <span></span><span></span>
+        </button>
+
+        <div class="exp-scroll">
+            <header class="exp-head">
+                <div class="eyebrow">Trajetória</div>
+                <h2 id="expTitle">Experiências</h2>
+                <p class="exp-lead">Quatro anos construindo produtos de ponta a ponta: do backoffice
+                    administrativo ao rastreamento em tempo real, passando pelo mercado imobiliário.</p>
+            </header>
+
+            <ol class="exp-timeline">
+                <li class="exp-item">
+                    <div class="exp-when">2024 — atual</div>
+                    <div class="exp-body">
+                        <h3>Desenvolvedor Full Stack Sênior</h3>
+                        <div class="exp-where">Plataforma imobiliária</div>
+                        <p>Aplicações web e mobile para o mercado imobiliário, com foco em performance,
+                            acessibilidade e experiência do usuário. APIs REST, integrações e sistemas
+                            escaláveis.</p>
+                        <ul class="exp-tags">
+                            <li>React</li><li>React Native</li><li>NestJS</li><li>TypeScript</li><li>MongoDB</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="exp-item">
+                    <div class="exp-when">2023 — 2024</div>
+                    <div class="exp-body">
+                        <h3>Desenvolvedor Full Stack</h3>
+                        <div class="exp-where">Rastreamento em tempo real</div>
+                        <p>Painéis de monitoramento com atualização em tempo real, processamento de
+                            eventos de localização e visualização de rotas em mapa.</p>
+                        <ul class="exp-tags">
+                            <li>Angular</li><li>Node.js</li><li>WebSockets</li><li>MySQL</li><li>Docker</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="exp-item">
+                    <div class="exp-when">2022 — 2023</div>
+                    <div class="exp-body">
+                        <h3>Desenvolvedor Frontend</h3>
+                        <div class="exp-where">Backoffice administrativo</div>
+                        <p>Sistemas internos de gestão: cadastros, permissões, relatórios e fluxos de
+                            aprovação, com componentes reutilizáveis e testes automatizados.</p>
+                        <ul class="exp-tags">
+                            <li>React</li><li>TypeScript</li><li>REST</li><li>Git</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="exp-item">
+                    <div class="exp-when">2021 — 2022</div>
+                    <div class="exp-body">
+                        <h3>Desenvolvedor Júnior</h3>
+                        <div class="exp-where">Primeiros projetos</div>
+                        <p>Portfólios, ferramentas e mini-games publicados: a base dos cards que
+                            aparecem no topo desta página.</p>
+                        <ul class="exp-tags">
+                            <li>HTML &amp; CSS</li><li>JavaScript</li><li>Java</li><li>Supabase</li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </aside>
+
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -908,6 +916,7 @@
     <script src="./scripts/projects.js"></script>
     <script src="./scripts/gsap.js"></script>
     <script src="./scripts/neural-field.js"></script>
+    <script src="./scripts/experiencias.js"></script>
     <script>
 
         window.onbeforeunload = function () {
