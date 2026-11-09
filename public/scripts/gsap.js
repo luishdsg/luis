@@ -95,7 +95,9 @@ gsap.registerPlugin(ScrollTrigger);
         if (!images.length) return Promise.resolve();
         return Promise.all(images.map(image => {
             return new Promise(resolve => {
-                if (image.complete) {
+                // imagens lazy fora da tela (ex.: dentro do painel de experiencias)
+                // so carregam quando aparecem; nao podem segurar o preloader
+                if (image.complete || image.loading === "lazy") {
                     resolve();
                     return;
                 }

@@ -2850,15 +2850,16 @@ body {
 
 .exp-scroll {
     height: 100%;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     overscroll-behavior: contain;
-    padding: clamp(84px, 11vh, 128px) clamp(32px, 6vw, 110px) clamp(60px, 8vh, 100px) clamp(40px, 6vw, 110px);
-    scrollbar-width: none;
+    padding: clamp(76px, 9vh, 110px) clamp(32px, 6vw, 110px) clamp(36px, 5vh, 72px) clamp(40px, 6vw, 110px);
 }
 
 .exp-head {
     max-width: 760px;
-    margin-bottom: clamp(36px, 5vh, 64px);
+    margin-bottom: clamp(24px, 3.5vh, 44px);
 }
 
 .exp-head h2 {
@@ -2867,7 +2868,7 @@ body {
     font-size: clamp(44px, 6vw, 96px);
     letter-spacing: -0.035em;
     line-height: 0.95;
-    margin: 10px 0 22px;
+    margin: 6px 0 16px;
 }
 
 .exp-lead {
@@ -2877,23 +2878,1431 @@ body {
     max-width: 58ch;
 }
 
+/* ---- carrossel vertical --------------------------------------------
+   .exp-carousel ocupa o que sobra do painel abaixo do cabecalho. A esquerda a
+   coluna de bolinhas (.exp-dots), a direita o palco (.exp-stage) onde os
+   .exp-item ficam empilhados (position: absolute) e so o .is-active aparece.
+   Opacidade, deslocamento, escala e desfoque dos itens e a escala das bolinhas
+   sao escritos pelo scripts/exp-carousel.js (GSAP); o CSS da o repouso. */
+.exp-carousel {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: clamp(20px, 3vw, 48px);
+    max-width: 980px;
+}
+
+.exp-dots {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+/* trilho fino atras das bolinhas */
+.exp-dots::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: calc(100% - 40px);
+    max-height: 260px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(180deg, rgba(218, 210, 191, 0), var(--line) 20%, var(--line) 80%, rgba(218, 210, 191, 0));
+    pointer-events: none;
+}
+
+.exp-dot {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.exp-dot:focus-visible {
+    outline: none;
+}
+
+.exp-dot:focus-visible .exp-dot-ball {
+    box-shadow: 0 0 0 3px rgba(232, 90, 43, 0.35);
+}
+
+/* a bola em si: 18px no maximo; o JS escala pela distancia ate a ativa */
+.exp-dot-ball {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ink);
+    opacity: 0.28;
+    transform: scale(0.3);
+    transform-origin: 50% 50%;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), background 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.exp-dot:hover .exp-dot-ball {
+    opacity: 0.6;
+}
+
+.exp-dot.is-active .exp-dot-ball {
+    opacity: 1;
+    background: var(--orange-2);
+    box-shadow: 0 0 0 6px rgba(232, 90, 43, 0.14), 0 10px 22px -8px rgba(232, 90, 43, 0.7);
+}
+
+.exp-stage {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .exp-timeline {
     list-style: none;
     margin: 0;
     padding: 0;
-    max-width: 920px;
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 .exp-item {
+    position: absolute;
+    inset: 0;
     display: grid;
     grid-template-columns: 150px 1fr;
     gap: 24px;
-    padding: 30px 0;
-    border-top: 1px solid var(--line);
+    align-content: center;
+    padding: 6px 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform, opacity, filter;
 }
 
-.exp-item:last-child {
-    border-bottom: 1px solid var(--line);
+.exp-item::-webkit-scrollbar {
+    display: none;
+}
+
+/* --fade-b e escrita pelo JS: 40px enquanto ha conteudo abaixo, 0 no fim */
+.exp-item {
+    --fade-b: 0px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-b)), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-b)), transparent);
+}
+
+.exp-item.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---- 1a sessao: bento estilo Apple -----------------------------------
+   Tiles arredondados, encostados (gap curto), fundo quase branco e sombra
+   suave em duas camadas (contato + ambiente). O tile da marca e escuro, com
+   o logo rosa da My eshop. Grade de 12 colunas: marca + cargo em cima,
+   quatro destaques em linha e a faixa de tecnologias embaixo. */
+.exp-item--bento {
+    display: block;
+    padding: 4px 2px 8px;
+}
+
+.exp-bento {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 900px;
+}
+
+.exp-tile {
+    position: relative;
+    border-radius: 24px;
+    padding: 20px 22px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+        0 1px 2px rgba(40, 30, 10, 0.06),
+        0 22px 44px -26px rgba(40, 30, 10, 0.38);
+    will-change: transform, opacity;
+}
+
+.exp-tile--brand {
+    grid-column: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    min-height: 150px;
+    background:
+        radial-gradient(120% 90% at 20% 10%, rgba(232, 60, 105, 0.22), rgba(232, 60, 105, 0) 60%),
+        linear-gradient(160deg, #15151b, #0a0a0e);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 30px 50px -28px rgba(10, 10, 14, 0.75);
+}
+
+.exp-tile--brand img {
+    display: block;
+    width: 74%;
+    max-width: 170px;
+    height: auto;
+    filter: drop-shadow(0 10px 26px rgba(232, 60, 105, 0.35));
+}
+
+.exp-tile-tagline {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 100%;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.exp-tile--role {
+    grid-column: 4 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 24px;
+}
+
+.exp-tile--role .exp-when {
+    align-self: flex-start;
+    padding: 5px 11px 4px;
+    border-radius: 999px;
+    background: rgba(232, 60, 105, 0.1);
+    color: #c22d55;
+    margin-bottom: 10px;
+}
+
+.exp-tile--role h3 {
+    font-size: clamp(22px, 2vw, 30px);
+    letter-spacing: -0.025em;
+    margin-bottom: 2px;
+}
+
+.exp-tile--role .exp-where {
+    color: var(--mute);
+    margin-bottom: 6px;
+}
+
+.exp-tile--role p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.exp-tile--role .exp-tags {
+    margin-top: 14px;
+}
+
+.exp-tile--role .exp-tags li {
+    background: rgba(245, 239, 226, 0.9);
+    border-color: rgba(218, 210, 191, 0.9);
+}
+
+.exp-tile--feat {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px 16px;
+}
+
+.exp-tile--feat strong {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+}
+
+.exp-tile--feat span:last-child {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+}
+
+.exp-tile-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    color: #e83c69;
+    background: linear-gradient(160deg, rgba(232, 60, 105, 0.14), rgba(232, 60, 105, 0.06));
+    box-shadow: inset 0 0 0 1px rgba(232, 60, 105, 0.16);
+    margin-bottom: 4px;
+}
+
+.exp-tile-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 1100px) {
+    .exp-tile--brand {
+        grid-column: 1 / 5;
+        min-height: 140px;
+    }
+
+    .exp-tile--role {
+        grid-column: 5 / 13;
+    }
+
+    .exp-tile--feat {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 750px) {
+    .exp-bento {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .exp-tile {
+        border-radius: 20px;
+        padding: 18px;
+    }
+
+    .exp-tile--brand,
+    .exp-tile--role {
+        grid-column: 1 / -1;
+    }
+
+    .exp-tile--brand {
+        min-height: 130px;
+    }
+
+    .exp-tile--feat {
+        grid-column: span 1;
+    }
+}
+
+/* ---- 2a sessao: deck automatico + gelatina --------------------------
+   Esquerda: .exp-deck com tres .exp-deck-slide empilhados (grid-area 1/1);
+   o JS troca o ativo a cada 3,5 s (fade + arrasto para a direita) e anima a
+   barrinha .exp-deck-fill do passo atual. Direita: .exp-gel-shape, a marca
+   da TGT dentro de uma forma organica (ovo aberto) com brilho de gelatina,
+   que muda de contorno e flutua devagar via keyframes. */
+.exp-item--split {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(24px, 4vw, 60px);
+    align-items: center;
+    padding: 8px 2px;
+}
+
+.exp-deck {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+    cursor: pointer; /* clicar em qualquer ponto avanca para a proxima informacao */
+}
+
+.exp-deck-track {
+    position: relative;
+    display: grid;
+    min-height: 200px;
+}
+
+.exp-deck-slide {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.exp-deck-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0f8fa3;
+}
+
+.exp-deck-kicker::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #a7e000, #19e0ff);
+}
+
+.exp-deck-slide p {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 46ch;
+}
+
+.exp-deck-slide h3 {
+    font-size: clamp(26px, 2.4vw, 38px);
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.exp-deck-slide .exp-when {
+    padding-top: 0;
+    font-size: 13px;
+}
+
+.exp-deck-slide .exp-where {
+    margin: 0;
+    font-size: 16px;
+    color: #0f8fa3;
+}
+
+.exp-deck-slide .exp-tags {
+    gap: 10px;
+}
+
+.exp-deck-slide .exp-tags li {
+    font-size: 13px;
+    padding: 7px 13px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.exp-deck-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.exp-deck-step {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.exp-deck-step::before,
+.exp-deck-fill {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 3px;
+}
+
+.exp-deck-step::before {
+    background: rgba(20, 20, 22, 0.12);
+}
+
+.exp-deck-fill {
+    background: linear-gradient(90deg, #a7e000, #19e0ff);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+}
+
+.exp-deck-step:focus-visible {
+    outline: none;
+}
+
+.exp-deck-step:focus-visible::before {
+    box-shadow: 0 0 0 3px rgba(25, 224, 255, 0.35);
+}
+
+.exp-gel {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+}
+
+.exp-gel-shape {
+    position: relative;
+    width: min(100%, 470px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%;
+    background: radial-gradient(120% 100% at 30% 20%, #0b3540, #02141a 70%);
+    box-shadow:
+        0 44px 70px -30px rgba(2, 30, 40, 0.75),
+        inset 0 -18px 40px -20px rgba(25, 224, 255, 0.35),
+        inset 0 20px 40px -24px rgba(255, 255, 255, 0.35);
+    animation: gel-morph 11s ease-in-out infinite alternate, gel-float 7s ease-in-out infinite;
+    will-change: border-radius, transform;
+}
+
+/* o fundo escuro da imagem se funde ao da forma: blend de clareamento e
+   bordas esmaecidas por mascara, para nao sobrar retangulo dentro do ovo */
+.exp-gel-shape img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(0.8);
+    mix-blend-mode: screen;
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 70%, transparent 100%);
+}
+
+/* brilho de gelatina: reflexo no alto e um halo ciano embaixo */
+.exp-gel-shape::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(60% 40% at 28% 16%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%),
+        radial-gradient(50% 35% at 76% 92%, rgba(25, 224, 255, 0.24), rgba(25, 224, 255, 0) 70%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+/* borda refrativa */
+.exp-gel-shape::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.22),
+        inset 0 0 40px rgba(25, 224, 255, 0.12);
+    pointer-events: none;
+}
+
+@keyframes gel-morph {
+    0% {
+        border-radius: 62% 38% 55% 45% / 48% 58% 42% 52%;
+    }
+
+    33% {
+        border-radius: 45% 55% 62% 38% / 55% 45% 55% 45%;
+    }
+
+    66% {
+        border-radius: 58% 42% 40% 60% / 60% 40% 58% 42%;
+    }
+
+    100% {
+        border-radius: 50% 50% 56% 44% / 44% 62% 38% 56%;
+    }
+}
+
+@keyframes gel-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(1.5deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .exp-gel-shape {
+        animation: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .exp-item--split {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    }
+
+    .exp-deck-track {
+        min-height: 180px;
+    }
+}
+
+@media (max-width: 750px) {
+    .exp-item--split {
+        gap: 18px;
+    }
+
+    .exp-gel {
+        order: -1;
+    }
+
+    .exp-gel-shape {
+        width: min(100%, 260px);
+    }
+
+    .exp-deck-track {
+        min-height: 150px;
+    }
+}
+
+/* ---- 3a sessao: cubos isometricos ------------------------------------
+   .exp-iso da a perspectiva; .exp-iso-world e o "chao", deitado com
+   rotateX(56deg) rotateZ(-34deg). Cada .exp-cube e posicionado no chao por
+   --x/--y (a partir do centro) e tem --w (largura), --d (profundidade) e --h
+   (altura). As faces: topo em translateZ(--h); frente (lado +Y) e esquerda
+   (lado -X), as duas que ficam viradas para a camera com essa rotacao.
+   A etiqueta (.exp-cube-label) fica em pe, desfazendo a rotacao do chao.
+   Posicao em Z (subida) e opacidade sao do scripts/exp-carousel.js. */
+.exp-item--iso {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+}
+
+.exp-iso {
+    --iso-s: 0.86;
+    position: relative;
+    height: clamp(300px, 46vh, 470px);
+    perspective: 1700px;
+    perspective-origin: 50% 30%;
+}
+
+.exp-iso-world {
+    position: absolute;
+    left: 47%;
+    top: 56%;
+    width: 0;
+    height: 0;
+    transform: scale(var(--iso-s)) rotateX(56deg) rotateZ(-34deg);
+    transform-style: preserve-3d;
+}
+
+.exp-cube {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--w);
+    height: var(--d);
+    transform-style: preserve-3d;
+    /* sem will-change/opacity aqui: qualquer um dos dois achataria as faces */
+}
+
+.exp-cube-face {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    backface-visibility: visible;
+}
+
+.exp-cube-top {
+    width: var(--w);
+    height: var(--d);
+    transform: translateZ(var(--h));
+}
+
+.exp-cube-front {
+    width: var(--w);
+    height: var(--h);
+    transform-origin: 0 0;
+    transform: translateY(var(--d)) rotateX(90deg);
+}
+
+.exp-cube-left {
+    width: var(--h);
+    height: var(--d);
+    transform-origin: 0 0;
+    transform: rotateY(-90deg);
+}
+
+.exp-cube-shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--w);
+    height: var(--d);
+    border-radius: 14px;
+    background: rgba(20, 40, 8, 0.42);
+    filter: blur(16px);
+    transform: translate(-14px, 12px) translateZ(-1px) scale(1.05);
+}
+
+/* corpo que gira no clique (a sombra fica fora dele) */
+.exp-cube--main {
+    cursor: pointer;
+    outline: none;
+}
+
+.exp-cube-body {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+/* face de baixo: ja nasce virada (rotateX 180) para, depois do giro do
+   corpo, ficar em cima com o texto na orientacao certa */
+.exp-cube-bottom {
+    width: var(--w);
+    height: var(--d);
+    transform: rotateX(180deg);
+}
+
+/* face de tras (lado -Y): vira a frente quando o corpo gira */
+.exp-cube-back {
+    width: var(--w);
+    height: var(--h);
+    transform-origin: 0 0;
+    transform: rotateX(90deg);
+}
+
+.exp-cube--main .exp-cube-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px 34px;
+    border-radius: 14px;
+    color: var(--ink);
+    background:
+        radial-gradient(120% 90% at 85% 10%, rgba(185, 234, 100, 0.35), rgba(185, 234, 100, 0) 55%),
+        linear-gradient(150deg, #faf6ea, #e9e2cf);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.75);
+}
+
+.exp-cube--main .exp-cube-bottom p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+}
+
+.exp-cube--main .exp-cube-bottom .exp-deck-kicker {
+    color: #4d7e1c;
+}
+
+.exp-cube--main .exp-cube-back {
+    border-radius: 0 0 14px 14px;
+    background: linear-gradient(180deg, #27500f, #142b07);
+}
+
+.exp-cube--main:focus-visible .exp-cube-top,
+.exp-cube--main:focus-visible .exp-cube-bottom {
+    box-shadow: inset 0 0 0 3px rgba(185, 234, 100, 0.9);
+}
+
+/* dica de clique na face de cima */
+.exp-iso-hint {
+    position: absolute;
+    left: 30px;
+    top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(242, 248, 230, 0.62);
+}
+
+.exp-iso-hint::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b9ea64;
+    box-shadow: 0 0 0 0 rgba(185, 234, 100, 0.5);
+    animation: hint-pulse 2.2s ease-out infinite;
+}
+
+.exp-iso-hint--back {
+    position: static;
+    margin-top: 4px;
+    color: var(--mute);
+}
+
+@keyframes hint-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(185, 234, 100, 0.55);
+    }
+
+    70% {
+        box-shadow: 0 0 0 9px rgba(185, 234, 100, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(185, 234, 100, 0);
+    }
+}
+
+/* bloco principal: verde Mocar, texto claro na face de cima */
+.exp-cube--main .exp-cube-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    padding: 26px 30px 28px;
+    border-radius: 14px;
+    color: #f2f8e6;
+    background:
+        radial-gradient(120% 90% at 85% 10%, rgba(176, 236, 76, 0.28), rgba(176, 236, 76, 0) 55%),
+        linear-gradient(150deg, #3b6a1a, #1d3a0c 70%);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.16);
+}
+
+.exp-cube--main .exp-cube-front {
+    border-radius: 0 0 14px 14px;
+    background: linear-gradient(180deg, #27500f, #142b07);
+}
+
+.exp-cube--main .exp-cube-left {
+    border-radius: 14px 0 0 14px;
+    background: linear-gradient(90deg, #0d1f05, #1a3609);
+}
+
+.exp-cube--main .exp-when {
+    padding: 0;
+    color: #b9ea64;
+    font-size: 12px;
+}
+
+.exp-iso-brand {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.exp-cube--main h3 {
+    margin: 2px 0 0;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    color: #c9f06f;
+}
+
+.exp-cube--main .exp-where {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(242, 248, 230, 0.72);
+}
+
+.exp-iso-pin {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: radial-gradient(120% 120% at 30% 25%, #ff6f61, #c8231a 70%);
+    box-shadow: 0 10px 24px -8px rgba(200, 35, 26, 0.7), inset 0 0 0 1.5px rgba(255, 255, 255, 0.3);
+}
+
+.exp-iso-pin svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* cubos menores: topo lima com icone, laterais verdes */
+.exp-cube--small .exp-cube-top {
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: #27500f;
+    background:
+        radial-gradient(100% 100% at 20% 15%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 60%),
+        linear-gradient(150deg, #d4fb6f, #a9dc3c);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.5);
+}
+
+.exp-cube--small .exp-cube-top svg {
+    width: 42%;
+    height: 42%;
+}
+
+.exp-cube--small .exp-cube-front {
+    border-radius: 0 0 12px 12px;
+    background: linear-gradient(180deg, #5f9124, #3d6516);
+}
+
+.exp-cube--small .exp-cube-left {
+    border-radius: 12px 0 0 12px;
+    background: linear-gradient(90deg, #284a10, #3a6416);
+}
+
+.exp-cube--stack .exp-cube-top {
+    background:
+        radial-gradient(100% 100% at 20% 15%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 60%),
+        linear-gradient(150deg, #f6f1e2, #e3dcc6);
+    color: #3d6516;
+}
+
+/* etiqueta em pe sobre o cubo: desfaz a rotacao do chao para encarar a tela */
+.exp-cube-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    max-width: 190px;
+    padding: 8px 12px 9px;
+    border-radius: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 1px 2px rgba(40, 30, 10, 0.08), 0 16px 30px -18px rgba(40, 30, 10, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    transform-origin: 50% 100%;
+    transform: translate(-50%, -100%) translateZ(calc(var(--h) + 10px)) rotateZ(34deg) rotateX(-56deg);
+}
+
+.exp-cube-label small {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mute);
+}
+
+@media (max-width: 1250px) {
+    .exp-iso {
+        --iso-s: 0.72;
+    }
+}
+
+@media (max-width: 1000px) {
+    .exp-iso {
+        --iso-s: 0.6;
+    }
+}
+
+@media (max-width: 750px) {
+    .exp-iso {
+        --iso-s: 0.42;
+        height: 300px;
+        perspective: 1200px;
+    }
+
+    .exp-cube-label {
+        font-size: 15px;
+    }
+}
+
+/* ---- 4a sessao: poster vintage -----------------------------------------
+   Azul morto (dessaturado) com granulado por cima (SVG feTurbulence em
+   mix-blend-mode), tipografia arredondada (Fredoka) e cores pasteis. Os
+   adesivos tem rotacoes pequenas e alternadas, e o titulo leva sombra
+   deslocada em rosa, como impressao fora de registro. */
+.exp-item--retro {
+    display: block;
+    padding: 4px 2px 10px;
+}
+
+.exp-retro {
+    --retro-ink: #2f3d4d;
+    --retro-cream: #f4ecd8;
+    --retro-pink: #f3c4c8;
+    --retro-mint: #bfe3d2;
+    --retro-butter: #f4e1a4;
+    --retro-lavender: #d3c8e8;
+    --retro-peach: #f7d2b3;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 18px 32px;
+    padding: 32px 36px 28px;
+    border-radius: 28px;
+    color: var(--retro-cream);
+    font-family: "Fredoka", "DM Sans", sans-serif;
+    background:
+        radial-gradient(90% 70% at 10% 0%, rgba(243, 196, 200, 0.16), rgba(243, 196, 200, 0) 60%),
+        radial-gradient(70% 60% at 100% 100%, rgba(191, 227, 210, 0.14), rgba(191, 227, 210, 0) 60%),
+        linear-gradient(160deg, #5f7187, #48596c 55%, #3e4e60);
+    box-shadow:
+        inset 0 0 0 1.5px rgba(244, 236, 216, 0.14),
+        inset 0 0 0 8px rgba(62, 78, 96, 0.35),
+        0 30px 60px -30px rgba(30, 40, 52, 0.7);
+}
+
+/* granulado */
+.exp-retro-grain {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: 0.62;
+    mix-blend-mode: overlay;
+}
+
+.exp-retro > :not(.exp-retro-grain) {
+    position: relative;
+    z-index: 1;
+}
+
+.exp-retro-head {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-right: 110px;
+}
+
+.exp-retro .exp-when {
+    padding: 6px 12px 5px;
+    border-radius: 999px;
+    background: var(--retro-butter);
+    color: var(--retro-ink);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border: 1.5px dashed rgba(47, 61, 77, 0.45);
+}
+
+.exp-retro-tagline {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: var(--retro-mint);
+}
+
+.exp-retro-brand {
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: white;
+    text-shadow:
+        3px 3px 0 var(--green),
+        6px 6px 0 rgba(30, 40, 52, 0.28);
+}
+
+.exp-retro h3 {
+    margin: 10px 0 0;
+    font-family: inherit;
+    font-size: clamp(18px, 1.6vw, 24px);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--retro-peach);
+    text-shadow: 2px 2px 0 rgba(30, 40, 52, 0.35);
+}
+
+.exp-retro .exp-where {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(244, 236, 216, 0.72);
+}
+
+/* carimbo circular girando */
+.exp-retro-stamp {
+    position: absolute;
+    top: -6px;
+    right: 0;
+    width: 104px;
+    height: 104px;
+    color: var(--retro-pink);
+    opacity: 0.9;
+    animation: retro-spin 22s linear infinite;
+}
+
+.exp-retro-stamp svg {
+    width: 100%;
+    height: 100%;
+    font-family: "Fredoka", "DM Sans", sans-serif;
+}
+
+@keyframes retro-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* adesivos pasteis */
+.exp-retro-stickers {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.exp-retro-sticker {
+    padding: 11px 16px 12px;
+    border-radius: 16px;
+    color: var(--retro-ink);
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    box-shadow:
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.55),
+        0 6px 14px -8px rgba(30, 40, 52, 0.6);
+}
+
+.exp-retro-sticker::before {
+    content: "✦";
+    margin-right: 9px;
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+.exp-retro-sticker:nth-child(odd) {
+    transform: rotate(-1.2deg);
+}
+
+.exp-retro-sticker:nth-child(even) {
+    transform: rotate(0.9deg);
+}
+
+.exp-retro-sticker:nth-child(3) {
+    transform: rotate(1.4deg) translateX(6px);
+}
+
+.exp-retro-sticker:nth-child(5) {
+    transform: rotate(-0.8deg) translateX(-4px);
+}
+
+.exp-retro-sticker.is-pink { background: var(--retro-pink); }
+.exp-retro-sticker.is-mint { background: var(--retro-mint); }
+.exp-retro-sticker.is-butter { background: var(--retro-butter); }
+.exp-retro-sticker.is-lavender { background: var(--retro-lavender); }
+.exp-retro-sticker.is-peach { background: var(--retro-peach); }
+
+/* tecnologias: chips tracejados no rodape */
+.exp-retro-tags {
+    grid-column: 1 / -1;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1.5px dashed rgba(244, 236, 216, 0.28);
+}
+
+.exp-retro-tags li {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 13px;
+    border-radius: 999px;
+    color: var(--retro-cream);
+    background: rgba(244, 236, 216, 0.08);
+    border: 1.5px dashed rgba(244, 236, 216, 0.5);
+}
+
+.exp-retro-tags li:nth-child(3n+1) { color: var(--retro-pink); border-color: rgba(243, 196, 200, 0.6); }
+.exp-retro-tags li:nth-child(3n+2) { color: var(--retro-mint); border-color: rgba(191, 227, 210, 0.6); }
+.exp-retro-tags li:nth-child(3n) { color: var(--retro-butter); border-color: rgba(244, 225, 164, 0.6); }
+
+@media (prefers-reduced-motion: reduce) {
+    .exp-retro-stamp {
+        animation: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .exp-retro {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 26px 26px 22px;
+    }
+
+    .exp-retro-head {
+        padding-right: 96px;
+    }
+
+    .exp-retro-stamp {
+        width: 84px;
+        height: 84px;
+    }
+}
+
+@media (max-width: 750px) {
+    .exp-retro {
+        border-radius: 20px;
+        padding: 20px 18px 18px;
+    }
+
+    .exp-retro-head {
+        padding-right: 0;
+    }
+
+    .exp-retro-stamp {
+        display: none;
+    }
+
+    .exp-retro-sticker {
+        font-size: 13.5px;
+        padding: 10px 13px;
+    }
+}
+
+/* ---- 5a sessao: mosaico de quadrados colados ---------------------------
+   Grade de 4 colunas com gap de 3px (o fundo do container aparece como a
+   junta). Cada .exp-sq e um quadrado (aspect-ratio 1), exceto o do cargo
+   (2 colunas) e o das tecnologias (faixa inteira). Cores da BRL: amarelo
+   #ffcd01 e grafite #2b2b2b. Posicao/opacidade de entrada vem do JS. */
+.exp-item--mosaic {
+    display: block;
+    padding: 4px 2px 8px;
+}
+
+.exp-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+    max-width: 680px;
+    padding: 3px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: rgba(43, 43, 43, 0.12);
+    box-shadow: 0 30px 60px -34px rgba(43, 43, 43, 0.55);
+}
+
+.exp-sq {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 15px 16px;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    background: #fffdf6;
+    color: #2b2b2b;
+    will-change: transform, opacity;
+}
+
+/* cantos externos acompanham o container */
+.exp-sq--logo { border-top-left-radius: 19px; }
+.exp-sq--when { border-top-right-radius: 19px; }
+.exp-sq--stack { border-bottom-left-radius: 19px; border-bottom-right-radius: 19px; }
+
+.exp-sq-kicker {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
+
+.exp-sq p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.42;
+    color: inherit;
+    max-width: none;
+}
+
+.exp-sq--logo {
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(110% 90% at 20% 10%, rgba(255, 205, 1, 0.22), rgba(255, 205, 1, 0) 60%),
+        #2b2b2b;
+}
+
+.exp-sq--logo img {
+    width: 78%;
+    height: auto;
+}
+
+.exp-sq--role {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+    justify-content: flex-end;
+    background: #ffcd01;
+}
+
+.exp-sq-brand {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 2.2vw, 32px);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.exp-sq--role h3 {
+    margin: 0;
+    font-size: clamp(15px, 1.3vw, 18px);
+    letter-spacing: -0.01em;
+}
+
+.exp-sq--role .exp-where {
+    margin: 2px 0 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(43, 43, 43, 0.72);
+}
+
+.exp-sq--when {
+    justify-content: flex-end;
+}
+
+.exp-sq-year {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 800;
+    font-size: clamp(34px, 3.4vw, 52px);
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    color: #2b2b2b;
+}
+
+.exp-sq--when .exp-when {
+    padding: 0;
+    color: #2b2b2b;
+    font-size: 12px;
+}
+
+.exp-sq-place {
+    font-size: 12px;
+    font-weight: 600;
+    color: #b08d00;
+}
+
+.exp-sq--b {
+    background: #2b2b2b;
+    color: #fff8e1;
+}
+
+.exp-sq--b .exp-sq-kicker {
+    color: #ffcd01;
+    opacity: 1;
+}
+
+.exp-sq--c {
+    background: #ffe684;
+}
+
+.exp-sq--stack {
+    grid-column: 1 / -1;
+    aspect-ratio: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px;
+    background: #f4efe2;
+}
+
+.exp-sq--stack .exp-sq-kicker {
+    flex: none;
+}
+
+/* tecnologias em linha corrida, separadas por pontos */
+.exp-sq-techs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #2b2b2b;
+}
+
+.exp-sq-techs li + li::before {
+    content: "·";
+    margin: 0 7px;
+    color: #b08d00;
+}
+
+@media (max-width: 1100px) {
+    .exp-sq {
+        padding: 14px;
+    }
+
+    .exp-sq p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 750px) {
+    .exp-mosaic {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-radius: 18px;
+    }
+
+    .exp-sq--logo { border-top-left-radius: 15px; }
+    .exp-sq--role { border-top-right-radius: 0; }
+    .exp-sq--when { border-top-right-radius: 0; }
+    .exp-sq--stack { border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; }
+
+    .exp-sq--logo {
+        border-top-right-radius: 15px;
+        grid-column: 1 / -1;
+        aspect-ratio: 3 / 1;
+    }
+
+    .exp-sq--stack {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+.exp-counter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: clamp(18px, 3vh, 32px);
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--mute);
+    font-variant-numeric: tabular-nums;
+}
+
+.exp-counter-now {
+    color: var(--ink);
+}
+
+.exp-counter-sep {
+    width: 28px;
+    height: 1px;
+    background: var(--line);
+}
+
+.exp-hint {
+    margin: 10px 0 0;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--mute);
+    opacity: 0.8;
 }
 
 .exp-when {
@@ -2938,16 +4347,13 @@ body {
 }
 
 .exp-tags li {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
-    padding: 5px 11px;
+    padding: 5px 20px;
     border-radius: 999px;
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.35);
 }
-
-/* o painel de vidro (MAIS) tem transicao propria de transform; enquanto o
-   compressor o empurra, ela so atrasaria o movimento */
 body.exp-open .glass-stage-panel {
     transition: none;
 }
@@ -2972,5 +4378,38 @@ body.exp-open .glass-stage-panel {
     .exp-item {
         grid-template-columns: 1fr;
         gap: 8px;
+    }
+
+    .exp-carousel {
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .exp-dots {
+        gap: 12px;
+    }
+
+    .exp-dot {
+        width: 26px;
+        height: 26px;
+    }
+
+    .exp-hint {
+        display: none;
+    }
+}
+
+@media (max-height: 640px) {
+    .exp-head {
+        margin-bottom: 18px;
+    }
+
+    .exp-head h2 {
+        font-size: clamp(34px, 5vw, 56px);
+        margin-bottom: 10px;
+    }
+
+    .exp-lead {
+        display: none;
     }
 }

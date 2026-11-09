@@ -421,13 +421,14 @@
             }
         });
 
-        const content = panel.querySelectorAll('.exp-head > *, .exp-item');
+        const content = panel.querySelectorAll('.exp-head > *, .exp-carousel');
         gsap.killTweensOf(content);
         gsap.fromTo(content,
             { opacity: 0, x: 48 },
             { opacity: 1, x: 0, duration: 0.9, stagger: 0.06, ease: 'power3.out', delay: calm ? 0 : 0.3 });
 
         if (scroller) scroller.scrollTop = 0;
+        if (window.expCarousel) window.expCarousel.reset();
         startLoop();
         if (closeBtn) closeBtn.focus({ preventScroll: true });
     }
