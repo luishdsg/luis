@@ -54,7 +54,6 @@
     });
 
     let index = 0;
-    let dir = 1;
     const isOpen = () => panel.getAttribute('aria-hidden') === 'false';                 // +1 desce (proximo), -1 sobe (anterior)
     let lockUntil = 0;           // ms: enquanto nao vence, roda/arraste sao ignorados
     // pecas que entram em cascata: num item bento sao os tiles; nos demais,
@@ -436,54 +435,13 @@
         opts = opts || {};
         target = (target % n + n) % n;
         if (target === index) return;
-        dir = opts.dir || (target > index ? 1 : -1);
 
-        const out = items[index];
-        const inn = items[target];
         index = target;
 
-        if (calm) {
-            show(index);
-            paintDots(index, false);
-            return;
-        }
-
         gsap.killTweensOf(items);
-        items.forEach((item) => {
-            if (item !== out && item !== inn) gsap.set(item, { autoAlpha: 0 });
-            gsap.killTweensOf(partsOf(item));
-        });
-
-        items.forEach((item, i) => {
-            item.classList.toggle('is-active', i === index);
-            item.setAttribute('aria-hidden', i === index ? 'false' : 'true');
-        });
-        inn.scrollTop = 0;
-        updateFade(inn);
-
-        const parts = partsOf(inn);
-        const tl = gsap.timeline({ defaults: { overwrite: 'auto' } });
-        tl.to(out, {
-            autoAlpha: 0,
-            y: -dir * 44,
-            scale: 0.985,
-            filter: 'blur(7px)',
-            duration: 0.5,
-            ease: 'power2.in'
-        }, 0)
-            .fromTo(inn,
-                { autoAlpha: 0, y: dir * 56, scale: 1.015, filter: 'blur(9px)' },
-                { autoAlpha: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: 1.05, ease: 'expo.out' },
-                0.26)
-            .fromTo(parts,
-                { opacity: 0, y: dir * 26 },
-                { opacity: 1, y: 0, duration: 0.9, stagger: 0.045, ease: 'power3.out' },
-                0.32);
-
-        paintDots(index, true);
-        isosSync();
-        mosaicsSync();
-        decksSync();
+        items.forEach((item) => gsap.killTweensOf(partsOf(item)));
+        show(index);
+        paintDots(index, !calm);
     }
 
     const next = () => goTo(index + 1, { dir: 1 });

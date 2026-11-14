@@ -24,6 +24,12 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap"
+        rel="stylesheet" />
     <link href="./styles.css" rel="stylesheet" />
     <title>Document</title>
 </head>
@@ -111,20 +117,11 @@
                                 d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
                         </svg>
                     </span>
-                    <span class="magic-text cursor">Não clique aqui!!</span>
+                    <span class="magic-text cursor">&lt;Full Stack/&gt;...</span>
                 </span>
             </h1>
         </div>
-        <fieldset class="switcher px-4 py-3">
-            <ul class="nav-links">
-                <li><a href="#intro">Sobre</a></li>
-                <!-- sem href de proposito: nao e ancora de rolagem, abre o painel
-                     de experiencias (o "compressor") via scripts/experiencias.js -->
-                <li><a id="expToggle" role="button" tabindex="0" aria-controls="expPanel"
-                        aria-expanded="false">Experiências</a></li>
-                <li><a>MAIS</a></li>
-            </ul>
-        </fieldset>
+      
         <svg style="display: none">
             <filter id="container-glass" x="0%" y="0%" width="100%" height="100%">
                 <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="92" result="noise" />
@@ -313,17 +310,24 @@
         <div class="team-head">
             <div>
                 <div class="eyebrow">A prática leva á perfeição</div>
-                <h2>+ de 4 anos como <br /><em>Engenheiro de Software</em><br />me trouxeram até aqui, <br />quem sabe
-                    até onde podemos ir <br /><em>colaborando juntos</em>.</h2>
+                <h2>+ de 4 anos como <br /><em>Engenheiro de Software</em><br />me deram a expertise <br />e o conhecimento necessário<br /><em>para ententer antes de atender</em>.</h2>
             </div>
             <!-- Texto + coruja + botao: um bloco so, com o mascote e o CTA
                  ancorados no mesmo rodape em vez de soltos na linha -->
             <aside class="intro-aside">
-                <p class="intro-text">Desenvolvedor Full Stack com + de 4 anos de experiência em aplicações web e
-                    mobile utilizando React, Angular, Node.js, NestJS e TypeScript. Experiência em desenvolvimento
-                    frontend focado em performance, acessibilidade e experiência do usuário, além de atuação em APIs
-                    REST, integrações, sistemas escaláveis e banco de dados MySQL e MongoDB. Vivência em aplicações do
-                    mercado imobiliário, backoffice administrativo e rastreamento em tempo real.</p>
+                <div class="intro-text fade-loop" data-fade-loop data-hold="2500" aria-live="polite">
+                    <p class="fade-line">Desenvolvedor <em class="kw">Full Stack</em> com <em class="kw">+ de 4 anos</em>
+                        de experiência em aplicações web e mobile utilizando <em class="kw">React</em>,
+                        <em class="kw">Angular</em>, <em class="kw">Node.js</em>, <em class="kw">NestJS</em> e
+                        <em class="kw">TypeScript</em>.</p>
+                    <p class="fade-line">Frontend focado em <em class="kw">performance</em>,
+                        <em class="kw">acessibilidade</em> e <em class="kw">experiência do usuário</em>, além de
+                        <em class="kw">APIs REST</em>, integrações, sistemas escaláveis e bancos
+                        <em class="kw">MySQL</em> e <em class="kw">MongoDB</em>.</p>
+                    <p class="fade-line">Vivência em aplicações do <em class="kw">mercado imobiliário</em>,
+                        <em class="kw">backoffice</em> administrativo e rastreamento em
+                        <em class="kw">tempo real</em>.</p>
+                </div>
 
                 <div class="intro-cta">
                     <!-- ASCII decorativo: o leitor de tela nao deve soletrar "{0,0}" -->
@@ -345,7 +349,7 @@
                             <span class="btn-academic" aria-hidden="true">
                                 <span class="icon arrow"></span>
                             </span>
-                            <span class="academic-text">Learn More</span>
+                            <span class="academic-text">Skills</span>
                         </button>
                     </div>
                 </div>
@@ -393,7 +397,32 @@
 
         </div>
 
-
+        <div class="team-foot">
+            <button type="button" class="spot-pill" id="spotPill" aria-controls="expPanel" aria-expanded="false"
+                aria-label="Abrir painel de experiências">
+                <svg class="spot-pill-border" aria-hidden="true" focusable="false">
+                    <rect class="spot-pill-ring" x="0" y="0" width="100%" height="100%" fill="none"
+                        stroke="url(#spotPillGrad)" />
+                </svg>
+                <span class="spot-pill-label">Experiência</span>
+                <svg class="spot-pill-reveal" aria-hidden="true" focusable="false">
+                    <defs>
+                        <linearGradient id="spotPillGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#d9351f" />
+                            <stop offset="0.55" stop-color="#e85a2b" />
+                            <stop offset="1" stop-color="#f58b4e" />
+                        </linearGradient>
+                        <mask id="spotPillMask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                            <rect width="100%" height="100%" fill="#fff" />
+                            <text class="spot-pill-cut" x="50%" y="50%" text-anchor="middle"
+                                dominant-baseline="central" fill="#000">Experiência</text>
+                        </mask>
+                    </defs>
+                    <rect class="spot-pill-fill" width="100%" height="100%" fill="url(#spotPillGrad)"
+                        mask="url(#spotPillMask)" />
+                </svg>
+            </button>
+        </div>
 
     </section>
 
@@ -412,6 +441,32 @@
             <div class="stat-block">
                 <div class="num" data-count="150Mil"><span>0</span><small>Mil</small></div>
                 <div class="lbl">Linhas de Código</div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ SECTION 4: MANIFESTO ============ -->
+    <section class="manifesto" id="manifesto">
+        <div class="manifesto-inner">
+            <span class="manifesto-mark" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+                    <line x1="32" y1="6" x2="32" y2="58" />
+                    <line x1="6" y1="32" x2="58" y2="32" />
+                    <line x1="13.6" y1="13.6" x2="50.4" y2="50.4" />
+                    <line x1="50.4" y1="13.6" x2="13.6" y2="50.4" />
+                    <line x1="22" y1="8" x2="42" y2="56" />
+                    <line x1="42" y1="8" x2="22" y2="56" />
+                    <line x1="8" y1="22" x2="56" y2="42" />
+                    <line x1="8" y1="42" x2="56" y2="22" />
+                </svg>
+            </span>
+            <span class="manifesto-eyebrow">Como eu trabalho</span>
+            <div class="manifesto-stage fade-loop" data-fade-loop data-hold="2000" aria-live="polite">
+                <p class="fade-line">Código que faz sentido.</p>
+                <p class="fade-line">Interfaces que respiram.</p>
+                <p class="fade-line">Performance sem ruído.</p>
+                <p class="fade-line">Do protótipo ao produto.</p>
+                <p class="fade-line">Detalhes que ninguém vê, mas todo mundo sente.</p>
+                <p class="fade-line">Pequenos projetos, grandes resultados.</p>
             </div>
         </div>
     </section>
@@ -845,7 +900,23 @@
         </button>
 
         <div class="exp-scroll">
-          
+            <div class="exp-head">
+                <h2 class="exp-title" id="expTitle">
+                    <span class="exp-title-mark" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+                            <line x1="32" y1="6" x2="32" y2="58" />
+                            <line x1="6" y1="32" x2="58" y2="32" />
+                            <line x1="13.6" y1="13.6" x2="50.4" y2="50.4" />
+                            <line x1="50.4" y1="13.6" x2="13.6" y2="50.4" />
+                            <line x1="22" y1="8" x2="42" y2="56" />
+                            <line x1="42" y1="8" x2="22" y2="56" />
+                            <line x1="8" y1="22" x2="56" y2="42" />
+                            <line x1="8" y1="42" x2="56" y2="22" />
+                        </svg>
+                    </span>
+                    <span>Experiências</span>
+                </h2>
+            </div>
 
             <!-- Carrossel vertical: um cargo por vez. As bolinhas da esquerda sao os
                  indicadores (a ativa e a maior, as demais encolhem com a distancia);
@@ -1115,6 +1186,47 @@
         </div>
     </aside>
 
+    <div class="orb" id="orb" aria-hidden="true">
+        <div class="orb-skin">
+            <div class="orb-ball" id="orbBall">
+                <span class="orb-smoke orb-smoke--1"></span>
+                <span class="orb-smoke orb-smoke--2"></span>
+                <span class="orb-smoke orb-smoke--3"></span>
+                <span class="orb-smoke orb-smoke--4"></span>
+                <span class="orb-grain"></span>
+            </div>
+        </div>
+        <section class="orb-card" id="orbCard" role="dialog" aria-modal="true" aria-labelledby="orbName">
+            <span class="orb-eyebrow orb-line">Currículo</span>
+            <h2 class="orb-name orb-line" id="orbName">Luis Henrique Silva Gomes</h2>
+            <p class="orb-role orb-line">Full Stack Developer <em>|</em> Frontend Engineer</p>
+            <ul class="orb-meta orb-line">
+                <li>Brasília - DF</li>
+                <li><a href="tel:+5561995272550">+55 61 99527-2550</a></li>
+                <li><a href="mailto:luis.hdsg@gmail.com">luis.hdsg@gmail.com</a></li>
+            </ul>
+            <ul class="orb-meta orb-line">
+                <li><a href="https://luish.vercel.app" target="_blank" rel="noopener">luish.vercel.app</a></li>
+                <li><a href="https://github.com/luishdsg" target="_blank" rel="noopener">github/luishdsg</a></li>
+                <li><a href="https://linkedin.com/in/luis-henrique-gome" target="_blank" rel="noopener">linkedin.com/in/luis-henrique-gome</a></li>
+            </ul>
+            <hr class="orb-rule orb-line" />
+            <span class="orb-eyebrow orb-line">Formação Acadêmica</span>
+            <div class="orb-edu orb-line">
+                <p class="orb-edu-school">Instituto de Ensino Superior de Brasília <span>(IESB)</span></p>
+                <p class="orb-edu-degree">Bacharelado em Engenharia de Software</p>
+                <p class="orb-edu-when">2020–2024</p>
+            </div>
+        </section>
+    </div>
+
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
+        <filter id="orb-wobble" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+            <feTurbulence id="orbTurb" type="fractalNoise" baseFrequency="0.004 0.006" numOctaves="1" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="46" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <!-- scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -1129,6 +1241,9 @@
     <script src="./scripts/neural-field.js"></script>
     <script src="./scripts/exp-carousel.js"></script>
     <script src="./scripts/experiencias.js"></script>
+    <script src="./scripts/manifesto.js"></script>
+    <script src="./scripts/spot-pill.js"></script>
+    <script src="./scripts/orb-card.js"></script>
     <script>
 
         window.onbeforeunload = function () {

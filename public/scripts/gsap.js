@@ -477,7 +477,7 @@ gsap.registerPlugin(ScrollTrigger);
     // ============================================================
     // TEAM HEAD REVEAL ON SCROLL
     // ============================================================
-    gsap.from(".eyebrow, .team-head h2, .team-head p", {
+    gsap.from(".eyebrow, .team-head h2, .team-head p:not(.fade-line)", {
         opacity: 0,
         y: 50,
         duration: 1,

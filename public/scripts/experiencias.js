@@ -28,7 +28,7 @@
 (() => {
     const panel = document.getElementById('expPanel');
     const backdrop = document.getElementById('expBackdrop');
-    const toggle = document.getElementById('expToggle');
+    const toggle = document.getElementById('spotPill');
     const closeBtn = document.getElementById('expClose');
     const scroller = panel && panel.querySelector('.exp-scroll');
     if (!panel || !backdrop || !toggle || typeof gsap === 'undefined') return;
@@ -466,12 +466,6 @@
     toggle.addEventListener('click', (event) => {
         event.preventDefault();
         if (isOpen) closePanel(); else openPanel();
-    });
-    toggle.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            toggle.click();
-        }
     });
     if (closeBtn) closeBtn.addEventListener('click', closePanel);
     backdrop.addEventListener('click', closePanel);

@@ -306,8 +306,8 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             return;
         }
 
-        glassToggle.setAttribute('aria-disabled', 'true');
-        glassToggle.removeAttribute('aria-label');
+        glassToggle.removeAttribute('aria-disabled');
+        glassToggle.setAttribute('aria-label', 'Abrir cartão de apresentação');
     }
 
     const animationDuration = 1000;
@@ -372,6 +372,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
         setToggleState(false);
         glassToggle.addEventListener('click', (event) => {
             event.preventDefault();
+            if (!stageOpen) return;
             rewindAnimation();
         });
     }
